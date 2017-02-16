@@ -9,10 +9,11 @@ module.exports = (grunt) => {
                 files: [
                     {
                         expand: true,
+                        flatten: true,
                         src: 'data/*.json',
                         template: 'templates/template.mustache',
                         dest: 'output',
-                        ext: '.html'
+                        ext: '.md'
                     }
                 ]
             },
