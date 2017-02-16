@@ -20,6 +20,7 @@
     "eslint-config-xo-space": "^0.15.0",
     "grunt": "1.0.1",
     "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-copy": "^1.0.0",
     "grunt-mustache-render": "^1.9.2"
   },
   "eslintConfig": {
