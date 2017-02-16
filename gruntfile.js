@@ -47,9 +47,8 @@ module.exports = (grunt) => {
                 files: [
                     {
                         expand: true,
-                        flatten: true,
-                        src: 'data/*.json',
-                        template: 'templates/template.mustache',
+                        src: 'Connectors/*/apiDefinition.swagger.json',
+                        template: 'templates/connector-doc-page.mustache',
                         dest: 'output',
                         ext: '.md'
                     }
