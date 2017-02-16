@@ -1,0 +1,33 @@
+{
+  "name": "connector-swagger-to-markdown",
+  "version": "0.0.0",
+  "description": "",
+  "homepage": "",
+  "author": {
+    "name": "bradygaster",
+    "email": "bradyg@microsoft.com",
+    "url": ""
+  },
+  "files": [
+    "lib"
+  ],
+  "main": "lib/index.js",
+  "keywords": [
+    ""
+  ],
+  "devDependencies": {
+    "eslint": "^3.1.1",
+    "eslint-config-xo-space": "^0.15.0",
+    "grunt": "1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-mustache-render": "^1.9.2"
+  },
+  "eslintConfig": {
+    "extends": "xo-space",
+    "env": {
+      "mocha": true
+    }
+  },
+  "repository": "bradygaster/connector-swagger-to-markdown",
+  "license": "MIT"
+}
