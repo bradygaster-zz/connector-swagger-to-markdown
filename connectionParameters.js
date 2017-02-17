@@ -1,4 +1,5 @@
 var fs = require('fs');
+var path = require('path');
 var handlebars = require('handlebars');
 var glob = require('glob').Glob;
 var templateFile = fs.readFileSync('./templates/connection-parameters.mustache').toString();
@@ -22,8 +23,11 @@ glob("Connectors/*/connectionParameters.json", function (er, files) {
 
             var template = handlebars.compile(templateFile);
             var result = template(data);
+            var connector = file.split('/')[1];
+            var pth = path.join('output', 'Connectors', connector, 'connectionParameters.md');
+            console.log(pth);
 
-            console.log(result);
+            fs.writeFileSync(pth, result);
         } catch (ex) {
             console.log('error: ' + ex);
         }
