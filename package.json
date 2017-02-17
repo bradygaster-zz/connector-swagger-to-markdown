@@ -21,7 +21,9 @@
     "grunt": "1.0.1",
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-copy": "^1.0.0",
-    "grunt-mustache-render": "^1.9.2"
+    "grunt-execute": "^0.2.2",
+    "grunt-mustache-render": "^1.9.2",
+    "grunt-nodemon": "^0.4.2"
   },
   "eslintConfig": {
     "extends": "xo-space",
@@ -30,5 +32,10 @@
     }
   },
   "repository": "bradygaster/connector-swagger-to-markdown",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "glob": "^7.1.1",
+    "grunt-run": "^0.6.0",
+    "handlebars": "^4.0.6"
+  }
 }
