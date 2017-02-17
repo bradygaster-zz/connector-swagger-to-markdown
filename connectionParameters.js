@@ -14,8 +14,6 @@ handlebars.registerHelper('ifType', (type, options) => {
 
 glob("Connectors/*/connectionParameters.json", function (er, files) {
     files.forEach(function (file) {
-        console.log('---------------\n' + file + '\n---------------');
-
         try {
             var data = JSON.parse(
                 fs.readFileSync(file).toString()
@@ -25,8 +23,6 @@ glob("Connectors/*/connectionParameters.json", function (er, files) {
             var result = template(data);
             var connector = file.split('/')[1];
             var pth = path.join('output', 'Connectors', connector, 'connectionParameters.md');
-            console.log(pth);
-
             fs.writeFileSync(pth, result);
         } catch (ex) {
             console.log('error: ' + ex);
