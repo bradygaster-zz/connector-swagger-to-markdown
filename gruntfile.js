@@ -8,8 +8,7 @@ module.exports = (grunt) => {
     grunt.registerTask('default', [
         'clean',
         'copy:apis',
-        'mustache_render:api_definition',
-        'nodemon:connectionParameters'
+        'nodemon:apiDefinition'
     ]);
 
     grunt.initConfig({
@@ -48,22 +47,9 @@ module.exports = (grunt) => {
                 ]
             }
         },
-        mustache_render: {
-            api_definition: {
-                files: [
-                    {
-                        expand: true,
-                        src: 'Connectors/*/apiDefinition.swagger.json',
-                        template: 'templates/connector-doc-page.mustache',
-                        dest: 'output/',
-                        ext: '.md'
-                    }
-                ]
-            }
-        },
         nodemon: {
-            connectionParameters: {
-                script: 'connectionParameters.js'
+            apiDefinition: {
+                script: 'apiDefinition.js'
             }
         }
     });
