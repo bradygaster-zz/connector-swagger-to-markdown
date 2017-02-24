@@ -1,3 +1,55 @@
-# {{info.title}}
+{{#with info}}
+# {{title}}
 
-{{info.description}}
+{{x-ms-api-annotation.status}}
+
+{{description}}
+{{/with}}
+
+## Triggers
+{{#each paths}}
+{{#each this}}
+{{#with this}}
+{{#if x-ms-trigger}}
+
+### {{summary}}
+{{description}}
+
+**Operation Id:** {{operationId}}
+
+#### Parameters
+{{#each parameters}}
+{{name}}
+{{/each}}
+
+#### Returns
+{{else}}
+{{/if}}
+{{/with}}
+{{/each}}
+{{/each}}
+
+## Actions
+{{#each paths}}
+{{#each this}}
+{{#with this}}
+{{#if x-ms-trigger}}
+{{else}}
+
+### {{summary}}
+{{description}}
+
+**Operation Id:** {{operationId}}
+
+#### Parameters
+{{#each parameters}}
+{{name}}
+{{/each}}
+
+#### Returns
+{{/if}}
+{{/with}}
+{{/each}}
+{{/each}}
+
+## Objects
