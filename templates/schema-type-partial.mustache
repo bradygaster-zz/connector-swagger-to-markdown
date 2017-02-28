@@ -1,0 +1,9 @@
+{{#if_eq type "array"}}
+Array of {{#if items.$ref}} {{refToLink items.$ref}} {{else}} {{refToLink items.x-ms-summary}} {{/if}}
+{{else}}
+{{#if format}}
+{{format}}
+{{else}}
+{{type}}
+{{/if}}
+{{/if_eq}}

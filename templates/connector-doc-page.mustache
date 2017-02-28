@@ -1,55 +1,40 @@
 {{#with info}}
 # {{title}}
 
+{{#if_eq x-ms-api-annotation.status "Preview"}}
 {{x-ms-api-annotation.status}}
 
-{{description}}
-{{/with}}
+{{/if_eq}}
+{{#if version}}
+v{{version}}
 
-## Triggers
-{{#each paths}}
-{{#each this}}
-{{#with this}}
-{{#if x-ms-trigger}}
-
-### {{summary}}
-{{description}}
-
-**Operation Id:** {{operationId}}
-
-#### Parameters
-{{#each parameters}}
-{{name}}
-{{/each}}
-
-#### Returns
-{{else}}
 {{/if}}
+{{description}}
 {{/with}}
-{{/each}}
-{{/each}}
 
 ## Actions
 {{#each paths}}
 {{#each this}}
-{{#with this}}
-{{#if x-ms-trigger}}
-{{else}}
-
-### {{summary}}
-{{description}}
-
-**Operation Id:** {{operationId}}
-
-#### Parameters
-{{#each parameters}}
-{{name}}
+{{#if this.x-ms-trigger}}{{else}}
+{{> operation this}}
+{{/if}}
+{{/each}}
 {{/each}}
 
-#### Returns
+## Triggers
+{{#each paths}}
+{{#each this}}
+{{#if this.x-ms-trigger}}
+{{> operation this}}
 {{/if}}
-{{/with}}
 {{/each}}
 {{/each}}
 
 ## Objects
+{{#each definitions}}
+
+### {{@key}}
+{{this.description}}
+
+{{> schema this}}
+{{/each}}
