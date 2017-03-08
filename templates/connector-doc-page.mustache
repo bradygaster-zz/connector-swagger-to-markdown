@@ -1,3 +1,40 @@
-# {{info.title}}
+{{#with info}}
+# {{title}}
 
-{{info.description}}
+{{#if_eq x-ms-api-annotation.status "Preview"}}
+{{x-ms-api-annotation.status}}
+
+{{/if_eq}}
+{{#if version}}
+v{{version}}
+
+{{/if}}
+{{description}}
+{{/with}}
+
+## Actions
+{{#each paths}}
+{{#each this}}
+{{#if this.x-ms-trigger}}{{else}}
+{{> operation this}}
+{{/if}}
+{{/each}}
+{{/each}}
+
+## Triggers
+{{#each paths}}
+{{#each this}}
+{{#if this.x-ms-trigger}}
+{{> operation this}}
+{{/if}}
+{{/each}}
+{{/each}}
+
+## Objects
+{{#each definitions}}
+
+### {{@key}}
+{{this.description}}
+
+{{> schema this}}
+{{/each}}

@@ -1,0 +1,14 @@
+{{#if $ref}}
+{{refToLink $ref}}
+{{else}}
+| Summary | Type | Description |
+|---------|------|-------------|
+{{#if_eq type "object"}}
+{{#each properties}}
+| {{x-ms-summary}} | {{> schema-type this}} | {{description}} |
+{{/each}}
+{{/if_eq}}
+{{/if}}
+{{#if_eq type "array"}}
+| {{x-ms-summary}} | {{> schema-type this}} | {{description}} |
+{{/if_eq}}

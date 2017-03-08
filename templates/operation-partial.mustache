@@ -1,0 +1,29 @@
+
+### {{summary}}
+{{description}}
+
+**Operation Id:** {{operationId}}
+
+{{#if parameters.length}}
+#### Parameters
+| Summary | Type | Description | Required |
+|---------|------|-------------|----------|
+{{#each parameters}}
+{{#if schema}}
+{{#if schema.$ref}}
+| {{x-ms-summary}} | {{refToLink schema.$ref}} | {{description}} | {{required}} |
+{{else}}
+| {{x-ms-summary}} | {{schema}} | {{description}} | {{required}} |
+{{/if}}
+{{else}}
+| {{x-ms-summary}} | {{#if format}} {{format}} {{else}} {{type}} {{/if}} | {{description}} | {{required}} |
+{{/if}}
+{{/each}}
+{{/if}}
+
+#### Returns
+{{#each responses}}
+{{#if this.schema}}
+{{> schema this.schema}}
+{{/if}}
+{{/each}}
