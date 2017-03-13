@@ -1,4 +1,4 @@
-{{#with info}}
+{{#with swagger.info}}
 # {{title}}
 
 {{#if_eq x-ms-api-annotation.status "Preview"}}
@@ -12,6 +12,12 @@ v{{version}}
 {{description}}
 {{/with}}
 
+{{#if connectionParameters}}
+## Creating a connection to {{swagger.info.title}}
+{{> connectionParameters connectionParameters}}
+{{/if}}
+
+{{#with swagger}}
 ## Actions
 {{#each paths}}
 {{#each this}}
@@ -38,3 +44,7 @@ v{{version}}
 
 {{> schema this}}
 {{/each}}
+{{/with}}
+
+## Throttling
+{{> throttling policy}}

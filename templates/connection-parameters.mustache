@@ -1,10 +1,5 @@
-## Connection Parameters
-
-| Parameter | Type | Description |
-|-----------|------|-------------|
-{{#each .}}
-{{#ifType type}}
-|{{../uiDefinition.displayName}} | {{../type}} | {{../uiDefinition.description}}|
-{{else}}
-{{/ifType}}
+| Parameter Name | Description | Type |
+|----------------|-------------|------|
+{{#each this}}
+| {{uiDefinition.displayName}} | {{uiDefinition.description}} | {{type}} |
 {{/each}}
