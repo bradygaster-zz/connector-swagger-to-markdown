@@ -15,7 +15,7 @@ v{{version}}
 {{/with}}
 
 {{#if connectionParameters}}
-## Creating a connection to {{swagger.info.title}}
+## Creating a connection
 {{#if customSection }}
 {{customSection}}
 
@@ -24,7 +24,7 @@ v{{version}}
 {{/if}}
 
 {{#with swagger}}
-## Actions
+# Actions
 {{#each paths}}
 {{#each this}}
 {{#if this.x-ms-trigger}}{{else}}
@@ -33,7 +33,7 @@ v{{version}}
 {{/each}}
 {{/each}}
 
-## Triggers
+# Triggers
 {{#each paths}}
 {{#each this}}
 {{#if this.x-ms-trigger}}

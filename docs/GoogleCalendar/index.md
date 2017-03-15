@@ -6,7 +6,7 @@ v1.1
 
 Google Calendar lets you organize your schedule and share events with co-workers and friends. With Google&#x27;s free online calendar, it&#x27;s easy to keep track of your daily schedule.
 
-## Creating a connection to Google Calendar
+## Creating a connection
 To use this integration, you will need a Google account. If you are not a user yet,  [sign up](https://google.com/) for a new account.
 When trying to make a connection, you will be prompted to authenticate against your account. If you have multiple accounts, pick the one you would like to use and **Sign in**. 
 Once verified, you will need to authorize Microsoft to access your contacts. Click on **Allow** to continue. 
@@ -16,7 +16,7 @@ Once verified, you will need to authorize Microsoft to access your contacts. Cli
 You&#x27;re now ready to start using this integration. 
 
 
-## Actions
+# Actions
 
 
 ## List calendars
@@ -117,7 +117,7 @@ Update an event on a calendar
 |---------|------|-------------|
 | [ResponseEvent](#responseevent) | object | An event downloaded from Google Calendar |
 
-## Triggers
+# Triggers
 
 ## When an event is added to a calendar
 Triggers a flow when a new event is added to a calendar
