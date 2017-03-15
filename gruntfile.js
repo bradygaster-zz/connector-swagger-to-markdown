@@ -55,6 +55,20 @@ module.exports = (grunt) => {
                         cwd: '../Connectors/src/',
                         src: ['Connectors/*/media/*.png'],
                         filter: 'isFile'
+                    },
+                    {
+                        expand: true,
+                        cwd: '../Connectors/src/Connectors',
+                        src: ['GoogleCalendar/icon.png'],
+                        filter: 'isFile',
+                        dest: 'docs'
+                    },
+                    {
+                        expand: true,
+                        cwd: '../Connectors/src/Connectors',
+                        src: ['GoogleCalendar/media/*.png'],
+                        filter: 'isFile',
+                        dest: 'docs'
                     }
                 ]
             }
