@@ -25,19 +25,23 @@ v{{version}}
 
 {{#with swagger}}
 # Actions
+___
 {{#each paths}}
 {{#each this}}
 {{#if this.x-ms-trigger}}{{else}}
 {{> operation this}}
+___
 {{/if}}
 {{/each}}
 {{/each}}
 
 # Triggers
+___
 {{#each paths}}
 {{#each this}}
 {{#if this.x-ms-trigger}}
 {{> operation this}}
+___
 {{/if}}
 {{/each}}
 {{/each}}

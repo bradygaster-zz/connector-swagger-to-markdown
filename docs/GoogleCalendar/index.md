@@ -17,6 +17,7 @@ You&#x27;re now ready to start using this integration.
 
 
 # Actions
+___
 
 
 ## List calendars
@@ -31,6 +32,7 @@ This operation does not require any input.
 | Summary | Type | Description |
 |---------|------|-------------|
 | [CalendarList](#calendarlist) | object | A Google CalendarList Object |
+___
 
 
 ## List the events on a calendar
@@ -49,6 +51,7 @@ Lists the first page of arbitrarily ordered events on the selected calendar.
 | Summary | Type | Description |
 |---------|------|-------------|
 | [CalendarEventList](#calendareventlist) | object | A Google CalendarEventList Object |
+___
 
 
 ## Create an event
@@ -66,6 +69,7 @@ Creates an event on a specific calendar
 | Summary | Type | Description |
 |---------|------|-------------|
 | [ResponseEvent](#responseevent) | object | An event downloaded from Google Calendar |
+___
 
 
 ## Get an event
@@ -83,6 +87,7 @@ Get an event from a calendar
 | Summary | Type | Description |
 |---------|------|-------------|
 | [ResponseEvent](#responseevent) | object | An event downloaded from Google Calendar |
+___
 
 
 ## Delete an event
@@ -98,6 +103,7 @@ Delete an event from a calendar
 
 #### Returns
 This operation does not return anything.
+___
 
 
 ## Update an event
@@ -116,8 +122,10 @@ Update an event on a calendar
 | Summary | Type | Description |
 |---------|------|-------------|
 | [ResponseEvent](#responseevent) | object | An event downloaded from Google Calendar |
+___
 
 # Triggers
+___
 
 ## When an event is added to a calendar
 Triggers a flow when a new event is added to a calendar
@@ -133,6 +141,7 @@ Triggers a flow when a new event is added to a calendar
 | Summary | Type | Description |
 |---------|------|-------------|
 | [CalendarEventList](#calendareventlist) | object | A Google CalendarEventList Object |
+___
 
 ## When an event is updated in a calendar
 Triggers a flow when an event is updated in a calendar
@@ -148,6 +157,7 @@ Triggers a flow when an event is updated in a calendar
 | Summary | Type | Description |
 |---------|------|-------------|
 | [CalendarEventList](#calendareventlist) | object | A Google CalendarEventList Object |
+___
 
 ## When an event is deleted from a calendar
 Triggers a flow when a new event is deleted from a calendar
@@ -163,6 +173,7 @@ Triggers a flow when a new event is deleted from a calendar
 | Summary | Type | Description |
 |---------|------|-------------|
 | [CalendarEventList](#calendareventlist) | object | A Google CalendarEventList Object |
+___
 
 ## When an event starts
 Triggers a flow when an event starts
@@ -178,6 +189,7 @@ Triggers a flow when an event starts
 | Summary | Type | Description |
 |---------|------|-------------|
 | [CalendarEventList](#calendareventlist) | object | A Google CalendarEventList Object |
+___
 
 ## Objects
 
