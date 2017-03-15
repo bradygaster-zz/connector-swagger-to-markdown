@@ -26,6 +26,13 @@ handlebars.registerHelper('if_eq', function(a, b, opts) {
         return opts.inverse(this);
 });
 
+handlebars.registerHelper('if_empty', function(obj, opts) {
+    if (obj && Object.keys(obj).length === 0)
+        return opts.fn(this);
+    else
+        return opts.inverse(this);
+});
+
 handlebars.registerHelper('refToLink', function(str) {
     var headerText = str.replace('#/definitions/', '');
     var headerLink = headerText.replace(' ', '-').toLowerCase();
@@ -57,12 +64,15 @@ function generateDocumentation(swaggerFilename) {
         return;
     }
     utils.resolveParameterReferences(swagger);
+    utils.resolveResponseReferences(swagger);
     var connectionParameters = getConnectionParameters(swaggerFilename);
     var policy = getPolicy(swaggerFilename);
+    var customSection = getCustomSection(swaggerFilename);
     var connector = {
         'swagger': swagger,
         'connectionParameters': connectionParameters,
-        'policy': policy
+        'policy': policy,
+        'customSection': customSection
     };
 
     var template = handlebars.compile(templateFile);
@@ -75,11 +85,20 @@ function generateDocumentation(swaggerFilename) {
 function getConnectionParameters(swaggerFilename) {
     try {
         var connParamsFile = swaggerFilename.replace('apiDefinition.swagger.json', 'connectionParameters.json');
-        connectionParameters = JSON.parse(fs.readFileSync(connParamsFile).toString());
+        var connectionParameters = JSON.parse(fs.readFileSync(connParamsFile).toString());
+
+        // Remove parameters of type 'oauthSetting'
+        Object.keys(connectionParameters).forEach(function(connParamKey) {
+            var connParam = connectionParameters[connParamKey];
+            if (connParam && connParam.type === "oauthSetting") {
+                delete connectionParameters[connParamKey];
+            }
+        });
+        return connectionParameters;
     } catch (ex) {
         // It's expected that some connectors don't have connection parameters
         if (ex.code !== 'ENOENT') {
-            throw err;
+            throw ex;
         }
         return null;
     }
@@ -92,19 +111,36 @@ function getPolicy(swaggerFilename) {
 
     // For simplicity, only extract the elements from the policy that we need
     var rateLimitTag = policy.getElementsByTagName('rate-limit-by-key')[0];
-    var rateLimit = {
+    var rateLimit = rateLimitTag ? {
         'calls': rateLimitTag.getAttribute('calls'),
         'renewal-period': rateLimitTag.getAttribute('renewal-period')
-    };
+    } : null;
     var setHeaderTags = policy.getElementsByTagName('set-header');
     var retryAfterTag = utils.firstOrNull(setHeaderTags, function(tag) {
         return utils.firstOrNull(tag.attributes, function(attr) {
             return attr.nodeValue === 'retry-after';
         }) !== null;
     });
+    var retryAfterValueNode = utils.firstOrNull(retryAfterTag.childNodes, function(child) {
+        return child.firstChild && child.firstChild.nodeValue;
+    });
     var policyJson = {
         'rate-limit-by-key': rateLimit,
-        'retry-after': retryAfterTag.childNodes[1].firstChild.nodeValue
+        'retry-after': retryAfterValueNode ? retryAfterValueNode.firstChild.nodeValue : null
     };
     return policyJson;
+}
+
+function getCustomSection(swaggerFilename) {
+    try {
+        var customSectionFilename = swaggerFilename.replace('apiDefinition.swagger.json', 'intro.md');
+        var customSection = fs.readFileSync(customSectionFilename).toString();
+        return customSection;
+    } catch (ex) {
+        // It's expected that some connectors don't have custom sections
+        if (ex.code !== 'ENOENT') {
+            throw ex;
+        }
+        return null;
+    }
 }

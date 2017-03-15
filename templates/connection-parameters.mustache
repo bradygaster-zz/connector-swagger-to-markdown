@@ -1,5 +1,10 @@
+{{#if_empty this}}
+{{else}}
+To connect your account, you will need the following information:
+
 | Parameter Name | Description | Type |
 |----------------|-------------|------|
 {{#each this}}
 | {{uiDefinition.displayName}} | {{uiDefinition.description}} | {{type}} |
 {{/each}}
+{{/if_empty}}
