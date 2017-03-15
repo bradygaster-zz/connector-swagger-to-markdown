@@ -43,6 +43,18 @@ module.exports = (grunt) => {
                         cwd: '../Connectors/src/',
                         src: ['Connectors/*/icon.png'],
                         filter: 'isFile'
+                    },
+                    {
+                        expand: true,
+                        cwd: '../Connectors/src/',
+                        src: ['Connectors/*/intro.md'],
+                        filter: 'isFile'
+                    },
+                    {
+                        expand: true,
+                        cwd: '../Connectors/src/',
+                        src: ['Connectors/*/media/*.png'],
+                        filter: 'isFile'
                     }
                 ]
             }

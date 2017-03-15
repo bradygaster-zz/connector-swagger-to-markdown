@@ -4,8 +4,8 @@
 
 **Operation Id:** {{operationId}}
 
-{{#if parameters.length}}
 #### Parameters
+{{#if parameters.length}}
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
 {{#each parameters}}
@@ -19,11 +19,17 @@
 | {{x-ms-summary}} | {{#if format}} {{format}} {{else}} {{type}} {{/if}} | {{description}} | {{required}} |
 {{/if}}
 {{/each}}
+{{else}}
+This operation does not require any input.
 {{/if}}
 
 #### Returns
 {{#each responses}}
+{{#if @first}}
 {{#if this.schema}}
 {{> schema this.schema}}
+{{else}}
+This operation does not return anything.
+{{/if}}
 {{/if}}
 {{/each}}

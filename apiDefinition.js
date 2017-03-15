@@ -2,10 +2,14 @@ var fs = require('fs');
 var path = require('path');
 var handlebars = require('handlebars');
 var glob = require('glob').Glob;
+var DOMParser = require('xmldom').DOMParser;
+var utils = require('./utils.js');
 var templateFile = fs.readFileSync('./templates/connector-doc-page.mustache').toString();
 var operationTemplate = fs.readFileSync('./templates/operation-partial.mustache').toString();
 var schemaTemplate = fs.readFileSync('./templates/schema-partial.mustache').toString();
-var schemaTypeTemplate = fs.readFileSync('./templates/schema-type-partial.mustache').toString();;
+var schemaTypeTemplate = fs.readFileSync('./templates/schema-type-partial.mustache').toString();
+var connectionParametersTemplate = fs.readFileSync('./templates/connection-parameters.mustache').toString();
+var throttlingTemplate = fs.readFileSync('./templates/throttling-partial.mustache').toString();
 
 handlebars.registerHelper('ifType', (type, options) => {
     if (type == 'string' || type == 'securestring') {
@@ -22,6 +26,13 @@ handlebars.registerHelper('if_eq', function(a, b, opts) {
         return opts.inverse(this);
 });
 
+handlebars.registerHelper('if_empty', function(obj, opts) {
+    if (obj && Object.keys(obj).length === 0)
+        return opts.fn(this);
+    else
+        return opts.inverse(this);
+});
+
 handlebars.registerHelper('refToLink', function(str) {
     var headerText = str.replace('#/definitions/', '');
     var headerLink = headerText.replace(' ', '-').toLowerCase();
@@ -30,6 +41,8 @@ handlebars.registerHelper('refToLink', function(str) {
 
 handlebars.registerPartial('operation', operationTemplate);
 handlebars.registerPartial('schema', schemaTemplate);
+handlebars.registerPartial('connectionParameters', connectionParametersTemplate);
+handlebars.registerPartial('throttling', throttlingTemplate);
 
 // Since this partial is used in a table, remove the new lines
 handlebars.registerPartial('schema-type', schemaTypeTemplate.replace(/(\r\n|\n|\r)/gm,""));
@@ -37,67 +50,97 @@ handlebars.registerPartial('schema-type', schemaTypeTemplate.replace(/(\r\n|\n|\
 glob("Connectors/*/apiDefinition.swagger.json", function (er, files) {
     files.forEach(function (file) {
         try {
-            var connector = file.split('/')[1];
-
-            var swaggerContents = fs.readFileSync(file).toString();
-            var swagger = JSON.parse(swaggerContents);
-            resolveParameterReferences(swagger);
-            
-            var template = handlebars.compile(templateFile);
-            var result = template(swagger);
-            var pth = path.join('Connectors', connector, 'apiDefinition.md');
-            console.log(pth);
-            fs.writeFileSync(pth, result);
+            generateDocumentation(file);
         } catch (ex) {
-            console.log('error: ' + ex);
+            console.log('error in ' + file + ': ' + ex);
         }
     });
 });
 
-function resolveParameterReferences(swagger) {
-    Object.keys(swagger.definitions).forEach(function(definitionKey) {
-        var definition = swagger.definitions[definitionKey];
-        definition['x-ms-markdown-link'] = definitionKey.toLowerCase();
-    });
+function generateDocumentation(swaggerFilename) {
+    // Read connector assets
+    var swagger = JSON.parse(fs.readFileSync(swaggerFilename).toString());
+    if (!swagger.info || !swagger.info['x-ms-api-annotation'] || swagger.info['x-ms-api-annotation'].status !== "Production") {
+        return;
+    }
+    utils.resolveParameterReferences(swagger);
+    utils.resolveResponseReferences(swagger);
+    var connectionParameters = getConnectionParameters(swaggerFilename);
+    var policy = getPolicy(swaggerFilename);
+    var customSection = getCustomSection(swaggerFilename);
+    var connector = {
+        'swagger': swagger,
+        'connectionParameters': connectionParameters,
+        'policy': policy,
+        'customSection': customSection
+    };
 
-    Object.keys(swagger.paths).forEach(function(pathKey) {
-        var path = swagger.paths[pathKey];
-        Object.keys(path).forEach(function(operationKey) {
-            var operation = path[operationKey];
-            var parameters = operation.parameters;
-            if (parameters) {
-                for (var i = 0; i < parameters.length; i++) {
-                    if (parameters[i].$ref) {
-                        parameters[i] = resolveReference(swagger, parameters[i].$ref);
-                    }
-                }
-            }
-
-            Object.keys(operation.responses).forEach(function(responseKey) {
-                
-            });
-        });
-    });
-
+    var template = handlebars.compile(templateFile);
+    var result = template(connector);
+    var markdownFilename = swaggerFilename.replace('apiDefinition.swagger.json', 'apiDefinition.md');
+    console.log(markdownFilename);
+    fs.writeFileSync(markdownFilename, result);
 }
 
-function resolveReference(document, $ref) {
-    if ($ref) {
-        var reference = document,
-            paths = $ref.split('/');
-        if (!paths || paths.length <= 1 || paths[0] !== '#') {
-            return null;
-        }
+function getConnectionParameters(swaggerFilename) {
+    try {
+        var connParamsFile = swaggerFilename.replace('apiDefinition.swagger.json', 'connectionParameters.json');
+        var connectionParameters = JSON.parse(fs.readFileSync(connParamsFile).toString());
 
-        paths.slice(1).forEach(path => {
-            if (Array.isArray(reference)) {
-                reference = reference.filter(element => element.name === path)[0];
-            } else {
-                reference = reference[path];
+        // Remove parameters of type 'oauthSetting'
+        Object.keys(connectionParameters).forEach(function(connParamKey) {
+            var connParam = connectionParameters[connParamKey];
+            if (connParam && connParam.type === "oauthSetting") {
+                delete connectionParameters[connParamKey];
             }
         });
-        return reference;
-    } else {
+        return connectionParameters;
+    } catch (ex) {
+        // It's expected that some connectors don't have connection parameters
+        if (ex.code !== 'ENOENT') {
+            throw ex;
+        }
+        return null;
+    }
+}
+
+function getPolicy(swaggerFilename) {
+    var policyFilename = swaggerFilename.replace('apiDefinition.swagger.json', 'policy.xml');
+    var policyContents = fs.readFileSync(policyFilename).toString();
+    var policy = new DOMParser().parseFromString(policyContents, 'text/xml');
+
+    // For simplicity, only extract the elements from the policy that we need
+    var rateLimitTag = policy.getElementsByTagName('rate-limit-by-key')[0];
+    var rateLimit = rateLimitTag ? {
+        'calls': rateLimitTag.getAttribute('calls'),
+        'renewal-period': rateLimitTag.getAttribute('renewal-period')
+    } : null;
+    var setHeaderTags = policy.getElementsByTagName('set-header');
+    var retryAfterTag = utils.firstOrNull(setHeaderTags, function(tag) {
+        return utils.firstOrNull(tag.attributes, function(attr) {
+            return attr.nodeValue === 'retry-after';
+        }) !== null;
+    });
+    var retryAfterValueNode = utils.firstOrNull(retryAfterTag.childNodes, function(child) {
+        return child.firstChild && child.firstChild.nodeValue;
+    });
+    var policyJson = {
+        'rate-limit-by-key': rateLimit,
+        'retry-after': retryAfterValueNode ? retryAfterValueNode.firstChild.nodeValue : null
+    };
+    return policyJson;
+}
+
+function getCustomSection(swaggerFilename) {
+    try {
+        var customSectionFilename = swaggerFilename.replace('apiDefinition.swagger.json', 'intro.md');
+        var customSection = fs.readFileSync(customSectionFilename).toString();
+        return customSection;
+    } catch (ex) {
+        // It's expected that some connectors don't have custom sections
+        if (ex.code !== 'ENOENT') {
+            throw ex;
+        }
         return null;
     }
 }

@@ -1,14 +1,24 @@
 {{#if $ref}}
-{{refToLink $ref}}
+| Summary | Type | Description |
+|---------|------|-------------|
+| {{refToLink $ref}} | {{> schema-type this}} | {{description}} |
+{{else}}
+{{#if_eq type "object"}}
+{{#if_empty properties}}
 {{else}}
 | Summary | Type | Description |
 |---------|------|-------------|
-{{#if_eq type "object"}}
 {{#each properties}}
+{{#if_eq x-ms-visibility "internal"}}
+{{else}}
 | {{x-ms-summary}} | {{> schema-type this}} | {{description}} |
+{{/if_eq}}
 {{/each}}
+{{/if_empty}}
 {{/if_eq}}
 {{/if}}
 {{#if_eq type "array"}}
+| Summary | Type | Description |
+|---------|------|-------------|
 | {{x-ms-summary}} | {{> schema-type this}} | {{description}} |
 {{/if_eq}}

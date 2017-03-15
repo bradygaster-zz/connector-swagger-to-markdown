@@ -1,4 +1,6 @@
-{{#with info}}
+![Icon](icon.png)
+
+{{#with swagger.info}}
 # {{title}}
 
 {{#if_eq x-ms-api-annotation.status "Preview"}}
@@ -12,6 +14,16 @@ v{{version}}
 {{description}}
 {{/with}}
 
+{{#if connectionParameters}}
+## Creating a connection to {{swagger.info.title}}
+{{#if customSection }}
+{{customSection}}
+
+{{/if}}
+{{> connectionParameters connectionParameters}}
+{{/if}}
+
+{{#with swagger}}
 ## Actions
 {{#each paths}}
 {{#each this}}
@@ -32,9 +44,16 @@ v{{version}}
 
 ## Objects
 {{#each definitions}}
+{{#if_eq this.x-ms-visibility "internal"}}
+{{else}}
 
 ### {{@key}}
 {{this.description}}
 
 {{> schema this}}
+{{/if_eq}}
 {{/each}}
+{{/with}}
+
+## Throttling
+{{> throttling policy}}

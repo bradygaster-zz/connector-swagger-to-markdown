@@ -1,10 +1,10 @@
-## Connection Parameters
-
-| Parameter | Type | Description |
-|-----------|------|-------------|
-{{#each .}}
-{{#ifType type}}
-|{{../uiDefinition.displayName}} | {{../type}} | {{../uiDefinition.description}}|
+{{#if_empty this}}
 {{else}}
-{{/ifType}}
+To connect your account, you will need the following information:
+
+| Parameter Name | Description | Type |
+|----------------|-------------|------|
+{{#each this}}
+| {{uiDefinition.displayName}} | {{uiDefinition.description}} | {{type}} |
 {{/each}}
+{{/if_empty}}
