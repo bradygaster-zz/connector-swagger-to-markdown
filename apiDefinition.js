@@ -77,9 +77,10 @@ function generateDocumentation(swaggerFilename) {
 
     var template = handlebars.compile(templateFile);
     var result = template(connector);
-    var markdownFilename = swaggerFilename.replace('apiDefinition.swagger.json', 'apiDefinition.md');
-    console.log(markdownFilename);
-    fs.writeFileSync(markdownFilename, result);
+    var directory = swaggerFilename.replace('Connectors', 'docs').replace('apiDefinition.swagger.json', '');
+    var markdownFilename = 'index.md';
+    dropMarkdown(directory, markdownFilename, result);
+    console.log(directory + markdownFilename);
 }
 
 function getConnectionParameters(swaggerFilename) {
@@ -143,4 +144,13 @@ function getCustomSection(swaggerFilename) {
         }
         return null;
     }
+}
+
+function dropMarkdown(directory, filename, markdown) {
+    try {
+        fs.mkdirSync(directory);
+    } catch (ex) {
+        if (ex.code !== 'EEXIST') throw ex;
+    }
+    fs.writeFileSync(directory + filename, markdown);
 }
