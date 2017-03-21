@@ -6,7 +6,7 @@ v1.1
 
 Google Calendar lets you organize your schedule and share events with co-workers and friends. With Google&#x27;s free online calendar, it&#x27;s easy to keep track of your daily schedule.
 
-## Creating a connection to Google Calendar
+## Creating a connection
 To use this integration, you will need a Google account. If you are not a user yet,  [sign up](https://google.com/) for a new account.
 When trying to make a connection, you will be prompted to authenticate against your account. If you have multiple accounts, pick the one you would like to use and **Sign in**. 
 Once verified, you will need to authorize Microsoft to access your contacts. Click on **Allow** to continue. 
@@ -16,10 +16,11 @@ Once verified, you will need to authorize Microsoft to access your contacts. Cli
 You&#x27;re now ready to start using this integration. 
 
 
-## Actions
+# Actions
+___
 
 
-### List calendars
+## List calendars
 Lists all calendars in the authenticated user&#x27;s calendar list.
 
 **Operation Id:** ListCalendars
@@ -31,9 +32,10 @@ This operation does not require any input.
 | Summary | Type | Description |
 |---------|------|-------------|
 | [CalendarList](#calendarlist) | object | A Google CalendarList Object |
+___
 
 
-### List the events on a calendar
+## List the events on a calendar
 Lists the first page of arbitrarily ordered events on the selected calendar.
 
 **Operation Id:** ListEvents
@@ -49,9 +51,10 @@ Lists the first page of arbitrarily ordered events on the selected calendar.
 | Summary | Type | Description |
 |---------|------|-------------|
 | [CalendarEventList](#calendareventlist) | object | A Google CalendarEventList Object |
+___
 
 
-### Create an event
+## Create an event
 Creates an event on a specific calendar
 
 **Operation Id:** CreateEvent
@@ -66,9 +69,10 @@ Creates an event on a specific calendar
 | Summary | Type | Description |
 |---------|------|-------------|
 | [ResponseEvent](#responseevent) | object | An event downloaded from Google Calendar |
+___
 
 
-### Get an event
+## Get an event
 Get an event from a calendar
 
 **Operation Id:** GetEvent
@@ -83,9 +87,10 @@ Get an event from a calendar
 | Summary | Type | Description |
 |---------|------|-------------|
 | [ResponseEvent](#responseevent) | object | An event downloaded from Google Calendar |
+___
 
 
-### Delete an event
+## Delete an event
 Delete an event from a calendar
 
 **Operation Id:** DeleteEvent
@@ -98,9 +103,10 @@ Delete an event from a calendar
 
 #### Returns
 This operation does not return anything.
+___
 
 
-### Update an event
+## Update an event
 Update an event on a calendar
 
 **Operation Id:** UpdateEvent
@@ -116,10 +122,12 @@ Update an event on a calendar
 | Summary | Type | Description |
 |---------|------|-------------|
 | [ResponseEvent](#responseevent) | object | An event downloaded from Google Calendar |
+___
 
-## Triggers
+# Triggers
+___
 
-### When an event is added to a calendar
+## When an event is added to a calendar
 Triggers a flow when a new event is added to a calendar
 
 **Operation Id:** OnNewEventInCalendar
@@ -133,8 +141,9 @@ Triggers a flow when a new event is added to a calendar
 | Summary | Type | Description |
 |---------|------|-------------|
 | [CalendarEventList](#calendareventlist) | object | A Google CalendarEventList Object |
+___
 
-### When an event is updated in a calendar
+## When an event is updated in a calendar
 Triggers a flow when an event is updated in a calendar
 
 **Operation Id:** OnUpdatedEventInCalendar
@@ -148,8 +157,9 @@ Triggers a flow when an event is updated in a calendar
 | Summary | Type | Description |
 |---------|------|-------------|
 | [CalendarEventList](#calendareventlist) | object | A Google CalendarEventList Object |
+___
 
-### When an event is deleted from a calendar
+## When an event is deleted from a calendar
 Triggers a flow when a new event is deleted from a calendar
 
 **Operation Id:** OnDeletedEventInCalendar
@@ -163,8 +173,9 @@ Triggers a flow when a new event is deleted from a calendar
 | Summary | Type | Description |
 |---------|------|-------------|
 | [CalendarEventList](#calendareventlist) | object | A Google CalendarEventList Object |
+___
 
-### When an event starts
+## When an event starts
 Triggers a flow when an event starts
 
 **Operation Id:** OnEventStarted
@@ -178,6 +189,7 @@ Triggers a flow when an event starts
 | Summary | Type | Description |
 |---------|------|-------------|
 | [CalendarEventList](#calendareventlist) | object | A Google CalendarEventList Object |
+___
 
 ## Objects
 
