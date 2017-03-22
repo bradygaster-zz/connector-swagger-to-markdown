@@ -25,7 +25,7 @@ v{{version}}
 
 {{#with swagger}}
 # Actions
-___
+
 {{#each paths}}
 {{#each this}}
 {{#if this.x-ms-trigger}}{{else}}
@@ -36,7 +36,7 @@ ___
 {{/each}}
 
 # Triggers
-___
+
 {{#each paths}}
 {{#each this}}
 {{#if this.x-ms-trigger}}
@@ -61,3 +61,12 @@ ___
 
 ## Limits
 {{> throttling policy}}
+
+{{#with swagger}}
+{{#if x-ms-docs.length}}
+## Using the {{info.title}} integration
+{{#each x-ms-docs}}
+- [{{description}}]({{url}})
+{{/each}}
+{{/if}}
+{{/with}}
