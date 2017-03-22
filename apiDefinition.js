@@ -10,6 +10,9 @@ var schemaTemplate = fs.readFileSync('./templates/schema-partial.mustache').toSt
 var schemaTypeTemplate = fs.readFileSync('./templates/schema-type-partial.mustache').toString();
 var connectionParametersTemplate = fs.readFileSync('./templates/connection-parameters.mustache').toString();
 var throttlingTemplate = fs.readFileSync('./templates/throttling-partial.mustache').toString();
+var docReadyConnectors = [
+    'GoogleCalendar'
+];
 
 handlebars.registerHelper('ifType', (type, options) => {
     if (type == 'string' || type == 'securestring') {
@@ -47,6 +50,8 @@ handlebars.registerPartial('throttling', throttlingTemplate);
 // Since this partial is used in a table, remove the new lines
 handlebars.registerPartial('schema-type', schemaTypeTemplate.replace(/(\r\n|\n|\r)/gm,""));
 
+fs.writeFileSync('docs/TOC.md', '');
+
 glob("Connectors/*/apiDefinition.swagger.json", function (er, files) {
     files.forEach(function (file) {
         try {
@@ -58,6 +63,15 @@ glob("Connectors/*/apiDefinition.swagger.json", function (er, files) {
 });
 
 function generateDocumentation(swaggerFilename) {
+    var swaggerPath = path.parse(swaggerFilename);
+    var connectorShortname = swaggerPath.dir.split('/')[1];
+    var shouldGenerateDocs = utils.firstOrNull(docReadyConnectors, function(c) {
+        return connectorShortname === c;
+    });
+    if (!shouldGenerateDocs) {
+        return;
+    }
+
     // Read connector assets
     var swagger = JSON.parse(fs.readFileSync(swaggerFilename).toString());
     if (!swagger.info || !swagger.info['x-ms-api-annotation'] || swagger.info['x-ms-api-annotation'].status !== "Production") {
@@ -81,6 +95,13 @@ function generateDocumentation(swaggerFilename) {
     var markdownFilename = 'index.md';
     dropMarkdown(directory, markdownFilename, result);
     console.log(directory + markdownFilename);
+    addToTableOfContents(swagger.info.title, connectorShortname);
+}
+
+function addToTableOfContents(connectorName, connectorShortname) {
+    var link = connectorShortname + '/index.md';
+    var tocEntry = '\n# [' + connectorName + '](' + link + ')\n';
+    fs.appendFileSync('docs/TOC.md', tocEntry);
 }
 
 function getConnectionParameters(swaggerFilename) {
