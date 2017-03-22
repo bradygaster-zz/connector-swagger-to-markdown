@@ -267,5 +267,3 @@ Event changes to upload to Google Calendar
 | API calls per connection | 30 | 60 seconds |
 | Frequency of trigger polls | 1 | 15 seconds |
 
-## Using the Google Calendar integration
-- [Templates for Google Calendar in Microsoft Flow](https://flow.microsoft.com/en-us/services/shared_googlecalendar/google-calendar/)

@@ -62,11 +62,9 @@ ___
 ## Limits
 {{> throttling policy}}
 
-{{#with swagger}}
-{{#if x-ms-docs.length}}
-## Using the {{info.title}} integration
-{{#each x-ms-docs}}
+{{#if swagger.x-ms-docs.length}}
+## Using this integration
+{{#each swagger.x-ms-docs}}
 - [{{description}}]({{url}})
 {{/each}}
 {{/if}}
-{{/with}}
