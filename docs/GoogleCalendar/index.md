@@ -17,7 +17,7 @@ You&#x27;re now ready to start using this integration.
 
 
 # Actions
-___
+
 
 
 ## List calendars
@@ -125,7 +125,7 @@ Update an event on a calendar
 ___
 
 # Triggers
-___
+
 
 ## When an event is added to a calendar
 Triggers a flow when a new event is added to a calendar
@@ -261,8 +261,11 @@ Event changes to upload to Google Calendar
 | Attendees | string | Enter a comma-separated list of attendee emails |
 | Status | string | Status of the event. Possible values are &quot;confirmed&quot;, &quot;tentative&quot;, or &quot;cancelled |
 
-## Throttling
+## Limits
 | Name | Calls | Renewal Period |
 |------|-------|----------------|
 | API calls per connection | 30 | 60 seconds |
 | Frequency of trigger polls | 1 | 15 seconds |
+
+## Using the Google Calendar integration
+- [Templates for Google Calendar in Microsoft Flow](https://flow.microsoft.com/en-us/services/shared_googlecalendar/google-calendar/)
