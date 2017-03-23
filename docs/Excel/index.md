@@ -1,4 +1,3 @@
-![Icon](icon.png)
 
 # Excel
 
@@ -132,9 +131,6 @@ Updates an existing row in an Excel table
 ___
 
 
-
-
-# Triggers
 
 
 ## Objects
