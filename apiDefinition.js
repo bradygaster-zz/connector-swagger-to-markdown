@@ -11,7 +11,11 @@ var schemaTypeTemplate = fs.readFileSync('./templates/schema-type-partial.mustac
 var connectionParametersTemplate = fs.readFileSync('./templates/connection-parameters.mustache').toString();
 var throttlingTemplate = fs.readFileSync('./templates/throttling-partial.mustache').toString();
 var docReadyConnectors = [
-    'GoogleCalendar'
+    'GoogleCalendar',
+    'Todoist',
+    'MsnWeather',
+    'Excel',
+    'AzureQueues'
 ];
 
 handlebars.registerHelper('ifType', (type, options) => {
@@ -74,18 +78,18 @@ function generateDocumentation(swaggerFilename) {
 
     // Read connector assets
     var swagger = JSON.parse(fs.readFileSync(swaggerFilename).toString());
-    if (!swagger.info || !swagger.info['x-ms-api-annotation'] || swagger.info['x-ms-api-annotation'].status !== "Production") {
-        return;
-    }
+    // if (!swagger.info || !swagger.info['x-ms-api-annotation'] || swagger.info['x-ms-api-annotation'].status !== "Production") {
+    //     return;
+    // }
     utils.resolveParameterReferences(swagger);
     utils.resolveResponseReferences(swagger);
     var connectionParameters = getConnectionParameters(swaggerFilename);
-    var policy = getPolicy(swaggerFilename);
+    //var policy = getPolicy(swaggerFilename);
     var customSection = getCustomSection(swaggerFilename);
     var connector = {
         'swagger': swagger,
         'connectionParameters': connectionParameters,
-        'policy': policy,
+        'policy': null,
         'customSection': customSection
     };
 

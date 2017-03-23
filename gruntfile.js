@@ -71,6 +71,62 @@ module.exports = (grunt) => {
                         src: ['GoogleCalendar/media/*.png'],
                         filter: 'isFile',
                         dest: 'docs'
+                    },
+                    {
+                        expand: true,
+                        cwd: '../Connectors/src/Connectors',
+                        src: ['Todoist/icon.png'],
+                        filter: 'isFile',
+                        dest: 'docs'
+                    },
+                    {
+                        expand: true,
+                        cwd: '../Connectors/src/Connectors',
+                        src: ['Todoist/media/*.png'],
+                        filter: 'isFile',
+                        dest: 'docs'
+                    },
+                    {
+                        expand: true,
+                        cwd: '../Connectors/src/Connectors',
+                        src: ['MsnWeather/icon.png'],
+                        filter: 'isFile',
+                        dest: 'docs'
+                    },
+                    {
+                        expand: true,
+                        cwd: '../Connectors/src/Connectors',
+                        src: ['MsnWeather/media/*.png'],
+                        filter: 'isFile',
+                        dest: 'docs'
+                    },
+                    {
+                        expand: true,
+                        cwd: '../Connectors/src/Connectors',
+                        src: ['Excel/icon.png'],
+                        filter: 'isFile',
+                        dest: 'docs'
+                    },
+                    {
+                        expand: true,
+                        cwd: '../Connectors/src/Connectors',
+                        src: ['Excel/media/*.png'],
+                        filter: 'isFile',
+                        dest: 'docs'
+                    },
+                    {
+                        expand: true,
+                        cwd: '../Connectors/src/Connectors',
+                        src: ['AzureQueues/icon.png'],
+                        filter: 'isFile',
+                        dest: 'docs'
+                    },
+                    {
+                        expand: true,
+                        cwd: '../Connectors/src/Connectors',
+                        src: ['AzureQueues/media/*.png'],
+                        filter: 'isFile',
+                        dest: 'docs'
                     }
                 ]
             }
