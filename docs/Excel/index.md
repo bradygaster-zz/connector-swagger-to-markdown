@@ -5,6 +5,7 @@ v1.0
 
 Excel Connector
 
+If you are using this connector in Power Apps, please use the reference [here](https://powerapps.microsoft.com/en-us/tutorials/connection-excel/).
 
 # Actions
 
