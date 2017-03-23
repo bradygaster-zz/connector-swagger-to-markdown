@@ -113,6 +113,20 @@ module.exports = (grunt) => {
                         src: ['Excel/media/*.png'],
                         filter: 'isFile',
                         dest: 'docs'
+                    },
+                    {
+                        expand: true,
+                        cwd: '../Connectors/src/Connectors',
+                        src: ['AzureQueues/icon.png'],
+                        filter: 'isFile',
+                        dest: 'docs'
+                    },
+                    {
+                        expand: true,
+                        cwd: '../Connectors/src/Connectors',
+                        src: ['AzureQueues/media/*.png'],
+                        filter: 'isFile',
+                        dest: 'docs'
                     }
                 ]
             }

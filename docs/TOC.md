@@ -1,4 +1,6 @@
 
+# [Azure Queues](AzureQueues/index.md)
+
 # [Excel](Excel/index.md)
 
 # [Google Calendar](GoogleCalendar/index.md)

@@ -14,7 +14,8 @@ var docReadyConnectors = [
     'GoogleCalendar',
     'Todoist',
     'MsnWeather',
-    'Excel'
+    'Excel',
+    'AzureQueues'
 ];
 
 handlebars.registerHelper('ifType', (type, options) => {
