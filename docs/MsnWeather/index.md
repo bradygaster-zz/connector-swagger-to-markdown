@@ -12,6 +12,7 @@ MSN Weather gets you the very latest weather forecast, including temperature, hu
 # Actions
 
 
+
 ## Get current weather
 Get the current weather for a location.
 
@@ -28,6 +29,7 @@ Get the current weather for a location.
 |---------|------|-------------|
 | [CurrentWeather](#currentweather) | object |  |
 ___
+
 
 ## Get forecast for today
 Get the forecast for the current day in the specified location.
@@ -46,6 +48,7 @@ Get the forecast for the current day in the specified location.
 | [WeatherForecast](#weatherforecast) | object |  |
 ___
 
+
 ## Get the forecast for tomorrow
 Get the forecast for tomorrow in the specified location.
 
@@ -63,9 +66,9 @@ Get the forecast for tomorrow in the specified location.
 | [WeatherForecast](#weatherforecast) | object |  |
 ___
 
-___
 
 # Triggers
+
 
 ## When the current weather changes
 Triggers a new flow when the specified weather measure changes for a location.
@@ -86,6 +89,7 @@ Triggers a new flow when the specified weather measure changes for a location.
 |---------|------|-------------|
 | [CurrentWeather](#currentweather) | object |  |
 ___
+
 ## When the current conditions change
 Triggers a new flow when the conditions change for a location.
 

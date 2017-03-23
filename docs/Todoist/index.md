@@ -11,6 +11,7 @@ Todoist is an online task management app and todo list. With Todoist, users can 
 # Actions
 
 
+
 ## List projects
 List projects
 
@@ -25,6 +26,7 @@ This operation does not require any input.
 | [ListProjectsResponse](#listprojectsresponse) | object | A Todoist Projects response object |
 ___
 
+
 ## List tasks
 List tasks
 
@@ -38,6 +40,7 @@ This operation does not require any input.
 |---------|------|-------------|
 | [ListItemsResponse](#listitemsresponse) | object | A Todoist Items response object |
 ___
+
 
 ## List tasks by project
 List tasks by project
@@ -55,6 +58,7 @@ List tasks by project
 | [ListItemsResponse](#listitemsresponse) | object | A Todoist Items response object |
 ___
 
+
 ## List labels
 List labels
 
@@ -68,6 +72,7 @@ This operation does not require any input.
 |---------|------|-------------|
 | [ListLabelsResponse](#listlabelsresponse) | object | A Todoist Labels response object |
 ___
+
 
 ## Create a task
 Create a task
@@ -85,6 +90,7 @@ Create a task
 |---------|------|-------------|
 | [Item](#item) | object | A Todoist Item Object |
 ___
+
 
 ## Update a task
 Update a task
@@ -104,6 +110,7 @@ Update a task
 | [Item](#item) | object | A Todoist Item Object |
 ___
 
+
 ## Create a project
 Create a project
 
@@ -119,6 +126,7 @@ Create a project
 |---------|------|-------------|
 | [Project](#project) | object | A Todoist Project Object |
 ___
+
 
 ## Update a project
 Update a project
@@ -137,6 +145,7 @@ Update a project
 | [Project](#project) | object | A Todoist Project Object |
 ___
 
+
 ## Share a project
 Share a project
 
@@ -154,6 +163,7 @@ Share a project
 | [Project](#project) | object | A Todoist Project Object |
 ___
 
+
 ## Create a label
 Create a label
 
@@ -169,6 +179,7 @@ Create a label
 |---------|------|-------------|
 | [Label](#label) | object | A Todoist Label Object |
 ___
+
 
 ## Update a label
 Update a label
@@ -189,6 +200,7 @@ ___
 
 # Triggers
 
+
 ## When a task is completed
 Triggers a new flow when a task is completed
 
@@ -204,6 +216,7 @@ Triggers a new flow when a task is completed
 |---------|------|-------------|
 | [ListItemsResponse](#listitemsresponse) | object | A Todoist Items response object |
 ___
+
 ## When a task is created
 Trigers a new flow when a task is created
 

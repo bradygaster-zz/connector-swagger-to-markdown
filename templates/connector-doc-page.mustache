@@ -29,8 +29,11 @@ v{{version}}
 {{#each paths}}
 {{#each this}}
 {{#if this.x-ms-trigger}}{{else}}
+{{#if_eq x-ms-visibility 'internal'}}
+{{else}}
 {{> operation this}}
 ___
+{{/if_eq}}
 {{/if}}
 {{/each}}
 {{/each}}
@@ -40,8 +43,11 @@ ___
 {{#each paths}}
 {{#each this}}
 {{#if this.x-ms-trigger}}
+{{#if_eq x-ms-visibility 'internal'}}
+{{else}}
 {{> operation this}}
 ___
+{{/if_eq}}
 {{/if}}
 {{/each}}
 {{/each}}

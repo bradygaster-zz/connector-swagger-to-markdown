@@ -10,13 +10,10 @@ Excel Connector
 # Actions
 
 
-___
 
-___
 
-___
 
-___
+
 
 ## Get tables
 Retrieves table names from an Excel file
@@ -34,11 +31,9 @@ Retrieves table names from an Excel file
 | [TablesList](#tableslist) | object |  |
 ___
 
-___
 
-___
 
-___
+
 
 ## Get rows
 Retrieves rows from an Excel table
@@ -61,6 +56,7 @@ Retrieves rows from an Excel table
 | [ItemsList](#itemslist) | object |  |
 ___
 
+
 ## Insert row
 Inserts a new row into an Excel table
 
@@ -78,6 +74,7 @@ Inserts a new row into an Excel table
 |---------|------|-------------|
 | [Item](#item) | object |  |
 ___
+
 
 ## Get row
 Retrieves a single row from an Excel table
@@ -97,6 +94,7 @@ Retrieves a single row from an Excel table
 | [Item](#item) | object |  |
 ___
 
+
 ## Delete row
 Deletes a row from an Excel table
 
@@ -112,6 +110,7 @@ Deletes a row from an Excel table
 #### Returns
 This operation does not return anything.
 ___
+
 
 ## Update row
 Updates an existing row in an Excel table
@@ -132,11 +131,8 @@ Updates an existing row in an Excel table
 | [Item](#item) | object |  |
 ___
 
-___
 
-___
 
-___
 
 # Triggers
 

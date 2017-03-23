@@ -19,6 +19,7 @@ To connect your account, you will need the following information:
 # Actions
 
 
+
 ## List queues
 List all the queues for your storage account.
 
@@ -35,6 +36,7 @@ This operation does not require any input.
 |---------|------|-------------|
 |  | Array of  |  |
 ___
+
 
 ## Get messages
 
@@ -54,6 +56,7 @@ ___
 | [Messages](#messages) | object |  |
 ___
 
+
 ## Put a message on a queue
 Adds a message to the given queue
 
@@ -67,6 +70,7 @@ Adds a message to the given queue
 
 #### Returns
 ___
+
 
 ## Delete message
 
@@ -84,6 +88,7 @@ ___
 This operation does not return anything.
 ___
 
+
 ## Create a new queue
 Adds a queue to your account
 
@@ -99,6 +104,7 @@ ___
 
 # Triggers
 
+
 ## When a specified number of messages are in a given queue
 Triggers when a specified number of messages are in the given queue.
 
@@ -112,6 +118,7 @@ Triggers when a specified number of messages are in the given queue.
 
 #### Returns
 ___
+
 ## When there are messages in a queue
 Triggers any time there are messages in the queue, returning up to 32 messages.
 
