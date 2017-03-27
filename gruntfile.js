@@ -39,14 +39,10 @@ module.exports = (grunt) => {
                     {
                         expand: true,
                         cwd: '../AAPT-connectors/src/codeless/',
-                        src: ['*/icon.png'],
-                        filter: 'isFile',
-                        dest: 'docs'
-                    },
-                    {
-                        expand: true,
-                        cwd: '../AAPT-connectors/src/codeless/',
-                        src: ['*/media/*.png'],
+                        src: [
+                            '*/icon.png',
+                            '*/media/*.png'
+                        ],
                         filter: 'isFile',
                         dest: 'docs'
                     }
