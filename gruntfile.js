@@ -25,42 +25,14 @@ module.exports = (grunt) => {
                     {
                         expand: true,
                         cwd: '../AAPT-connectors/src/codeless/',
-                        src: ['*/apiDefinition.swagger.json'],
-                        filter: 'isFile',
-                        dest: 'Connectors'
-                    },
-                    {
-                        expand: true,
-                        cwd: '../AAPT-connectors/src/codeless/',
-                        src: ['*/connectionParameters.json'],
-                        filter: 'isFile',
-                        dest: 'Connectors'
-                    },
-                    {
-                        expand: true,
-                        cwd: '../AAPT-connectors/src/codeless/',
-                        src: ['*/policy.xml'],
-                        filter: 'isFile',
-                        dest: 'Connectors'
-                    },
-                    {
-                        expand: true,
-                        cwd: '../AAPT-connectors/src/codeless/',
-                        src: ['*/icon.png'],
-                        filter: 'isFile',
-                        dest: 'Connectors'
-                    },
-                    {
-                        expand: true,
-                        cwd: '../AAPT-connectors/src/codeless/',
-                        src: ['*/intro.md'],
-                        filter: 'isFile',
-                        dest: 'Connectors'
-                    },
-                    {
-                        expand: true,
-                        cwd: '../AAPT-connectors/src/codeless/',
-                        src: ['*/media/*.png'],
+                        src: [
+                            '*/apiDefinition.swagger.json',
+                            '*/connectionParameters.json',
+                            '*/policy.xml',
+                            '*/icon.png',
+                            '*/intro.md',
+                            '*/media/*.png'
+                        ],
                         filter: 'isFile',
                         dest: 'Connectors'
                     },
