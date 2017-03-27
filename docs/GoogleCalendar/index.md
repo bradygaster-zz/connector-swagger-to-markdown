@@ -1,6 +1,6 @@
 ![Icon](icon.png)
 
-# Google Calendar
+# Google Calendar (Preview)
 
 v1.1
 

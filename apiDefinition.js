@@ -10,9 +10,6 @@ var schemaTemplate = fs.readFileSync('./templates/schema-partial.mustache').toSt
 var schemaTypeTemplate = fs.readFileSync('./templates/schema-type-partial.mustache').toString();
 var connectionParametersTemplate = fs.readFileSync('./templates/connection-parameters.mustache').toString();
 var throttlingTemplate = fs.readFileSync('./templates/throttling-partial.mustache').toString();
-var docReadyConnectors = [
-    'GoogleCalendar'
-];
 
 handlebars.registerHelper('ifType', (type, options) => {
     if (type == 'string' || type == 'securestring') {
@@ -65,18 +62,9 @@ glob("Connectors/*/apiDefinition.swagger.json", function (er, files) {
 function generateDocumentation(swaggerFilename) {
     var swaggerPath = path.parse(swaggerFilename);
     var connectorShortname = swaggerPath.dir.split('/')[1];
-    var shouldGenerateDocs = utils.firstOrNull(docReadyConnectors, function(c) {
-        return connectorShortname === c;
-    });
-    if (!shouldGenerateDocs) {
-        return;
-    }
 
     // Read connector assets
     var swagger = JSON.parse(fs.readFileSync(swaggerFilename).toString());
-    if (!swagger.info || !swagger.info['x-ms-api-annotation'] || swagger.info['x-ms-api-annotation'].status !== "Production") {
-        return;
-    }
     utils.resolveParameterReferences(swagger);
     utils.resolveResponseReferences(swagger);
     var connectionParameters = getConnectionParameters(swaggerFilename);
@@ -138,17 +126,21 @@ function getPolicy(swaggerFilename) {
         'renewal-period': rateLimitTag.getAttribute('renewal-period')
     } : null;
     var setHeaderTags = policy.getElementsByTagName('set-header');
+    var retryAfterValue = null;
     var retryAfterTag = utils.firstOrNull(setHeaderTags, function(tag) {
         return utils.firstOrNull(tag.attributes, function(attr) {
             return attr.nodeValue === 'retry-after';
         }) !== null;
     });
-    var retryAfterValueNode = utils.firstOrNull(retryAfterTag.childNodes, function(child) {
-        return child.firstChild && child.firstChild.nodeValue;
-    });
+    if (retryAfterTag) {
+        var retryAfterValueNode = utils.firstOrNull(retryAfterTag.childNodes, function(child) {
+            return child.firstChild && child.firstChild.nodeValue;
+        });
+        if (retryAfterValueNode) retryAfterValue = retryAfterValueNode.firstChild.nodeValue;
+    }
     var policyJson = {
         'rate-limit-by-key': rateLimit,
-        'retry-after': retryAfterValueNode ? retryAfterValueNode.firstChild.nodeValue : null
+        'retry-after': retryAfterValue
     };
     return policyJson;
 }

@@ -24,51 +24,25 @@ module.exports = (grunt) => {
                 files: [
                     {
                         expand: true,
-                        cwd: '../Connectors/src/',
-                        src: ['Connectors/*/apiDefinition.swagger.json'],
-                        filter: 'isFile'
-                    },
-                    {
-                        expand: true,
-                        cwd: '../Connectors/src/',
-                        src: ['Connectors/*/connectionParameters.json'],
-                        filter: 'isFile'
-                    },
-                    {
-                        expand: true,
-                        cwd: '../Connectors/src/',
-                        src: ['Connectors/*/policy.xml'],
-                        filter: 'isFile'
-                    },
-                    {
-                        expand: true,
-                        cwd: '../Connectors/src/',
-                        src: ['Connectors/*/icon.png'],
-                        filter: 'isFile'
-                    },
-                    {
-                        expand: true,
-                        cwd: '../Connectors/src/',
-                        src: ['Connectors/*/intro.md'],
-                        filter: 'isFile'
-                    },
-                    {
-                        expand: true,
-                        cwd: '../Connectors/src/',
-                        src: ['Connectors/*/media/*.png'],
-                        filter: 'isFile'
-                    },
-                    {
-                        expand: true,
-                        cwd: '../Connectors/src/Connectors',
-                        src: ['GoogleCalendar/icon.png'],
+                        cwd: '../AAPT-connectors/src/codeless/',
+                        src: [
+                            '*/apiDefinition.swagger.json',
+                            '*/connectionParameters.json',
+                            '*/policy.xml',
+                            '*/icon.png',
+                            '*/intro.md',
+                            '*/media/*.png'
+                        ],
                         filter: 'isFile',
-                        dest: 'docs'
+                        dest: 'Connectors'
                     },
                     {
                         expand: true,
-                        cwd: '../Connectors/src/Connectors',
-                        src: ['GoogleCalendar/media/*.png'],
+                        cwd: '../AAPT-connectors/src/codeless/',
+                        src: [
+                            '*/icon.png',
+                            '*/media/*.png'
+                        ],
                         filter: 'isFile',
                         dest: 'docs'
                     }
