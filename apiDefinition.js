@@ -126,17 +126,21 @@ function getPolicy(swaggerFilename) {
         'renewal-period': rateLimitTag.getAttribute('renewal-period')
     } : null;
     var setHeaderTags = policy.getElementsByTagName('set-header');
+    var retryAfterValue = null;
     var retryAfterTag = utils.firstOrNull(setHeaderTags, function(tag) {
         return utils.firstOrNull(tag.attributes, function(attr) {
             return attr.nodeValue === 'retry-after';
         }) !== null;
     });
-    var retryAfterValueNode = utils.firstOrNull(retryAfterTag.childNodes, function(child) {
-        return child.firstChild && child.firstChild.nodeValue;
-    });
+    if (retryAfterTag) {
+        var retryAfterValueNode = utils.firstOrNull(retryAfterTag.childNodes, function(child) {
+            return child.firstChild && child.firstChild.nodeValue;
+        });
+        if (retryAfterValueNode) retryAfterValue = retryAfterValueNode.firstChild.nodeValue;
+    }
     var policyJson = {
         'rate-limit-by-key': rateLimit,
-        'retry-after': retryAfterValueNode ? retryAfterValueNode.firstChild.nodeValue : null
+        'retry-after': retryAfterValue
     };
     return policyJson;
 }
