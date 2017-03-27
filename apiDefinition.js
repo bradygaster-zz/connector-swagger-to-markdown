@@ -10,9 +10,6 @@ var schemaTemplate = fs.readFileSync('./templates/schema-partial.mustache').toSt
 var schemaTypeTemplate = fs.readFileSync('./templates/schema-type-partial.mustache').toString();
 var connectionParametersTemplate = fs.readFileSync('./templates/connection-parameters.mustache').toString();
 var throttlingTemplate = fs.readFileSync('./templates/throttling-partial.mustache').toString();
-var docReadyConnectors = [
-    'GoogleCalendar'
-];
 
 handlebars.registerHelper('ifType', (type, options) => {
     if (type == 'string' || type == 'securestring') {
@@ -65,18 +62,9 @@ glob("Connectors/*/apiDefinition.swagger.json", function (er, files) {
 function generateDocumentation(swaggerFilename) {
     var swaggerPath = path.parse(swaggerFilename);
     var connectorShortname = swaggerPath.dir.split('/')[1];
-    var shouldGenerateDocs = utils.firstOrNull(docReadyConnectors, function(c) {
-        return connectorShortname === c;
-    });
-    if (!shouldGenerateDocs) {
-        return;
-    }
 
     // Read connector assets
     var swagger = JSON.parse(fs.readFileSync(swaggerFilename).toString());
-    if (!swagger.info || !swagger.info['x-ms-api-annotation'] || swagger.info['x-ms-api-annotation'].status !== "Production") {
-        return;
-    }
     utils.resolveParameterReferences(swagger);
     utils.resolveResponseReferences(swagger);
     var connectionParameters = getConnectionParameters(swaggerFilename);
