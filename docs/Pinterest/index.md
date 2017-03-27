@@ -1,0 +1,311 @@
+![Icon](icon.png)
+
+# Pinterest (Preview)
+
+v1.0
+
+Pinterest allows you to create a bulletin of photos called a Board. You can follow boards, add pins to existing ones or collaborate with people to build shared boards.
+
+## Creating a connection
+
+# Actions
+
+
+
+## List boards I follow
+List boards I follow
+
+**Operation Id:** ListFollowBoards
+
+#### Parameters
+This operation does not require any input.
+
+#### Returns
+| Summary | Type | Description |
+|---------|------|-------------|
+| [BoardResponse](#boardresponse) | object | BoardResponse |
+___
+
+
+## List my boards
+List my boards
+
+**Operation Id:** ListMyBoards
+
+#### Parameters
+This operation does not require any input.
+
+#### Returns
+| Summary | Type | Description |
+|---------|------|-------------|
+| [BoardResponse](#boardresponse) | object | BoardResponse |
+___
+
+
+## Create board
+Create board
+
+**Operation Id:** CreateBoard
+
+#### Parameters
+| Summary | Type | Description | Required |
+|---------|------|-------------|----------|
+| Name |  string  | Name | true |
+| Description |  string  | Description | false |
+
+#### Returns
+| Summary | Type | Description |
+|---------|------|-------------|
+| [BoardResponseData](#boardresponsedata) | object | BoardResponseData |
+___
+
+
+## Edit board
+Edit board
+
+**Operation Id:** EditBoard
+
+#### Parameters
+| Summary | Type | Description | Required |
+|---------|------|-------------|----------|
+| Board |  string  | Board | true |
+| Name |  string  | Name | true |
+| Description |  string  | Description | false |
+
+#### Returns
+| Summary | Type | Description |
+|---------|------|-------------|
+| [BoardResponse](#boardresponse) | object | BoardResponse |
+___
+
+
+## List all pins
+List all pins
+
+**Operation Id:** ListAllPins
+
+#### Parameters
+This operation does not require any input.
+
+#### Returns
+___
+
+
+## List pins from a board
+List pins from a board
+
+**Operation Id:** ListPinsFromBoard
+
+#### Parameters
+| Summary | Type | Description | Required |
+|---------|------|-------------|----------|
+| Board |  string  | Board | true |
+
+#### Returns
+| Summary | Type | Description |
+|---------|------|-------------|
+| [PinResponse](#pinresponse) | object | PinResponse |
+___
+
+
+## Create pin
+Create pin
+
+**Operation Id:** CreatePin
+
+#### Parameters
+| Summary | Type | Description | Required |
+|---------|------|-------------|----------|
+| Board |  string  | Board | true |
+| Note |  string  | The user-entered description of the pin | true |
+| Image Url |  string  | The link to the image that you want to pin (source) | true |
+| Link |  string  | The url the pin will link to when you click through | false |
+
+#### Returns
+| Summary | Type | Description |
+|---------|------|-------------|
+| [PinResponseData](#pinresponsedata) | object | PinResponseData |
+___
+
+
+## Edit pin
+Edit pin
+
+**Operation Id:** EditPin
+
+#### Parameters
+| Summary | Type | Description | Required |
+|---------|------|-------------|----------|
+| Board |  string  | Board | true |
+| Pin |  string  | Pin | true |
+| Note |  string  | The user-entered description of the pin | true |
+| Link |  string  | The url the pin will link to when you click through | false |
+| Board to move pin to |  string  | The board to move the pin to | false |
+
+#### Returns
+| Summary | Type | Description |
+|---------|------|-------------|
+| [PinResponse](#pinresponse) | object | PinResponse |
+___
+
+
+## Get current user
+Get current user
+
+**Operation Id:** GetCurrentUser
+
+#### Parameters
+This operation does not require any input.
+
+#### Returns
+| Summary | Type | Description |
+|---------|------|-------------|
+| [UserResponse](#userresponse) | object | UserResponse |
+___
+
+
+## List my followers
+List my followers
+
+**Operation Id:** ListMyFollowers
+
+#### Parameters
+This operation does not require any input.
+
+#### Returns
+| Summary | Type | Description |
+|---------|------|-------------|
+| [UserResponse](#userresponse) | object | UserResponse |
+___
+
+
+## List my followings
+List my followings
+
+**Operation Id:** ListMyFollowings
+
+#### Parameters
+This operation does not require any input.
+
+#### Returns
+| Summary | Type | Description |
+|---------|------|-------------|
+| [UserResponse](#userresponse) | object | UserResponse |
+___
+
+# Triggers
+
+
+## When pin is added to followed board
+When pin is added to followed board
+
+**Operation Id:** OnPinAddedToFollowedBoard
+
+#### Parameters
+| Summary | Type | Description | Required |
+|---------|------|-------------|----------|
+| Board |  string  | Board | true |
+
+#### Returns
+| Summary | Type | Description |
+|---------|------|-------------|
+| [PinResponse](#pinresponse) | object | PinResponse |
+___
+
+## When pin is added to my board
+When pin is added to my board
+
+**Operation Id:** OnPinAddedToMyBoard
+
+#### Parameters
+| Summary | Type | Description | Required |
+|---------|------|-------------|----------|
+| Board |  string  | Board | true |
+
+#### Returns
+| Summary | Type | Description |
+|---------|------|-------------|
+| [PinResponse](#pinresponse) | object | PinResponse |
+___
+
+## When someone follows me
+When someone follows me
+
+**Operation Id:** OnSomeoneFollowsMe
+
+#### Parameters
+This operation does not require any input.
+
+#### Returns
+| Summary | Type | Description |
+|---------|------|-------------|
+| [UserResponse](#userresponse) | object | UserResponse |
+___
+
+## Objects
+
+### BoardResponse
+BoardResponse
+
+| Summary | Type | Description |
+|---------|------|-------------|
+| Board Data | Array of  [BoardResponseData](#boardresponsedata)  | Board Data |
+
+### BoardResponseData
+BoardResponseData
+
+| Summary | Type | Description |
+|---------|------|-------------|
+| Url | string | Url |
+| Id | string | Id |
+| Name | string | Name |
+
+### PinResponse
+PinResponse
+
+| Summary | Type | Description |
+|---------|------|-------------|
+| Pin Data | Array of  [PinResponseData](#pinresponsedata)  | Pin Data |
+
+### PinResponseData
+PinResponseData
+
+| Summary | Type | Description |
+|---------|------|-------------|
+| Url | string | Url |
+| Note | string | Note |
+| Link | string | Link |
+| Id | string | Id |
+
+### UserResponse
+UserResponse
+
+| Summary | Type | Description |
+|---------|------|-------------|
+| User Data | Array of  [UserResponseData](#userresponsedata)  | User Data |
+| Page |  | Page |
+
+### UserResponseData
+UserResponseData
+
+| Summary | Type | Description |
+|---------|------|-------------|
+| Url | string | Url |
+| First name | string | First name |
+| Last Name | string | Last Name |
+| Id | string | User Id |
+
+### UserResponsePage
+UserResponsePage
+
+| Summary | Type | Description |
+|---------|------|-------------|
+| Cursor | string | Cursor |
+| Next | string | Next |
+
+## Limits
+| Name | Calls | Renewal Period |
+|------|-------|----------------|
+| API calls per connection | 100 | 60 seconds |
+| Frequency of trigger polls | 1 |  seconds |
+
