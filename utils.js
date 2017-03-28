@@ -69,6 +69,34 @@ var firstOrNull = function(array, predicate) {
     return null;
 };
 
+var ifTypeHelper = (type, options) => {
+    if (type == 'string' || type == 'securestring') {
+        return options.fn(this);
+    } else {
+        return options.inverse(this);
+    }
+};
+
+var ifEqualsHelper = function(a, b, opts) {
+    if(a === b)
+        return opts.fn(this);
+    else
+        return opts.inverse(this);
+};
+
+var ifEmptyHelper = function(obj, opts) {
+    if (obj && Object.keys(obj).length === 0)
+        return opts.fn(this);
+    else
+        return opts.inverse(this);
+};
+
+var refToLinkHelper = function(str) {
+    var headerText = str.replace('#/definitions/', '');
+    var headerLink = headerText.replace(' ', '-').toLowerCase();
+    return '[' + headerText + ']' + '(#' + headerLink + ')';
+};
+
 module.exports = {
     resolveParameterReferences: function(swagger) {
         resolveParameterReferences(swagger);
@@ -78,5 +106,11 @@ module.exports = {
     },
     resolveResponseReferences: function(swagger) {
         resolveResponseReferences(swagger);
+    },
+    registerHelpers: function(handlebars) {
+        handlebars.registerHelper('refToLink', refToLinkHelper);
+        handlebars.registerHelper('if_empty', ifEmptyHelper);
+        handlebars.registerHelper('if_eq', ifEqualsHelper);
+        handlebars.registerHelper('ifType', ifTypeHelper);
     }
 };

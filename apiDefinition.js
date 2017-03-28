@@ -11,34 +11,7 @@ var schemaTypeTemplate = fs.readFileSync('./templates/schema-type-partial.mustac
 var connectionParametersTemplate = fs.readFileSync('./templates/connection-parameters.mustache').toString();
 var throttlingTemplate = fs.readFileSync('./templates/throttling-partial.mustache').toString();
 
-handlebars.registerHelper('ifType', (type, options) => {
-    if (type == 'string' || type == 'securestring') {
-        return options.fn(this);
-    } else {
-        return options.inverse(this);
-    }
-});
-
-handlebars.registerHelper('if_eq', function(a, b, opts) {
-    if(a === b)
-        return opts.fn(this);
-    else
-        return opts.inverse(this);
-});
-
-handlebars.registerHelper('if_empty', function(obj, opts) {
-    if (obj && Object.keys(obj).length === 0)
-        return opts.fn(this);
-    else
-        return opts.inverse(this);
-});
-
-handlebars.registerHelper('refToLink', function(str) {
-    var headerText = str.replace('#/definitions/', '');
-    var headerLink = headerText.replace(' ', '-').toLowerCase();
-    return '[' + headerText + ']' + '(#' + headerLink + ')';
-});
-
+utils.registerHelpers(handlebars);
 handlebars.registerPartial('operation', operationTemplate);
 handlebars.registerPartial('schema', schemaTemplate);
 handlebars.registerPartial('connectionParameters', connectionParametersTemplate);
@@ -65,8 +38,6 @@ function generateDocumentation(swaggerFilename) {
 
     // Read connector assets
     var swagger = JSON.parse(fs.readFileSync(swaggerFilename).toString());
-    utils.resolveParameterReferences(swagger);
-    utils.resolveResponseReferences(swagger);
     var connectionParameters = getConnectionParameters(swaggerFilename);
     var policy = getPolicy(swaggerFilename);
     var customSection = getCustomSection(swaggerFilename);
@@ -76,6 +47,7 @@ function generateDocumentation(swaggerFilename) {
         'policy': policy,
         'customSection': customSection
     };
+    preprocessConnector(connector);
 
     var template = handlebars.compile(templateFile);
     var result = template(connector);
@@ -84,6 +56,24 @@ function generateDocumentation(swaggerFilename) {
     dropMarkdown(directory, markdownFilename, result);
     console.log(directory + markdownFilename);
     addToTableOfContents(swagger.info.title, connectorShortname);
+}
+
+function preprocessConnector(connector) {
+    utils.resolveParameterReferences(connector.swagger);
+    utils.resolveResponseReferences(connector.swagger);
+    
+    // Remove parameters of type 'oauthSetting'
+    Object.keys(connector.connectionParameters).forEach(function(connParamKey) {
+        var connParam = connector.connectionParameters[connParamKey];
+        if (connParam && connParam.type === 'oauthSetting') {
+            delete connector.connectionParameters[connParamKey];
+        }
+    });
+
+    // For simplicity, if there are no parameters remove the object
+    if (Object.keys(connector.connectionParameters).length == 0) {
+        connector.connectionParameters = null;
+    }
 }
 
 function addToTableOfContents(connectorName, connectorShortname) {
@@ -96,14 +86,6 @@ function getConnectionParameters(swaggerFilename) {
     try {
         var connParamsFile = swaggerFilename.replace('apiDefinition.swagger.json', 'connectionParameters.json');
         var connectionParameters = JSON.parse(fs.readFileSync(connParamsFile).toString());
-
-        // Remove parameters of type 'oauthSetting'
-        Object.keys(connectionParameters).forEach(function(connParamKey) {
-            var connParam = connectionParameters[connParamKey];
-            if (connParam && connParam.type === "oauthSetting") {
-                delete connectionParameters[connParamKey];
-            }
-        });
         return connectionParameters;
     } catch (ex) {
         // It's expected that some connectors don't have connection parameters
