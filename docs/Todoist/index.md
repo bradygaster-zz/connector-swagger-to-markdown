@@ -6,7 +6,6 @@ v1.1
 
 Todoist is an online task management app and todo list. With Todoist, users can organize, schedule, maintain and prioritize personal tasks.
 
-## Creating a connection
 
 # Actions
 

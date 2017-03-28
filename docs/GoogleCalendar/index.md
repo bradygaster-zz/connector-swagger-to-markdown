@@ -7,6 +7,7 @@ v1.1
 Google Calendar lets you organize your schedule and share events with co-workers and friends. With Google&#x27;s free online calendar, it&#x27;s easy to keep track of your daily schedule.
 
 ## Creating a connection
+
 To use this integration, you will need a Google account. If you are not a user yet,  [sign up](https://google.com/) for a new account.
 When trying to make a connection, you will be prompted to authenticate against your account. If you have multiple accounts, pick the one you would like to use and **Sign in**. 
 Once verified, you will need to authorize Microsoft to access your contacts. Click on **Allow** to continue. 
