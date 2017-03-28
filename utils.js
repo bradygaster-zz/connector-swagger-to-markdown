@@ -69,7 +69,7 @@ var firstOrNull = function(array, predicate) {
     return null;
 };
 
-var ifTypeHelper = (type, options) => {
+var ifTypeHelper = function(type, options) {
     if (type == 'string' || type == 'securestring') {
         return options.fn(this);
     } else {
@@ -77,12 +77,23 @@ var ifTypeHelper = (type, options) => {
     }
 };
 
-var ifEqualsHelper = function(a, b, opts) {
-    if(a === b)
-        return opts.fn(this);
-    else
-        return opts.inverse(this);
-};
+var logicalHelper = function (v1, operator, v2, options) {
+    var value = null;
+    switch (operator) {
+        case '==':  value = v1 == v2;   break;
+        case '===': value = v1 === v2;  break;
+        case '!=':  value = v1 != v2;   break;
+        case '!==': value = v1 !== v2;  break;
+        case '<':   value = v1 < v2;    break;
+        case '<=':  value = v1 <= v2;   break;
+        case '>':   value = v1 > v2;    break;
+        case '>=':  value = v1 >= v2;   break;
+        case '&&':  value = v1 && v2;   break;
+        case '||':  value = v1 || v2;   break;
+        default: throw 'Invalid operator used with ifCond: ' + operator;
+    }
+    return value ? options.fn(this) : options.inverse(this);
+}
 
 var ifEmptyHelper = function(obj, opts) {
     if (obj && Object.keys(obj).length === 0)
@@ -110,7 +121,7 @@ module.exports = {
     registerHelpers: function(handlebars) {
         handlebars.registerHelper('refToLink', refToLinkHelper);
         handlebars.registerHelper('if_empty', ifEmptyHelper);
-        handlebars.registerHelper('if_eq', ifEqualsHelper);
+        handlebars.registerHelper('if_cond', logicalHelper);
         handlebars.registerHelper('ifType', ifTypeHelper);
     }
 };
