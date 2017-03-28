@@ -10,13 +10,17 @@ v{{version}}
 {{description}}
 {{/with}}
 
-{{#if connectionParameters}}
+{{#if_cond connectionParameters '||' customSection}}
 ## Creating a connection
+
+{{/if_cond}}
 {{#if customSection }}
 {{customSection}}
 
 {{/if}}
+{{#if connectionParameters}}
 {{> connectionParameters connectionParameters}}
+
 {{/if}}
 
 {{#with swagger}}
