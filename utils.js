@@ -69,6 +69,37 @@ var firstOrNull = function(array, predicate) {
     return null;
 };
 
+var logicalHelper = function (v1, operator, v2, options) {
+    var value = null;
+    switch (operator) {
+        case '==':  value = v1 == v2;   break;
+        case '===': value = v1 === v2;  break;
+        case '!=':  value = v1 != v2;   break;
+        case '!==': value = v1 !== v2;  break;
+        case '<':   value = v1 < v2;    break;
+        case '<=':  value = v1 <= v2;   break;
+        case '>':   value = v1 > v2;    break;
+        case '>=':  value = v1 >= v2;   break;
+        case '&&':  value = v1 && v2;   break;
+        case '||':  value = v1 || v2;   break;
+        default: throw 'Invalid operator used with ifCond: ' + operator;
+    }
+    return value ? options.fn(this) : options.inverse(this);
+}
+
+var ifEmptyHelper = function(obj, opts) {
+    if (obj && Object.keys(obj).length === 0)
+        return opts.fn(this);
+    else
+        return opts.inverse(this);
+};
+
+var refToLinkHelper = function(str) {
+    var headerText = str.replace('#/definitions/', '');
+    var headerLink = headerText.replace(' ', '-').toLowerCase();
+    return '[' + headerText + ']' + '(#' + headerLink + ')';
+};
+
 module.exports = {
     resolveParameterReferences: function(swagger) {
         resolveParameterReferences(swagger);
@@ -78,5 +109,10 @@ module.exports = {
     },
     resolveResponseReferences: function(swagger) {
         resolveResponseReferences(swagger);
+    },
+    registerHelpers: function(handlebars) {
+        handlebars.registerHelper('refToLink', refToLinkHelper);
+        handlebars.registerHelper('if_empty', ifEmptyHelper);
+        handlebars.registerHelper('if_cond', logicalHelper);
     }
 };

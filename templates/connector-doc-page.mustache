@@ -1,7 +1,7 @@
 ![Icon](icon.png)
 
 {{#with swagger.info}}
-# {{title}}{{#if_eq x-ms-api-annotation.status "Preview"}} ({{x-ms-api-annotation.status}}){{/if_eq}}
+# {{title}}{{#if_cond x-ms-api-annotation.status '===' 'Preview'}} ({{x-ms-api-annotation.status}}){{/if_cond}}
 
 {{#if version}}
 v{{version}}
@@ -10,13 +10,17 @@ v{{version}}
 {{description}}
 {{/with}}
 
-{{#if connectionParameters}}
+{{#if_cond connectionParameters '||' customSection}}
 ## Creating a connection
+
+{{/if_cond}}
 {{#if customSection }}
 {{customSection}}
 
 {{/if}}
+{{#if connectionParameters}}
 {{> connectionParameters connectionParameters}}
+
 {{/if}}
 
 {{#with swagger}}
@@ -44,14 +48,14 @@ ___
 
 ## Objects
 {{#each definitions}}
-{{#if_eq this.x-ms-visibility "internal"}}
+{{#if_cond this.x-ms-visibility '===' 'internal'}}
 {{else}}
 
 ### {{@key}}
 {{this.description}}
 
 {{> schema this}}
-{{/if_eq}}
+{{/if_cond}}
 {{/each}}
 {{/with}}
 

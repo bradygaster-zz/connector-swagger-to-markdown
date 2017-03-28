@@ -1,4 +1,4 @@
-{{#if_eq type "array"}}
+{{#if_cond type '===' 'array'}}
 Array of {{#if items.$ref}} {{refToLink items.$ref}} {{/if}}
 {{else}}
 {{#if format}}
@@ -6,4 +6,4 @@ Array of {{#if items.$ref}} {{refToLink items.$ref}} {{/if}}
 {{else}}
 {{type}}
 {{/if}}
-{{/if_eq}}
+{{/if_cond}}

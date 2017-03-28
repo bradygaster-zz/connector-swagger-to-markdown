@@ -6,7 +6,6 @@ v1.0
 
 Pinterest allows you to create a bulletin of photos called a Board. You can follow boards, add pins to existing ones or collaborate with people to build shared boards.
 
-## Creating a connection
 
 # Actions
 
