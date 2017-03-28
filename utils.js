@@ -69,14 +69,6 @@ var firstOrNull = function(array, predicate) {
     return null;
 };
 
-var ifTypeHelper = function(type, options) {
-    if (type == 'string' || type == 'securestring') {
-        return options.fn(this);
-    } else {
-        return options.inverse(this);
-    }
-};
-
 var logicalHelper = function (v1, operator, v2, options) {
     var value = null;
     switch (operator) {
@@ -122,6 +114,5 @@ module.exports = {
         handlebars.registerHelper('refToLink', refToLinkHelper);
         handlebars.registerHelper('if_empty', ifEmptyHelper);
         handlebars.registerHelper('if_cond', logicalHelper);
-        handlebars.registerHelper('ifType', ifTypeHelper);
     }
 };
