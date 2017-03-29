@@ -61,7 +61,7 @@ function generateDocumentation(swaggerFilename) {
 function preprocessConnector(connector) {
     utils.resolveParameterReferences(connector.swagger);
     utils.resolveResponseReferences(connector.swagger);
-    
+
     // Remove parameters of type 'oauthSetting'
     Object.keys(connector.connectionParameters).forEach(function(connParamKey) {
         var connParam = connector.connectionParameters[connParamKey];
