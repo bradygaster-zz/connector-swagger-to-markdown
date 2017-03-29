@@ -61,18 +61,20 @@ function generateDocumentation(swaggerFilename) {
 function preprocessConnector(connector) {
     utils.resolveParameterReferences(connector.swagger);
     utils.resolveResponseReferences(connector.swagger);
-    
-    // Remove parameters of type 'oauthSetting'
-    Object.keys(connector.connectionParameters).forEach(function(connParamKey) {
-        var connParam = connector.connectionParameters[connParamKey];
-        if (connParam && connParam.type === 'oauthSetting') {
-            delete connector.connectionParameters[connParamKey];
-        }
-    });
 
-    // For simplicity, if there are no parameters remove the object
-    if (Object.keys(connector.connectionParameters).length == 0) {
-        connector.connectionParameters = null;
+    // Remove parameters of type 'oauthSetting'
+    if (connector.connectionParameters) {
+        Object.keys(connector.connectionParameters).forEach(function(connParamKey) {
+            var connParam = connector.connectionParameters[connParamKey];
+            if (connParam && connParam.type === 'oauthSetting') {
+                delete connector.connectionParameters[connParamKey];
+            }
+        });
+
+        // For simplicity, if there are no parameters remove the object
+        if (Object.keys(connector.connectionParameters).length == 0) {
+            connector.connectionParameters = null;
+        }
     }
 }
 

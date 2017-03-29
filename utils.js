@@ -19,19 +19,68 @@ var resolveReference = function(document, $ref) {
     }
 };
 
+var flattenSchema = function(swagger, schema, isRequired) {
+    if (schema.$ref) {
+        schema = resolveReference(swagger, schema.$ref);
+    }
+    if (schema.type === 'array') {
+        return flattenSchema(schema.items);
+    } else if (schema.type === 'object') {
+        var flattenedProperties = [];
+        Object.keys(schema.properties).forEach(function(propKey) {
+            var property = schema.properties[propKey];
+            var isPropRequired = schema.required && schema.required.indexOf(propKey) > -1;
+            flattenedProperties = flattenedProperties.concat(flattenSchema(swagger, property, isPropRequired));
+        });
+        return flattenedProperties;
+    } else {
+        schema['required'] = isRequired ? true : false;
+        return schema;
+    }
+};
+
+var flattenBodyParameter = function(swagger, parameter) {
+    var schema = parameter.schema;
+    if (schema.$ref) {
+        schema = resolveReference(swagger, schema.$ref);
+    }
+    var params = [];
+    if (schema.type === 'array' || schema.type === 'object') {
+        params = flattenSchema(swagger, schema);
+    } else {
+        var param = {
+            'x-ms-summary': parameter['x-ms-summary'],
+            'type': schema['type'],
+            'description': parameter['description'],
+            'required': parameter['required'],
+        };
+        params.concat(param);
+    }
+    return params;
+};
+
 var resolveParameterReferences = function(swagger) {
     Object.keys(swagger.paths).forEach(function(pathKey) {
         var path = swagger.paths[pathKey];
         Object.keys(path).forEach(function(operationKey) {
             var operation = path[operationKey];
             var parameters = operation.parameters;
+            var newParameters = [];
             if (parameters) {
                 for (var i = 0; i < parameters.length; i++) {
+                    var newParam = parameters[i];
                     if (parameters[i].$ref) {
-                        parameters[i] = resolveReference(swagger, parameters[i].$ref);
+                        newParam = resolveReference(swagger, parameters[i].$ref);
+                    }
+                    if (newParam.in === 'body') {
+                        var bodyParameters = flattenBodyParameter(swagger, parameters[i]);
+                        newParameters = newParameters.concat(bodyParameters);
+                    } else {
+                        newParameters.push(newParam);
                     }
                 }
             }
+            operation.parameters = newParameters;
         });
     });
 };
