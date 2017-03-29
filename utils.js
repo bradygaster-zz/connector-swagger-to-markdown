@@ -59,6 +59,18 @@ var flattenBodyParameter = function(swagger, parameter) {
     return params;
 };
 
+var preprocessOperations = function(swagger) {
+    Object.keys(swagger.paths).forEach(function(pathKey) {
+        var path = swagger.paths[pathKey];
+        Object.keys(path).forEach(function(operationKey) {
+            var operation = path[operationKey];
+            if (operation['x-ms-visibility'] === 'internal') {
+                delete path[operationKey];
+            }
+        });
+    });
+};
+
 var resolveParameterReferences = function(swagger) {
     Object.keys(swagger.paths).forEach(function(pathKey) {
         var path = swagger.paths[pathKey];
@@ -109,6 +121,20 @@ var resolveResponseReferences = function(swagger) {
     });
 };
 
+var preprocessSchema = function(schema) {
+    
+};
+
+var preprocessDefinitions = function(swagger) {
+    Object.keys(swagger.definitions).forEach(function(definitionKey) {
+        var definition = swagger.definitions[definitionKey];
+        if (!definition['x-ms-summary']) {
+            definition['x-ms-summary'] = definitionKey;
+        }
+        preprocessSchema(definition);
+    });
+};
+
 var firstOrNull = function(array, predicate) {
     for (var i = 0; i < array.length; i++) {
         if (predicate(array[i])) {
@@ -150,14 +176,14 @@ var refToLinkHelper = function(str) {
 };
 
 module.exports = {
-    resolveParameterReferences: function(swagger) {
+    preprocessSwagger: function(swagger) {
+        preprocessOperations(swagger);
         resolveParameterReferences(swagger);
+        resolveResponseReferences(swagger);
+        preprocessDefinitions(swagger);
     },
     firstOrNull: function(array, predicate) {
         return firstOrNull(array, predicate);
-    },
-    resolveResponseReferences: function(swagger) {
-        resolveResponseReferences(swagger);
     },
     registerHelpers: function(handlebars) {
         handlebars.registerHelper('refToLink', refToLinkHelper);

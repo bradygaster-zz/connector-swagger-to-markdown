@@ -59,8 +59,7 @@ function generateDocumentation(swaggerFilename) {
 }
 
 function preprocessConnector(connector) {
-    utils.resolveParameterReferences(connector.swagger);
-    utils.resolveResponseReferences(connector.swagger);
+    utils.preprocessSwagger(connector.swagger);
 
     // Remove parameters of type 'oauthSetting'
     if (connector.connectionParameters) {
