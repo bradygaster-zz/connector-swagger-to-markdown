@@ -121,8 +121,17 @@ var resolveResponseReferences = function(swagger) {
     });
 };
 
-var preprocessSchema = function(schema) {
-    
+var preprocessSchema = function(schema, schemaKey) {
+    if (!schema['x-ms-summary']) {
+        schema['x-ms-summary'] = schemaKey;
+    }
+
+    if (schema.type === 'object') {
+        Object.keys(schema.properties).forEach(function(propKey) {
+            var property = schema.properties[propKey];
+            preprocessSchema(property, propKey);
+        });
+    }
 };
 
 var preprocessDefinitions = function(swagger) {
