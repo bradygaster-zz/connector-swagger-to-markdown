@@ -82,7 +82,11 @@ Create a task
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
 | Project Id |  string  | Project Id | true |
-| Task to be created | [object Object] | New item to be added to project | true |
+| Task Title |  string  | Task title | true |
+| Task Due Date |  date-time  | Task Due Date (e.g mm-dd-yyyy, Today @ 11am, mm/dd/yyyy) | false |
+| Task Priority |  string  | Number between 1 and 4 (4 for very urgent and 1 for natural) | false |
+| Indent |  string  | Number between 1 and 4, where 1 is top-level) | false |
+| Order |  string  | Number, where the smallest value is top-level | false |
 
 #### Returns
 | Summary | Type | Description |
@@ -101,7 +105,10 @@ Update a task
 |---------|------|-------------|----------|
 | Project Id |  string  | Project Id | true |
 | Task Id |  string  | Task Id | true |
-| Task to be updated | [object Object] | Change item | true |
+| Task Title |  string  | Task Title | false |
+| Task Priority |  string  | Number between 1 and 4, 4 for very urgent and 1 for natural | false |
+| Indent |  string  | Number between 1 and 4, where 1 is top-level) | false |
+| Order |  string  | Number, where the smallest value is top-level | false |
 
 #### Returns
 | Summary | Type | Description |
@@ -118,7 +125,10 @@ Create a project
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Project to be created | [object Object] | New project | true |
+| Project Name |  string  | Project Name | true |
+| Project Color |  string  | Number between 0 and 11, or 0 and 21 for premium users | false |
+| Indent |  string  | Number between 1 and 4, where 1 is top-level) | false |
+| Order |  string  | Number, where the smallest value is top-level | false |
 
 #### Returns
 | Summary | Type | Description |
@@ -136,7 +146,10 @@ Update a project
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
 | Project Id |  string  | Project Id | true |
-| Project to be updated | [object Object] | Change project | true |
+| Project Name |  string  | Name of project | false |
+| Project Color |  string  | Number between 0 and 11, or 0 and 21 for premium users | false |
+| Indent |  string  | Number between 1 and 4, where 1 is top-level) | false |
+| Order |  string  | Number, where the smallest value is top-level | false |
 
 #### Returns
 | Summary | Type | Description |
@@ -154,7 +167,7 @@ Share a project
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
 | Project Id |  string  | Project Id | true |
-| Project to be shared | [object Object] | Share project | true |
+| Email |  string  | Email address of user the project is being shared | true |
 
 #### Returns
 | Summary | Type | Description |
@@ -171,7 +184,9 @@ Create a label
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Label to be created | [object Object] | New label | true |
+| Name |  string  | Label name | true |
+| Label Color |  string  | Number between 0 and 11, or 0 and 21 for premium users | false |
+| Order |  string  | Number, where the smallest value is top-level | false |
 
 #### Returns
 | Summary | Type | Description |
@@ -189,7 +204,9 @@ Update a label
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
 | Label Id |  string  | Label Id | true |
-| Label to be updated | [object Object] | Change label | true |
+| Label Name |  string  | Label name | false |
+| Color |  string  | Number between 0 and 11, or 0 and 21 for premium users | false |
+| Order |  string  | Number, where the smallest value is top-level | false |
 
 #### Returns
 | Summary | Type | Description |

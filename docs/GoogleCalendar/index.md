@@ -64,7 +64,13 @@ Creates an event on a specific calendar
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
 | Calendar ID |  string  | Unique ID of the calendar to fetch events from | true |
-| New Event | [RequestEvent](#requestevent) | The new event to add to the calendar | true |
+| Title |  string  | A summary of the event | false |
+| Start time |  date-time  | The (inclusive) start time of the event | true |
+| End time |  date-time  | The (exclusive) end time of the event | true |
+| Description |  string  | Description of the event | false |
+| Location |  string  | Geographic location of the event as free-form text | false |
+| Attendees |  string  | Enter a comma-separated list of attendee emails | false |
+| Status |  string  | Status of the event. Possible values are &quot;confirmed&quot;, &quot;tentative&quot;, or &quot;cancelled&quot; | false |
 
 #### Returns
 | Summary | Type | Description |
@@ -117,7 +123,13 @@ Update an event on a calendar
 |---------|------|-------------|----------|
 | Calendar ID |  string  | Unique ID of the calendar to fetch events from | true |
 | Event ID |  string  | Unique ID of the event to get | true |
-| Updated Event | [PatchEvent](#patchevent) | The updated event - only provide fields to be updated | true |
+| Title |  string  | A summary of the event | false |
+| Start time |  date-time  | The (inclusive) start time of the event | false |
+| End time |  date-time  | The (exclusive) end time of the event | false |
+| Description |  string  | Description of the event | false |
+| Location |  string  | Geographic location of the event as free-form text | false |
+| Attendees |  string  | Enter a comma-separated list of attendee emails | false |
+| Status |  string  | Status of the event. Possible values are &quot;confirmed&quot;, &quot;tentative&quot;, or &quot;cancelled | false |
 
 #### Returns
 | Summary | Type | Description |
