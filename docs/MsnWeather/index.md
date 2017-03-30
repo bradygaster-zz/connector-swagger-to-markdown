@@ -111,26 +111,6 @@ ___
 
 | Summary | Type | Description |
 |---------|------|-------------|
-| [responses](#responses) | object |  |
-| [units](#units) | object |  |
-
-#### responses
-
-| Summary | Type | Description |
-|---------|------|-------------|
-| [weather](#weather) | object |  |
-| [source](#source) | object |  |
-
-#### weather
-
-| Summary | Type | Description |
-|---------|------|-------------|
-| [current](#current) | object |  |
-
-#### current
-
-| Summary | Type | Description |
-|---------|------|-------------|
 | Pressure | float | The atmospheric pressure. |
 | Conditions | string | A caption of weather conditions such as rainy, sunny, etc. |
 | Dewpoint | float | The temperature at which dew forms. |
@@ -146,59 +126,34 @@ ___
 | Wind Speed | float | The wind speed. |
 | Wind Gust Speed | float | The wind gust speed. |
 | Last Updated | date-time | The datetime at which provider created the current condition. |
-
-
-
-#### source
-
-| Summary | Type | Description |
-|---------|------|-------------|
-| [coordinates](#coordinates) | object |  |
-| Click-through Link | string | The URL to the full weather details. |
-| Location | string | The location for which provider created the current condition. |
-
-#### coordinates
-
-| Summary | Type | Description |
-|---------|------|-------------|
 | Latitude | float | The latitude of the location. |
 | Longitude | float | The longitude of the location. |
-
-
-
-
-#### units
-
-| Summary | Type | Description |
-|---------|------|-------------|
+| Click-through Link | string | The URL to the full weather details. |
+| Location | string | The location for which provider created the current condition. |
 | Pressure Units | string | Units used for pressure measurements. |
 | Temperature Units | string | Units used for temperature measurements. |
 | Speed Units | string | Units used for speed measurements. |
 | Distance Units | string | Units used for distance measurements. |
-
 
 ### WeatherForecast
 
 
 | Summary | Type | Description |
 |---------|------|-------------|
-| [responses](#responses) | object |  |
-| [units](#units) | object |  |
-
-#### responses
-
-| Summary | Type | Description |
-|---------|------|-------------|
-| [daily](#daily) | object |  |
-| [almanac](#almanac) | object |  |
-| [source](#source) | object |  |
-
-#### daily
-
-| Summary | Type | Description |
-|---------|------|-------------|
-| [Day](#day) | object |  |
-| [Night](#night) | object |  |
+| Conditions | string | The caption of weather conditions such as rainy, sunny, etc. |
+| Rain Chance | float | The chance of precipitation (%). |
+| METAR Weather Conditions | string | The METAR code of weather conditions. |
+| METAR Sky Conditions | string | The METAR code of sky conditions. |
+| Wind Direction | int32 | The wind direction in degrees clockwise from north. |
+| Wind Speed | float | The wind speed. |
+| Summary | string |  |
+| Conditions | string | The caption of weather conditions such as rainy, sunny, etc. |
+| Rain Chance | float | The chance of precipitation (%). |
+| METAR Weather Conditions | string | The METAR code of weather conditions. |
+| METAR Sky Conditions | string | The METAR code of sky conditions. |
+| Wind Direction | int32 | The wind direction in degrees clockwise from north. |
+| Wind Speed | float | The wind speed. |
+| Summary | string |  |
 | Conditions | string | The caption of weather conditions such as rainy, sunny, etc. |
 | Date | date-time | The datetime at which the forecast is valid. |
 | Rain Chance | float | The chance of precipitation (%). |
@@ -211,80 +166,29 @@ ___
 | UV Index | float | The numerical UV index. |
 | UV Index Description | string | A description of the meaning of the UV index. |
 | Forecast Date | date-time | The datetime at which the daily forecast was dervied. |
-
-#### Day
-
-| Summary | Type | Description |
-|---------|------|-------------|
-| Conditions | string | The caption of weather conditions such as rainy, sunny, etc. |
-| Rain Chance | float | The chance of precipitation (%). |
-| METAR Weather Conditions | string | The METAR code of weather conditions. |
-| METAR Sky Conditions | string | The METAR code of sky conditions. |
-| Wind Direction | int32 | The wind direction in degrees clockwise from north. |
-| Wind Speed | float | The wind speed. |
-| Summary | string |  |
-
-
-#### Night
-
-| Summary | Type | Description |
-|---------|------|-------------|
-| Conditions | string | The caption of weather conditions such as rainy, sunny, etc. |
-| Rain Chance | float | The chance of precipitation (%). |
-| METAR Weather Conditions | string | The METAR code of weather conditions. |
-| METAR Sky Conditions | string | The METAR code of sky conditions. |
-| Wind Direction | int32 | The wind direction in degrees clockwise from north. |
-| Wind Speed | float | The wind speed. |
-| Summary | string |  |
-
-
-
-#### almanac
-
-| Summary | Type | Description |
-|---------|------|-------------|
 | Sunrise Time | date-time | Time of sunrise on the day of this forecast. |
 | Sunset Time | date-time | Time of sunset on the day of this forecast. |
 | Moonrise Time | date-time | Time of moonrise on the day of this forecast. |
 | Moonset Time | date-time | Time of moonset on the day of this forecast. |
 | Moon Phase | string | The phase of the moon the day of this forecast. |
 | Moon Phase Code | string | The code representing the phase of the moon. |
-
-
-#### source
-
-| Summary | Type | Description |
-|---------|------|-------------|
-| [coordinates](#coordinates) | object |  |
-| Click-through Link | string | The URL back to the full weather details. |
-| Location | string | The location for which provider created the forecast. |
-
-#### coordinates
-
-| Summary | Type | Description |
-|---------|------|-------------|
 | Latitude | float | The latitude of the location. |
 | Longitude | float | The longitude of the location. |
-
-
-
-
-#### units
-
-| Summary | Type | Description |
-|---------|------|-------------|
+| Click-through Link | string | The URL back to the full weather details. |
+| Location | string | The location for which provider created the forecast. |
 | Pressure Units | string | Units used for pressure measurements. |
 | Temperature Units | string | Units used for temperature measurements. |
 | Speed Units | string | Units used for speed measurements. |
 | Distance Units | string | Units used for distance measurements. |
-
 
 ### MeasureUnits
 
 
 | Summary | Type | Description |
 |---------|------|-------------|
-| MeasureUnits | Array of  |  |
+|  | array  |  |
+| Display Text | string |  |
+| Units | string |  |
 
 ## Limits
 | Name | Calls | Renewal Period |

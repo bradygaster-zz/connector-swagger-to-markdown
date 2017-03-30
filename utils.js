@@ -19,19 +19,19 @@ var resolveReference = function(document, $ref) {
     }
 };
 
-var flattenSchema = function(swagger, schema, isRequired) {
+var flattenParameterSchema = function(swagger, schema, isRequired) {
     if (schema.$ref) {
         schema = resolveReference(swagger, schema.$ref);
     }
     if (schema.type === 'array') {
-        return flattenSchema(schema.items);
+        return flattenParameterSchema(swagger, schema.items);
     } else if (schema.type === 'object') {
         var flattenedProperties = [];
         Object.keys(schema.properties).forEach(function(propKey) {
             var property = schema.properties[propKey];
             var isPropRequired = schema.required && schema.required.indexOf(propKey) > -1;
             if (property['x-ms-visibility'] !== 'internal') {
-                flattenedProperties = flattenedProperties.concat(flattenSchema(swagger, property, isPropRequired));
+                flattenedProperties = flattenedProperties.concat(flattenParameterSchema(swagger, property, isPropRequired));
             }
         });
         return flattenedProperties;
@@ -48,7 +48,7 @@ var flattenBodyParameter = function(swagger, parameter) {
     }
     var params = [];
     if (schema.type === 'array' || schema.type === 'object') {
-        params = flattenSchema(swagger, schema);
+        params = flattenParameterSchema(swagger, schema);
     } else {
         var param = {
             'x-ms-summary': parameter['x-ms-summary'],
@@ -126,26 +126,52 @@ var resolveResponseReferences = function(swagger) {
     });
 };
 
-var preprocessSchema = function(schema, schemaKey) {
-    if (!schema['x-ms-summary']) {
-        schema['x-ms-summary'] = schemaKey;
+var flattenDefinitionSchema = function(swagger, schema, jsonPath, newSchema) {
+    if (schema.$ref) {
+        newSchema['$ref'] = schema.$ref;
+        return;
     }
 
-    if (schema.type === 'object') {
+    if (schema.type === 'array' && !schema.items.$ref) {
+        var flattenedProperties = {};
+        newSchema[jsonPath] = {
+            'x-ms-summary': schema['x-ms-summary'],
+            'type': 'array ',
+            'description': schema['description'],
+            'x-ms-docs-path': jsonPath
+        };
+        flattenDefinitionSchema(swagger, schema.items, jsonPath, newSchema);
+    } else if (schema.type === 'object') {
+        var flattenedProperties = {};
         Object.keys(schema.properties).forEach(function(propKey) {
             var property = schema.properties[propKey];
-            preprocessSchema(property, propKey);
+            var propertyPath = jsonPath && jsonPath !== '' ? jsonPath + '.' + propKey : propKey;
+            flattenDefinitionSchema(swagger, property, propertyPath, newSchema);
         });
+    } else {
+        if (schema['x-ms-visibility'] !== 'internal') {
+            if (jsonPath && jsonPath !== '') {
+                schema['x-ms-docs-path'] = jsonPath;
+            }
+            newSchema[jsonPath] = schema;
+        }
     }
 };
 
 var preprocessDefinitions = function(swagger) {
     Object.keys(swagger.definitions).forEach(function(definitionKey) {
         var definition = swagger.definitions[definitionKey];
-        if (!definition['x-ms-summary']) {
-            definition['x-ms-summary'] = definitionKey;
+        if (definition.type === 'object') {
+            var newSchema = {};
+            flattenDefinitionSchema(swagger, definition, '', newSchema);
+            definition.properties = newSchema;
+        } else if (definition.type === 'array') {
+            var newItemsSchema = {};
+            flattenDefinitionSchema(swagger, definition.items, '', newItemsSchema);
+            definition.type = 'object';
+            definition.properties = newItemsSchema;
+            delete definition.items;
         }
-        preprocessSchema(definition);
     });
 };
 
@@ -184,6 +210,10 @@ var ifEmptyHelper = function(obj, opts) {
 };
 
 var refToLinkHelper = function(str) {
+    if (!str) {
+        return str;
+    }
+
     var headerText = str.replace('#/definitions/', '');
     var headerLink = headerText.replace(' ', '-').toLowerCase();
     return '[' + headerText + ']' + '(#' + headerLink + ')';

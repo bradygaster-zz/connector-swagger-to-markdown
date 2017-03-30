@@ -12,7 +12,7 @@
 {{#if_cond x-ms-visibility '===' 'internal'}}
 {{else}}
 {{#if_cond type '===' 'object'}}
-| {{refToLink x-ms-summary}} | {{> schema-type this}} | {{description}} |
+| {{x-ms-summary}} | {{> schema-type this}} | {{description}} |
 {{else}}
 | {{x-ms-summary}} | {{> schema-type this}} | {{description}} |
 {{/if_cond}}
@@ -26,12 +26,3 @@
 |---------|------|-------------|
 | {{x-ms-summary}} | {{> schema-type this}} | {{description}} |
 {{/if_cond}}
-{{#each properties}}
-{{#if_cond type '===' 'object'}}
-
-#### {{x-ms-summary}}
-
-{{> schema this}}
-
-{{/if_cond}}
-{{/each}}
