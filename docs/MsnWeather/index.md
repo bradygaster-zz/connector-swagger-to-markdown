@@ -111,7 +111,7 @@ ___
 
 | Summary | Type | Description |
 |---------|------|-------------|
-| [responses](#responses-1) | object |  |
+| [responses](#responses) | object |  |
 | [units](#units) | object |  |
 
 #### responses

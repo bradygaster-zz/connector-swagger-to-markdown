@@ -30,7 +30,9 @@ var flattenSchema = function(swagger, schema, isRequired) {
         Object.keys(schema.properties).forEach(function(propKey) {
             var property = schema.properties[propKey];
             var isPropRequired = schema.required && schema.required.indexOf(propKey) > -1;
-            flattenedProperties = flattenedProperties.concat(flattenSchema(swagger, property, isPropRequired));
+            if (property['x-ms-visibility'] !== 'internal') {
+                flattenedProperties = flattenedProperties.concat(flattenSchema(swagger, property, isPropRequired));
+            }
         });
         return flattenedProperties;
     } else {
@@ -84,11 +86,14 @@ var resolveParameterReferences = function(swagger) {
                     if (parameters[i].$ref) {
                         newParam = resolveReference(swagger, parameters[i].$ref);
                     }
-                    if (newParam.in === 'body') {
-                        var bodyParameters = flattenBodyParameter(swagger, parameters[i]);
-                        newParameters = newParameters.concat(bodyParameters);
-                    } else {
-                        newParameters.push(newParam);
+
+                    if (newParam['x-ms-visibility'] !== 'internal') {
+                        if (newParam.in === 'body') {
+                            var bodyParameters = flattenBodyParameter(swagger, parameters[i]);
+                            newParameters = newParameters.concat(bodyParameters);
+                        } else {
+                            newParameters.push(newParam);
+                        }
                     }
                 }
             }
