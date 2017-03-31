@@ -109,85 +109,85 @@ ___
 ### CurrentWeather
 
 
-| Summary | Type | Description |
-|---------|------|-------------|
-| Pressure | float | The atmospheric pressure. |
-| Conditions | string | A caption of weather conditions such as rainy, sunny, etc. |
-| Dewpoint | float | The temperature at which dew forms. |
-| Apparent Temperature | float | The apparent temperature, or feels-like temperature. |
-| Humidity | float | The relative humidity percentage. |
-| METAR weather conditions | string | The METAR code of weather conditions. |
-| METAR Sky Conditions | string | The METAR code of sky conditions. |
-| Temperature | float | The current temperature. |
-| UV Index | float | The numerical UV index. |
-| UV Index Description | string | A description of the meaning of the UV index. |
-| Visibility Distance | float | The visibility distance. |
-| Wind Direction | int32 | The wind direction in degrees clockwise from north. |
-| Wind Speed | float | The wind speed. |
-| Wind Gust Speed | float | The wind gust speed. |
-| Last Updated | date-time | The datetime at which provider created the current condition. |
-| [Source](#source) | object |  |
-| [Units](#units) | object |  |
+| Summary | Type | Description | Path |
+|---------|------|-------------|------|
+| Pressure | float | The atmospheric pressure. | responses.weather.current.baro |
+| Conditions | string | A caption of weather conditions such as rainy, sunny, etc. | responses.weather.current.cap |
+| Dewpoint | float | The temperature at which dew forms. | responses.weather.current.dewPt |
+| Apparent Temperature | float | The apparent temperature, or feels-like temperature. | responses.weather.current.feels |
+| Humidity | float | The relative humidity percentage. | responses.weather.current.rh |
+| METAR weather conditions | string | The METAR code of weather conditions. | responses.weather.current.wx |
+| METAR Sky Conditions | string | The METAR code of sky conditions. | responses.weather.current.sky |
+| Temperature | float | The current temperature. | responses.weather.current.temp |
+| UV Index | float | The numerical UV index. | responses.weather.current.uv |
+| UV Index Description | string | A description of the meaning of the UV index. | responses.weather.current.uvDesc |
+| Visibility Distance | float | The visibility distance. | responses.weather.current.vis |
+| Wind Direction | int32 | The wind direction in degrees clockwise from north. | responses.weather.current.windDir |
+| Wind Speed | float | The wind speed. | responses.weather.current.windSpd |
+| Wind Gust Speed | float | The wind gust speed. | responses.weather.current.windGust |
+| Last Updated | date-time | The datetime at which provider created the current condition. | responses.weather.current.created |
+| [Source](#source) | object |  | responses.source |
+| [Units](#units) | object |  | units |
 
 ### WeatherForecast
 
 
-| Summary | Type | Description |
-|---------|------|-------------|
-| Conditions | string | The caption of weather conditions such as rainy, sunny, etc. |
-| Rain Chance | float | The chance of precipitation (%). |
-| METAR Weather Conditions | string | The METAR code of weather conditions. |
-| METAR Sky Conditions | string | The METAR code of sky conditions. |
-| Wind Direction | int32 | The wind direction in degrees clockwise from north. |
-| Wind Speed | float | The wind speed. |
-| Summary | string |  |
-| Conditions | string | The caption of weather conditions such as rainy, sunny, etc. |
-| Rain Chance | float | The chance of precipitation (%). |
-| METAR Weather Conditions | string | The METAR code of weather conditions. |
-| METAR Sky Conditions | string | The METAR code of sky conditions. |
-| Wind Direction | int32 | The wind direction in degrees clockwise from north. |
-| Wind Speed | float | The wind speed. |
-| Summary | string |  |
-| Conditions | string | The caption of weather conditions such as rainy, sunny, etc. |
-| Date | date-time | The datetime at which the forecast is valid. |
-| Rain Chance | float | The chance of precipitation (%). |
-| Max Wind Speed | float | The peak wind speed for the day. |
-| Max Wind Direction | int32 | The direction of the peak wind for the day. |
-| Humidity High | float | The high relative humidity point for the day. |
-| Humidity Low | float | The low relative humidity point for the day. |
-| Temperature High | float | The high temperature. |
-| Temperature Low | float | The low temperature. |
-| UV Index | float | The numerical UV index. |
-| UV Index Description | string | A description of the meaning of the UV index. |
-| Forecast Date | date-time | The datetime at which the daily forecast was dervied. |
-| Sunrise Time | date-time | Time of sunrise on the day of this forecast. |
-| Sunset Time | date-time | Time of sunset on the day of this forecast. |
-| Moonrise Time | date-time | Time of moonrise on the day of this forecast. |
-| Moonset Time | date-time | Time of moonset on the day of this forecast. |
-| Moon Phase | string | The phase of the moon the day of this forecast. |
-| Moon Phase Code | string | The code representing the phase of the moon. |
-| [Source](#source) | object |  |
-| [Units](#units) | object |  |
+| Summary | Type | Description | Path |
+|---------|------|-------------|------|
+| Conditions | string | The caption of weather conditions such as rainy, sunny, etc. | responses.daily.day.cap |
+| Rain Chance | float | The chance of precipitation (%). | responses.daily.day.precip |
+| METAR Weather Conditions | string | The METAR code of weather conditions. | responses.daily.day.wx |
+| METAR Sky Conditions | string | The METAR code of sky conditions. | responses.daily.day.sky |
+| Wind Direction | int32 | The wind direction in degrees clockwise from north. | responses.daily.day.windDir |
+| Wind Speed | float | The wind speed. | responses.daily.day.windSpd |
+| Summary | string |  | responses.daily.day.summary |
+| Conditions | string | The caption of weather conditions such as rainy, sunny, etc. | responses.daily.night.cap |
+| Rain Chance | float | The chance of precipitation (%). | responses.daily.night.precip |
+| METAR Weather Conditions | string | The METAR code of weather conditions. | responses.daily.night.wx |
+| METAR Sky Conditions | string | The METAR code of sky conditions. | responses.daily.night.sky |
+| Wind Direction | int32 | The wind direction in degrees clockwise from north. | responses.daily.night.windDir |
+| Wind Speed | float | The wind speed. | responses.daily.night.windSpd |
+| Summary | string |  | responses.daily.night.summary |
+| Conditions | string | The caption of weather conditions such as rainy, sunny, etc. | responses.daily.pvdrCap |
+| Date | date-time | The datetime at which the forecast is valid. | responses.daily.valid |
+| Rain Chance | float | The chance of precipitation (%). | responses.daily.precip |
+| Max Wind Speed | float | The peak wind speed for the day. | responses.daily.windMax |
+| Max Wind Direction | int32 | The direction of the peak wind for the day. | responses.daily.windMaxDir |
+| Humidity High | float | The high relative humidity point for the day. | responses.daily.rhHi |
+| Humidity Low | float | The low relative humidity point for the day. | responses.daily.rhLo |
+| Temperature High | float | The high temperature. | responses.daily.tempHi |
+| Temperature Low | float | The low temperature. | responses.daily.tempLo |
+| UV Index | float | The numerical UV index. | responses.daily.uv |
+| UV Index Description | string | A description of the meaning of the UV index. | responses.daily.uvDesc |
+| Forecast Date | date-time | The datetime at which the daily forecast was dervied. | responses.daily.created |
+| Sunrise Time | date-time | Time of sunrise on the day of this forecast. | responses.almanac.sunrise |
+| Sunset Time | date-time | Time of sunset on the day of this forecast. | responses.almanac.sunset |
+| Moonrise Time | date-time | Time of moonrise on the day of this forecast. | responses.almanac.moonrise |
+| Moonset Time | date-time | Time of moonset on the day of this forecast. | responses.almanac.moonset |
+| Moon Phase | string | The phase of the moon the day of this forecast. | responses.almanac.moonPhase |
+| Moon Phase Code | string | The code representing the phase of the moon. | responses.almanac.moonPhaseCode |
+| [Source](#source) | object |  | responses.source |
+| [Units](#units) | object |  | units |
 
 ### Source
 
 
-| Summary | Type | Description |
-|---------|------|-------------|
-| Latitude | float | The latitude of the location. |
-| Longitude | float | The longitude of the location. |
-| Click-through Link | string | The URL to the full weather details. |
-| Location | string | The location for which provider created the forecast. |
+| Summary | Type | Description | Path |
+|---------|------|-------------|------|
+| Latitude | float | The latitude of the location. | coordinates.lat |
+| Longitude | float | The longitude of the location. | coordinates.lon |
+| Click-through Link | string | The URL to the full weather details. | clickThrough |
+| Location | string | The location for which provider created the forecast. | location |
 
 ### Units
 
 
-| Summary | Type | Description |
-|---------|------|-------------|
-| Pressure Units | string | Units used for pressure measurements. |
-| Temperature Units | string | Units used for temperature measurements. |
-| Speed Units | string | Units used for speed measurements. |
-| Distance Units | string | Units used for distance measurements. |
+| Summary | Type | Description | Path |
+|---------|------|-------------|------|
+| Pressure Units | string | Units used for pressure measurements. | pressure |
+| Temperature Units | string | Units used for temperature measurements. | temperature |
+| Speed Units | string | Units used for speed measurements. | speed |
+| Distance Units | string | Units used for distance measurements. | distance |
 
 ## Limits
 | Name | Calls | Renewal Period |

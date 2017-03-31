@@ -6,18 +6,18 @@
 {{#if_cond type '===' 'object'}}
 {{#if_empty properties}}
 {{else}}
-| Summary | Type | Description |
-|---------|------|-------------|
+| Summary | Type | Description | Path |
+|---------|------|-------------|------|
 {{#each properties}}
 {{#if $ref}}
-| {{refToLink $ref}} | {{> schema-type this}} | {{description}} |
+| {{refToLink $ref}} | {{> schema-type this}} | {{description}} | {{x-ms-docs-path}} |
 {{else}}
 {{#if_cond x-ms-visibility '===' 'internal'}}
 {{else}}
 {{#if_cond type '===' 'object'}}
-| {{x-ms-summary}} | {{> schema-type this}} | {{description}} |
+| {{x-ms-summary}} | {{> schema-type this}} | {{description}} | {{x-ms-docs-path}} |
 {{else}}
-| {{x-ms-summary}} | {{> schema-type this}} | {{description}} |
+| {{x-ms-summary}} | {{> schema-type this}} | {{description}} | {{x-ms-docs-path}} |
 {{/if_cond}}
 {{/if_cond}}
 {{/if}}
@@ -26,7 +26,7 @@
 {{/if_cond}}
 {{/if}}
 {{#if_cond type '===' 'array'}}
-| Summary | Type | Description |
-|---------|------|-------------|
-| {{x-ms-summary}} | {{> schema-type this}} | {{description}} |
+| Summary | Type | Description | Path |
+|---------|------|-------------|------|
+| {{x-ms-summary}} | {{> schema-type this}} | {{description}} | {{x-ms-docs-path}} |
 {{/if_cond}}

@@ -209,70 +209,70 @@ ___
 ### CalendarList
 A Google CalendarList Object
 
-| Summary | Type | Description |
-|---------|------|-------------|
-| Items | Array of  [CalendarListEntry](#calendarlistentry)  | Calendars in the list |
+| Summary | Type | Description | Path |
+|---------|------|-------------|------|
+| Items | Array of  [CalendarListEntry](#calendarlistentry)  | Calendars in the list | items |
 
 ### CalendarListEntry
 A Google CalendarListEntry Object
 
-| Summary | Type | Description |
-|---------|------|-------------|
-| Calendar ID | string | Identifier of the calendar |
-| Summary | string | Title of the calendar |
-| Description | string | Description of the calendar |
-| Location | string | Geographic location of the calendar as free-form text |
-| Time Zone | string | The time zone of the calendar |
+| Summary | Type | Description | Path |
+|---------|------|-------------|------|
+| Calendar ID | string | Identifier of the calendar | id |
+| Summary | string | Title of the calendar | summary |
+| Description | string | Description of the calendar | description |
+| Location | string | Geographic location of the calendar as free-form text | location |
+| Time Zone | string | The time zone of the calendar | timeZone |
 
 ### CalendarEventList
 A Google CalendarEventList Object
 
-| Summary | Type | Description |
-|---------|------|-------------|
-| Items | Array of  [ResponseEvent](#responseevent)  | Events in the calendar |
+| Summary | Type | Description | Path |
+|---------|------|-------------|------|
+| Items | Array of  [ResponseEvent](#responseevent)  | Events in the calendar | items |
 
 ### ResponseEvent
 An event downloaded from Google Calendar
 
-| Summary | Type | Description |
-|---------|------|-------------|
-| Title | string | A summary of the event |
-| Start time | date-time | The (inclusive) start time of the event |
-| End time | date-time | The (exclusive) end time of the event |
-| Description | string | Description of the event |
-| Location | string | Geographic location of the event as free-form text |
-| Status | string | Status of the event. Possible values are &quot;confirmed&quot;, &quot;tentative&quot;, or &quot;cancelled&quot; |
-| HTML link | string | Unique ID of the list |
-| Event ID | string | Opaque identifier of the event |
-| Attendees | string | The event&#x27;s attendees |
-| Creator | string | The creator of the event |
-| Organizer | string | The organizer of the event |
+| Summary | Type | Description | Path |
+|---------|------|-------------|------|
+| Title | string | A summary of the event | summary |
+| Start time | date-time | The (inclusive) start time of the event | start |
+| End time | date-time | The (exclusive) end time of the event | end |
+| Description | string | Description of the event | description |
+| Location | string | Geographic location of the event as free-form text | location |
+| Status | string | Status of the event. Possible values are &quot;confirmed&quot;, &quot;tentative&quot;, or &quot;cancelled&quot; | status |
+| HTML link | string | Unique ID of the list | htmlLink |
+| Event ID | string | Opaque identifier of the event | id |
+| Attendees | string | The event&#x27;s attendees | attendees |
+| Creator | string | The creator of the event | creator |
+| Organizer | string | The organizer of the event | organizer |
 
 ### RequestEvent
 An event to upload to Google Calendar
 
-| Summary | Type | Description |
-|---------|------|-------------|
-| Title | string | A summary of the event |
-| Start time | date-time | The (inclusive) start time of the event |
-| End time | date-time | The (exclusive) end time of the event |
-| Description | string | Description of the event |
-| Location | string | Geographic location of the event as free-form text |
-| Attendees | string | Enter a comma-separated list of attendee emails |
-| Status | string | Status of the event. Possible values are &quot;confirmed&quot;, &quot;tentative&quot;, or &quot;cancelled&quot; |
+| Summary | Type | Description | Path |
+|---------|------|-------------|------|
+| Title | string | A summary of the event | summary |
+| Start time | date-time | The (inclusive) start time of the event | start |
+| End time | date-time | The (exclusive) end time of the event | end |
+| Description | string | Description of the event | description |
+| Location | string | Geographic location of the event as free-form text | location |
+| Attendees | string | Enter a comma-separated list of attendee emails | attendees |
+| Status | string | Status of the event. Possible values are &quot;confirmed&quot;, &quot;tentative&quot;, or &quot;cancelled&quot; | status |
 
 ### PatchEvent
 Event changes to upload to Google Calendar
 
-| Summary | Type | Description |
-|---------|------|-------------|
-| Title | string | A summary of the event |
-| Start time | date-time | The (inclusive) start time of the event |
-| End time | date-time | The (exclusive) end time of the event |
-| Description | string | Description of the event |
-| Location | string | Geographic location of the event as free-form text |
-| Attendees | string | Enter a comma-separated list of attendee emails |
-| Status | string | Status of the event. Possible values are &quot;confirmed&quot;, &quot;tentative&quot;, or &quot;cancelled |
+| Summary | Type | Description | Path |
+|---------|------|-------------|------|
+| Title | string | A summary of the event | summary |
+| Start time | date-time | The (inclusive) start time of the event | start |
+| End time | date-time | The (exclusive) end time of the event | end |
+| Description | string | Description of the event | description |
+| Location | string | Geographic location of the event as free-form text | location |
+| Attendees | string | Enter a comma-separated list of attendee emails | attendees |
+| Status | string | Status of the event. Possible values are &quot;confirmed&quot;, &quot;tentative&quot;, or &quot;cancelled | status |
 
 ## Limits
 | Name | Calls | Renewal Period |
