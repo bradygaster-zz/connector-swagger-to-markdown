@@ -196,3 +196,5 @@ ___
 | API calls per connection | 8 | 60 seconds |
 | Frequency of trigger polls | 1 | 60 seconds |
 
+Connections per account: **1**
+

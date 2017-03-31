@@ -16,8 +16,7 @@ module.exports = (grunt) => {
             'output',
             'apis',
             'Connectors',
-            'docs/*/.md',
-            'docs/*/.png',
+            'docs/*/*',
         ],
         copy: {
             apis: {
@@ -28,6 +27,7 @@ module.exports = (grunt) => {
                         src: [
                             '*/apiDefinition.swagger.json',
                             '*/connectionParameters.json',
+                            '*/resourceTemplate.json',
                             '*/policy.xml',
                             '*/icon.png',
                             '*/intro.md',

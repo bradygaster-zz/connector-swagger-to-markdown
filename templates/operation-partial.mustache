@@ -30,7 +30,11 @@ This operation does not require any input.
 | {{summary}} | {{type}} | {{description}} | {{path}} |
 {{/each}}
 {{else}}
+{{#if isDynamic}}
+The outputs of this operation are dynamic.
+{{/if}}
+{{/if}}
+{{/if}}
+{{else}}
 This operation does not return anything.
-{{/if}}
-{{/if}}
 {{/with}}
