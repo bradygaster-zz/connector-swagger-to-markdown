@@ -15,10 +15,11 @@ This operation does not require any input.
 {{/if}}
 
 #### Returns
-{{#if response.reference}}
+{{#with response}}
+{{#if reference}}
 | Summary | Type | Description |
 |---------|------|-------------|
-{{#with response.reference}}
+{{#with reference}}
 | {{summary}} | {{type}} | {{description}} |
 {{/with}}
 {{else}}
@@ -32,3 +33,4 @@ This operation does not require any input.
 This operation does not return anything.
 {{/if}}
 {{/if}}
+{{/with}}

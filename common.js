@@ -143,10 +143,11 @@ var generateOperation = function(swagger, operation) {
                 reference.description = schema.description;
                 docResponse.reference = reference;
             } else {
-                // TODO: Inline response
-                // response.schema.type = definition.type;
-                // response.schema.description = definition.description;
-                // response.schema['x-ms-visibility'] = definition['x-ms-visibility'];
+                // Inline response
+                var docProperties = [];
+                flattenDefinitionSchema(swagger, schema, '', '', docProperties);
+                docResponse = new Response();
+                docResponse.properties = docProperties;
             }
         }
     }
@@ -242,6 +243,8 @@ var flattenDefinitionSchema = function(swagger, schema, schemaKey, jsonPath, doc
             property.description = schema['description'];
             property.path = jsonPath;
             docProperties.push(property);
+        } else {
+            throw 'Not Implemented';
         }
     } else {
         var property = new SchemaProperty();
