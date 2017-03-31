@@ -167,7 +167,6 @@ ___
 | UV Index | float | The numerical UV index. | responses.daily.uv |
 | UV Index Description | string | A description of the meaning of the UV index. | responses.daily.uvDesc |
 | Forecast Date | date-time | The datetime at which the daily forecast was dervied. | responses.daily.created |
-| almanac | array of object |  | responses.almanac |
 | Sunrise Time | date-time | Time of sunrise on the day of this forecast. | responses.almanac.sunrise |
 | Sunset Time | date-time | Time of sunset on the day of this forecast. | responses.almanac.sunset |
 | Moonrise Time | date-time | Time of moonrise on the day of this forecast. | responses.almanac.moonrise |
@@ -199,5 +198,3 @@ ___
 
 Connections per account: **1**
 
-## Using this integration
-- [Flow templates](https://ms.flow.microsoft.com/en-us/services/msnweather/msn-weather/)

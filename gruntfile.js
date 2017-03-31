@@ -16,8 +16,7 @@ module.exports = (grunt) => {
             'output',
             'apis',
             'Connectors',
-            'docs/*/.md',
-            'docs/*/.png',
+            'docs/*/*',
         ],
         copy: {
             apis: {
