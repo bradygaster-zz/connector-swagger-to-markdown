@@ -126,8 +126,14 @@ ___
 | Wind Speed | float | The wind speed. | responses.weather.current.windSpd |
 | Wind Gust Speed | float | The wind gust speed. | responses.weather.current.windGust |
 | Last Updated | date-time | The datetime at which provider created the current condition. | responses.weather.current.created |
-| [Source](#source) | object |  | responses.source |
-| [Units](#units) | object |  | units |
+| Latitude | float | The latitude of the location. | responses.source.coordinates.lat |
+| Longitude | float | The longitude of the location. | responses.source.coordinates.lon |
+| Click-through Link | string | The URL to the full weather details. | responses.source.clickThrough |
+| Location | string | The location for which provider created the current condition. | responses.source.location |
+| Pressure Units | string | Units used for pressure measurements. | units.pressure |
+| Temperature Units | string | Units used for temperature measurements. | units.temperature |
+| Speed Units | string | Units used for speed measurements. | units.speed |
+| Distance Units | string | Units used for distance measurements. | units.distance |
 
 ### WeatherForecast
 
@@ -166,28 +172,22 @@ ___
 | Moonset Time | date-time | Time of moonset on the day of this forecast. | responses.almanac.moonset |
 | Moon Phase | string | The phase of the moon the day of this forecast. | responses.almanac.moonPhase |
 | Moon Phase Code | string | The code representing the phase of the moon. | responses.almanac.moonPhaseCode |
-| [Source](#source) | object |  | responses.source |
-| [Units](#units) | object |  | units |
+| Latitude | float | The latitude of the location. | responses.source.coordinates.lat |
+| Longitude | float | The longitude of the location. | responses.source.coordinates.lon |
+| Click-through Link | string | The URL back to the full weather details. | responses.source.clickThrough |
+| Location | string | The location for which provider created the forecast. | responses.source.location |
+| Pressure Units | string | Units used for pressure measurements. | units.pressure |
+| Temperature Units | string | Units used for temperature measurements. | units.temperature |
+| Speed Units | string | Units used for speed measurements. | units.speed |
+| Distance Units | string | Units used for distance measurements. | units.distance |
 
-### Source
-
-
-| Summary | Type | Description | Path |
-|---------|------|-------------|------|
-| Latitude | float | The latitude of the location. | coordinates.lat |
-| Longitude | float | The longitude of the location. | coordinates.lon |
-| Click-through Link | string | The URL to the full weather details. | clickThrough |
-| Location | string | The location for which provider created the forecast. | location |
-
-### Units
+### MeasureUnits
 
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-| Pressure Units | string | Units used for pressure measurements. | pressure |
-| Temperature Units | string | Units used for temperature measurements. | temperature |
-| Speed Units | string | Units used for speed measurements. | speed |
-| Distance Units | string | Units used for distance measurements. | distance |
+|  | string |  | displayText |
+|  | string |  | units |
 
 ## Limits
 | Name | Calls | Renewal Period |
