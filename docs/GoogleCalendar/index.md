@@ -19,8 +19,6 @@ You&#x27;re now ready to start using this integration.
 
 # Actions
 
-
-
 ## List calendars
 Lists all calendars in the authenticated user&#x27;s calendar list.
 
@@ -33,8 +31,8 @@ This operation does not require any input.
 | Summary | Type | Description |
 |---------|------|-------------|
 | [CalendarList](#calendarlist) | object | A Google CalendarList Object |
-___
 
+___
 
 ## List the events on a calendar
 Lists the first page of arbitrarily ordered events on the selected calendar.
@@ -44,16 +42,16 @@ Lists the first page of arbitrarily ordered events on the selected calendar.
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Calendar ID |  string  | Unique ID of the calendar to fetch events from | true |
-| Min Time |  date-time  | Time format: yyyy-MM-ddTHH:mm:ss.fffZ (2016-07-20T08:00:59.000Z) | false |
-| Max time |  date-time  | Time format: yyyy-MM-ddTHH:mm:ss.fffZ (2016-07-20T09:00:59.000Z) | false |
+| Calendar ID | string | Unique ID of the calendar to fetch events from | true |
+| Min Time | date-time | Time format: yyyy-MM-ddTHH:mm:ss.fffZ (2016-07-20T08:00:59.000Z) | false |
+| Max time | date-time | Time format: yyyy-MM-ddTHH:mm:ss.fffZ (2016-07-20T09:00:59.000Z) | false |
 
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
 | [CalendarEventList](#calendareventlist) | object | A Google CalendarEventList Object |
-___
 
+___
 
 ## Create an event
 Creates an event on a specific calendar
@@ -63,21 +61,21 @@ Creates an event on a specific calendar
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Calendar ID |  string  | Unique ID of the calendar to fetch events from | true |
-| Title |  string  | A summary of the event | false |
-| Start time |  date-time  | The (inclusive) start time of the event | true |
-| End time |  date-time  | The (exclusive) end time of the event | true |
-| Description |  string  | Description of the event | false |
-| Location |  string  | Geographic location of the event as free-form text | false |
-| Attendees |  string  | Enter a comma-separated list of attendee emails | false |
-| Status |  string  | Status of the event. Possible values are &quot;confirmed&quot;, &quot;tentative&quot;, or &quot;cancelled&quot; | false |
+| Calendar ID | string | Unique ID of the calendar to fetch events from | true |
+| Title | string | A summary of the event | false |
+| Start time | date-time | The (inclusive) start time of the event | true |
+| End time | date-time | The (exclusive) end time of the event | true |
+| Description | string | Description of the event | false |
+| Location | string | Geographic location of the event as free-form text | false |
+| Attendees | string | Enter a comma-separated list of attendee emails | false |
+| Status | string | Status of the event. Possible values are &quot;confirmed&quot;, &quot;tentative&quot;, or &quot;cancelled&quot; | false |
 
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
 | [ResponseEvent](#responseevent) | object | An event downloaded from Google Calendar |
-___
 
+___
 
 ## Get an event
 Get an event from a calendar
@@ -87,15 +85,15 @@ Get an event from a calendar
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Calendar ID |  string  | Unique ID of the calendar to fetch events from | true |
-| Event ID |  string  | Unique ID of the event to get | true |
+| Calendar ID | string | Unique ID of the calendar to fetch events from | true |
+| Event ID | string | Unique ID of the event to get | true |
 
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
 | [ResponseEvent](#responseevent) | object | An event downloaded from Google Calendar |
-___
 
+___
 
 ## Delete an event
 Delete an event from a calendar
@@ -105,13 +103,12 @@ Delete an event from a calendar
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Calendar ID |  string  | Unique ID of the calendar to fetch events from | true |
-| Event ID |  string  | Unique ID of the event to update | true |
+| Calendar ID | string | Unique ID of the calendar to fetch events from | true |
+| Event ID | string | Unique ID of the event to update | true |
 
 #### Returns
-This operation does not return anything.
-___
 
+___
 
 ## Update an event
 Update an event on a calendar
@@ -121,20 +118,21 @@ Update an event on a calendar
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Calendar ID |  string  | Unique ID of the calendar to fetch events from | true |
-| Event ID |  string  | Unique ID of the event to get | true |
-| Title |  string  | A summary of the event | false |
-| Start time |  date-time  | The (inclusive) start time of the event | false |
-| End time |  date-time  | The (exclusive) end time of the event | false |
-| Description |  string  | Description of the event | false |
-| Location |  string  | Geographic location of the event as free-form text | false |
-| Attendees |  string  | Enter a comma-separated list of attendee emails | false |
-| Status |  string  | Status of the event. Possible values are &quot;confirmed&quot;, &quot;tentative&quot;, or &quot;cancelled | false |
+| Calendar ID | string | Unique ID of the calendar to fetch events from | true |
+| Event ID | string | Unique ID of the event to get | true |
+| Title | string | A summary of the event | false |
+| Start time | date-time | The (inclusive) start time of the event | false |
+| End time | date-time | The (exclusive) end time of the event | false |
+| Description | string | Description of the event | false |
+| Location | string | Geographic location of the event as free-form text | false |
+| Attendees | string | Enter a comma-separated list of attendee emails | false |
+| Status | string | Status of the event. Possible values are &quot;confirmed&quot;, &quot;tentative&quot;, or &quot;cancelled | false |
 
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
 | [ResponseEvent](#responseevent) | object | An event downloaded from Google Calendar |
+
 ___
 
 # Triggers

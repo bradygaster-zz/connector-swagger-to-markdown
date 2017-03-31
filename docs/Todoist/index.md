@@ -9,8 +9,6 @@ Todoist is an online task management app and todo list. With Todoist, users can 
 
 # Actions
 
-
-
 ## List projects
 List projects
 
@@ -22,9 +20,9 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-| Projects | Array of  [Project](#project)  | A collection of projects |  |
-___
+| Projects | Array of [Project](#project) | A collection of projects | projects |
 
+___
 
 ## List tasks
 List tasks
@@ -37,9 +35,9 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-| Items | Array of  [Item](#item)  | A collection of items |  |
-___
+| Items | Array of [Item](#item) | A collection of items | items |
 
+___
 
 ## List tasks by project
 List tasks by project
@@ -49,14 +47,14 @@ List tasks by project
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Project Id |  string  | Project Id | true |
+| Project Id | string | Project Id | true |
 
 #### Returns
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-| Items | Array of  [Item](#item)  | A collection of items |  |
-___
+| Items | Array of [Item](#item) | A collection of items | items |
 
+___
 
 ## List labels
 List labels
@@ -69,9 +67,9 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-| Labels | Array of  [Label](#label)  | A collection of labels |  |
-___
+| Labels | Array of [Label](#label) | A collection of labels | labels |
 
+___
 
 ## Create a task
 Create a task
@@ -81,19 +79,19 @@ Create a task
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Project Id |  string  | Project Id | true |
-| Task Title |  string  | Task title | true |
-| Task Due Date |  date-time  | Task Due Date (e.g mm-dd-yyyy, Today @ 11am, mm/dd/yyyy) | false |
-| Task Priority |  string  | Number between 1 and 4 (4 for very urgent and 1 for natural) | false |
-| Indent |  string  | Number between 1 and 4, where 1 is top-level) | false |
-| Order |  string  | Number, where the smallest value is top-level | false |
+| Project Id | string | Project Id | true |
+| Task Title | string | Task title | true |
+| Task Due Date | date-time | Task Due Date (e.g mm-dd-yyyy, Today @ 11am, mm/dd/yyyy) | false |
+| Task Priority | string | Number between 1 and 4 (4 for very urgent and 1 for natural) | false |
+| Indent | string | Number between 1 and 4, where 1 is top-level) | false |
+| Order | string | Number, where the smallest value is top-level | false |
 
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
 | [Item](#item) | object | A Todoist Item Object |
-___
 
+___
 
 ## Update a task
 Update a task
@@ -103,19 +101,19 @@ Update a task
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Project Id |  string  | Project Id | true |
-| Task Id |  string  | Task Id | true |
-| Task Title |  string  | Task Title | false |
-| Task Priority |  string  | Number between 1 and 4, 4 for very urgent and 1 for natural | false |
-| Indent |  string  | Number between 1 and 4, where 1 is top-level) | false |
-| Order |  string  | Number, where the smallest value is top-level | false |
+| Project Id | string | Project Id | true |
+| Task Id | string | Task Id | true |
+| Task Title | string | Task Title | false |
+| Task Priority | string | Number between 1 and 4, 4 for very urgent and 1 for natural | false |
+| Indent | string | Number between 1 and 4, where 1 is top-level) | false |
+| Order | string | Number, where the smallest value is top-level | false |
 
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
 | [Item](#item) | object | A Todoist Item Object |
-___
 
+___
 
 ## Create a project
 Create a project
@@ -125,17 +123,17 @@ Create a project
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Project Name |  string  | Project Name | true |
-| Project Color |  string  | Number between 0 and 11, or 0 and 21 for premium users | false |
-| Indent |  string  | Number between 1 and 4, where 1 is top-level) | false |
-| Order |  string  | Number, where the smallest value is top-level | false |
+| Project Name | string | Project Name | true |
+| Project Color | string | Number between 0 and 11, or 0 and 21 for premium users | false |
+| Indent | string | Number between 1 and 4, where 1 is top-level) | false |
+| Order | string | Number, where the smallest value is top-level | false |
 
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
 | [Project](#project) | object | A Todoist Project Object |
-___
 
+___
 
 ## Update a project
 Update a project
@@ -145,18 +143,18 @@ Update a project
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Project Id |  string  | Project Id | true |
-| Project Name |  string  | Name of project | false |
-| Project Color |  string  | Number between 0 and 11, or 0 and 21 for premium users | false |
-| Indent |  string  | Number between 1 and 4, where 1 is top-level) | false |
-| Order |  string  | Number, where the smallest value is top-level | false |
+| Project Id | string | Project Id | true |
+| Project Name | string | Name of project | false |
+| Project Color | string | Number between 0 and 11, or 0 and 21 for premium users | false |
+| Indent | string | Number between 1 and 4, where 1 is top-level) | false |
+| Order | string | Number, where the smallest value is top-level | false |
 
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
 | [Project](#project) | object | A Todoist Project Object |
-___
 
+___
 
 ## Share a project
 Share a project
@@ -166,15 +164,15 @@ Share a project
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Project Id |  string  | Project Id | true |
-| Email |  string  | Email address of user the project is being shared | true |
+| Project Id | string | Project Id | true |
+| Email | string | Email address of user the project is being shared | true |
 
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
 | [Project](#project) | object | A Todoist Project Object |
-___
 
+___
 
 ## Create a label
 Create a label
@@ -184,16 +182,16 @@ Create a label
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Name |  string  | Label name | true |
-| Label Color |  string  | Number between 0 and 11, or 0 and 21 for premium users | false |
-| Order |  string  | Number, where the smallest value is top-level | false |
+| Name | string | Label name | true |
+| Label Color | string | Number between 0 and 11, or 0 and 21 for premium users | false |
+| Order | string | Number, where the smallest value is top-level | false |
 
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
 | [Label](#label) | object | A Todoist Label Object |
-___
 
+___
 
 ## Update a label
 Update a label
@@ -203,15 +201,16 @@ Update a label
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Label Id |  string  | Label Id | true |
-| Label Name |  string  | Label name | false |
-| Color |  string  | Number between 0 and 11, or 0 and 21 for premium users | false |
-| Order |  string  | Number, where the smallest value is top-level | false |
+| Label Id | string | Label Id | true |
+| Label Name | string | Label name | false |
+| Color | string | Number between 0 and 11, or 0 and 21 for premium users | false |
+| Order | string | Number, where the smallest value is top-level | false |
 
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
 | [Label](#label) | object | A Todoist Label Object |
+
 ___
 
 # Triggers

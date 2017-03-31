@@ -9,8 +9,6 @@ MSN Weather gets you the very latest weather forecast, including temperature, hu
 
 # Actions
 
-
-
 ## Get current weather
 Get the current weather for a location.
 
@@ -19,15 +17,15 @@ Get the current weather for a location.
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Location |  string  |  | true |
-| Units |  string  |  | true |
+| Location | string |  | true |
+| Units | string |  | true |
 
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
 | [CurrentWeather](#currentweather) | object |  |
-___
 
+___
 
 ## Get forecast for today
 Get the forecast for the current day in the specified location.
@@ -37,15 +35,15 @@ Get the forecast for the current day in the specified location.
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Location |  string  |  | true |
-| Units |  string  |  | true |
+| Location | string |  | true |
+| Units | string |  | true |
 
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
 | [WeatherForecast](#weatherforecast) | object |  |
-___
 
+___
 
 ## Get the forecast for tomorrow
 Get the forecast for tomorrow in the specified location.
@@ -55,13 +53,14 @@ Get the forecast for tomorrow in the specified location.
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Location |  string  |  | true |
-| Units |  string  |  | true |
+| Location | string |  | true |
+| Units | string |  | true |
 
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
 | [WeatherForecast](#weatherforecast) | object |  |
+
 ___
 
 # Triggers
