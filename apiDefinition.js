@@ -32,13 +32,12 @@ function generateDocumentation(swaggerFilename) {
     var connectorShortname = swaggerPath.dir.split('/')[1];
 
     // Read connector assets
-    var swagger = JSON.parse(fs.readFileSync(swaggerFilename).toString());
     var connectionParameters = getConnectionParameters(swaggerFilename);
     var policy = getPolicy(swaggerFilename);
     var customSection = getCustomSection(swaggerFilename);
+    var swagger = JSON.parse(fs.readFileSync(swaggerFilename).toString());
     var docModel = common.generateDoc(swagger);
     var connector = {
-        'swagger': swagger,
         'connectionParameters': connectionParameters,
         'policy': policy,
         'customSection': customSection,
@@ -60,8 +59,6 @@ function generateDocumentation(swaggerFilename) {
 }
 
 function preprocessConnector(connector) {
-    utils.preprocessSwagger(connector.swagger);
-
     // Remove parameters of type 'oauthSetting'
     if (connector.connectionParameters) {
         Object.keys(connector.connectionParameters).forEach(function(connParamKey) {
