@@ -11,16 +11,32 @@ class Parameter {
     }
 };
 
+class ReferenceResponse {
+    constructor() {
+        this.summary = '';
+        this.type = '';
+        this.description = '';
+    }
+};
+
+class Response {
+    constructor() {
+        this.properties = [];
+        this.reference = null;
+    }
+};
+
 class Operation {
     constructor() {
         this.summary = '';
         this.description = '';
         this.operationId = '';
         this.parameters = [];
+        this.response = null;
     }
 };
 
-class DefinitionProperty {
+class SchemaProperty {
     constructor() {
         this.summary = '';
         this.type = '';
@@ -105,6 +121,37 @@ var generateOperation = function(swagger, operation) {
     }
 
     docOperation.parameters = docParameters;
+
+    var docResponse = null;
+    var responseKeys = Object.keys(operation.responses);
+    if (responseKeys.length > 0) {
+        var firstResponse = operation.responses[responseKeys[0]];
+        var schema = firstResponse.schema;
+        if (schema) {
+            var $ref = schema.$ref;
+            if ($ref) {
+                schema = utils.resolveReference(swagger, $ref);
+            }
+            if (schema.type === 'object' && Object.keys(schema.properties).length === 0) {
+                // This is usually used to mean an empty response
+            } else if ($ref) {
+                // $ref at the top level
+                docResponse = new Response();
+                var reference = new ReferenceResponse();
+                reference.summary = utils.refToLink($ref);
+                reference.type = schema.type;
+                reference.description = schema.description;
+                docResponse.reference = reference;
+            } else {
+                // TODO: Inline response
+                // response.schema.type = definition.type;
+                // response.schema.description = definition.description;
+                // response.schema['x-ms-visibility'] = definition['x-ms-visibility'];
+            }
+        }
+    }
+    docOperation.response = docResponse;
+
     return docOperation;
 };
 
@@ -189,7 +236,7 @@ var flattenDefinitionSchema = function(swagger, schema, schemaKey, jsonPath, doc
     } else if (schema.type === 'array') {
         if (schema.items.$ref) {
             var resolvedSchema = utils.resolveReference(swagger, schema.items.$ref);
-            var property = new DefinitionProperty();
+            var property = new SchemaProperty();
             property.summary = schema['x-ms-summary'];
             property.type = 'Array of ' + utils.refToLink(schema.items.$ref);
             property.description = schema['description'];
@@ -197,7 +244,7 @@ var flattenDefinitionSchema = function(swagger, schema, schemaKey, jsonPath, doc
             docProperties.push(property);
         }
     } else {
-        var property = new DefinitionProperty();
+        var property = new SchemaProperty();
         property.summary = schema['x-ms-summary'] ? schema['x-ms-summary'] : schemaKey;
         property.type = schema['format'] ? schema['format'] : schema['type'];
         property.description = schema['description'];

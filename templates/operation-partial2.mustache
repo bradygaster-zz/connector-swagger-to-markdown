@@ -13,3 +13,22 @@
 {{else}}
 This operation does not require any input.
 {{/if}}
+
+#### Returns
+{{#if response.reference}}
+| Summary | Type | Description |
+|---------|------|-------------|
+{{#with response.reference}}
+| {{summary}} | {{type}} | {{description}} |
+{{/with}}
+{{else}}
+{{#if properties.length}}
+| Summary | Type | Description | Path |
+|---------|------|-------------|------|
+{{#each properties}}
+| {{summary}} | {{type}} | {{description}} | {{path}} |
+{{/each}}
+{{else}}
+This operation does not return anything.
+{{/if}}
+{{/if}}
