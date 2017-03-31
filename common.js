@@ -145,7 +145,7 @@ var flattenParameterSchema = function(swagger, schema, schemaKey, isRequired, do
             docParameter.summary = schema['x-ms-summary'] ? schema['x-ms-summary'] : schemaKey;
             docParameter.type = schema.format ? schema.format : schema.type,
             docParameter.description = schema.description,
-            docParameter.required = isRequired;
+            docParameter.required = isRequired ? true : false;
             docParameters.push(docParameter);
         }
     }
