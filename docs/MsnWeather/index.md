@@ -198,3 +198,5 @@ ___
 
 Connections per account: **1**
 
+## Using this integration
+- [Flow templates](https://ms.flow.microsoft.com/en-us/services/msnweather/msn-weather/)
