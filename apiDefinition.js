@@ -3,22 +3,17 @@ var path = require('path');
 var handlebars = require('handlebars');
 var glob = require('glob').Glob;
 var DOMParser = require('xmldom').DOMParser;
+var common = require('./common.js');
 var utils = require('./utils.js');
 var templateFile = fs.readFileSync('./templates/connector-doc-page.mustache').toString();
 var operationTemplate = fs.readFileSync('./templates/operation-partial.mustache').toString();
-var schemaTemplate = fs.readFileSync('./templates/schema-partial.mustache').toString();
-var schemaTypeTemplate = fs.readFileSync('./templates/schema-type-partial.mustache').toString();
 var connectionParametersTemplate = fs.readFileSync('./templates/connection-parameters.mustache').toString();
 var throttlingTemplate = fs.readFileSync('./templates/throttling-partial.mustache').toString();
 
 utils.registerHelpers(handlebars);
 handlebars.registerPartial('operation', operationTemplate);
-handlebars.registerPartial('schema', schemaTemplate);
 handlebars.registerPartial('connectionParameters', connectionParametersTemplate);
 handlebars.registerPartial('throttling', throttlingTemplate);
-
-// Since this partial is used in a table, remove the new lines
-handlebars.registerPartial('schema-type', schemaTypeTemplate.replace(/(\r\n|\n|\r)/gm,""));
 
 fs.writeFileSync('docs/TOC.md', '');
 
@@ -37,21 +32,22 @@ function generateDocumentation(swaggerFilename) {
     var connectorShortname = swaggerPath.dir.split('/')[1];
 
     // Read connector assets
-    var swagger = JSON.parse(fs.readFileSync(swaggerFilename).toString());
     var connectionParameters = getConnectionParameters(swaggerFilename);
     var policy = getPolicy(swaggerFilename);
     var customSection = getCustomSection(swaggerFilename);
+    var swagger = JSON.parse(fs.readFileSync(swaggerFilename).toString());
+    var docModel = common.generateDoc(swagger);
     var connector = {
-        'swagger': swagger,
         'connectionParameters': connectionParameters,
         'policy': policy,
-        'customSection': customSection
+        'customSection': customSection,
+        'doc': docModel
     };
     preprocessConnector(connector);
     var preprocessDirectory = swaggerFilename.replace('apiDefinition.swagger.json', '');
-    var processedSwagger = JSON.stringify(connector.swagger, null, '\t');
+    var docModelStr = JSON.stringify(connector.doc, null, '\t');
     // Only for debugging
-    //dropFile(preprocessDirectory, 'processed.apiDefinition.swagger.json', processedSwagger);
+    //dropFile(preprocessDirectory, 'docModel.json', docModelStr);
 
     var template = handlebars.compile(templateFile);
     var result = template(connector);
@@ -63,8 +59,6 @@ function generateDocumentation(swaggerFilename) {
 }
 
 function preprocessConnector(connector) {
-    utils.preprocessSwagger(connector.swagger);
-
     // Remove parameters of type 'oauthSetting'
     if (connector.connectionParameters) {
         Object.keys(connector.connectionParameters).forEach(function(connParamKey) {

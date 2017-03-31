@@ -9,8 +9,6 @@ MSN Weather gets you the very latest weather forecast, including temperature, hu
 
 # Actions
 
-
-
 ## Get current weather
 Get the current weather for a location.
 
@@ -19,15 +17,15 @@ Get the current weather for a location.
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Location |  string  |  | true |
-| Units |  string  |  | true |
+| Location | string |  | true |
+| Units | string |  | true |
 
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
 | [CurrentWeather](#currentweather) | object |  |
-___
 
+___
 
 ## Get forecast for today
 Get the forecast for the current day in the specified location.
@@ -37,15 +35,15 @@ Get the forecast for the current day in the specified location.
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Location |  string  |  | true |
-| Units |  string  |  | true |
+| Location | string |  | true |
+| Units | string |  | true |
 
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
 | [WeatherForecast](#weatherforecast) | object |  |
-___
 
+___
 
 ## Get the forecast for tomorrow
 Get the forecast for tomorrow in the specified location.
@@ -55,17 +53,17 @@ Get the forecast for tomorrow in the specified location.
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Location |  string  |  | true |
-| Units |  string  |  | true |
+| Location | string |  | true |
+| Units | string |  | true |
 
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
 | [WeatherForecast](#weatherforecast) | object |  |
+
 ___
 
 # Triggers
-
 
 ## When the current weather changes
 Triggers a new flow when the specified weather measure changes for a location.
@@ -75,16 +73,17 @@ Triggers a new flow when the specified weather measure changes for a location.
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Location |  string  |  | true |
-| Measure |  string  |  | true |
-| When the measure... |  string  |  | true |
-| Target |  float  |  | true |
-| Units |  string  |  | true |
+| Location | string |  | true |
+| Measure | string |  | true |
+| When the measure... | string |  | true |
+| Target | float |  | true |
+| Units | string |  | true |
 
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
 | [CurrentWeather](#currentweather) | object |  |
+
 ___
 
 ## When the current conditions change
@@ -95,14 +94,16 @@ Triggers a new flow when the conditions change for a location.
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Location |  string  |  | true |
-| Units |  string  |  | true |
+| Location | string |  | true |
+| Units | string |  | true |
 
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
 | [CurrentWeather](#currentweather) | object |  |
+
 ___
+
 
 ## Objects
 
@@ -126,8 +127,14 @@ ___
 | Wind Speed | float | The wind speed. | responses.weather.current.windSpd |
 | Wind Gust Speed | float | The wind gust speed. | responses.weather.current.windGust |
 | Last Updated | date-time | The datetime at which provider created the current condition. | responses.weather.current.created |
-| [Source](#source) | object |  | responses.source |
-| [Units](#units) | object |  | units |
+| Latitude | float | The latitude of the location. | responses.source.coordinates.lat |
+| Longitude | float | The longitude of the location. | responses.source.coordinates.lon |
+| Click-through Link | string | The URL to the full weather details. | responses.source.clickThrough |
+| Location | string | The location for which provider created the current condition. | responses.source.location |
+| Pressure Units | string | Units used for pressure measurements. | units.pressure |
+| Temperature Units | string | Units used for temperature measurements. | units.temperature |
+| Speed Units | string | Units used for speed measurements. | units.speed |
+| Distance Units | string | Units used for distance measurements. | units.distance |
 
 ### WeatherForecast
 
@@ -166,28 +173,22 @@ ___
 | Moonset Time | date-time | Time of moonset on the day of this forecast. | responses.almanac.moonset |
 | Moon Phase | string | The phase of the moon the day of this forecast. | responses.almanac.moonPhase |
 | Moon Phase Code | string | The code representing the phase of the moon. | responses.almanac.moonPhaseCode |
-| [Source](#source) | object |  | responses.source |
-| [Units](#units) | object |  | units |
+| Latitude | float | The latitude of the location. | responses.source.coordinates.lat |
+| Longitude | float | The longitude of the location. | responses.source.coordinates.lon |
+| Click-through Link | string | The URL back to the full weather details. | responses.source.clickThrough |
+| Location | string | The location for which provider created the forecast. | responses.source.location |
+| Pressure Units | string | Units used for pressure measurements. | units.pressure |
+| Temperature Units | string | Units used for temperature measurements. | units.temperature |
+| Speed Units | string | Units used for speed measurements. | units.speed |
+| Distance Units | string | Units used for distance measurements. | units.distance |
 
-### Source
-
-
-| Summary | Type | Description | Path |
-|---------|------|-------------|------|
-| Latitude | float | The latitude of the location. | coordinates.lat |
-| Longitude | float | The longitude of the location. | coordinates.lon |
-| Click-through Link | string | The URL to the full weather details. | clickThrough |
-| Location | string | The location for which provider created the forecast. | location |
-
-### Units
+### MeasureUnits
 
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-| Pressure Units | string | Units used for pressure measurements. | pressure |
-| Temperature Units | string | Units used for temperature measurements. | temperature |
-| Speed Units | string | Units used for speed measurements. | speed |
-| Distance Units | string | Units used for distance measurements. | distance |
+| displayText | string |  | displayText |
+| units | string |  | units |
 
 ## Limits
 | Name | Calls | Renewal Period |

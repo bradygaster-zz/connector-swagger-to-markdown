@@ -1,14 +1,12 @@
 ![Icon](icon.png)
 
-{{#with swagger.info}}
-# {{title}}{{#if_cond x-ms-api-annotation.status '===' 'Preview'}} ({{x-ms-api-annotation.status}}){{/if_cond}}
+# {{doc.title}}{{#if_cond doc.status '===' 'Preview'}} ({{doc.status}}){{/if_cond}}
 
-{{#if version}}
-v{{version}}
+{{#if doc.version}}
+v{{doc.version}}
 
 {{/if}}
-{{description}}
-{{/with}}
+{{doc.description}}
 
 {{#if_cond connectionParameters '||' customSection}}
 ## Creating a connection
@@ -23,48 +21,48 @@ v{{version}}
 
 {{/if}}
 
-{{#with swagger}}
+{{#if doc.actions.length}}
 # Actions
 
-{{#each paths}}
-{{#each this}}
-{{#if this.x-ms-trigger}}{{else}}
+{{#each doc.actions}}
 {{> operation this}}
-___
-{{/if}}
-{{/each}}
-{{/each}}
 
+___
+
+{{/each}}
+{{/if}}
+{{#if doc.triggers.length}}
 # Triggers
 
-{{#each paths}}
-{{#each this}}
-{{#if this.x-ms-trigger}}
+{{#each doc.triggers}}
 {{> operation this}}
-___
-{{/if}}
-{{/each}}
-{{/each}}
 
+___
+
+{{/each}}
+{{/if}}
+
+{{#if doc.definitions}}
 ## Objects
-{{#each definitions}}
-{{#if_cond this.x-ms-visibility '===' 'internal'}}
-{{else}}
+{{#each doc.definitions}}
 
 ### {{@key}}
 {{this.description}}
 
-{{> schema this}}
-{{/if_cond}}
+| Summary | Type | Description | Path |
+|---------|------|-------------|------|
+{{#each properties}}
+| {{summary}} | {{type}} | {{description}} | {{path}} |
 {{/each}}
-{{/with}}
+{{/each}}
+{{/if}}
 
 ## Limits
 {{> throttling policy}}
 
-{{#if swagger.x-ms-docs.length}}
+{{#if doc.customLinks}}
 ## Using this integration
-{{#each swagger.x-ms-docs}}
+{{#each doc.customLinks}}
 - [{{description}}]({{url}})
 {{/each}}
 {{/if}}
