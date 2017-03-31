@@ -60,9 +60,9 @@ ___
 ## Limits
 {{> throttling policy}}
 
-{{#if swagger.x-ms-docs.length}}
+{{#if doc.customLinks}}
 ## Using this integration
-{{#each swagger.x-ms-docs}}
+{{#each doc.customLinks}}
 - [{{description}}]({{url}})
 {{/each}}
 {{/if}}

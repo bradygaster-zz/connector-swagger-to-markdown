@@ -60,6 +60,7 @@ class ConnectorDoc {
         this.description = '';
         this.actions = [];
         this.definitions = {};
+        this.customLinks = [];
     }
 };
 
@@ -73,6 +74,7 @@ var generateDoc = function(swagger) {
     doc.actions = generateActions(swagger);
     doc.triggers = generateTriggers(swagger);
     doc.definitions = generateDefinitions(swagger);
+    doc.customLinks = swagger['x-ms-docs'];
 
     return doc;
 };
