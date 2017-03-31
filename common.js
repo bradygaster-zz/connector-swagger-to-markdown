@@ -196,7 +196,7 @@ var flattenBodyParameter = function(swagger, parameter) {
         flattenParameterSchema(swagger, schema, '', false, docBodyParams);
     } else {
         var docParameter = new Parameter();
-        docParameter = parameter['x-ms-summary'] ? parameter['x-ms-summary'] : parameter.name;
+        docParameter.summary = parameter['x-ms-summary'] ? parameter['x-ms-summary'] : parameter.name;
         docParameter.type = schema.format ? schema.format : schema.type,
         docParameter.description = parameter.description,
         docParameter.required = parameter.required;
@@ -259,6 +259,17 @@ var generateDefinitions = function(swagger) {
 
 var flattenDefinitionSchema = function(swagger, schema, schemaKey, jsonPath, docProperties) {
     if (schema['x-ms-visibility'] === 'internal') {
+        return;
+    }
+
+    if (schema.$ref) {
+        var resolvedSchema = utils.resolveReference(swagger, schema.$ref);
+        var property = new SchemaProperty();
+        property.summary = utils.refToLink(schema.$ref);
+        property.type = resolvedSchema.type;
+        property.description = resolvedSchema.description;
+        property.path = jsonPath;
+        docProperties.push(property);
         return;
     }
 

@@ -84,7 +84,8 @@ function addToTableOfContents(connectorName, connectorShortname) {
 function getConnectionParameters(swaggerFilename) {
     try {
         var connParamsFile = swaggerFilename.replace('apiDefinition.swagger.json', 'connectionParameters.json');
-        var connectionParameters = JSON.parse(fs.readFileSync(connParamsFile).toString());
+        var filecontents = fs.readFileSync(connParamsFile).toString();
+        var connectionParameters = JSON.parse(filecontents);
         return connectionParameters;
     } catch (ex) {
         // It's expected that some connectors don't have connection parameters

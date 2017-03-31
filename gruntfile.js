@@ -1,6 +1,10 @@
 var docReadyConnectors = [
+    'AzureQueues',
     'GoogleCalendar',
+    'MicrosoftTranslator',
     'MsnWeather',
+    'OneNote',
+    'PowerBI',
     'Todoist'
 ];
 var whitelistExpression = docReadyConnectors.length > 1 ? '{' + docReadyConnectors.join(',') + '}' : docReadyConnectors[0];
@@ -29,6 +33,7 @@ module.exports = (grunt) => {
         copy: {
             connectors: {
                 files: [
+                    // AAPT-Connectors (Codeless)
                     {
                         expand: true,
                         cwd: '../AAPT-connectors/src/codeless/',
@@ -47,6 +52,32 @@ module.exports = (grunt) => {
                     {
                         expand: true,
                         cwd: '../AAPT-connectors/src/codeless/',
+                        src: [
+                            whitelistExpression + '*/icon.png',
+                            whitelistExpression + '*/media/*.png'
+                        ],
+                        filter: 'isFile',
+                        dest: 'docs'
+                    },
+                    // GNCPALA (codeless)
+                    {
+                        expand: true,
+                        cwd: '../Connectors/src/Connectors/',
+                        src: [
+                            whitelistExpression + '*/apiDefinition.swagger.json',
+                            whitelistExpression + '*/connectionParameters.json',
+                            whitelistExpression + '*/resourceTemplate.json',
+                            whitelistExpression + '*/policy.xml',
+                            whitelistExpression + '*/icon.png',
+                            whitelistExpression + '*/intro.md',
+                            whitelistExpression + '*/media/*.png'
+                        ],
+                        filter: 'isFile',
+                        dest: 'Connectors'
+                    },
+                    {
+                        expand: true,
+                        cwd: '../Connectors/src/Connectors/',
                         src: [
                             whitelistExpression + '*/icon.png',
                             whitelistExpression + '*/media/*.png'
