@@ -51,7 +51,7 @@ function generateDocumentation(swaggerFilename) {
     var preprocessDirectory = swaggerFilename.replace('apiDefinition.swagger.json', '');
     var processedSwagger = JSON.stringify(connector.swagger, null, '\t');
     // Only for debugging
-    dropFile(preprocessDirectory, 'processed.apiDefinition.swagger.json', processedSwagger);
+    //dropFile(preprocessDirectory, 'processed.apiDefinition.swagger.json', processedSwagger);
 
     var template = handlebars.compile(templateFile);
     var result = template(connector);
