@@ -67,6 +67,7 @@ var generateDoc = function(swagger) {
     doc.title = swagger.info.title;
     doc.status = swagger.info['x-ms-api-annotation'].status;
     doc.actions = generateActions(swagger);
+    doc.triggers = generateTriggers(swagger);
     doc.definitions = generateDefinitions(swagger);
 
     return doc;
@@ -87,6 +88,23 @@ var generateActions = function(swagger) {
     });
 
     return actions;
+};
+
+var generateTriggers = function(swagger) {
+    var triggers = [];
+
+    Object.keys(swagger.paths).forEach(function(pathKey) {
+        var path = swagger.paths[pathKey];
+        Object.keys(path).forEach(function(operationKey) {
+            var operation = path[operationKey];
+            if (operation['x-ms-trigger'] && operation['x-ms-visibility'] !== 'internal') {
+                var docOperation = generateOperation(swagger, operation);
+                triggers.push(docOperation);
+            }
+        });
+    });
+
+    return triggers;
 };
 
 var generateOperation = function(swagger, operation) {

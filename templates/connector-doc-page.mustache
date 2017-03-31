@@ -33,18 +33,16 @@ ___
 
 {{/each}}
 {{/if}}
-{{#with swagger}}
+{{#if doc.triggers.length}}
 # Triggers
 
-{{#each paths}}
-{{#each this}}
-{{#if this.x-ms-trigger}}
-{{> operation this}}
+{{#each doc.triggers}}
+{{> operation2 this}}
+
 ___
+
+{{/each}}
 {{/if}}
-{{/each}}
-{{/each}}
-{{/with}}
 
 {{#if doc.definitions}}
 ## Objects

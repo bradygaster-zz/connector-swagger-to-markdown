@@ -65,7 +65,6 @@ ___
 
 # Triggers
 
-
 ## When the current weather changes
 Triggers a new flow when the specified weather measure changes for a location.
 
@@ -74,16 +73,17 @@ Triggers a new flow when the specified weather measure changes for a location.
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Location |  string  |  | true |
-| Measure |  string  |  | true |
-| When the measure... |  string  |  | true |
-| Target |  float  |  | true |
-| Units |  string  |  | true |
+| Location | string |  | true |
+| Measure | string |  | true |
+| When the measure... | string |  | true |
+| Target | float |  | true |
+| Units | string |  | true |
 
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
 | [CurrentWeather](#currentweather) | object |  |
+
 ___
 
 ## When the current conditions change
@@ -94,14 +94,16 @@ Triggers a new flow when the conditions change for a location.
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Location |  string  |  | true |
-| Units |  string  |  | true |
+| Location | string |  | true |
+| Units | string |  | true |
 
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
 | [CurrentWeather](#currentweather) | object |  |
+
 ___
+
 
 ## Objects
 

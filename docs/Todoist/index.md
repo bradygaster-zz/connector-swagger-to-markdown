@@ -215,7 +215,6 @@ ___
 
 # Triggers
 
-
 ## When a task is completed
 Triggers a new flow when a task is completed
 
@@ -224,12 +223,13 @@ Triggers a new flow when a task is completed
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Project Id |  string  | Project Id | true |
+| Project Id | string | Project Id | true |
 
 #### Returns
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-| Items | Array of  [Item](#item)  | A collection of items |  |
+| Items | Array of [Item](#item) | A collection of items | items |
+
 ___
 
 ## When a task is created
@@ -240,13 +240,15 @@ Trigers a new flow when a task is created
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Project Id |  string  | Project Id | true |
+| Project Id | string | Project Id | true |
 
 #### Returns
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-| Items | Array of  [Item](#item)  | A collection of items |  |
+| Items | Array of [Item](#item) | A collection of items | items |
+
 ___
+
 
 ## Objects
 

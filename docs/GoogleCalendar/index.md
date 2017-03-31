@@ -137,7 +137,6 @@ ___
 
 # Triggers
 
-
 ## When an event is added to a calendar
 Triggers a flow when a new event is added to a calendar
 
@@ -146,12 +145,13 @@ Triggers a flow when a new event is added to a calendar
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Calendar ID |  string  | Unique ID of the calendar to fetch events from | true |
+| Calendar ID | string | Unique ID of the calendar to fetch events from | true |
 
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
 | [CalendarEventList](#calendareventlist) | object | A Google CalendarEventList Object |
+
 ___
 
 ## When an event is updated in a calendar
@@ -162,12 +162,13 @@ Triggers a flow when an event is updated in a calendar
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Calendar ID |  string  | Unique ID of the calendar to fetch events from | true |
+| Calendar ID | string | Unique ID of the calendar to fetch events from | true |
 
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
 | [CalendarEventList](#calendareventlist) | object | A Google CalendarEventList Object |
+
 ___
 
 ## When an event is deleted from a calendar
@@ -178,12 +179,13 @@ Triggers a flow when a new event is deleted from a calendar
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Calendar ID |  string  | Unique ID of the calendar to fetch events from | true |
+| Calendar ID | string | Unique ID of the calendar to fetch events from | true |
 
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
 | [CalendarEventList](#calendareventlist) | object | A Google CalendarEventList Object |
+
 ___
 
 ## When an event starts
@@ -194,13 +196,15 @@ Triggers a flow when an event starts
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Calendar ID |  string  | Unique ID of the calendar to fetch events from | true |
+| Calendar ID | string | Unique ID of the calendar to fetch events from | true |
 
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
 | [CalendarEventList](#calendareventlist) | object | A Google CalendarEventList Object |
+
 ___
+
 
 ## Objects
 
