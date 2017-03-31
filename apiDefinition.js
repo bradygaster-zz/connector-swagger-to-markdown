@@ -48,19 +48,22 @@ function generateDocumentation(swaggerFilename) {
         'customSection': customSection
     };
     preprocessConnector(connector);
+    var preprocessDirectory = swaggerFilename.replace('apiDefinition.swagger.json', '');
+    var processedSwagger = JSON.stringify(connector.swagger, null, '\t');
+    // Only for debugging
+    //dropFile(preprocessDirectory, 'processed.apiDefinition.swagger.json', processedSwagger);
 
     var template = handlebars.compile(templateFile);
     var result = template(connector);
     var directory = swaggerFilename.replace('Connectors', 'docs').replace('apiDefinition.swagger.json', '');
     var markdownFilename = 'index.md';
-    dropMarkdown(directory, markdownFilename, result);
+    dropFile(directory, markdownFilename, result);
     console.log(directory + markdownFilename);
     addToTableOfContents(swagger.info.title, connectorShortname);
 }
 
 function preprocessConnector(connector) {
-    utils.resolveParameterReferences(connector.swagger);
-    utils.resolveResponseReferences(connector.swagger);
+    utils.preprocessSwagger(connector.swagger);
 
     // Remove parameters of type 'oauthSetting'
     if (connector.connectionParameters) {
@@ -143,11 +146,11 @@ function getCustomSection(swaggerFilename) {
     }
 }
 
-function dropMarkdown(directory, filename, markdown) {
+function dropFile(directory, filename, content) {
     try {
         fs.mkdirSync(directory);
     } catch (ex) {
         if (ex.code !== 'EEXIST') throw ex;
     }
-    fs.writeFileSync(directory + filename, markdown);
+    fs.writeFileSync(directory + filename, content);
 }

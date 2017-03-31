@@ -19,18 +19,20 @@ var resolveReference = function(document, $ref) {
     }
 };
 
-var flattenSchema = function(swagger, schema, isRequired) {
+var flattenParameterSchema = function(swagger, schema, isRequired) {
     if (schema.$ref) {
         schema = resolveReference(swagger, schema.$ref);
     }
     if (schema.type === 'array') {
-        return flattenSchema(schema.items);
+        return flattenParameterSchema(swagger, schema.items);
     } else if (schema.type === 'object') {
         var flattenedProperties = [];
         Object.keys(schema.properties).forEach(function(propKey) {
             var property = schema.properties[propKey];
             var isPropRequired = schema.required && schema.required.indexOf(propKey) > -1;
-            flattenedProperties = flattenedProperties.concat(flattenSchema(swagger, property, isPropRequired));
+            if (property['x-ms-visibility'] !== 'internal') {
+                flattenedProperties = flattenedProperties.concat(flattenParameterSchema(swagger, property, isPropRequired));
+            }
         });
         return flattenedProperties;
     } else {
@@ -46,7 +48,7 @@ var flattenBodyParameter = function(swagger, parameter) {
     }
     var params = [];
     if (schema.type === 'array' || schema.type === 'object') {
-        params = flattenSchema(swagger, schema);
+        params = flattenParameterSchema(swagger, schema);
     } else {
         var param = {
             'x-ms-summary': parameter['x-ms-summary'],
@@ -57,6 +59,18 @@ var flattenBodyParameter = function(swagger, parameter) {
         params.concat(param);
     }
     return params;
+};
+
+var preprocessOperations = function(swagger) {
+    Object.keys(swagger.paths).forEach(function(pathKey) {
+        var path = swagger.paths[pathKey];
+        Object.keys(path).forEach(function(operationKey) {
+            var operation = path[operationKey];
+            if (operation['x-ms-visibility'] === 'internal') {
+                delete path[operationKey];
+            }
+        });
+    });
 };
 
 var resolveParameterReferences = function(swagger) {
@@ -72,11 +86,14 @@ var resolveParameterReferences = function(swagger) {
                     if (parameters[i].$ref) {
                         newParam = resolveReference(swagger, parameters[i].$ref);
                     }
-                    if (newParam.in === 'body') {
-                        var bodyParameters = flattenBodyParameter(swagger, parameters[i]);
-                        newParameters = newParameters.concat(bodyParameters);
-                    } else {
-                        newParameters.push(newParam);
+
+                    if (newParam['x-ms-visibility'] !== 'internal') {
+                        if (newParam.in === 'body') {
+                            var bodyParameters = flattenBodyParameter(swagger, parameters[i]);
+                            newParameters = newParameters.concat(bodyParameters);
+                        } else {
+                            newParameters.push(newParam);
+                        }
                     }
                 }
             }
@@ -106,6 +123,68 @@ var resolveResponseReferences = function(swagger) {
                 }
             });
         });
+    });
+};
+
+var flattenDefinitionSchema = function(swagger, schema, jsonPath, flattenedSchema) {
+    if (schema.$ref) {
+        var resolvedSchema = resolveReference(swagger, schema.$ref);
+        var newSchema = {
+            '$ref': schema.$ref,
+            'x-ms-summary': resolvedSchema['x-ms-summary'],
+            'type': resolvedSchema['type'],
+            'description': resolvedSchema['description'],
+            'x-ms-docs-path': jsonPath
+        };
+        flattenedSchema[jsonPath] = newSchema;
+        return;
+    }
+
+    if (schema.type === 'array' && !schema.items.$ref) {
+        var flattenedProperties = {};
+        flattenedSchema[jsonPath] = {
+            'x-ms-summary': schema['x-ms-summary'],
+            'type': 'array ',
+            'description': schema['description'],
+            'x-ms-docs-path': jsonPath
+        };
+        flattenDefinitionSchema(swagger, schema.items, jsonPath, flattenedSchema);
+    } else if (schema.type === 'object') {
+        var flattenedProperties = {};
+        Object.keys(schema.properties).forEach(function(propKey) {
+            var property = schema.properties[propKey];
+            var propertyPath = jsonPath && jsonPath !== '' ? jsonPath + '.' + propKey : propKey;
+            flattenDefinitionSchema(swagger, property, propertyPath, flattenedSchema);
+        });
+    } else {
+        if (schema['x-ms-visibility'] !== 'internal') {
+            if (jsonPath && jsonPath !== '') {
+                schema['x-ms-docs-path'] = jsonPath;
+            }
+            flattenedSchema[jsonPath] = schema;
+        }
+    }
+};
+
+var preprocessDefinitions = function(swagger) {
+    Object.keys(swagger.definitions).forEach(function(definitionKey) {
+        var definition = swagger.definitions[definitionKey];
+        if (definition['x-ms-visibility'] === 'internal') {
+            delete definiton;
+            return;
+        }
+
+        if (definition.type === 'object') {
+            var newSchema = {};
+            flattenDefinitionSchema(swagger, definition, '', newSchema);
+            definition.properties = newSchema;
+        } else if (definition.type === 'array') {
+            var newItemsSchema = {};
+            flattenDefinitionSchema(swagger, definition.items, '', newItemsSchema);
+            definition.type = 'object';
+            definition.properties = newItemsSchema;
+            delete definition.items;
+        }
     });
 };
 
@@ -144,20 +223,24 @@ var ifEmptyHelper = function(obj, opts) {
 };
 
 var refToLinkHelper = function(str) {
+    if (!str) {
+        return str;
+    }
+
     var headerText = str.replace('#/definitions/', '');
     var headerLink = headerText.replace(' ', '-').toLowerCase();
     return '[' + headerText + ']' + '(#' + headerLink + ')';
 };
 
 module.exports = {
-    resolveParameterReferences: function(swagger) {
+    preprocessSwagger: function(swagger) {
+        preprocessOperations(swagger);
         resolveParameterReferences(swagger);
+        resolveResponseReferences(swagger);
+        preprocessDefinitions(swagger);
     },
     firstOrNull: function(array, predicate) {
         return firstOrNull(array, predicate);
-    },
-    resolveResponseReferences: function(swagger) {
-        resolveResponseReferences(swagger);
     },
     registerHelpers: function(handlebars) {
         handlebars.registerHelper('refToLink', refToLinkHelper);
