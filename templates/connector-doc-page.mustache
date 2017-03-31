@@ -2,13 +2,11 @@
 
 # {{doc.title}}{{#if_cond doc.status '===' 'Preview'}} ({{doc.status}}){{/if_cond}}
 
-{{#with swagger.info}}
-{{#if version}}
-v{{version}}
+{{#if doc.version}}
+v{{doc.version}}
 
 {{/if}}
-{{description}}
-{{/with}}
+{{doc.description}}
 
 {{#if_cond connectionParameters '||' customSection}}
 ## Creating a connection

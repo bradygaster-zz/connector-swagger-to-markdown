@@ -56,6 +56,8 @@ class ConnectorDoc {
     constructor() {
         this.title = '';
         this.status = '';
+        this.version = '';
+        this.description = '';
         this.actions = [];
         this.definitions = {};
     }
@@ -66,6 +68,8 @@ var generateDoc = function(swagger) {
 
     doc.title = swagger.info.title;
     doc.status = swagger.info['x-ms-api-annotation'].status;
+    doc.version = swagger.info.version;
+    doc.description = swagger.info.description;
     doc.actions = generateActions(swagger);
     doc.triggers = generateTriggers(swagger);
     doc.definitions = generateDefinitions(swagger);
