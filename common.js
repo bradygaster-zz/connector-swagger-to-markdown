@@ -91,8 +91,8 @@ var generateOperation = function(swagger, operation) {
 
             if (parameter['x-ms-visibility'] !== 'internal') {
                 if (parameter.in === 'body') {
-                    //var bodyParameters = flattenBodyParameter(swagger, parameter);
-                    //docParameters = docParameters.concat(bodyParameters);
+                    var bodyParameters = flattenBodyParameter(swagger, parameter);
+                    docParameters = docParameters.concat(bodyParameters);
                 } else {
                     docParameter.summary = parameter['x-ms-summary'] ? parameter['x-ms-summary'] : parameter.name;
                     docParameter.type = parameter.format ? parameter.format : parameter.type;
@@ -108,47 +108,48 @@ var generateOperation = function(swagger, operation) {
     return docOperation;
 };
 
-// var flattenBodyParameter = function(swagger, parameter) {
-//     var schema = parameter.schema;
-//     if (schema.$ref) {
-//         schema = utils.resolveReference(swagger, schema.$ref);
-//     }
-//     var params = [];
-//     if (schema.type === 'array' || schema.type === 'object') {
-//         params = flattenParameterSchema(swagger, schema);
-//     } else {
-//         var param = {
-//             'x-ms-summary': parameter['x-ms-summary'],
-//             'type': schema['type'],
-//             'description': parameter['description'],
-//             'required': parameter['required'],
-//         };
-//         params.concat(param);
-//     }
-//     return params;
-// };
+var flattenBodyParameter = function(swagger, parameter) {
+    var schema = parameter.schema;
+    if (schema.$ref) {
+        schema = utils.resolveReference(swagger, schema.$ref);
+    }
+    var docBodyParams = [];
+    if (schema.type === 'array' || schema.type === 'object') {
+        flattenParameterSchema(swagger, schema, '', false, docBodyParams);
+    } else {
+        var docParameter = new Parameter();
+        docParameter = parameter['x-ms-summary'] ? parameter['x-ms-summary'] : parameter.name;
+        docParameter.type = schema.format ? schema.format : schema.type,
+        docParameter.description = parameter.description,
+        docParameter.required = parameter.required;
+        docBodyParams.push(docParameter);
+    }
+    return docBodyParams;
+};
 
-// var flattenParameterSchema = function(swagger, schema, isRequired) {
-//     if (schema.$ref) {
-//         schema = resolveReference(swagger, schema.$ref);
-//     }
-//     if (schema.type === 'array') {
-//         return flattenParameterSchema(swagger, schema.items);
-//     } else if (schema.type === 'object') {
-//         var flattenedProperties = [];
-//         Object.keys(schema.properties).forEach(function(propKey) {
-//             var property = schema.properties[propKey];
-//             var isPropRequired = schema.required && schema.required.indexOf(propKey) > -1;
-//             if (property['x-ms-visibility'] !== 'internal') {
-//                 flattenedProperties = flattenedProperties.concat(flattenParameterSchema(swagger, property, isPropRequired));
-//             }
-//         });
-//         return flattenedProperties;
-//     } else {
-//         schema['required'] = isRequired ? true : false;
-//         return schema;
-//     }
-// };
+var flattenParameterSchema = function(swagger, schema, schemaKey, isRequired, docParameters) {
+    if (schema.$ref) {
+        schema = utils.resolveReference(swagger, schema.$ref);
+    }
+    if (schema.type === 'array') {
+        flattenParameterSchema(swagger, schema.items, '', false, docParameters);
+    } else if (schema.type === 'object') {
+        Object.keys(schema.properties).forEach(function(propKey) {
+            var property = schema.properties[propKey];
+            var isPropRequired = schema.required && schema.required.indexOf(propKey) > -1;
+            flattenParameterSchema(swagger, property, propKey, isPropRequired, docParameters);
+        });
+    } else {
+        if (schema['x-ms-visibility'] !== 'internal') {
+            var docParameter = new Parameter();
+            docParameter.summary = schema['x-ms-summary'] ? schema['x-ms-summary'] : schemaKey;
+            docParameter.type = schema.format ? schema.format : schema.type,
+            docParameter.description = schema.description,
+            docParameter.required = isRequired;
+            docParameters.push(docParameter);
+        }
+    }
+};
 
 var generateDefinitions = function(swagger) {
     var docDefinitions = new Object();
