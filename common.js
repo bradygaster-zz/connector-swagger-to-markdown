@@ -278,6 +278,13 @@ var flattenDefinitionSchema = function(swagger, schema, schemaKey, jsonPath, doc
             property.path = jsonPath;
             docProperties.push(property);
         } else {
+            var property = new SchemaProperty();
+            property.summary = schema['x-ms-summary'] ? schema['x-ms-summary'] : schemaKey;
+            property.type = 'array of ' + (schema.items.format ? schema.items.format : schema.items.type);
+            property.description = schema['description'];
+            property.path = jsonPath;
+            docProperties.push(property);
+            flattenDefinitionSchema(swagger, schema.items, '', jsonPath, docProperties);
             //throw 'Not Implemented';
         }
     } else {
