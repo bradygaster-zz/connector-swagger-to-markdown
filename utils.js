@@ -246,5 +246,11 @@ module.exports = {
         handlebars.registerHelper('refToLink', refToLinkHelper);
         handlebars.registerHelper('if_empty', ifEmptyHelper);
         handlebars.registerHelper('if_cond', logicalHelper);
+    },
+    resolveReference: function(document, ref) {
+        return resolveReference(document, ref);
+    },
+    refToLink: function(str) {
+        return refToLinkHelper(str);
     }
 };

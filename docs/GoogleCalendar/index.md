@@ -211,7 +211,7 @@ A Google CalendarList Object
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-| Items | Array of  [CalendarListEntry](#calendarlistentry)  | Calendars in the list | items |
+| Items | Array of [CalendarListEntry](#calendarlistentry) | Calendars in the list | items |
 
 ### CalendarListEntry
 A Google CalendarListEntry Object
@@ -229,7 +229,7 @@ A Google CalendarEventList Object
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-| Items | Array of  [ResponseEvent](#responseevent)  | Events in the calendar | items |
+| Items | Array of [ResponseEvent](#responseevent) | Events in the calendar | items |
 
 ### ResponseEvent
 An event downloaded from Google Calendar

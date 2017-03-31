@@ -45,19 +45,22 @@ ___
 {{/if}}
 {{/each}}
 {{/each}}
+{{/with}}
 
+{{#if doc.definitions}}
 ## Objects
-{{#each definitions}}
-{{#if_cond this.x-ms-visibility '===' 'internal'}}
-{{else}}
+{{#each doc.definitions}}
 
 ### {{@key}}
 {{this.description}}
 
-{{> schema this}}
-{{/if_cond}}
+| Summary | Type | Description | Path |
+|---------|------|-------------|------|
+{{#each properties}}
+| {{summary}} | {{type}} | {{description}} | {{path}} |
 {{/each}}
-{{/with}}
+{{/each}}
+{{/if}}
 
 ## Limits
 {{> throttling policy}}

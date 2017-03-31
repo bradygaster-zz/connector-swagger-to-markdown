@@ -186,8 +186,8 @@ ___
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-|  | string |  | displayText |
-|  | string |  | units |
+| displayText | string |  | displayText |
+| units | string |  | units |
 
 ## Limits
 | Name | Calls | Renewal Period |
