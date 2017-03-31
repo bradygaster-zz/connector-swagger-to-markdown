@@ -23,18 +23,17 @@ v{{version}}
 
 {{/if}}
 
-{{#with swagger}}
+{{#if doc.actions.length}}
 # Actions
 
-{{#each paths}}
-{{#each this}}
-{{#if this.x-ms-trigger}}{{else}}
-{{> operation this}}
+{{#each doc.actions}}
+{{> operation2 this}}
 ___
-{{/if}}
-{{/each}}
-{{/each}}
 
+{{/each}}
+{{/if}}
+
+{{#with swagger}}
 # Triggers
 
 {{#each paths}}

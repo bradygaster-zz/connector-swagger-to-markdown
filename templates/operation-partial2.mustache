@@ -1,0 +1,15 @@
+## {{summary}}
+{{description}}
+
+**Operation Id:** {{operationId}}
+
+#### Parameters
+{{#if parameters.length}}
+| Summary | Type | Description | Required |
+|---------|------|-------------|----------|
+{{#each parameters}}
+| {{summary}} | {{type}} | {{description}} | {{required}} |
+{{/each}}
+{{else}}
+This operation does not require any input.
+{{/if}}

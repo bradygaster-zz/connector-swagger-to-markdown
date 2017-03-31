@@ -7,6 +7,7 @@ var common = require('./common.js');
 var utils = require('./utils.js');
 var templateFile = fs.readFileSync('./templates/connector-doc-page.mustache').toString();
 var operationTemplate = fs.readFileSync('./templates/operation-partial.mustache').toString();
+var operationTemplate2 = fs.readFileSync('./templates/operation-partial2.mustache').toString();
 var schemaTemplate = fs.readFileSync('./templates/schema-partial.mustache').toString();
 var schemaTypeTemplate = fs.readFileSync('./templates/schema-type-partial.mustache').toString();
 var connectionParametersTemplate = fs.readFileSync('./templates/connection-parameters.mustache').toString();
@@ -14,6 +15,7 @@ var throttlingTemplate = fs.readFileSync('./templates/throttling-partial.mustach
 
 utils.registerHelpers(handlebars);
 handlebars.registerPartial('operation', operationTemplate);
+handlebars.registerPartial('operation2', operationTemplate2);
 handlebars.registerPartial('schema', schemaTemplate);
 handlebars.registerPartial('connectionParameters', connectionParametersTemplate);
 handlebars.registerPartial('throttling', throttlingTemplate);
@@ -52,9 +54,9 @@ function generateDocumentation(swaggerFilename) {
     };
     preprocessConnector(connector);
     var preprocessDirectory = swaggerFilename.replace('apiDefinition.swagger.json', '');
-    var processedSwagger = JSON.stringify(connector.swagger, null, '\t');
+    var docModelStr = JSON.stringify(connector.doc, null, '\t');
     // Only for debugging
-    //dropFile(preprocessDirectory, 'processed.apiDefinition.swagger.json', processedSwagger);
+    //dropFile(preprocessDirectory, 'docModel.json', docModelStr);
 
     var template = handlebars.compile(templateFile);
     var result = template(connector);
