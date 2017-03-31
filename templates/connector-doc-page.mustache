@@ -1,8 +1,8 @@
 ![Icon](icon.png)
 
-{{#with swagger.info}}
-# {{title}}{{#if_cond x-ms-api-annotation.status '===' 'Preview'}} ({{x-ms-api-annotation.status}}){{/if_cond}}
+# {{doc.title}}{{#if_cond doc.status '===' 'Preview'}} ({{doc.status}}){{/if_cond}}
 
+{{#with swagger.info}}
 {{#if version}}
 v{{version}}
 

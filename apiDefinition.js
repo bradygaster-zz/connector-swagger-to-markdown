@@ -3,6 +3,7 @@ var path = require('path');
 var handlebars = require('handlebars');
 var glob = require('glob').Glob;
 var DOMParser = require('xmldom').DOMParser;
+var common = require('./common.js');
 var utils = require('./utils.js');
 var templateFile = fs.readFileSync('./templates/connector-doc-page.mustache').toString();
 var operationTemplate = fs.readFileSync('./templates/operation-partial.mustache').toString();
@@ -41,11 +42,13 @@ function generateDocumentation(swaggerFilename) {
     var connectionParameters = getConnectionParameters(swaggerFilename);
     var policy = getPolicy(swaggerFilename);
     var customSection = getCustomSection(swaggerFilename);
+    var docModel = common.generateDoc(swagger);
     var connector = {
         'swagger': swagger,
         'connectionParameters': connectionParameters,
         'policy': policy,
-        'customSection': customSection
+        'customSection': customSection,
+        'doc': docModel
     };
     preprocessConnector(connector);
     var preprocessDirectory = swaggerFilename.replace('apiDefinition.swagger.json', '');
