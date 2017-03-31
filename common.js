@@ -23,6 +23,7 @@ class Response {
     constructor() {
         this.properties = [];
         this.reference = null;
+        this.isDynamic = false;
     }
 };
 
@@ -152,26 +153,31 @@ var generateOperation = function(swagger, operation) {
         var firstResponse = operation.responses[responseKeys[0]];
         var schema = firstResponse.schema;
         if (schema) {
-            var $ref = schema.$ref;
-            if ($ref) {
-                schema = utils.resolveReference(swagger, $ref);
-            }
-            if (schema.type === 'object' && Object.keys(schema.properties).length === 0) {
-                // This is usually used to mean an empty response
-            } else if ($ref) {
-                // $ref at the top level
+            if (isDynamicSchema(swagger, schema)) {
                 docResponse = new Response();
-                var reference = new ReferenceResponse();
-                reference.summary = utils.refToLink($ref);
-                reference.type = schema.type;
-                reference.description = schema.description;
-                docResponse.reference = reference;
+                docResponse.isDynamic = true;
             } else {
-                // Inline response
-                var docProperties = [];
-                flattenDefinitionSchema(swagger, schema, '', '', docProperties);
-                docResponse = new Response();
-                docResponse.properties = docProperties;
+                var $ref = schema.$ref;
+                if ($ref) {
+                    schema = utils.resolveReference(swagger, $ref);
+                }
+                if (schema.type === 'object' && Object.keys(schema.properties).length === 0) {
+                    // This is usually used to mean an empty response
+                } else if ($ref) {
+                    // $ref at the top level
+                    docResponse = new Response();
+                    var reference = new ReferenceResponse();
+                    reference.summary = utils.refToLink($ref);
+                    reference.type = schema.type;
+                    reference.description = schema.description;
+                    docResponse.reference = reference;
+                } else {
+                    // Inline response
+                    var docProperties = [];
+                    flattenDefinitionSchema(swagger, schema, '', '', docProperties);
+                    docResponse = new Response();
+                    docResponse.properties = docProperties;
+                }
             }
         }
     }
@@ -227,6 +233,10 @@ var generateDefinitions = function(swagger) {
     var docDefinitions = new Object();
     Object.keys(swagger.definitions).forEach(function(definitionKey) {
         var definition = swagger.definitions[definitionKey];
+        if (isDynamicSchema(swagger, definition)) {
+            return;
+        }
+
         var docDefinition = new Definition();
         var docProperties = [];
         
@@ -268,7 +278,7 @@ var flattenDefinitionSchema = function(swagger, schema, schemaKey, jsonPath, doc
             property.path = jsonPath;
             docProperties.push(property);
         } else {
-            throw 'Not Implemented';
+            //throw 'Not Implemented';
         }
     } else {
         var property = new SchemaProperty();
@@ -279,6 +289,29 @@ var flattenDefinitionSchema = function(swagger, schema, schemaKey, jsonPath, doc
         docProperties.push(property);
     }
 };
+
+var isDynamicSchema = function(swagger, schema) {
+    if (schema['x-ms-dynamic-schema']) {
+        return true;
+    }
+
+    if (schema.$ref) {
+        schema = utils.resolveReference(swagger, schema.$ref);
+        return isDynamicSchema(swagger, schema);
+    } else if (schema.type === 'object' && schema.properties) {
+        var propKeys = Object.keys(schema.properties);
+        for (var i = 0; i < propKeys.length; i++) {
+            var property = schema.properties[propKeys[i]];
+            if (isDynamicSchema(swagger, property)) {
+                return true;
+            }
+        }
+    } else if (schema.type === 'array' && schema.items) {
+        return isDynamicSchema(swagger, schema.items);
+    }
+
+    return false;
+}
 
 module.exports = {
     generateDoc: function(swagger) {

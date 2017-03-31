@@ -107,6 +107,7 @@ Delete an event from a calendar
 | Event ID | string | Unique ID of the event to update | true |
 
 #### Returns
+This operation does not return anything.
 
 ___
 
