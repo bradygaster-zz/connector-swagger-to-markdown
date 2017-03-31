@@ -126,34 +126,42 @@ var resolveResponseReferences = function(swagger) {
     });
 };
 
-var flattenDefinitionSchema = function(swagger, schema, jsonPath, newSchema) {
+var flattenDefinitionSchema = function(swagger, schema, jsonPath, flattenedSchema) {
     if (schema.$ref) {
-        newSchema['$ref'] = schema.$ref;
+        var resolvedSchema = resolveReference(swagger, schema.$ref);
+        var newSchema = {
+            '$ref': schema.$ref,
+            'x-ms-summary': resolvedSchema['x-ms-summary'],
+            'type': resolvedSchema['type'],
+            'description': resolvedSchema['description'],
+            'x-ms-docs-path': jsonPath
+        };
+        flattenedSchema[jsonPath] = newSchema;
         return;
     }
 
     if (schema.type === 'array' && !schema.items.$ref) {
         var flattenedProperties = {};
-        newSchema[jsonPath] = {
+        flattenedSchema[jsonPath] = {
             'x-ms-summary': schema['x-ms-summary'],
             'type': 'array ',
             'description': schema['description'],
             'x-ms-docs-path': jsonPath
         };
-        flattenDefinitionSchema(swagger, schema.items, jsonPath, newSchema);
+        flattenDefinitionSchema(swagger, schema.items, jsonPath, flattenedSchema);
     } else if (schema.type === 'object') {
         var flattenedProperties = {};
         Object.keys(schema.properties).forEach(function(propKey) {
             var property = schema.properties[propKey];
             var propertyPath = jsonPath && jsonPath !== '' ? jsonPath + '.' + propKey : propKey;
-            flattenDefinitionSchema(swagger, property, propertyPath, newSchema);
+            flattenDefinitionSchema(swagger, property, propertyPath, flattenedSchema);
         });
     } else {
         if (schema['x-ms-visibility'] !== 'internal') {
             if (jsonPath && jsonPath !== '') {
                 schema['x-ms-docs-path'] = jsonPath;
             }
-            newSchema[jsonPath] = schema;
+            flattenedSchema[jsonPath] = schema;
         }
     }
 };
@@ -161,6 +169,11 @@ var flattenDefinitionSchema = function(swagger, schema, jsonPath, newSchema) {
 var preprocessDefinitions = function(swagger) {
     Object.keys(swagger.definitions).forEach(function(definitionKey) {
         var definition = swagger.definitions[definitionKey];
+        if (definition['x-ms-visibility'] === 'internal') {
+            delete definiton;
+            return;
+        }
+
         if (definition.type === 'object') {
             var newSchema = {};
             flattenDefinitionSchema(swagger, definition, '', newSchema);

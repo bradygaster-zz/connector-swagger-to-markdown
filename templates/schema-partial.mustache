@@ -9,6 +9,9 @@
 | Summary | Type | Description |
 |---------|------|-------------|
 {{#each properties}}
+{{#if $ref}}
+| {{refToLink $ref}} | {{> schema-type this}} | {{description}} |
+{{else}}
 {{#if_cond x-ms-visibility '===' 'internal'}}
 {{else}}
 {{#if_cond type '===' 'object'}}
@@ -17,6 +20,7 @@
 | {{x-ms-summary}} | {{> schema-type this}} | {{description}} |
 {{/if_cond}}
 {{/if_cond}}
+{{/if}}
 {{/each}}
 {{/if_empty}}
 {{/if_cond}}

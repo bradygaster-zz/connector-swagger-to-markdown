@@ -126,14 +126,8 @@ ___
 | Wind Speed | float | The wind speed. |
 | Wind Gust Speed | float | The wind gust speed. |
 | Last Updated | date-time | The datetime at which provider created the current condition. |
-| Latitude | float | The latitude of the location. |
-| Longitude | float | The longitude of the location. |
-| Click-through Link | string | The URL to the full weather details. |
-| Location | string | The location for which provider created the current condition. |
-| Pressure Units | string | Units used for pressure measurements. |
-| Temperature Units | string | Units used for temperature measurements. |
-| Speed Units | string | Units used for speed measurements. |
-| Distance Units | string | Units used for distance measurements. |
+| [Source](#source) | object |  |
+| [Units](#units) | object |  |
 
 ### WeatherForecast
 
@@ -172,23 +166,28 @@ ___
 | Moonset Time | date-time | Time of moonset on the day of this forecast. |
 | Moon Phase | string | The phase of the moon the day of this forecast. |
 | Moon Phase Code | string | The code representing the phase of the moon. |
-| Latitude | float | The latitude of the location. |
-| Longitude | float | The longitude of the location. |
-| Click-through Link | string | The URL back to the full weather details. |
-| Location | string | The location for which provider created the forecast. |
-| Pressure Units | string | Units used for pressure measurements. |
-| Temperature Units | string | Units used for temperature measurements. |
-| Speed Units | string | Units used for speed measurements. |
-| Distance Units | string | Units used for distance measurements. |
+| [Source](#source) | object |  |
+| [Units](#units) | object |  |
 
-### MeasureUnits
+### Source
 
 
 | Summary | Type | Description |
 |---------|------|-------------|
-|  | array  |  |
-| Display Text | string |  |
-| Units | string |  |
+| Latitude | float | The latitude of the location. |
+| Longitude | float | The longitude of the location. |
+| Click-through Link | string | The URL to the full weather details. |
+| Location | string | The location for which provider created the forecast. |
+
+### Units
+
+
+| Summary | Type | Description |
+|---------|------|-------------|
+| Pressure Units | string | Units used for pressure measurements. |
+| Temperature Units | string | Units used for temperature measurements. |
+| Speed Units | string | Units used for speed measurements. |
+| Distance Units | string | Units used for distance measurements. |
 
 ## Limits
 | Name | Calls | Renewal Period |
