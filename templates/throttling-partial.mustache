@@ -2,3 +2,7 @@
 |------|-------|----------------|
 | API calls per connection | {{rate-limit-by-key.calls}} | {{rate-limit-by-key.renewal-period}} seconds |
 | Frequency of trigger polls | 1 | {{retry-after}} seconds |
+{{#if connections}}
+
+Connections per account: **{{connections}}**
+{{/if}}

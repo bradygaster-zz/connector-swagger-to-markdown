@@ -119,11 +119,34 @@ function getPolicy(swaggerFilename) {
         });
         if (retryAfterValueNode) retryAfterValue = retryAfterValueNode.firstChild.nodeValue;
     }
+    var connectionLimit = getConnectionLimit(swaggerFilename);
     var policyJson = {
         'rate-limit-by-key': rateLimit,
-        'retry-after': retryAfterValue
+        'retry-after': retryAfterValue,
+        'connections': connectionLimit
     };
     return policyJson;
+}
+
+function getConnectionLimit(swaggerFilename) {
+    try {
+        var resourceTemplateFilename = swaggerFilename.replace('apiDefinition.swagger.json', 'resourceTemplate.json');
+        var resourceTemplate = fs.readFileSync(resourceTemplateFilename).toString();
+
+        var connLimitRegex = /"connectionLimits"\s*:\s*{\s*"\*":\s*(\d+)\s*}/g;
+        var match = connLimitRegex.exec(resourceTemplate);
+        if (match && match.length > 0) {
+            return match[1];
+        } else {
+            return null;
+        }
+    } catch (ex) {
+        // It's expected that some connectors don't have custom sections
+        if (ex.code !== 'ENOENT') {
+            throw ex;
+        }
+        return null;
+    }
 }
 
 function getCustomSection(swaggerFilename) {
