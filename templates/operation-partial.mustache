@@ -1,4 +1,3 @@
-
 ## {{summary}}
 {{description}}
 
@@ -9,27 +8,29 @@
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
 {{#each parameters}}
-{{#if schema}}
-{{#if schema.$ref}}
-| {{x-ms-summary}} | {{refToLink schema.$ref}} | {{description}} | {{required}} |
-{{else}}
-| {{x-ms-summary}} | {{schema}} | {{description}} | {{required}} |
-{{/if}}
-{{else}}
-| {{x-ms-summary}} | {{#if format}} {{format}} {{else}} {{type}} {{/if}} | {{description}} | {{required}} |
-{{/if}}
+| {{summary}} | {{type}} | {{description}} | {{required}} |
 {{/each}}
 {{else}}
 This operation does not require any input.
 {{/if}}
 
 #### Returns
-{{#each responses}}
-{{#if @first}}
-{{#if this.schema}}
-{{> schema this.schema}}
+{{#with response}}
+{{#if reference}}
+| Summary | Type | Description |
+|---------|------|-------------|
+{{#with reference}}
+| {{summary}} | {{type}} | {{description}} |
+{{/with}}
+{{else}}
+{{#if properties.length}}
+| Summary | Type | Description | Path |
+|---------|------|-------------|------|
+{{#each properties}}
+| {{summary}} | {{type}} | {{description}} | {{path}} |
+{{/each}}
 {{else}}
 This operation does not return anything.
 {{/if}}
 {{/if}}
-{{/each}}
+{{/with}}

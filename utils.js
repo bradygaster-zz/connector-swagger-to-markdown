@@ -222,7 +222,7 @@ var ifEmptyHelper = function(obj, opts) {
         return opts.inverse(this);
 };
 
-var refToLinkHelper = function(str) {
+var refToLink = function(str) {
     if (!str) {
         return str;
     }
@@ -243,7 +243,6 @@ module.exports = {
         return firstOrNull(array, predicate);
     },
     registerHelpers: function(handlebars) {
-        handlebars.registerHelper('refToLink', refToLinkHelper);
         handlebars.registerHelper('if_empty', ifEmptyHelper);
         handlebars.registerHelper('if_cond', logicalHelper);
     },
@@ -251,6 +250,6 @@ module.exports = {
         return resolveReference(document, ref);
     },
     refToLink: function(str) {
-        return refToLinkHelper(str);
+        return refToLink(str);
     }
 };

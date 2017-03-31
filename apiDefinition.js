@@ -7,21 +7,13 @@ var common = require('./common.js');
 var utils = require('./utils.js');
 var templateFile = fs.readFileSync('./templates/connector-doc-page.mustache').toString();
 var operationTemplate = fs.readFileSync('./templates/operation-partial.mustache').toString();
-var operationTemplate2 = fs.readFileSync('./templates/operation-partial2.mustache').toString();
-var schemaTemplate = fs.readFileSync('./templates/schema-partial.mustache').toString();
-var schemaTypeTemplate = fs.readFileSync('./templates/schema-type-partial.mustache').toString();
 var connectionParametersTemplate = fs.readFileSync('./templates/connection-parameters.mustache').toString();
 var throttlingTemplate = fs.readFileSync('./templates/throttling-partial.mustache').toString();
 
 utils.registerHelpers(handlebars);
 handlebars.registerPartial('operation', operationTemplate);
-handlebars.registerPartial('operation2', operationTemplate2);
-handlebars.registerPartial('schema', schemaTemplate);
 handlebars.registerPartial('connectionParameters', connectionParametersTemplate);
 handlebars.registerPartial('throttling', throttlingTemplate);
-
-// Since this partial is used in a table, remove the new lines
-handlebars.registerPartial('schema-type', schemaTypeTemplate.replace(/(\r\n|\n|\r)/gm,""));
 
 fs.writeFileSync('docs/TOC.md', '');
 
