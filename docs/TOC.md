@@ -14,6 +14,4 @@
 
 ## [Power BI](PowerBI/index.md)
 
-## [Power BI (Test)](PowerBITest/index.md)
-
 ## [Todoist](Todoist/index.md)

@@ -38,13 +38,13 @@ module.exports = (grunt) => {
                         expand: true,
                         cwd: '../AAPT-connectors/src/codeless/',
                         src: [
-                            whitelistExpression + '*/apiDefinition.swagger.json',
-                            whitelistExpression + '*/connectionParameters.json',
-                            whitelistExpression + '*/resourceTemplate.json',
-                            whitelistExpression + '*/policy.xml',
-                            whitelistExpression + '*/icon.png',
-                            whitelistExpression + '*/intro.md',
-                            whitelistExpression + '*/media/*.png'
+                            whitelistExpression + '/apiDefinition.swagger.json',
+                            whitelistExpression + '/connectionParameters.json',
+                            whitelistExpression + '/resourceTemplate.json',
+                            whitelistExpression + '/policy.xml',
+                            whitelistExpression + '/icon.png',
+                            whitelistExpression + '/intro.md',
+                            whitelistExpression + '/media/*.png'
                         ],
                         filter: 'isFile',
                         dest: 'Connectors'
@@ -53,8 +53,8 @@ module.exports = (grunt) => {
                         expand: true,
                         cwd: '../AAPT-connectors/src/codeless/',
                         src: [
-                            whitelistExpression + '*/icon.png',
-                            whitelistExpression + '*/media/*.png'
+                            whitelistExpression + '/icon.png',
+                            whitelistExpression + '/media/*.png'
                         ],
                         filter: 'isFile',
                         dest: 'docs'
@@ -64,13 +64,13 @@ module.exports = (grunt) => {
                         expand: true,
                         cwd: '../Connectors/src/Connectors/',
                         src: [
-                            whitelistExpression + '*/apiDefinition.swagger.json',
-                            whitelistExpression + '*/connectionParameters.json',
-                            whitelistExpression + '*/resourceTemplate.json',
-                            whitelistExpression + '*/policy.xml',
-                            whitelistExpression + '*/icon.png',
-                            whitelistExpression + '*/intro.md',
-                            whitelistExpression + '*/media/*.png'
+                            whitelistExpression + '/apiDefinition.swagger.json',
+                            whitelistExpression + '/connectionParameters.json',
+                            whitelistExpression + '/resourceTemplate.json',
+                            whitelistExpression + '/policy.xml',
+                            whitelistExpression + '/icon.png',
+                            whitelistExpression + '/intro.md',
+                            whitelistExpression + '/media/*.png'
                         ],
                         filter: 'isFile',
                         dest: 'Connectors'
@@ -79,8 +79,8 @@ module.exports = (grunt) => {
                         expand: true,
                         cwd: '../Connectors/src/Connectors/',
                         src: [
-                            whitelistExpression + '*/icon.png',
-                            whitelistExpression + '*/media/*.png'
+                            whitelistExpression + '/icon.png',
+                            whitelistExpression + '/media/*.png'
                         ],
                         filter: 'isFile',
                         dest: 'docs'
