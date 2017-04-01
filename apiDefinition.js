@@ -5,6 +5,7 @@ var glob = require('glob').Glob;
 var DOMParser = require('xmldom').DOMParser;
 var common = require('./common.js');
 var utils = require('./utils.js');
+var baseTOC = fs.readFileSync('./docs/baseTOC.md').toString();
 var templateFile = fs.readFileSync('./templates/connector-doc-page.mustache').toString();
 var operationTemplate = fs.readFileSync('./templates/operation-partial.mustache').toString();
 var connectionParametersTemplate = fs.readFileSync('./templates/connection-parameters.mustache').toString();
@@ -15,7 +16,7 @@ handlebars.registerPartial('operation', operationTemplate);
 handlebars.registerPartial('connectionParameters', connectionParametersTemplate);
 handlebars.registerPartial('throttling', throttlingTemplate);
 
-fs.writeFileSync('docs/TOC.md', '');
+fs.writeFileSync('docs/TOC.md', baseTOC);
 
 glob("Connectors/*/apiDefinition.swagger.json", function (er, files) {
     files.forEach(function (file) {
@@ -77,7 +78,7 @@ function preprocessConnector(connector) {
 
 function addToTableOfContents(connectorName, connectorShortname) {
     var link = connectorShortname + '/index.md';
-    var tocEntry = '\n# [' + connectorName + '](' + link + ')\n';
+    var tocEntry = '\n## [' + connectorName + '](' + link + ')\n';
     fs.appendFileSync('docs/TOC.md', tocEntry);
 }
 
