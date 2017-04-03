@@ -39,9 +39,9 @@ Translates text to a specified language using Microsoft Translator
 | Content Type | string | Content type (default: &#x27;text/plain&#x27;) | false |
 
 #### Returns
-| Summary | Type | Description | Path |
-|---------|------|-------------|------|
-| Translated text | string |  |  |
+| Summary | Type | Description |
+|---------|------|-------------|
+| Translated text | string |  |
 
 ___
 
@@ -91,9 +91,9 @@ Converts a given text into speech as an audio stream in wave format
 | Options | string | Options (default is MinSize). | false |
 
 #### Returns
-| Summary | Type | Description | Path |
-|---------|------|-------------|------|
-| Audio file | binary |  |  |
+| Summary | Type | Description |
+|---------|------|-------------|
+| Audio file | binary |  |
 
 ___
 

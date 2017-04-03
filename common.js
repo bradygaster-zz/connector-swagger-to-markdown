@@ -11,7 +11,7 @@ class Parameter {
     }
 };
 
-class ReferenceResponse {
+class SingleSchema {
     constructor() {
         this.summary = '';
         this.type = '';
@@ -22,7 +22,7 @@ class ReferenceResponse {
 class Response {
     constructor() {
         this.properties = [];
-        this.reference = null;
+        this.singleSchema = null;
         this.isDynamic = false;
     }
 };
@@ -166,17 +166,25 @@ var generateOperation = function(swagger, operation) {
                 } else if ($ref) {
                     // $ref at the top level
                     docResponse = new Response();
-                    var reference = new ReferenceResponse();
+                    var reference = new SingleSchema();
                     reference.summary = utils.refToLink($ref);
                     reference.type = schema.type;
                     reference.description = schema.description;
-                    docResponse.reference = reference;
-                } else {
-                    // Inline response
+                    docResponse.singleSchema = reference;
+                } else if (schema.type === 'object' || schema.type === 'array') {
+                    // Inline object/array
                     var docProperties = [];
                     flattenDefinitionSchema(swagger, schema, '', '', docProperties);
                     docResponse = new Response();
                     docResponse.properties = docProperties;
+                } else {
+                    // Inline schema of primitive type
+                    docResponse = new Response();
+                    var singleSchema = new SingleSchema();
+                    singleSchema.summary = schema['x-ms-summary'];
+                    singleSchema.type = schema.format ? schema.format : schema.type;
+                    singleSchema.description = schema.description;
+                    docResponse.singleSchema = singleSchema;
                 }
             }
         }
