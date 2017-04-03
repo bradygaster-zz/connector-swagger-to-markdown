@@ -1,8 +1,8 @@
+{{#if connections}}
+Connections per account: **{{connections}}**
+
+{{/if}}
 | Name | Calls | Renewal Period |
 |------|-------|----------------|
 | API calls per connection | {{rate-limit-by-key.calls}} | {{rate-limit-by-key.renewal-period}} seconds |
 {{#if retry-after}}| Frequency of trigger polls | 1 | {{retry-after}} seconds |{{/if}}
-{{#if connections}}
-
-Connections per account: **{{connections}}**
-{{/if}}

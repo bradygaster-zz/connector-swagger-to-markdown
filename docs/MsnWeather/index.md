@@ -191,10 +191,10 @@ ___
 | units | string |  | units |
 
 ## Limits
+Connections per account: **1**
+
 | Name | Calls | Renewal Period |
 |------|-------|----------------|
 | API calls per connection | 8 | 60 seconds |
 | Frequency of trigger polls | 1 | 60 seconds |
-
-Connections per account: **1**
 

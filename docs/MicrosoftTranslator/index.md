@@ -109,10 +109,10 @@ Language Model for Microsoft Translator translatable languages
 | Language name | string | Gets or sets Language name | Name |
 
 ## Limits
+Connections per account: **1**
+
 | Name | Calls | Renewal Period |
 |------|-------|----------------|
 | API calls per connection | 100 | 60 seconds |
 
-
-Connections per account: **1**
 
