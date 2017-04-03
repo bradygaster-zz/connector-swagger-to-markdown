@@ -3,7 +3,8 @@ var resolveReference = function(document, $ref) {
         var reference = document,
             paths = $ref.split('/');
         if (!paths || paths.length <= 1 || paths[0] !== '#') {
-            return null;
+            // For now assume that the reference lives in #/definitions
+            document = document.definitions;
         }
 
         paths.slice(1).forEach(path => {

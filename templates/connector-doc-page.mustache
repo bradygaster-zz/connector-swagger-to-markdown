@@ -1,4 +1,4 @@
-![Icon](icon.png)
+<img src="icon.png" alt="Icon" data-linktype="relative-path" height="100" width="100">
 
 # {{doc.title}}{{#if_cond doc.status '===' 'Preview'}} ({{doc.status}}){{/if_cond}}
 
@@ -49,11 +49,19 @@ ___
 ### {{@key}}
 {{this.description}}
 
+{{#if properties.length}}
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
 {{#each properties}}
 | {{summary}} | {{type}} | {{description}} | {{path}} |
 {{/each}}
+{{else}}
+| Summary | Type | Description |
+|---------|------|-------------|
+{{#with singleSchema}}
+| {{summary}} | {{type}} | {{description}} |
+{{/with}}
+{{/if}}
 {{/each}}
 {{/if}}
 

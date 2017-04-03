@@ -50,6 +50,7 @@ class Definition {
     constructor() {
         this.description = '';
         this.properties = [];
+        this.singleSchema = null;
     }
 };
 
@@ -87,7 +88,8 @@ var generateActions = function(swagger) {
         var path = swagger.paths[pathKey];
         Object.keys(path).forEach(function(operationKey) {
             var operation = path[operationKey];
-            if (!operation['x-ms-trigger'] && operation['x-ms-visibility'] !== 'internal') {
+            if (operationKey !== 'x-ms-notification-content' && // This is used for adding webhook details
+                !operation['x-ms-trigger'] && operation['x-ms-visibility'] !== 'internal') {
                 var docOperation = generateOperation(swagger, operation);
                 actions.push(docOperation);
             }
@@ -104,7 +106,8 @@ var generateTriggers = function(swagger) {
         var path = swagger.paths[pathKey];
         Object.keys(path).forEach(function(operationKey) {
             var operation = path[operationKey];
-            if (operation['x-ms-trigger'] && operation['x-ms-visibility'] !== 'internal') {
+            if (operationKey !== 'x-ms-notification-content' && // This is used for adding webhook details
+                operation['x-ms-trigger'] && operation['x-ms-visibility'] !== 'internal') {
                 var docOperation = generateOperation(swagger, operation);
                 triggers.push(docOperation);
             }
@@ -228,11 +231,15 @@ var flattenParameterSchema = function(swagger, schema, schemaKey, isRequired, do
     if (schema.type === 'array') {
         flattenParameterSchema(swagger, schema.items, '', false, docParameters);
     } else if (schema.type === 'object') {
-        Object.keys(schema.properties).forEach(function(propKey) {
-            var property = schema.properties[propKey];
-            var isPropRequired = schema.required && schema.required.indexOf(propKey) > -1;
-            flattenParameterSchema(swagger, property, propKey, isPropRequired, docParameters);
-        });
+        if (!schema.properties) {
+            // Ignore objects with no properties for parameter purposes
+        } else {
+            Object.keys(schema.properties).forEach(function(propKey) {
+                var property = schema.properties[propKey];
+                var isPropRequired = schema.required && schema.required.indexOf(propKey) > -1;
+                flattenParameterSchema(swagger, property, propKey, isPropRequired, docParameters);
+            });
+        }
     } else {
         if (schema['x-ms-visibility'] !== 'internal') {
             var docParameter = new Parameter();
@@ -255,18 +262,22 @@ var generateDefinitions = function(swagger) {
 
         var docDefinition = new Definition();
         var docProperties = [];
+        var singleSchema = null;
         
         if (definition.type === 'object') {
             flattenDefinitionSchema(swagger, definition, '', '', docProperties);
         } else if (definition.type === 'array') {
             flattenDefinitionSchema(swagger, definition.items, '', '', docProperties);
         } else {
-            throw 'Not Implemented';
+            flattenDefinitionSchema(swagger, definition, '', '', docProperties);
+            singleSchema = docProperties[0];
+            docProperties = [];
         }
 
-        if (docProperties.length > 0) {
+        if (singleSchema || docProperties.length > 0) {
             docDefinition.description = definition.description;
-            docDefinition.properties = docProperties;
+            if (docProperties.length > 0) docDefinition.properties = docProperties;
+            if (singleSchema) docDefinition.singleSchema = singleSchema;
             docDefinitions[definitionKey] = docDefinition;
         }
     });
@@ -289,7 +300,7 @@ var flattenDefinitionSchema = function(swagger, schema, schemaKey, jsonPath, doc
         return;
     }
 
-    if (schema.type === 'object') {
+    if (schema.type === 'object' && schema.properties) {
         Object.keys(schema.properties).forEach(function(propKey) {
             var property = schema.properties[propKey];
             var propertyPath = jsonPath && jsonPath !== '' ? jsonPath + '.' + propKey : propKey;
@@ -323,24 +334,27 @@ var flattenDefinitionSchema = function(swagger, schema, schemaKey, jsonPath, doc
     }
 };
 
-var isDynamicSchema = function(swagger, schema) {
+var isDynamicSchema = function(swagger, schema, visitedRefs) {
     if (schema['x-ms-dynamic-schema']) {
         return true;
     }
 
-    if (schema.$ref) {
+    if (!visitedRefs) visitedRefs = {};
+
+    if (schema.$ref && !visitedRefs[schema.$ref]) {
+        visitedRefs[schema.$ref] = true;
         schema = utils.resolveReference(swagger, schema.$ref);
-        return isDynamicSchema(swagger, schema);
+        return isDynamicSchema(swagger, schema, visitedRefs);
     } else if (schema.type === 'object' && schema.properties) {
         var propKeys = Object.keys(schema.properties);
         for (var i = 0; i < propKeys.length; i++) {
             var property = schema.properties[propKeys[i]];
-            if (isDynamicSchema(swagger, property)) {
+            if (isDynamicSchema(swagger, property, visitedRefs)) {
                 return true;
             }
         }
     } else if (schema.type === 'array' && schema.items) {
-        return isDynamicSchema(swagger, schema.items);
+        return isDynamicSchema(swagger, schema.items, visitedRefs);
     }
 
     return false;

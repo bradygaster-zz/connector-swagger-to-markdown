@@ -1,4 +1,4 @@
-![Icon](icon.png)
+<img src="icon.png" alt="Icon" data-linktype="relative-path" height="100" width="100">
 
 # MSN Weather (Preview)
 
@@ -191,10 +191,10 @@ ___
 | units | string |  | units |
 
 ## Limits
+Connections per account: **1**
+
 | Name | Calls | Renewal Period |
 |------|-------|----------------|
 | API calls per connection | 8 | 60 seconds |
 | Frequency of trigger polls | 1 | 60 seconds |
-
-Connections per account: **1**
 
