@@ -1,4 +1,4 @@
-![Icon](icon.png)
+<img src="icon.png" alt="Icon" data-linktype="relative-path" height="100" width="100">
 
 # Microsoft Translator (Preview)
 
