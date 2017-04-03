@@ -50,6 +50,7 @@ class Definition {
     constructor() {
         this.description = '';
         this.properties = [];
+        this.singleSchema = null;
     }
 };
 
@@ -261,18 +262,22 @@ var generateDefinitions = function(swagger) {
 
         var docDefinition = new Definition();
         var docProperties = [];
+        var singleSchema = null;
         
         if (definition.type === 'object') {
             flattenDefinitionSchema(swagger, definition, '', '', docProperties);
         } else if (definition.type === 'array') {
             flattenDefinitionSchema(swagger, definition.items, '', '', docProperties);
         } else {
-            throw 'Not Implemented';
+            flattenDefinitionSchema(swagger, definition, '', '', docProperties);
+            singleSchema = docProperties[0];
+            docProperties = [];
         }
 
-        if (docProperties.length > 0) {
+        if (singleSchema || docProperties.length > 0) {
             docDefinition.description = definition.description;
-            docDefinition.properties = docProperties;
+            if (docProperties.length > 0) docDefinition.properties = docProperties;
+            if (singleSchema) docDefinition.singleSchema = singleSchema;
             docDefinitions[definitionKey] = docDefinition;
         }
     });

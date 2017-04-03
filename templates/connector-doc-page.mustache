@@ -49,11 +49,19 @@ ___
 ### {{@key}}
 {{this.description}}
 
+{{#if properties.length}}
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
 {{#each properties}}
 | {{summary}} | {{type}} | {{description}} | {{path}} |
 {{/each}}
+{{else}}
+| Summary | Type | Description |
+|---------|------|-------------|
+{{#with singleSchema}}
+| {{summary}} | {{type}} | {{description}} |
+{{/with}}
+{{/if}}
 {{/each}}
 {{/if}}
 
