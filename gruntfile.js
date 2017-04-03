@@ -1,13 +1,5 @@
-var docReadyConnectors = [
-    'AzureQueues',
-    'GoogleCalendar',
-    'MicrosoftTranslator',
-    'MsnWeather',
-    'OneNote',
-    'PowerBI',
-    'Todoist'
-];
-var whitelistExpression = docReadyConnectors.length > 1 ? '{' + docReadyConnectors.join(',') + '}' : docReadyConnectors[0];
+var connectors = require('./connectors.json');
+var whitelistExpression = connectors.length > 1 ? '{' + connectors.join(',') + '}' : connectors[0];
 console.log('Generating docs for: ' + whitelistExpression);
 
 module.exports = (grunt) => {
