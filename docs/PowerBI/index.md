@@ -20,6 +20,7 @@ Use Power BI REST API to add rows to a dataset.
 | Workspace | string | Workspace ID | true |
 | Dataset | string | Dataset ID | true |
 | Table | string | Table Name | true |
+| Payload to send | dynamic |  |  |
 
 #### Returns
 This operation does not return anything.

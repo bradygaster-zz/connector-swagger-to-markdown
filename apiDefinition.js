@@ -20,11 +20,11 @@ fs.writeFileSync('docs/TOC.md', baseTOC);
 
 glob("Connectors/*/apiDefinition.swagger.json", function (er, files) {
     files.forEach(function (file) {
-        try {
+        // try {
             generateDocumentation(file);
-        } catch (ex) {
-            console.log('error in ' + file + ': ' + ex);
-        }
+        // } catch (ex) {
+            // console.log('error in ' + file + ': ' + ex);
+        // }
     });
 });
 
@@ -47,8 +47,7 @@ function generateDocumentation(swaggerFilename) {
     preprocessConnector(connector);
     var preprocessDirectory = swaggerFilename.replace('apiDefinition.swagger.json', '');
     var docModelStr = JSON.stringify(connector.doc, null, '\t');
-    // Only for debugging
-    //dropFile(preprocessDirectory, 'docModel.json', docModelStr);
+    dropFile(preprocessDirectory, 'docModel.json', docModelStr);
 
     var template = handlebars.compile(templateFile);
     var result = template(connector);

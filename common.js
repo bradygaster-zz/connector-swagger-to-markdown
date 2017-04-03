@@ -132,8 +132,16 @@ var generateOperation = function(swagger, operation) {
 
             if (parameter['x-ms-visibility'] !== 'internal') {
                 if (parameter.in === 'body') {
-                    var bodyParameters = flattenBodyParameter(swagger, parameter);
-                    docParameters = docParameters.concat(bodyParameters);
+                    if (parameter.schema && isDynamicSchema(swagger, parameter.schema)) {
+                        docParameter.summary = parameter['x-ms-summary'] ? parameter['x-ms-summary'] : parameter.name;
+                        docParameter.type = 'dynamic';
+                        docParameter.description = parameter.description;
+                        docParameter.required = parameter.required;
+                        docParameters.push(docParameter);
+                    } else {
+                        var bodyParameters = flattenBodyParameter(swagger, parameter);
+                        docParameters = docParameters.concat(bodyParameters);
+                    }
                 } else {
                     docParameter.summary = parameter['x-ms-summary'] ? parameter['x-ms-summary'] : parameter.name;
                     docParameter.type = parameter.format ? parameter.format : parameter.type;
@@ -304,7 +312,6 @@ var flattenDefinitionSchema = function(swagger, schema, schemaKey, jsonPath, doc
             property.path = jsonPath;
             docProperties.push(property);
             flattenDefinitionSchema(swagger, schema.items, '', jsonPath, docProperties);
-            //throw 'Not Implemented';
         }
     } else {
         var property = new SchemaProperty();
