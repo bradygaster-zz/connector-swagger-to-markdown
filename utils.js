@@ -28,6 +28,16 @@ var firstOrNull = function(array, predicate) {
     return null;
 };
 
+var where = function(array, predicate) {
+    var results = [];
+    for (var i = 0; i < array.length; i++) {
+        if (predicate(array[i])) {
+            results.push(array[i]);
+        }
+    }
+    return results;
+};
+
 var logicalHelper = function (v1, operator, v2, options) {
     var value = null;
     switch (operator) {
@@ -66,6 +76,12 @@ var refToLink = function(str) {
 module.exports = {
     firstOrNull: function(array, predicate) {
         return firstOrNull(array, predicate);
+    },
+    where: function(array, predicate) {
+        return where(array, predicate);
+    },
+    max: function(array) {
+        return Math.max.apply(null, array);
     },
     registerHelpers: function(handlebars) {
         handlebars.registerHelper('if_empty', ifEmptyHelper);

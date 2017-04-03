@@ -16,10 +16,10 @@ This operation does not require any input.
 
 #### Returns
 {{#with response}}
-{{#if reference}}
+{{#if singleSchema}}
 | Summary | Type | Description |
 |---------|------|-------------|
-{{#with reference}}
+{{#with singleSchema}}
 | {{summary}} | {{type}} | {{description}} |
 {{/with}}
 {{else}}

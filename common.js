@@ -11,7 +11,7 @@ class Parameter {
     }
 };
 
-class ReferenceResponse {
+class SingleSchema {
     constructor() {
         this.summary = '';
         this.type = '';
@@ -22,7 +22,7 @@ class ReferenceResponse {
 class Response {
     constructor() {
         this.properties = [];
-        this.reference = null;
+        this.singleSchema = null;
         this.isDynamic = false;
     }
 };
@@ -132,8 +132,16 @@ var generateOperation = function(swagger, operation) {
 
             if (parameter['x-ms-visibility'] !== 'internal') {
                 if (parameter.in === 'body') {
-                    var bodyParameters = flattenBodyParameter(swagger, parameter);
-                    docParameters = docParameters.concat(bodyParameters);
+                    if (parameter.schema && isDynamicSchema(swagger, parameter.schema)) {
+                        docParameter.summary = parameter['x-ms-summary'] ? parameter['x-ms-summary'] : parameter.name;
+                        docParameter.type = 'dynamic';
+                        docParameter.description = parameter.description;
+                        docParameter.required = parameter.required;
+                        docParameters.push(docParameter);
+                    } else {
+                        var bodyParameters = flattenBodyParameter(swagger, parameter);
+                        docParameters = docParameters.concat(bodyParameters);
+                    }
                 } else {
                     docParameter.summary = parameter['x-ms-summary'] ? parameter['x-ms-summary'] : parameter.name;
                     docParameter.type = parameter.format ? parameter.format : parameter.type;
@@ -166,17 +174,25 @@ var generateOperation = function(swagger, operation) {
                 } else if ($ref) {
                     // $ref at the top level
                     docResponse = new Response();
-                    var reference = new ReferenceResponse();
+                    var reference = new SingleSchema();
                     reference.summary = utils.refToLink($ref);
                     reference.type = schema.type;
                     reference.description = schema.description;
-                    docResponse.reference = reference;
-                } else {
-                    // Inline response
+                    docResponse.singleSchema = reference;
+                } else if (schema.type === 'object' || schema.type === 'array') {
+                    // Inline object/array
                     var docProperties = [];
                     flattenDefinitionSchema(swagger, schema, '', '', docProperties);
                     docResponse = new Response();
                     docResponse.properties = docProperties;
+                } else {
+                    // Inline schema of primitive type
+                    docResponse = new Response();
+                    var singleSchema = new SingleSchema();
+                    singleSchema.summary = schema['x-ms-summary'];
+                    singleSchema.type = schema.format ? schema.format : schema.type;
+                    singleSchema.description = schema.description;
+                    docResponse.singleSchema = singleSchema;
                 }
             }
         }
@@ -196,7 +212,7 @@ var flattenBodyParameter = function(swagger, parameter) {
         flattenParameterSchema(swagger, schema, '', false, docBodyParams);
     } else {
         var docParameter = new Parameter();
-        docParameter = parameter['x-ms-summary'] ? parameter['x-ms-summary'] : parameter.name;
+        docParameter.summary = parameter['x-ms-summary'] ? parameter['x-ms-summary'] : parameter.name;
         docParameter.type = schema.format ? schema.format : schema.type,
         docParameter.description = parameter.description,
         docParameter.required = parameter.required;
@@ -262,6 +278,17 @@ var flattenDefinitionSchema = function(swagger, schema, schemaKey, jsonPath, doc
         return;
     }
 
+    if (schema.$ref) {
+        var resolvedSchema = utils.resolveReference(swagger, schema.$ref);
+        var property = new SchemaProperty();
+        property.summary = utils.refToLink(schema.$ref);
+        property.type = resolvedSchema.type;
+        property.description = resolvedSchema.description;
+        property.path = jsonPath;
+        docProperties.push(property);
+        return;
+    }
+
     if (schema.type === 'object') {
         Object.keys(schema.properties).forEach(function(propKey) {
             var property = schema.properties[propKey];
@@ -285,7 +312,6 @@ var flattenDefinitionSchema = function(swagger, schema, schemaKey, jsonPath, doc
             property.path = jsonPath;
             docProperties.push(property);
             flattenDefinitionSchema(swagger, schema.items, '', jsonPath, docProperties);
-            //throw 'Not Implemented';
         }
     } else {
         var property = new SchemaProperty();

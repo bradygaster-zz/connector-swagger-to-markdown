@@ -1,37 +1,42 @@
+var connectors = require('./connectors.json');
+var whitelistExpression = connectors.length > 1 ? '{' + connectors.join(',') + '}' : connectors[0];
+console.log('Generating docs for: ' + whitelistExpression);
+
 module.exports = (grunt) => {
 
     grunt.loadNpmTasks('grunt-mustache-render');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-nodemon');
+    grunt.loadNpmTasks('grunt-execute');
 
     grunt.registerTask('default', [
-        'clean',
-        'copy:apis',
-        'nodemon:apiDefinition'
+        'clean:initClean',
+        'copy:connectors',
+        'execute'
     ]);
 
     grunt.initConfig({
-        clean: [
-            'output',
-            'apis',
-            'Connectors',
-            'docs/*/*',
-        ],
+        clean: {
+            initClean: [
+                'Connectors',
+                'docs/*/',
+            ]
+        },
         copy: {
-            apis: {
+            connectors: {
                 files: [
+                    // AAPT-Connectors (Codeless)
                     {
                         expand: true,
                         cwd: '../AAPT-connectors/src/codeless/',
                         src: [
-                            '*/apiDefinition.swagger.json',
-                            '*/connectionParameters.json',
-                            '*/resourceTemplate.json',
-                            '*/policy.xml',
-                            '*/icon.png',
-                            '*/intro.md',
-                            '*/media/*.png'
+                            whitelistExpression + '/apiDefinition.swagger.json',
+                            whitelistExpression + '/connectionParameters.json',
+                            whitelistExpression + '/resourceTemplate.json',
+                            whitelistExpression + '/policy.xml',
+                            whitelistExpression + '/icon.png',
+                            whitelistExpression + '/intro.md',
+                            whitelistExpression + '/media/*.png'
                         ],
                         filter: 'isFile',
                         dest: 'Connectors'
@@ -40,8 +45,34 @@ module.exports = (grunt) => {
                         expand: true,
                         cwd: '../AAPT-connectors/src/codeless/',
                         src: [
-                            '*/icon.png',
-                            '*/media/*.png'
+                            whitelistExpression + '/icon.png',
+                            whitelistExpression + '/media/*.png'
+                        ],
+                        filter: 'isFile',
+                        dest: 'docs'
+                    },
+                    // GNCPALA (codeless)
+                    {
+                        expand: true,
+                        cwd: '../Connectors/src/Connectors/',
+                        src: [
+                            whitelistExpression + '/apiDefinition.swagger.json',
+                            whitelistExpression + '/connectionParameters.json',
+                            whitelistExpression + '/resourceTemplate.json',
+                            whitelistExpression + '/policy.xml',
+                            whitelistExpression + '/icon.png',
+                            whitelistExpression + '/intro.md',
+                            whitelistExpression + '/media/*.png'
+                        ],
+                        filter: 'isFile',
+                        dest: 'Connectors'
+                    },
+                    {
+                        expand: true,
+                        cwd: '../Connectors/src/Connectors/',
+                        src: [
+                            whitelistExpression + '/icon.png',
+                            whitelistExpression + '/media/*.png'
                         ],
                         filter: 'isFile',
                         dest: 'docs'
@@ -49,9 +80,9 @@ module.exports = (grunt) => {
                 ]
             }
         },
-        nodemon: {
-            apiDefinition: {
-                script: 'apiDefinition.js'
+        execute: {
+            target: {
+                src: 'apiDefinition.js'
             }
         }
     });
