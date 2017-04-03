@@ -281,5 +281,5 @@ Event changes to upload to Google Calendar
 | Name | Calls | Renewal Period |
 |------|-------|----------------|
 | API calls per connection | 30 | 60 seconds |
-| Frequency of trigger polls | 1 | 15 seconds |
+| Frequency of trigger polls | 1 | 60 seconds |
 

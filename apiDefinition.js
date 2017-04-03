@@ -20,11 +20,11 @@ fs.writeFileSync('docs/TOC.md', baseTOC);
 
 glob("Connectors/*/apiDefinition.swagger.json", function (er, files) {
     files.forEach(function (file) {
-        // try {
+        try {
             generateDocumentation(file);
-        // } catch (ex) {
-            // console.log('error in ' + file + ': ' + ex);
-        // }
+        } catch (ex) {
+            console.log('error in ' + file + ': ' + ex);
+        }
     });
 });
 
@@ -107,19 +107,22 @@ function getPolicy(swaggerFilename) {
         'calls': rateLimitTag.getAttribute('calls'),
         'renewal-period': rateLimitTag.getAttribute('renewal-period')
     } : null;
-    var setHeaderTags = policy.getElementsByTagName('set-header');
+
+    var retryAfterValues = [];
     var retryAfterValue = null;
-    var retryAfterTag = utils.firstOrNull(setHeaderTags, function(tag) {
+    var setHeaderTags = policy.getElementsByTagName('set-header');
+    var retryAfterTags = utils.where(setHeaderTags, function(tag) {
         return utils.firstOrNull(tag.attributes, function(attr) {
             return attr.nodeValue === 'retry-after';
         }) !== null;
     });
-    if (retryAfterTag) {
-        var retryAfterValueNode = utils.firstOrNull(retryAfterTag.childNodes, function(child) {
+    retryAfterTags.forEach(function(tag) {
+        var retryAfterValueNode = utils.firstOrNull(tag.childNodes, function(child) {
             return child.firstChild && child.firstChild.nodeValue;
         });
-        if (retryAfterValueNode) retryAfterValue = retryAfterValueNode.firstChild.nodeValue;
-    }
+        if (retryAfterValueNode) retryAfterValues.push(retryAfterValueNode.firstChild.nodeValue);
+    });
+    if (retryAfterValues.length > 0) retryAfterValue = utils.max(retryAfterValues);
     var connectionLimit = getConnectionLimit(swaggerFilename);
     var policyJson = {
         'rate-limit-by-key': rateLimit,

@@ -183,5 +183,5 @@ ___
 | Name | Calls | Renewal Period |
 |------|-------|----------------|
 | API calls per connection | 500 | 60 seconds |
-| Frequency of trigger polls | 1 | 0 seconds |
+| Frequency of trigger polls | 1 | 60 seconds |
 
