@@ -25,7 +25,7 @@ Add a complex watermark to a PDF file.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [operation_response](#operation_response) | object | Response data for all operations |
+| [operation_response](#operationresponse) | object | Response data for all operations |
 
 ___
 
@@ -47,7 +47,7 @@ Convert a file to PDF or other format.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [operation_response](#operation_response) | object | Response data for all operations |
+| [operation_response](#operationresponse) | object | Response data for all operations |
 
 ___
 
@@ -69,7 +69,7 @@ Convert URLs or HTML to PDF.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [operation_response](#operation_response) | object | Response data for all operations |
+| [operation_response](#operationresponse) | object | Response data for all operations |
 
 ___
 
@@ -93,7 +93,7 @@ Copy metadata and set content type.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [operation_response_common](#operation_response_common) | object | Response data for all operations |
+| [operation_response_common](#operationresponsecommon) | object | Response data for all operations |
 
 ___
 
@@ -127,7 +127,7 @@ Add an ellipse watermark to a PDF file.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [operation_response](#operation_response) | object | Response data for all operations |
+| [operation_response](#operationresponse) | object | Response data for all operations |
 
 ___
 
@@ -162,7 +162,7 @@ Add an image based watermark to a PDF file.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [operation_response](#operation_response) | object | Response data for all operations |
+| [operation_response](#operationresponse) | object | Response data for all operations |
 
 ___
 
@@ -195,7 +195,7 @@ Add a line watermark to a PDF file.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [operation_response](#operation_response) | object | Response data for all operations |
+| [operation_response](#operationresponse) | object | Response data for all operations |
 
 ___
 
@@ -223,7 +223,7 @@ Merge multiple files into a single PDF.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [operation_response](#operation_response) | object | Response data for all operations |
+| [operation_response](#operationresponse) | object | Response data for all operations |
 
 ___
 
@@ -248,7 +248,7 @@ Convert a file to an OCRed PDF.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [operation_response](#operation_response) | object | Response data for all operations |
+| [operation_response](#operationresponse) | object | Response data for all operations |
 
 ___
 
@@ -277,7 +277,7 @@ Extract text from a file using OCR.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [ocr_operation_response](#ocr_operation_response) | object | Response data for OCRText operation |
+| [ocr_operation_response](#ocroperationresponse) | object | Response data for OCRText operation |
 
 ___
 
@@ -309,7 +309,7 @@ Add a PDF based watermark to a PDF file.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [operation_response](#operation_response) | object | Response data for all operations |
+| [operation_response](#operationresponse) | object | Response data for all operations |
 
 ___
 
@@ -346,7 +346,7 @@ Add a QR Code watermark to a PDF file.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [operation_response](#operation_response) | object | Response data for all operations |
+| [operation_response](#operationresponse) | object | Response data for all operations |
 
 ___
 
@@ -380,7 +380,7 @@ Add a rectangle watermark to a PDF file.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [operation_response](#operation_response) | object | Response data for all operations |
+| [operation_response](#operationresponse) | object | Response data for all operations |
 
 ___
 
@@ -415,7 +415,7 @@ Add a rich-text watermark to a PDF file.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [operation_response](#operation_response) | object | Response data for all operations |
+| [operation_response](#operationresponse) | object | Response data for all operations |
 
 ___
 
@@ -437,7 +437,7 @@ Apply security and encryption settings.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [operation_response](#operation_response) | object | Response data for all operations |
+| [operation_response](#operationresponse) | object | Response data for all operations |
 
 ___
 
@@ -477,7 +477,7 @@ Add a plain-text watermark to a PDF file.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [operation_response](#operation_response) | object | Response data for all operations |
+| [operation_response](#operationresponse) | object | Response data for all operations |
 
 ___
 
@@ -491,7 +491,7 @@ Parameters for CompositeWatermark operation
 |---------|------|-------------|------|
 | Source file name | string | Optional file name (for logging purposes) | source_file_name |
 | Source file content | byte | Content of the file to watermark | source_file_content |
-| [sharepoint_file](#sharepoint_file) | object | SharePoint file information for operation | sharepoint_file |
+| [sharepoint_file](#sharepointfile) | object | SharePoint file information for operation | sharepoint_file |
 | Watermark data | string | Watermark data in Muhimbi XML format | watermark_data |
 | Fail on error | boolean | Fail on error | fail_on_error |
 
@@ -502,7 +502,7 @@ Parameters for Convert operation
 |---------|------|-------------|------|
 | Source file name | string | Name of the source file including extension | source_file_name |
 | Source file content | byte | Content of the file to convert | source_file_content |
-| [sharepoint_file](#sharepoint_file) | object | SharePoint file information for operation | sharepoint_file |
+| [sharepoint_file](#sharepointfile) | object | SharePoint file information for operation | sharepoint_file |
 | Output format | enum | Output format | output_format |
 | Override settings | string | Optional settings using Muhimbi&#x27;s XML syntax | override_settings |
 | Template file content | byte | Optional template file content (e.g. infopath XSN file) | template_file_content |
@@ -542,7 +542,7 @@ Parameters for EllipseWatermark operation
 | Source file name | string | Optional file name (for logging purposes) | source_file_name |
 | Source file content | byte | Content of the file to watermark | source_file_content |
 | Position | enum | Watermark position on the page | position |
-| [sharepoint_file](#sharepoint_file) | object | SharePoint file information for operation | sharepoint_file |
+| [sharepoint_file](#sharepointfile) | object | SharePoint file information for operation | sharepoint_file |
 | Width | string | Width of the watermark (in Pts, 1/72 of an inch) | width |
 | Height | string | Height of the watermark (in Pts, 1/72 of an inch) | height |
 | X Coordinate (When &#x27;Position&#x27; is set to &#x27;Absolute&#x27;) | string | X Coordinate of the watermark (in Pts, 1/72 of an inch) | x |
@@ -567,7 +567,7 @@ Parameters for ImageWatermark operation
 | Source file name | string | Optional file name (for logging purposes) | source_file_name |
 | Source file content | byte | Content of the file to watermark | source_file_content |
 | Image | byte | Image content or URL | image_file |
-| [sharepoint_file](#sharepoint_file) | object | SharePoint file information for operation | sharepoint_file |
+| [sharepoint_file](#sharepointfile) | object | SharePoint file information for operation | sharepoint_file |
 | Position | enum | Watermark position on the page | position |
 | Width | string | Width of the watermark (in Pts, 1/72 of an inch) | width |
 | Height | string | Height of the watermark (in Pts, 1/72 of an inch) | height |
@@ -593,7 +593,7 @@ Parameters for LineWatermark operation
 | Source file name | string | Optional file name (for logging purposes) | source_file_name |
 | Source file content | byte | Content of the file to watermark | source_file_content |
 | Position | enum | Watermark position on the page | position |
-| [sharepoint_file](#sharepoint_file) | object | SharePoint file information for operation | sharepoint_file |
+| [sharepoint_file](#sharepointfile) | object | SharePoint file information for operation | sharepoint_file |
 | X Coordinate (start) | string | Start X Coordinate of the line (in Pts, 1/72 of an inch) | x |
 | Y Coordinate (start) | string | Start Y Coordinate of the line (in Pts, 1/72 of an inch) | y |
 | X Coordinate (end) | string | End X Coordinate of the line (in Pts, 1/72 of an inch) | end_x |
@@ -624,7 +624,7 @@ Parameters for MergeToPdf operation
 | Source file content - 4 | byte | Content of the file to merge | source_file_content_4 |
 | Source file name - 5 | string | Name of the source file including extension | source_file_name_5 |
 | Source file content - 5 | byte | Content of the file to merge | source_file_content_5 |
-| [sharepoint_file](#sharepoint_file) | object | SharePoint file information for operation | sharepoint_file |
+| [sharepoint_file](#sharepointfile) | object | SharePoint file information for operation | sharepoint_file |
 | Each document | enum | Document start page | document_start_page |
 | Fail on error | boolean | Fail on error | fail_on_error |
 
@@ -645,7 +645,7 @@ Parameters for OCRText operation
 |---------|------|-------------|------|
 | Source file name | string | Name of the source file including extension | source_file_name |
 | Source file content | byte | Content of the file to OCR | source_file_content |
-| [sharepoint_file](#sharepoint_file) | object | SharePoint file information for operation | sharepoint_file |
+| [sharepoint_file](#sharepointfile) | object | SharePoint file information for operation | sharepoint_file |
 | Language | enum | Language | language |
 | Performance | enum | Performance | performance |
 | Blacklist / whitelist | enum | Characters option | characters_option |
@@ -661,7 +661,7 @@ Parameters for OCRText operation
 |---------|------|-------------|------|
 | Source file name | string | Name of the source file including extension | source_file_name |
 | Source file content | byte | Content of the file to OCR | source_file_content |
-| [sharepoint_file](#sharepoint_file) | object | SharePoint file information for operation | sharepoint_file |
+| [sharepoint_file](#sharepointfile) | object | SharePoint file information for operation | sharepoint_file |
 | Language | enum | Languate | language |
 | X Coordinate | string | X Coordinate (in Pts, 1/72 of an inch) | x |
 | Y Coordinate | string | Y Coordinate (in Pts, 1/72 of an inch) | y |
@@ -701,7 +701,7 @@ Parameters for PDFWatermark operation
 | Source file name | string | Optional file name (for logging purposes) | source_file_name |
 | Source file content | byte | Content of the file to watermark | source_file_content |
 | PDF Watermark | byte | PDF watermark content or URL | pdf_file |
-| [sharepoint_file](#sharepoint_file) | object | SharePoint file information for operation | sharepoint_file |
+| [sharepoint_file](#sharepointfile) | object | SharePoint file information for operation | sharepoint_file |
 | Position | enum | Watermark position on the page | position |
 | Width | string | Width of the watermark (in Pts, 1/72 of an inch) | width |
 | Height | string | Height of the watermark (in Pts, 1/72 of an inch) | height |
@@ -724,7 +724,7 @@ Parameters for QRCodeWatermark operation
 | Source file name | string | Optional file name (for logging purposes) | source_file_name |
 | Source file content | byte | Content of the file to watermark | source_file_content |
 | Content | string | Data to embed in the QR Code | content |
-| [sharepoint_file](#sharepoint_file) | object | SharePoint file information for operation | sharepoint_file |
+| [sharepoint_file](#sharepointfile) | object | SharePoint file information for operation | sharepoint_file |
 | Version | enum | Version | version |
 | Input mode | enum | Input mode | input_mode |
 | Error correction level | enum | Error correction level | error_correction_level |
@@ -752,7 +752,7 @@ Parameters for RectangleWatermark operation
 | Source file name | string | Optional file name (for logging purposes) | source_file_name |
 | Source file content | byte | Content of the file to watermark | source_file_content |
 | Position | enum | Watermark position on the page | position |
-| [sharepoint_file](#sharepoint_file) | object | SharePoint file information for operation | sharepoint_file |
+| [sharepoint_file](#sharepointfile) | object | SharePoint file information for operation | sharepoint_file |
 | Width | string | Width of the watermark (in Pts, 1/72 of an inch) | width |
 | Height | string | Height of the watermark (in Pts, 1/72 of an inch) | height |
 | X Coordinate (When &#x27;Position&#x27; is set to &#x27;Absolute&#x27;) | string | X Coordinate of the watermark (in Pts, 1/72 of an inch) | x |
@@ -777,7 +777,7 @@ Parameters for RTFWatermark operation
 | Source file name | string | Optional file name (for logging purposes) | source_file_name |
 | Source file content | byte | Content of the file to watermark | source_file_content |
 | Watermark content | string | Watermark text in RTF format | rtf_data |
-| [sharepoint_file](#sharepoint_file) | object | SharePoint file information for operation | sharepoint_file |
+| [sharepoint_file](#sharepointfile) | object | SharePoint file information for operation | sharepoint_file |
 | Position | enum | Watermark position on the page | position |
 | Width | string | Width of the watermark (in Pts, 1/72 of an inch) | width |
 | Height | string | Height of the watermark (in Pts, 1/72 of an inch) | height |
@@ -802,7 +802,7 @@ Parameters for SecurePdf operation
 |---------|------|-------------|------|
 | Source file name | string | Optional file name (for logging purposes) | source_file_name |
 | Source file content | byte | Content of the file to secure | source_file_content |
-| [sharepoint_file](#sharepoint_file) | object | SharePoint file information for operation | sharepoint_file |
+| [sharepoint_file](#sharepointfile) | object | SharePoint file information for operation | sharepoint_file |
 | Open password | password | Password required to open the PDF | open_password |
 | Owner password | password | Password for PDF restrictions defined below | owner_password |
 | PDF restrictions | string | Print|HighResolutionPrint|ContentCopy|Annotations|FormFields|ContentAccessibility|DocumentAssembly | security_options |
@@ -826,7 +826,7 @@ Parameters for SplitPdf operation
 |---------|------|-------------|------|
 | Source file name | string | Name of the source file including extension | source_file_name |
 | Source file content | byte | Content of the file to convert | source_file_content |
-| [sharepoint_file](#sharepoint_file) | object | SharePoint file information for operation | sharepoint_file |
+| [sharepoint_file](#sharepointfile) | object | SharePoint file information for operation | sharepoint_file |
 | File name template | string | File name template for splited files (For SharePoint only) | file_name_template |
 | File split type | enum | Split by option | file_split_type |
 | Split parameter | int32 | Split parameters | split_parameter |
@@ -840,7 +840,7 @@ Parameters for TextWatermark operation
 | Source file name | string | Optional file name (for logging purposes) | source_file_name |
 | Source file content | byte | Content of the file to watermark | source_file_content |
 | Watermark content | string | Watermark text | content |
-| [sharepoint_file](#sharepoint_file) | object | SharePoint file information for operation | sharepoint_file |
+| [sharepoint_file](#sharepointfile) | object | SharePoint file information for operation | sharepoint_file |
 | Font family name | string | Name of the font, e.g. Arial, Times New Roman, Calibri | font_family_name |
 | Font size | string | Size of the font in Pt | font_size |
 | Font color | string | Color in #RRGGBB notation | fill_color |

@@ -143,7 +143,7 @@ Triggers when a new repository is created for the authenticated account.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [List_repositories_Response](#list_repositories_response) | object |  |
+| [List_repositories_Response](#listrepositoriesresponse) | object |  |
 
 ___
 

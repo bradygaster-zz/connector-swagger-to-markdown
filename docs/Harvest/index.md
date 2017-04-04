@@ -20,7 +20,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [ListAllContacts_Response](#listallcontacts_response) | array |  |
+| [ListAllContacts_Response](#listallcontactsresponse) | array |  |
 
 ___
 
@@ -57,7 +57,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [ListAllClients_Response](#listallclients_response) | array |  |
+| [ListAllClients_Response](#listallclientsresponse) | array |  |
 
 ___
 
@@ -121,7 +121,7 @@ Update an existing time entry.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [UpdateTimeEntry_Response](#updatetimeentry_response) | object |  |
+| [UpdateTimeEntry_Response](#updatetimeentryresponse) | object |  |
 
 ___
 
@@ -142,7 +142,7 @@ Create a new time entry.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [UpdateTimeEntry_Response](#updatetimeentry_response) | object |  |
+| [UpdateTimeEntry_Response](#updatetimeentryresponse) | object |  |
 
 ___
 
@@ -157,7 +157,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [ListProjects_Response](#listprojects_response) | array |  |
+| [ListProjects_Response](#listprojectsresponse) | array |  |
 
 ___
 
@@ -205,7 +205,7 @@ Get an existing time entry by id.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [UpdateTimeEntry_Response](#updatetimeentry_response) | object |  |
+| [UpdateTimeEntry_Response](#updatetimeentryresponse) | object |  |
 
 ___
 
@@ -220,7 +220,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [ListTasks_Response](#listtasks_response) | array |  |
+| [ListTasks_Response](#listtasksresponse) | array |  |
 
 ___
 
@@ -237,7 +237,7 @@ Retrieve a user&#x27;s details by user id or email.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [GetUserByID_Response](#getuserbyid_response) | object |  |
+| [GetUserByID_Response](#getuserbyidresponse) | object |  |
 
 ___
 
@@ -254,7 +254,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [ListAllUsers_Response](#listallusers_response) | array |  |
+| [ListAllUsers_Response](#listallusersresponse) | array |  |
 
 ___
 
@@ -269,7 +269,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [ListAllClients_Response](#listallclients_response) | array |  |
+| [ListAllClients_Response](#listallclientsresponse) | array |  |
 
 ___
 
@@ -284,7 +284,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [ListAllContacts_Response](#listallcontacts_response) | array |  |
+| [ListAllContacts_Response](#listallcontactsresponse) | array |  |
 
 ___
 
@@ -299,7 +299,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [ListProjects_Response](#listprojects_response) | array |  |
+| [ListProjects_Response](#listprojectsresponse) | array |  |
 
 ___
 
@@ -316,7 +316,7 @@ Triggers when a new time entry is created for the current day.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [GetTimeEntriesForDay_Response](#gettimeentriesforday_response) | object |  |
+| [GetTimeEntriesForDay_Response](#gettimeentriesfordayresponse) | object |  |
 
 ___
 
@@ -334,7 +334,7 @@ Triggers when a new time entry is created for a specific date.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [GetTimeEntriesForDay_Response](#gettimeentriesforday_response) | object |  |
+| [GetTimeEntriesForDay_Response](#gettimeentriesfordayresponse) | object |  |
 
 ___
 
@@ -377,7 +377,7 @@ ___
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-| [GetUserByID_Response](#getuserbyid_response) | object |  |  |
+| [GetUserByID_Response](#getuserbyidresponse) | object |  |  |
 
 ### UpdateTimeEntry_Response
 

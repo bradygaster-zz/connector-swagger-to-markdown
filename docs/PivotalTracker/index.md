@@ -38,7 +38,7 @@ This operation is used to create a new story.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [Story_Response](#story_response) | object |  |
+| [Story_Response](#storyresponse) | object |  |
 
 ___
 
@@ -53,7 +53,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [Listprojects_Response](#listprojects_response) | array |  |
+| [Listprojects_Response](#listprojectsresponse) | array |  |
 
 ___
 
@@ -71,7 +71,7 @@ This operation retrieves all information about a story, given its id.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [Story_Response](#story_response) | object |  |
+| [Story_Response](#storyresponse) | object |  |
 
 ___
 
@@ -97,7 +97,7 @@ This operation is used to update the details of a story, given its id.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [Story_Response](#story_response) | object |  |
+| [Story_Response](#storyresponse) | object |  |
 
 ___
 
@@ -134,7 +134,7 @@ Triggers when a new story is added to the given project.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [Liststories_Response](#liststories_response) | array |  |
+| [Liststories_Response](#liststoriesresponse) | array |  |
 
 ___
 
@@ -151,7 +151,7 @@ Triggers when an existing story is completed in the given project.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [Liststories_Response](#liststories_response) | array |  |
+| [Liststories_Response](#liststoriesresponse) | array |  |
 
 ___
 
@@ -168,7 +168,7 @@ Triggers when a story is created or the details of an existing story are updated
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [Liststories_Response](#liststories_response) | array |  |
+| [Liststories_Response](#liststoriesresponse) | array |  |
 
 ___
 
@@ -204,7 +204,7 @@ ___
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-| [Story_Response](#story_response) | object |  |  |
+| [Story_Response](#storyresponse) | object |  |  |
 
 ### Story_Response
 

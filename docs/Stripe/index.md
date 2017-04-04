@@ -37,7 +37,7 @@ Updates the specific product by setting the values of the parameters passed.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [Product_Response](#product_response) | object |  |
+| [Product_Response](#productresponse) | object |  |
 
 ___
 
@@ -61,7 +61,7 @@ Creates a new product.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [Product_Response](#product_response) | object |  |
+| [Product_Response](#productresponse) | object |  |
 
 ___
 
@@ -78,7 +78,7 @@ Returns the details of specified customer.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [Customer_Response](#customer_response) | object |  |
+| [Customer_Response](#customerresponse) | object |  |
 
 ___
 
@@ -97,7 +97,7 @@ Updates the specified customer by setting the values of the parameters passed.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [Customer_Response](#customer_response) | object |  |
+| [Customer_Response](#customerresponse) | object |  |
 
 ___
 
@@ -115,7 +115,7 @@ Create a new customer.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [Customer_Response](#customer_response) | object |  |
+| [Customer_Response](#customerresponse) | object |  |
 
 ___
 
@@ -132,7 +132,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [ListCustomers_Response](#listcustomers_response) | array | data |
+| [ListCustomers_Response](#listcustomersresponse) | array | data |
 
 ___
 
@@ -147,7 +147,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [ListOrders_Response](#listorders_response) | array |  |
+| [ListOrders_Response](#listordersresponse) | array |  |
 
 ___
 
@@ -162,7 +162,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [ListCharges_Response](#listcharges_response) | array | data |
+| [ListCharges_Response](#listchargesresponse) | array | data |
 
 ___
 
@@ -177,7 +177,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [ListInvoiceItems_Response](#listinvoiceitems_response) | array | data |
+| [ListInvoiceItems_Response](#listinvoiceitemsresponse) | array | data |
 
 ___
 

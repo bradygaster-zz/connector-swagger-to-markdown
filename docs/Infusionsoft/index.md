@@ -26,7 +26,7 @@ Create a new task.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [Task_Response](#task_response) | object |  |
+| [Task_Response](#taskresponse) | object |  |
 
 ___
 
@@ -48,7 +48,7 @@ Update an existing task.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [Task_Response](#task_response) | object |  |
+| [Task_Response](#taskresponse) | object |  |
 
 ___
 
@@ -65,7 +65,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [OnNewTask_Response](#onnewtask_response) | array |  |
+| [OnNewTask_Response](#onnewtaskresponse) | array |  |
 
 ___
 
@@ -80,7 +80,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [ListOrders_Response](#listorders_response) | array | orders |
+| [ListOrders_Response](#listordersresponse) | array | orders |
 
 ___
 
@@ -121,7 +121,7 @@ ___
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-| [Task_Response](#task_response) | object |  |  |
+| [Task_Response](#taskresponse) | object |  |  |
 
 ### ListOrders_Response
 orders

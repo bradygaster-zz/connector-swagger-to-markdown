@@ -72,7 +72,7 @@ var refToLink = function(str) {
     }
 
     var headerText = str.replace('#/definitions/', '');
-    var headerLink = headerText.replace(' ', '-').toLowerCase();
+    var headerLink = headerText.replace(/_/g, '').toLowerCase();
     return '[' + headerText + ']' + '(#' + headerLink + ')';
 };
 

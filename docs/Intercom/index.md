@@ -25,7 +25,7 @@ Creates a new user for your Intercom account. Users found via email will be upda
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [User_Response](#user_response) | object |  |
+| [User_Response](#userresponse) | object |  |
 
 ___
 
@@ -40,7 +40,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [ListLeads_Response](#listleads_response) | array |  |
+| [ListLeads_Response](#listleadsresponse) | array |  |
 
 ___
 
@@ -61,7 +61,7 @@ Creates a new lead for your Intercom account.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [Lead_Response](#lead_response) | object |  |
+| [Lead_Response](#leadresponse) | object |  |
 
 ___
 
@@ -78,7 +78,7 @@ Given the id for an existing user, this operation returns all information about 
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [User_Response](#user_response) | object |  |
+| [User_Response](#userresponse) | object |  |
 
 ___
 
@@ -95,7 +95,7 @@ Given the id for an existing lead, this operation returns all information about 
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [Lead_Response](#lead_response) | object |  |
+| [Lead_Response](#leadresponse) | object |  |
 
 ___
 
@@ -112,7 +112,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [TrigListLeads_Response](#triglistleads_response) | array |  |
+| [TrigListLeads_Response](#triglistleadsresponse) | array |  |
 
 ___
 
@@ -127,7 +127,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [TrigListUsers_Response](#triglistusers_response) | array |  |
+| [TrigListUsers_Response](#triglistusersresponse) | array |  |
 
 ___
 
@@ -142,7 +142,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [TrigListUsers_Response](#triglistusers_response) | array |  |
+| [TrigListUsers_Response](#triglistusersresponse) | array |  |
 
 ___
 
@@ -157,7 +157,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [TrigListConversations_Response](#triglistconversations_response) | array |  |
+| [TrigListConversations_Response](#triglistconversationsresponse) | array |  |
 
 ___
 
@@ -179,21 +179,21 @@ ___
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-| [TrigUser_Response](#triguser_response) | object |  |  |
+| [TrigUser_Response](#triguserresponse) | object |  |  |
 
 ### TrigListLeads_Response
 
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-| [TrigLead_Response](#triglead_response) | object |  |  |
+| [TrigLead_Response](#trigleadresponse) | object |  |  |
 
 ### TrigListConversations_Response
 
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-| [TrigConversation_Response](#trigconversation_response) | object |  |  |
+| [TrigConversation_Response](#trigconversationresponse) | object |  |  |
 
 ### TrigUser_Response
 
@@ -269,14 +269,14 @@ ___
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-| [User_Response](#user_response) | object |  |  |
+| [User_Response](#userresponse) | object |  |  |
 
 ### ListLeads_Response
 
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-| [Lead_Response](#lead_response) | object |  |  |
+| [Lead_Response](#leadresponse) | object |  |  |
 
 ### User_Response
 
