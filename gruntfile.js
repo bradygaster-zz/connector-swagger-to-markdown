@@ -77,7 +77,33 @@ module.exports = (grunt) => {
                         ],
                         filter: 'isFile',
                         dest: 'docs'
-                    }
+                    },
+                    // AAPT-Connectors (SAAS)
+                    {
+                        expand: true,
+                        cwd: '../AAPT-connectors/src/source/SAAS/',
+                        src: [
+                            aaptSaasList + '/apiDefinition.swagger.json',
+                            aaptSaasList + '/resourceTemplate.json',
+                            aaptSaasList + '/Deployment/policy.xml',
+                            aaptSaasList + '/Deployment/policies.xml',
+                            aaptSaasList + '/icon.png',
+                            aaptSaasList + '/intro.md',
+                            aaptSaasList + '/media/*.png'
+                        ],
+                        filter: 'isFile',
+                        dest: 'Connectors'
+                    },
+                    {
+                        expand: true,
+                        cwd: '../AAPT-connectors/src/source/SAAS/',
+                        src: [
+                            aaptSaasList + '/icon.png',
+                            aaptSaasList + '/media/*.png'
+                        ],
+                        filter: 'isFile',
+                        dest: 'docs'
+                    },
                 ]
             }
         },

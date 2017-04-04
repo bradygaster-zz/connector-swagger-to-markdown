@@ -1,3 +1,5 @@
+var fs = require('fs');
+
 var resolveReference = function(document, $ref) {
     if ($ref) {
         var reference = document,
@@ -73,6 +75,8 @@ var refToLink = function(str) {
     var headerLink = headerText.replace(' ', '-').toLowerCase();
     return '[' + headerText + ']' + '(#' + headerLink + ')';
 };
+
+
 
 module.exports = {
     firstOrNull: function(array, predicate) {

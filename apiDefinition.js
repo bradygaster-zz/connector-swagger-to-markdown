@@ -20,11 +20,11 @@ fs.writeFileSync('docs/TOC.md', baseTOC);
 
 glob("Connectors/*/apiDefinition.swagger.json", function (er, files) {
     files.forEach(function (file) {
-        try {
+        // try {
             generateDocumentation(file);
-        } catch (ex) {
-            console.log('error in ' + file + ': ' + ex);
-        }
+        // } catch (ex) {
+            // console.log('error in ' + file + ': ' + ex);
+        // }
     });
 });
 
@@ -36,7 +36,7 @@ function generateDocumentation(swaggerFilename) {
     var connectionParameters = getConnectionParameters(swaggerFilename);
     var policy = getPolicy(swaggerFilename);
     var customSection = getCustomSection(swaggerFilename);
-    var swagger = JSON.parse(fs.readFileSync(swaggerFilename).toString());
+    var swagger = JSON.parse(readFile(swaggerFilename));
     var docModel = common.generateDoc(swagger);
     var connector = {
         'connectionParameters': connectionParameters,
@@ -98,7 +98,12 @@ function getConnectionParameters(swaggerFilename) {
 
 function getPolicy(swaggerFilename) {
     var policyFilename = swaggerFilename.replace('apiDefinition.swagger.json', 'policy.xml');
-    var policyContents = fs.readFileSync(policyFilename).toString();
+    var policyContents = tryReadFile(policyFilename);
+    if (!policyContents) {
+        policyFilename = swaggerFilename.replace('apiDefinition.swagger.json', 'Deployment/policies.xml');
+        policyContents = tryReadFile(policyFilename);
+        if (!policyContents) throw 'Policy not found';
+    }
     var policy = new DOMParser().parseFromString(policyContents, 'text/xml');
 
     // For simplicity, only extract the elements from the policy that we need
@@ -133,19 +138,29 @@ function getPolicy(swaggerFilename) {
 }
 
 function getConnectionLimit(swaggerFilename) {
-    try {
-        var resourceTemplateFilename = swaggerFilename.replace('apiDefinition.swagger.json', 'resourceTemplate.json');
-        var resourceTemplate = fs.readFileSync(resourceTemplateFilename).toString();
-
+    var resourceTemplateFilename = swaggerFilename.replace('apiDefinition.swagger.json', 'resourceTemplate.json');
+    var resourceTemplate = tryReadFile(resourceTemplateFilename);
+    if (resourceTemplate) {
         var connLimitRegex = /"connectionLimits"\s*:\s*{\s*"\*":\s*(\d+)\s*}/g;
         var match = connLimitRegex.exec(resourceTemplate);
         if (match && match.length > 0) {
             return match[1];
-        } else {
-            return null;
         }
+    }
+    return null;
+}
+
+function readFile(filename) {
+    var fileContents = fs.readFileSync(filename).toString();
+    fileContents = fileContents.replace(/^\uFEFF/, ''); // Strip BOM if any
+    return fileContents;
+}
+
+function tryReadFile(filename) {
+    try {
+        var fileContents = readFile(filename);
+        return fileContents;
     } catch (ex) {
-        // It's expected that some connectors don't have custom sections
         if (ex.code !== 'ENOENT') {
             throw ex;
         }
