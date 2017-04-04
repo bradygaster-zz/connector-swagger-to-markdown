@@ -82,18 +82,13 @@ function addToTableOfContents(connectorName, connectorShortname) {
 }
 
 function getConnectionParameters(swaggerFilename) {
-    try {
-        var connParamsFile = swaggerFilename.replace('apiDefinition.swagger.json', 'connectionParameters.json');
-        var filecontents = fs.readFileSync(connParamsFile).toString();
+    var connParamsFile = swaggerFilename.replace('apiDefinition.swagger.json', 'connectionParameters.json');
+    var filecontents = tryReadFile(connParamsFile);
+    if (filecontents) {
         var connectionParameters = JSON.parse(filecontents);
         return connectionParameters;
-    } catch (ex) {
-        // It's expected that some connectors don't have connection parameters
-        if (ex.code !== 'ENOENT') {
-            throw ex;
-        }
-        return null;
     }
+    return null;
 }
 
 function getPolicy(swaggerFilename) {
@@ -169,17 +164,9 @@ function tryReadFile(filename) {
 }
 
 function getCustomSection(swaggerFilename) {
-    try {
-        var customSectionFilename = swaggerFilename.replace('apiDefinition.swagger.json', 'intro.md');
-        var customSection = fs.readFileSync(customSectionFilename).toString();
-        return customSection;
-    } catch (ex) {
-        // It's expected that some connectors don't have custom sections
-        if (ex.code !== 'ENOENT') {
-            throw ex;
-        }
-        return null;
-    }
+    var customSectionFilename = swaggerFilename.replace('apiDefinition.swagger.json', 'intro.md');
+    var customSection = tryReadFile(customSectionFilename);
+    return customSection;
 }
 
 function dropFile(directory, filename, content) {
