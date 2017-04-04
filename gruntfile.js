@@ -1,6 +1,7 @@
 var connectors = require('./connectors.json');
-var whitelistExpression = connectors.length > 1 ? '{' + connectors.join(',') + '}' : connectors[0];
-console.log('Generating docs for: ' + whitelistExpression);
+var aaptCodelessList = connectors.aaptCodeless.length > 1 ? '{' + connectors.aaptCodeless.join(',') + '}' : connectors.aaptCodeless[0];
+var aaptSaasList = connectors.aaptSaas.length > 1 ? '{' + connectors.aaptSaas.join(',') + '}' : connectors.aaptSaas[0];
+var gncpalaList = connectors.gncpala.length > 1 ? '{' + connectors.gncpala.join(',') + '}' : connectors.gncpala[0];
 
 module.exports = (grunt) => {
 
@@ -30,13 +31,13 @@ module.exports = (grunt) => {
                         expand: true,
                         cwd: '../AAPT-connectors/src/codeless/',
                         src: [
-                            whitelistExpression + '/apiDefinition.swagger.json',
-                            whitelistExpression + '/connectionParameters.json',
-                            whitelistExpression + '/resourceTemplate.json',
-                            whitelistExpression + '/policy.xml',
-                            whitelistExpression + '/icon.png',
-                            whitelistExpression + '/intro.md',
-                            whitelistExpression + '/media/*.png'
+                            aaptCodelessList + '/apiDefinition.swagger.json',
+                            aaptCodelessList + '/connectionParameters.json',
+                            aaptCodelessList + '/resourceTemplate.json',
+                            aaptCodelessList + '/policy.xml',
+                            aaptCodelessList + '/icon.png',
+                            aaptCodelessList + '/intro.md',
+                            aaptCodelessList + '/media/*.png'
                         ],
                         filter: 'isFile',
                         dest: 'Connectors'
@@ -45,8 +46,8 @@ module.exports = (grunt) => {
                         expand: true,
                         cwd: '../AAPT-connectors/src/codeless/',
                         src: [
-                            whitelistExpression + '/icon.png',
-                            whitelistExpression + '/media/*.png'
+                            aaptCodelessList + '/icon.png',
+                            aaptCodelessList + '/media/*.png'
                         ],
                         filter: 'isFile',
                         dest: 'docs'
@@ -56,13 +57,13 @@ module.exports = (grunt) => {
                         expand: true,
                         cwd: '../Connectors/src/Connectors/',
                         src: [
-                            whitelistExpression + '/apiDefinition.swagger.json',
-                            whitelistExpression + '/connectionParameters.json',
-                            whitelistExpression + '/resourceTemplate.json',
-                            whitelistExpression + '/policy.xml',
-                            whitelistExpression + '/icon.png',
-                            whitelistExpression + '/intro.md',
-                            whitelistExpression + '/media/*.png'
+                            gncpalaList + '/apiDefinition.swagger.json',
+                            gncpalaList + '/connectionParameters.json',
+                            gncpalaList + '/resourceTemplate.json',
+                            gncpalaList + '/policy.xml',
+                            gncpalaList + '/icon.png',
+                            gncpalaList + '/intro.md',
+                            gncpalaList + '/media/*.png'
                         ],
                         filter: 'isFile',
                         dest: 'Connectors'
@@ -71,8 +72,8 @@ module.exports = (grunt) => {
                         expand: true,
                         cwd: '../Connectors/src/Connectors/',
                         src: [
-                            whitelistExpression + '/icon.png',
-                            whitelistExpression + '/media/*.png'
+                            gncpalaList + '/icon.png',
+                            gncpalaList + '/media/*.png'
                         ],
                         filter: 'isFile',
                         dest: 'docs'

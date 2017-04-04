@@ -1,9 +1,22 @@
-[
-    "AzureQueues",
-    "GoogleCalendar",
-    "MicrosoftTranslator",
-    "MsnWeather",
-    "OneNote",
-    "PowerBI",
-    "Todoist"
-]
+{
+    "gncpala": [
+        "AzureQueues",
+        "MicrosoftTranslator",
+        "OneNote",
+        "PowerBI"
+    ],
+    "aaptCodeless": [
+        "GoogleCalendar",
+        "MsnWeather",
+        "Todoist"
+    ],
+    "aaptSaas": [
+        "GitHub",
+        "Mail",
+        "MailChimp",
+        "Mandrill",
+        "SendGrid",
+        "Trello",
+        "Wunderlist"
+    ]
+}
