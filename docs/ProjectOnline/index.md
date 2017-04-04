@@ -17,7 +17,7 @@ Lists the projects in your project online site
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Site url | string | Root site url of your project site (Example: https://sampletenant.sharepoint.com/teams/sampleteam ) | true |
+| Root site url of your project site | string | Ex: https://sample.sharepoint.com/teams/sampleteam | true |
 
 #### Returns
 | Summary | Type | Description |
@@ -34,7 +34,7 @@ Creates a new project in your project online site
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Site url | string | Root site url of your project site (Example: https://sampletenant.sharepoint.com/teams/sampleteam ) | true |
+| Root site url of your project site | string | Ex: https://sample.sharepoint.com/teams/sampleteam | true |
 | Project name | string | Name of the new project to create | true |
 | Project description | string | Description of the new project to create | false |
 | Project start date | date-time | Start date of the new project | false |
@@ -54,7 +54,7 @@ Creates a new task in you project
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Site url | string | Root site url of your project site (Example: https://sampletenant.sharepoint.com/teams/sampleteam ) | true |
+| Root site url of your project site | string | Ex: https://sample.sharepoint.com/teams/sampleteam | true |
 | Project id | string | Unique id of the project to add the task to | true |
 | Task name | string | Name of the new task to create | true |
 | Task notes | string | Notes to put on the new task | false |
@@ -76,7 +76,7 @@ Creates an Enterprise Resources in your project online site
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Site url | string | Root site url of your project site (Example: https://sampletenant.sharepoint.com/teams/sampleteam ) | true |
+| Root site url of your project site | string | Ex: https://sample.sharepoint.com/teams/sampleteam | true |
 | Resource name | string | The name of the new resource to create | true |
 | Is resource in budget | boolean | Is resource accounted for in the budget | false |
 | Is resource generic | boolean | Is resource generic | false |
@@ -97,7 +97,7 @@ Lists the published tasks in a project
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Site url | string | Root site url of your project site (Example: https://sampletenant.sharepoint.com/teams/sampleteam ) | true |
+| Root site url of your project site | string | Ex: https://sample.sharepoint.com/teams/sampleteam | true |
 | Project id | string | Unique id of the project to fetch tasks | true |
 
 #### Returns
@@ -115,7 +115,7 @@ Checks out an existing project in your site
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Site url | string | Root site url of your project site (Example: https://sampletenant.sharepoint.com/teams/sampleteam ) | true |
+| Root site url of your project site | string | Ex: https://sample.sharepoint.com/teams/sampleteam | true |
 | Project id | string | Unique id of the project to checkout | true |
 
 #### Returns
@@ -131,7 +131,7 @@ Check in and publish and existing project in your site
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Site url | string | Root site url of your project site (Example: https://sampletenant.sharepoint.com/teams/sampleteam ) | true |
+| Root site url of your project site | string | Ex: https://sample.sharepoint.com/teams/sampleteam | true |
 | Project id | string | Unique id of the project to checkin | true |
 
 #### Returns
@@ -149,7 +149,7 @@ Triggers a flow whenever a new project is created
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Site url | string | Root site url of your project site (Example: https://sampletenant.sharepoint.com/teams/sampleteam ) | true |
+| Root site url of your project site | string | Ex: https://sample.sharepoint.com/teams/sampleteam | true |
 
 #### Returns
 | Summary | Type | Description |
@@ -166,7 +166,7 @@ Triggers a flow whenever a project is published
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Site url | string | Root site url of your project site (Example: https://sampletenant.sharepoint.com/teams/sampleteam ) | true |
+| Root site url of your project site | string | Ex: https://sample.sharepoint.com/teams/sampleteam | true |
 
 #### Returns
 | Summary | Type | Description |
@@ -183,7 +183,7 @@ Triggers a new flow when a new resource is created
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Site url | string | Root site url of your project site (Example: https://sampletenant.sharepoint.com/teams/sampleteam ) | true |
+| Root site url of your project site | string | Ex: https://sample.sharepoint.com/teams/sampleteam | true |
 
 #### Returns
 | Summary | Type | Description |
@@ -200,7 +200,7 @@ Triggers a flow when a new task is created
 #### Parameters
 | Summary | Type | Description | Required |
 |---------|------|-------------|----------|
-| Site url | string | Root site url of your project site (Example: https://sampletenant.sharepoint.com/teams/sampleteam ) | true |
+| Root site url of your project site | string | Ex: https://sample.sharepoint.com/teams/sampleteam | true |
 
 #### Returns
 | Summary | Type | Description |
@@ -251,7 +251,7 @@ Resource Online resource model
 | Can resource level | boolean | Can the resource level | ResourceCanLevel |
 | Resource cost per use | double | Cost per use of the resource | ResourceCostPerUse |
 | Resource create date | date-time | Create date of the resource | ResourceCreatedDate |
-| Reource earliest available from | date-time | Earliest availability date of the resource | ResourceEarliestAvailableFrom |
+| Resource earliest available from | date-time | Earliest availability date of the resource | ResourceEarliestAvailableFrom |
 | Resource email | string | Email address of the resource | ResourceEmail |
 | Resource initials | string | Initals of the resource | ResourceInitials |
 | Is resource activew | boolean | Is the new resource active | ResourceIsActive |
@@ -262,7 +262,7 @@ Resource Online resource model
 | Resource status name | string | Status name of the resource | ResourceStatsuName |
 | Resource type | int32 | Type of resource | ResourceType |
 | Resource type description | string | Description for the type of resource | TypeDescription |
-| Resource type name | string | Type name of the reource | TypeName |
+| Resource type name | string | Type name of the resource | TypeName |
 
 ### TriggerTasksWrapper
 Project online on new task response model
@@ -309,7 +309,7 @@ Project Online Project Model
 | Created date | date-time | Created date of the project | CreatedDate |
 | Project id | string | Id of the project | Id |
 | Is checked out | boolean | True if the project is currently checked out | IsCheckedOut |
-| Last published date | date-time | Last published date of the project | LastPublishedDate |
+| Project last published date | date-time | Last published date of the project | ProjectLastPublishedDate |
 | Last saved date | date-time | Last date the project is saved | LastSavedDate |
 | Optimizer decision | int32 | Project optimizer decision number | OptimizerDecision |
 | Planner decision | int32 | Project planner decision number | PlannerDecision |
@@ -375,7 +375,7 @@ Project Online Enterprise Resource Model
 | Is generic | boolean | Is resource generic | IsGeneric |
 | Is team | boolean | Is resource part of the team | IsTeam |
 | Material label | string | Resource material label | MaterialLabel |
-| Last modified | date-time | Time which the reource is last modified | Modified |
+| Last modified | date-time | Time which the resource is last modified | Modified |
 | Resource name | string | Resource name | Name |
 | Resource phonetics | string | Phonetic pronounciation of the resource | Phonetics |
 | Resource type | int32 | Resource type | ResourceType |
