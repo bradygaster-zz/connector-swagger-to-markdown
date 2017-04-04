@@ -185,9 +185,18 @@ var generateOperation = function(swagger, operation) {
                 } else if (schema.type === 'object' || schema.type === 'array') {
                     // Inline object/array
                     var docProperties = [];
-                    flattenDefinitionSchema(swagger, schema, '', '', docProperties);
                     docResponse = new Response();
-                    docResponse.properties = docProperties;
+                    flattenDefinitionSchema(swagger, schema, '', '', docProperties);
+                    if (schema.type === 'array' && schema.items && schema.items.$ref) {
+                        var itemsSchema = new SingleSchema();
+                        var items = docProperties[0];
+                        itemsSchema.summary = items.summary;
+                        itemsSchema.type = items.type;
+                        itemsSchema.description = items.description
+                        docResponse.singleSchema = itemsSchema;
+                    } else {
+                        docResponse.properties = docProperties;
+                    }
                 } else {
                     // Inline schema of primitive type
                     docResponse = new Response();

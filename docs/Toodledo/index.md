@@ -20,9 +20,9 @@ Returns a list of tasks (up to 1000 results).
 | Completed | int32 | Set to 0 to find only uncompleted tasks or 1 to find only completed tasks. Default includes both. | false |
 
 #### Returns
-| Summary | Type | Description | Path |
-|---------|------|-------------|------|
-|  | Array of [Task](#task) |  |  |
+| Summary | Type | Description |
+|---------|------|-------------|
+|  | Array of [Task](#task) |  |
 
 ___
 
@@ -100,9 +100,9 @@ Get a list of folders.
 This operation does not require any input.
 
 #### Returns
-| Summary | Type | Description | Path |
-|---------|------|-------------|------|
-|  | Array of [Folder](#folder) |  |  |
+| Summary | Type | Description |
+|---------|------|-------------|
+|  | Array of [Folder](#folder) |  |
 
 ___
 
@@ -117,9 +117,9 @@ Triggers a new workflow when a task is created or updated.
 This operation does not require any input.
 
 #### Returns
-| Summary | Type | Description | Path |
-|---------|------|-------------|------|
-|  | Array of [Task](#task) |  |  |
+| Summary | Type | Description |
+|---------|------|-------------|
+|  | Array of [Task](#task) |  |
 
 ___
 

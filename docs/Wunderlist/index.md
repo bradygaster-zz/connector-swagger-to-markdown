@@ -18,9 +18,9 @@ Retrieve the lists associated with your account.
 This operation does not require any input.
 
 #### Returns
-| Summary | Type | Description | Path |
-|---------|------|-------------|------|
-|  | Array of [List](#list) |  |  |
+| Summary | Type | Description |
+|---------|------|-------------|
+|  | Array of [List](#list) |  |
 
 ___
 
@@ -53,9 +53,9 @@ Retrieve tasks from a specific list.
 | Show completed tasks. | boolean | Completed | false |
 
 #### Returns
-| Summary | Type | Description | Path |
-|---------|------|-------------|------|
-|  | Array of [Task](#task) |  |  |
+| Summary | Type | Description |
+|---------|------|-------------|
+|  | Array of [Task](#task) |  |
 
 ___
 
@@ -96,9 +96,9 @@ Retrieve subtasks from a specific list or from a specific task.
 | Show completed tasks. | boolean | Completed | false |
 
 #### Returns
-| Summary | Type | Description | Path |
-|---------|------|-------------|------|
-|  | Array of [Subtask](#subtask) |  |  |
+| Summary | Type | Description |
+|---------|------|-------------|
+|  | Array of [Subtask](#subtask) |  |
 
 ___
 
@@ -134,9 +134,9 @@ Retrieve notes for a specific list or a specific task.
 | Task ID | integer | Task ID | false |
 
 #### Returns
-| Summary | Type | Description | Path |
-|---------|------|-------------|------|
-|  | Array of [Note](#note) |  |  |
+| Summary | Type | Description |
+|---------|------|-------------|
+|  | Array of [Note](#note) |  |
 
 ___
 
@@ -171,9 +171,9 @@ Retrieve task comments for a specific list or a specific task.
 | Task ID | integer | Task ID | false |
 
 #### Returns
-| Summary | Type | Description | Path |
-|---------|------|-------------|------|
-|  | Array of [Comment](#comment) |  |  |
+| Summary | Type | Description |
+|---------|------|-------------|
+|  | Array of [Comment](#comment) |  |
 
 ___
 
@@ -208,9 +208,9 @@ Retrieve reminders for a specific list or a specific task.
 | Task ID | integer | Task ID | false |
 
 #### Returns
-| Summary | Type | Description | Path |
-|---------|------|-------------|------|
-|  | Array of [Reminder](#reminder) |  |  |
+| Summary | Type | Description |
+|---------|------|-------------|
+|  | Array of [Reminder](#reminder) |  |
 
 ___
 
@@ -245,9 +245,9 @@ Retrieve files for a specific list or a specific task.
 | Task ID | integer | Task ID | false |
 
 #### Returns
-| Summary | Type | Description | Path |
-|---------|------|-------------|------|
-|  | Array of [File](#file) |  |  |
+| Summary | Type | Description |
+|---------|------|-------------|
+|  | Array of [File](#file) |  |
 
 ___
 
@@ -534,9 +534,9 @@ Triggers a new flow when a task in the list is due
 | List ID | integer | List ID | true |
 
 #### Returns
-| Summary | Type | Description | Path |
-|---------|------|-------------|------|
-|  | Array of [Task](#task) |  |  |
+| Summary | Type | Description |
+|---------|------|-------------|
+|  | Array of [Task](#task) |  |
 
 ___
 
@@ -551,9 +551,9 @@ Triggers a new flow when a new task is created in the list
 | List ID | integer | List ID | true |
 
 #### Returns
-| Summary | Type | Description | Path |
-|---------|------|-------------|------|
-|  | Array of [Task](#task) |  |  |
+| Summary | Type | Description |
+|---------|------|-------------|
+|  | Array of [Task](#task) |  |
 
 ___
 
@@ -569,9 +569,9 @@ Triggers a new flow when a reminder occurs
 | Task ID | integer | Task ID | false |
 
 #### Returns
-| Summary | Type | Description | Path |
-|---------|------|-------------|------|
-|  | Array of [Reminder](#reminder) |  |  |
+| Summary | Type | Description |
+|---------|------|-------------|
+|  | Array of [Reminder](#reminder) |  |
 
 ___
 

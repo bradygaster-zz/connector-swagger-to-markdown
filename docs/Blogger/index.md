@@ -168,9 +168,9 @@ Triggers a flow when a new post is created
 | Post Status | string | Status of the posts to retrieve | true |
 
 #### Returns
-| Summary | Type | Description | Path |
-|---------|------|-------------|------|
-|  | Array of [Post](#post) |  |  |
+| Summary | Type | Description |
+|---------|------|-------------|
+|  | Array of [Post](#post) |  |
 
 ___
 

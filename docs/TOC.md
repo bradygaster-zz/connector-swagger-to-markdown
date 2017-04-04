@@ -108,7 +108,6 @@
 
 ## [Todoist](Todoist/index.md)
 
-## [Wunderlist](Wunderlist/index.md)
 ## [Toodledo](Toodledo/index.md)
 
 ## [Typeform](Typeform/index.md)
@@ -120,5 +119,7 @@
 ## [WebMerge](WebMerge/index.md)
 
 ## [WordPress](WordPress/index.md)
+
+## [Wunderlist](Wunderlist/index.md)
 
 ## [YouTube](YouTube/index.md)

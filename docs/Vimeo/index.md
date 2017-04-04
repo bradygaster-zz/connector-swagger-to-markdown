@@ -18,9 +18,9 @@ Triggers a flow when the logged in user uploads a new video
 This operation does not require any input.
 
 #### Returns
-| Summary | Type | Description | Path |
-|---------|------|-------------|------|
-|  | Array of [Video](#video) |  |  |
+| Summary | Type | Description |
+|---------|------|-------------|
+|  | Array of [Video](#video) |  |
 
 ___
 
@@ -35,9 +35,9 @@ Triggers a new flow when a video is added to a channel
 | Channel ID | string | Unique ID of the channel to watch for new videos | true |
 
 #### Returns
-| Summary | Type | Description | Path |
-|---------|------|-------------|------|
-|  | Array of [VideoWithChannelId](#videowithchannelid) |  |  |
+| Summary | Type | Description |
+|---------|------|-------------|
+|  | Array of [VideoWithChannelId](#videowithchannelid) |  |
 
 ___
 

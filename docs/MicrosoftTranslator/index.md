@@ -18,9 +18,9 @@ Retrieves all languages that Microsoft Translator supports
 This operation does not require any input.
 
 #### Returns
-| Summary | Type | Description | Path |
-|---------|------|-------------|------|
-|  | Array of [Language](#language) |  |  |
+| Summary | Type | Description |
+|---------|------|-------------|
+|  | Array of [Language](#language) |  |
 
 ___
 
@@ -71,9 +71,9 @@ Retrieves the languages available for speech synthesis
 This operation does not require any input.
 
 #### Returns
-| Summary | Type | Description | Path |
-|---------|------|-------------|------|
-|  | Array of [Language](#language) |  |  |
+| Summary | Type | Description |
+|---------|------|-------------|
+|  | Array of [Language](#language) |  |
 
 ___
 
