@@ -33,8 +33,7 @@ function generateDocumentation(swaggerFilename) {
     var connectorName = swaggerPath.dir.split('/')[1];
     var connectorArtifacts = readConnectorArtifacts(connectorName);
 
-    // Read connector assets
-    var connectionParameters = getConnectionParameters(swaggerFilename);
+    var connectionParameters = getConnectionParameters(connectorArtifacts);
     var policy = getPolicy(swaggerFilename);
     var customSection = getCustomSection(swaggerFilename);
     var swagger = JSON.parse(readFile(swaggerFilename));
@@ -66,8 +65,12 @@ function readConnectorArtifacts(connectorName) {
         'swagger': null,
         'resourceTemplate': null,
         'connectionParameters': null,
-        'policy': null
+        'policy': null,
+        'customSection': null
     };
+
+    var hasIcon = fs.existsSync(baseConnectorPath + 'icon.png');
+    artifacts.icon = hasIcon;
 
     var swaggerContents = readFile(baseConnectorPath + 'apiDefinition.swagger.json');
     artifacts.swagger = JSON.parse(swaggerContents);
@@ -85,6 +88,9 @@ function readConnectorArtifacts(connectorName) {
         var xmlParser = new DOMParser();
         artifacts.policy = xmlParser.parseFromString(policyContents, 'text/xml');
     }
+
+    var customSection = tryReadFile(baseConnectorPath + 'intro.md');
+    artifacts.customSection = customSection;
 
     return artifacts;
 }
@@ -112,14 +118,24 @@ function addToTableOfContents(connectorName, connectorShortname) {
     fs.appendFileSync('docs/TOC.md', tocEntry);
 }
 
-function getConnectionParameters(swaggerFilename) {
-    var connParamsFile = swaggerFilename.replace('apiDefinition.swagger.json', 'connectionParameters.json');
-    var filecontents = tryReadFile(connParamsFile);
-    if (filecontents) {
-        var connectionParameters = JSON.parse(filecontents);
-        return connectionParameters;
+function getConnectionParameters(artifacts) {
+    var connectionParameters = null;
+    // Remove parameters of type 'oauthSetting'
+    if (artifacts.connectionParameters) {
+        connectionParameters = {};
+        Object.keys(artifacts.connectionParameters).forEach(function(connParamKey) {
+            var connParam = artifacts.connectionParameters[connParamKey];
+            if (connParam && connParam.type !== 'oauthSetting') {
+                connectionParameters[connParamKey] = artifacts.connectionParameters[connParamKey];
+            }
+        });
+
+        // For simplicity, if there are no parameters remove the object
+        if (Object.keys(connectionParameters).length == 0) {
+            connectionParameters = null;
+        }
     }
-    return null;
+    return connectionParameters;
 }
 
 function getPolicy(swaggerFilename) {
