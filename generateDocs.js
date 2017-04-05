@@ -5,7 +5,6 @@ var glob = require('glob').Glob;
 var DOMParser = require('xmldom').DOMParser;
 var swaggerDocGen = require('./generateDocs.swagger.js');
 var utils = require('./utils.js');
-var baseTOC = fs.readFileSync('./docs/baseTOC.md').toString();
 var templateFile = fs.readFileSync('./templates/connector-doc-page.mustache').toString();
 var operationTemplate = fs.readFileSync('./templates/operation-partial.mustache').toString();
 var connectionParametersTemplate = fs.readFileSync('./templates/connection-parameters.mustache').toString();
@@ -16,19 +15,34 @@ handlebars.registerPartial('operation', operationTemplate);
 handlebars.registerPartial('connectionParameters', connectionParametersTemplate);
 handlebars.registerPartial('throttling', throttlingTemplate);
 
+var baseTOC = fs.readFileSync('./docs/baseTOC.md').toString();
 fs.writeFileSync('docs/TOC.md', baseTOC);
 
 glob("Connectors/*/apiDefinition.swagger.json", function (er, files) {
-    files.forEach(function (file) {
-        // try {
-            generateDocumentation(file);
-        // } catch (ex) {
-            // console.log('error in ' + file + ': ' + ex);
-        // }
+    var tocEntries = [];
+    for (var i = 0; i < files.length; i++) {
+        var file = files[i];
+        try {
+            generateDocumentation(file, tocEntries);
+        } catch (ex) {
+            console.log('error in ' + file + ': ' + ex);
+        }
+    }
+
+    tocEntries.sort(function(a, b) {
+        return a.title.localeCompare(b.title);
+        //return (a.title > b.title) - (a.title < b.title);
     });
+
+    var tocContents = '';
+    for (var i = 0; i < tocEntries.length; i++) {
+        var entry = tocEntries[i];
+        tocContents += '\n## [' + entry.title + '](' + entry.link + ')\n'; 
+    }
+    fs.appendFileSync('docs/TOC.md', tocContents);
 });
 
-function generateDocumentation(swaggerFilename) {
+function generateDocumentation(swaggerFilename, tocEntries) {
     var swaggerPath = path.parse(swaggerFilename);
     var connectorName = swaggerPath.dir.split('/')[1];
     var connectorArtifacts = readConnectorArtifacts(connectorName);
@@ -53,7 +67,12 @@ function generateDocumentation(swaggerFilename) {
     var markdownFilename = 'index.md';
     dropFile(directory, markdownFilename, result);
     console.log(directory + markdownFilename);
-    addToTableOfContents(connectorArtifacts.swagger.info.title, connectorName);
+
+    var tocEntry = {
+        'title': connectorArtifacts.swagger.info.title,
+        'link': connectorName + '/index.md'
+    };
+    tocEntries.push(tocEntry);
 }
 
 function readConnectorArtifacts(connectorName) {
@@ -94,12 +113,6 @@ function readConnectorArtifacts(connectorName) {
     artifacts.customSection = customSection;
 
     return artifacts;
-}
-
-function addToTableOfContents(connectorName, connectorShortname) {
-    var link = connectorShortname + '/index.md';
-    var tocEntry = '\n## [' + connectorName + '](' + link + ')\n';
-    fs.appendFileSync('docs/TOC.md', tocEntry);
 }
 
 function getConnectionParameters(artifacts) {
