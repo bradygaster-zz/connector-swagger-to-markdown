@@ -13,7 +13,7 @@ module.exports = (grunt) => {
     grunt.registerTask('default', [
         'clean:initClean',
         'copy:connectors',
-        'execute'
+        'execute:generateDocs'
     ]);
 
     grunt.initConfig({
@@ -103,13 +103,13 @@ module.exports = (grunt) => {
                         ],
                         filter: 'isFile',
                         dest: 'docs'
-                    },
+                    }
                 ]
             }
         },
         execute: {
-            target: {
-                src: 'apiDefinition.js'
+            generateDocs: {
+                src: 'generateDocs.js'
             }
         }
     });

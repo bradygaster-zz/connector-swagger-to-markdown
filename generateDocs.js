@@ -30,7 +30,8 @@ glob("Connectors/*/apiDefinition.swagger.json", function (er, files) {
 
 function generateDocumentation(swaggerFilename) {
     var swaggerPath = path.parse(swaggerFilename);
-    var connectorShortname = swaggerPath.dir.split('/')[1];
+    var connectorName = swaggerPath.dir.split('/')[1];
+    var connectorArtifacts = readConnectorArtifacts(connectorName);
 
     // Read connector assets
     var connectionParameters = getConnectionParameters(swaggerFilename);
@@ -55,7 +56,37 @@ function generateDocumentation(swaggerFilename) {
     var markdownFilename = 'index.md';
     dropFile(directory, markdownFilename, result);
     console.log(directory + markdownFilename);
-    addToTableOfContents(swagger.info.title, connectorShortname);
+    addToTableOfContents(swagger.info.title, connectorName);
+}
+
+function readConnectorArtifacts(connectorName) {
+    var baseConnectorPath = 'Connectors/' + connectorName + '/';
+    var artifacts = {
+        'icon': null,
+        'swagger': null,
+        'resourceTemplate': null,
+        'connectionParameters': null,
+        'policy': null
+    };
+
+    var swaggerContents = readFile(baseConnectorPath + 'apiDefinition.swagger.json');
+    artifacts.swagger = JSON.parse(swaggerContents);
+
+    var resourceTemplateContents = tryReadFile(baseConnectorPath + 'apiDefinition.swagger.json');
+    artifacts.resourceTemplate = resourceTemplateContents;
+
+    var connParamsContents = tryReadFile(baseConnectorPath + 'connectionParameters.json');
+    if (connParamsContents) {
+        artifacts.connectionParameters = JSON.parse(connParamsContents);
+    }
+
+    var policyContents = tryReadFile(baseConnectorPath + 'policy.xml');
+    if (policyContents) {
+        var xmlParser = new DOMParser();
+        artifacts.policy = xmlParser.parseFromString(policyContents, 'text/xml');
+    }
+
+    return artifacts;
 }
 
 function preprocessConnector(connector) {
