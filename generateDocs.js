@@ -3,7 +3,7 @@ var path = require('path');
 var handlebars = require('handlebars');
 var glob = require('glob').Glob;
 var DOMParser = require('xmldom').DOMParser;
-var common = require('./common.js');
+var swaggerDocGen = require('./generateDocs.swagger.js');
 var utils = require('./utils.js');
 var baseTOC = fs.readFileSync('./docs/baseTOC.md').toString();
 var templateFile = fs.readFileSync('./templates/connector-doc-page.mustache').toString();
@@ -34,27 +34,26 @@ function generateDocumentation(swaggerFilename) {
     var connectorArtifacts = readConnectorArtifacts(connectorName);
 
     var connectionParameters = getConnectionParameters(connectorArtifacts);
+    var swaggerDoc = swaggerDocGen.generateSwaggerDoc(connectorArtifacts.swagger);
     var limits = getLimits(connectorArtifacts);
-    var customSection = getCustomSection(swaggerFilename);
-    var swagger = JSON.parse(readFile(swaggerFilename));
-    var docModel = common.generateDoc(swagger);
-    var connector = {
+    var connectorDoc = {
+        'customSection': connectorArtifacts.customSection,
         'connectionParameters': connectionParameters,
-        'limits': limits,
-        'customSection': customSection,
-        'doc': docModel
+        'swaggerDoc': swaggerDoc,
+        'limits': limits
     };
-    var preprocessDirectory = swaggerFilename.replace('apiDefinition.swagger.json', '');
-    var docModelStr = JSON.stringify(connector.doc, null, '\t');
-    dropFile(preprocessDirectory, 'docModel.json', docModelStr);
+
+    var debugOutputFile = 'Connectors/' + connectorName + '/';
+    var connectorDocJson = JSON.stringify(connectorDoc, null, '\t');
+    dropFile(debugOutputFile, 'docs.json', connectorDocJson);
 
     var template = handlebars.compile(templateFile);
-    var result = template(connector);
-    var directory = swaggerFilename.replace('Connectors', 'docs').replace('apiDefinition.swagger.json', '');
+    var result = template(connectorDoc);
+    var directory = 'docs/' + connectorName + '/';
     var markdownFilename = 'index.md';
     dropFile(directory, markdownFilename, result);
     console.log(directory + markdownFilename);
-    addToTableOfContents(swagger.info.title, connectorName);
+    addToTableOfContents(connectorArtifacts.swagger.info.title, connectorName);
 }
 
 function readConnectorArtifacts(connectorName) {
@@ -187,12 +186,6 @@ function tryReadFile(filename) {
         }
         return null;
     }
-}
-
-function getCustomSection(swaggerFilename) {
-    var customSectionFilename = swaggerFilename.replace('apiDefinition.swagger.json', 'intro.md');
-    var customSection = tryReadFile(customSectionFilename);
-    return customSection;
 }
 
 function dropFile(directory, filename, content) {

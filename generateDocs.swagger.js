@@ -66,7 +66,7 @@ class ConnectorDoc {
     }
 };
 
-var generateDoc = function(swagger) {
+var generateSwaggerDoc = function(swagger) {
     var doc = new ConnectorDoc();
 
     doc.title = swagger.info.title;
@@ -370,7 +370,7 @@ var isDynamicSchema = function(swagger, schema, visitedRefs) {
 }
 
 module.exports = {
-    generateDoc: function(swagger) {
-        return generateDoc(swagger);
+    generateSwaggerDoc: function(swagger) {
+        return generateSwaggerDoc(swagger);
     }
 };
