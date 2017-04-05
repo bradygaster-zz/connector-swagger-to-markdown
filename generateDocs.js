@@ -34,17 +34,16 @@ function generateDocumentation(swaggerFilename) {
     var connectorArtifacts = readConnectorArtifacts(connectorName);
 
     var connectionParameters = getConnectionParameters(connectorArtifacts);
-    var policy = getPolicy(swaggerFilename);
+    var limits = getLimits(connectorArtifacts);
     var customSection = getCustomSection(swaggerFilename);
     var swagger = JSON.parse(readFile(swaggerFilename));
     var docModel = common.generateDoc(swagger);
     var connector = {
         'connectionParameters': connectionParameters,
-        'policy': policy,
+        'limits': limits,
         'customSection': customSection,
         'doc': docModel
     };
-    preprocessConnector(connector);
     var preprocessDirectory = swaggerFilename.replace('apiDefinition.swagger.json', '');
     var docModelStr = JSON.stringify(connector.doc, null, '\t');
     dropFile(preprocessDirectory, 'docModel.json', docModelStr);
@@ -75,7 +74,7 @@ function readConnectorArtifacts(connectorName) {
     var swaggerContents = readFile(baseConnectorPath + 'apiDefinition.swagger.json');
     artifacts.swagger = JSON.parse(swaggerContents);
 
-    var resourceTemplateContents = tryReadFile(baseConnectorPath + 'apiDefinition.swagger.json');
+    var resourceTemplateContents = tryReadFile(baseConnectorPath + 'resourceTemplate.json');
     artifacts.resourceTemplate = resourceTemplateContents;
 
     var connParamsContents = tryReadFile(baseConnectorPath + 'connectionParameters.json');
@@ -84,6 +83,9 @@ function readConnectorArtifacts(connectorName) {
     }
 
     var policyContents = tryReadFile(baseConnectorPath + 'policy.xml');
+    if (!policyContents) policyContents = tryReadFile(baseConnectorPath + 'policies.xml');
+    if (!policyContents) policyContents = tryReadFile(baseConnectorPath + 'Deployment/policy.xml');
+    if (!policyContents) policyContents = tryReadFile(baseConnectorPath + 'Deployment/policies.xml');
     if (policyContents) {
         var xmlParser = new DOMParser();
         artifacts.policy = xmlParser.parseFromString(policyContents, 'text/xml');
@@ -93,23 +95,6 @@ function readConnectorArtifacts(connectorName) {
     artifacts.customSection = customSection;
 
     return artifacts;
-}
-
-function preprocessConnector(connector) {
-    // Remove parameters of type 'oauthSetting'
-    if (connector.connectionParameters) {
-        Object.keys(connector.connectionParameters).forEach(function(connParamKey) {
-            var connParam = connector.connectionParameters[connParamKey];
-            if (connParam && connParam.type === 'oauthSetting') {
-                delete connector.connectionParameters[connParamKey];
-            }
-        });
-
-        // For simplicity, if there are no parameters remove the object
-        if (Object.keys(connector.connectionParameters).length == 0) {
-            connector.connectionParameters = null;
-        }
-    }
 }
 
 function addToTableOfContents(connectorName, connectorShortname) {
@@ -138,58 +123,52 @@ function getConnectionParameters(artifacts) {
     return connectionParameters;
 }
 
-function getPolicy(swaggerFilename) {
-    var policyFilename = swaggerFilename.replace('apiDefinition.swagger.json', 'policy.xml');
-    var policyContents = tryReadFile(policyFilename);
-    if (!policyContents) {
-        policyFilename = swaggerFilename.replace('apiDefinition.swagger.json', 'Deployment/policies.xml');
-        policyContents = tryReadFile(policyFilename);
-        if (!policyContents) throw 'Policy not found';
-    }
-    var policy = new DOMParser().parseFromString(policyContents, 'text/xml');
-
-    // For simplicity, only extract the elements from the policy that we need
-    var rateLimitTag = policy.getElementsByTagName('rate-limit-by-key')[0];
-    var rateLimit = rateLimitTag ? {
-        'calls': rateLimitTag.getAttribute('calls'),
-        'renewal-period': rateLimitTag.getAttribute('renewal-period')
-    } : null;
-
-    var retryAfterValues = [];
+function getLimits(artifacts) {
     var retryAfterValue = null;
-    var setHeaderTags = policy.getElementsByTagName('set-header');
-    var retryAfterTags = utils.where(setHeaderTags, function(tag) {
-        return utils.firstOrNull(tag.attributes, function(attr) {
-            return attr.nodeValue === 'retry-after';
-        }) !== null;
-    });
-    retryAfterTags.forEach(function(tag) {
-        var retryAfterValueNode = utils.firstOrNull(tag.childNodes, function(child) {
-            return child.firstChild && child.firstChild.nodeValue;
+    var rateLimit = null;
+    if (artifacts.policy) {
+        var policy = artifacts.policy;
+        var rateLimitTag = policy.getElementsByTagName('rate-limit-by-key')[0];
+        if (rateLimitTag) {
+            rateLimit = {
+                'calls': rateLimitTag.getAttribute('calls'),
+                'renewal-period': rateLimitTag.getAttribute('renewal-period')
+            };
+        }
+
+        var retryAfterValues = [];
+        var setHeaderTags = policy.getElementsByTagName('set-header');
+        var retryAfterTags = utils.where(setHeaderTags, function(tag) {
+            return utils.firstOrNull(tag.attributes, function(attr) {
+                return attr.nodeValue === 'retry-after';
+            }) !== null;
         });
-        if (retryAfterValueNode) retryAfterValues.push(retryAfterValueNode.firstChild.nodeValue);
-    });
-    if (retryAfterValues.length > 0) retryAfterValue = utils.max(retryAfterValues);
-    var connectionLimit = getConnectionLimit(swaggerFilename);
-    var policyJson = {
+        retryAfterTags.forEach(function(tag) {
+            var retryAfterValueNode = utils.firstOrNull(tag.childNodes, function(child) {
+                return child.firstChild && child.firstChild.nodeValue;
+            });
+            if (retryAfterValueNode) retryAfterValues.push(retryAfterValueNode.firstChild.nodeValue);
+        });
+        if (retryAfterValues.length > 0) {
+            retryAfterValue = utils.max(retryAfterValues);
+        }
+    }
+
+    var connectionLimit = null;
+    if (artifacts.resourceTemplate) {
+        var connLimitRegex = /"connectionLimits"\s*:\s*{\s*"\*":\s*(\d+)\s*}/g;
+        var match = connLimitRegex.exec(artifacts.resourceTemplate);
+        if (match && match.length > 0) {
+            connectionLimit = match[1];
+        }
+    }
+
+    var limits = {
         'rate-limit-by-key': rateLimit,
         'retry-after': retryAfterValue,
         'connections': connectionLimit
     };
-    return policyJson;
-}
-
-function getConnectionLimit(swaggerFilename) {
-    var resourceTemplateFilename = swaggerFilename.replace('apiDefinition.swagger.json', 'resourceTemplate.json');
-    var resourceTemplate = tryReadFile(resourceTemplateFilename);
-    if (resourceTemplate) {
-        var connLimitRegex = /"connectionLimits"\s*:\s*{\s*"\*":\s*(\d+)\s*}/g;
-        var match = connLimitRegex.exec(resourceTemplate);
-        if (match && match.length > 0) {
-            return match[1];
-        }
-    }
-    return null;
+    return limits;
 }
 
 function readFile(filename) {
