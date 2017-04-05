@@ -79,9 +79,7 @@ Adds a member to a private room.
 | User Id or Email | string | The id, email or mention name of the user. | true |
 
 #### Returns
-| Summary | Type | Description |
-|---------|------|-------------|
-|  | string |  |
+This operation does not return anything.
 
 ___
 

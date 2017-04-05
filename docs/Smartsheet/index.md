@@ -70,9 +70,7 @@ Get the columns of a sheet in dynamic schema format
 | Sheet Id | string | The sheet to get the columns for | true |
 
 #### Returns
-| Summary | Type | Description |
-|---------|------|-------------|
-|  | string |  |
+This operation does not return anything.
 
 ___
 

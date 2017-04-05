@@ -173,7 +173,8 @@ var generateOperation = function(swagger, pathKey, operation) {
                 if ($ref) {
                     schema = utils.resolveReference(swagger, $ref);
                 }
-                if (schema.type === 'object' && Object.keys(schema.properties).length === 0) {
+                if ((schema.type === 'object' && Object.keys(schema.properties).length === 0) ||
+                    (schema.type === 'string' && !schema.description && !schema['x-ms-summary'])) {
                     // This is usually used to mean an empty response
                 } else if ($ref) {
                     // $ref at the top level

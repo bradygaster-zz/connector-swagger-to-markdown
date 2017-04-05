@@ -62,9 +62,7 @@ Adds a message to the given queue
 | Message | string | The message to post | true |
 
 #### Returns
-| Summary | Type | Description |
-|---------|------|-------------|
-|  | string |  |
+This operation does not return anything.
 
 ___
 
@@ -96,9 +94,7 @@ Adds a queue to your account
 | Queue name | string | The name of the queue to create | true |
 
 #### Returns
-| Summary | Type | Description |
-|---------|------|-------------|
-|  | string |  |
+This operation does not return anything.
 
 ___
 
@@ -116,9 +112,7 @@ Triggers when a specified number of messages are in the given queue.
 | Threshold | int32 | The number of messages to wait for to fire the trigger. | true |
 
 #### Returns
-| Summary | Type | Description |
-|---------|------|-------------|
-|  | string |  |
+This operation does not return anything.
 
 ___
 

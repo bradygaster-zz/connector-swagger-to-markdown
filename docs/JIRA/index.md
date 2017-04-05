@@ -78,9 +78,7 @@ Update the issue object.
 | Parent Issue Id | string | Set the parent for a sub-task | false |
 
 #### Returns
-| Summary | Type | Description |
-|---------|------|-------------|
-|  | string |  |
+This operation does not return anything.
 
 ___
 

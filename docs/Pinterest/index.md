@@ -83,9 +83,7 @@ List all pins
 This operation does not require any input.
 
 #### Returns
-| Summary | Type | Description |
-|---------|------|-------------|
-|  | string |  |
+This operation does not return anything.
 
 ___
 

@@ -111,9 +111,7 @@ Deletes the specified story.
 | Story Id | string |  | true |
 
 #### Returns
-| Summary | Type | Description |
-|---------|------|-------------|
-|  | string |  |
+This operation does not return anything.
 
 ___
 

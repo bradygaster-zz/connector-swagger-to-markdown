@@ -70,9 +70,7 @@ Update an issue.
 | Description | string | Description. | false |
 
 #### Returns
-| Summary | Type | Description |
-|---------|------|-------------|
-|  | string |  |
+This operation does not return anything.
 
 ___
 

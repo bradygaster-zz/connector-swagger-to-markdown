@@ -76,9 +76,7 @@ Update a task
 | Estimated hours | float | Estimated hours | false |
 
 #### Returns
-| Summary | Type | Description |
-|---------|------|-------------|
-|  | string |  |
+This operation does not return anything.
 
 ___
 
