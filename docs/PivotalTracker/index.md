@@ -2,8 +2,6 @@
 
 # Pivotal Tracker (Preview)
 
-v1.0.0
-
 Pivotal Tracker is purpose-built to make it easy for you to convert an idea into a set of stories that you can prioritize, assign, and manage through completion.
 
 ## Creating a connection

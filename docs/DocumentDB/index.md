@@ -2,8 +2,6 @@
 
 # Azure DocumentDB (Preview)
 
-v1.0.0
-
 Azure DocumentDB is a NoSQL service for highly available, globally distributed app. Sign into your DocumentDB account to create, update, and query documents and more. 
 
 ## Creating a connection

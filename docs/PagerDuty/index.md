@@ -2,8 +2,6 @@
 
 # PagerDuty (Preview)
 
-v1.0
-
 PagerDuty is an agile incident management platform that integrates with IT Ops and DevOps monitoring stacks to improve operational reliability and agility for organizations.
 
 ## Creating a connection

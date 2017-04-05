@@ -2,8 +2,6 @@
 
 # Google Calendar (Preview)
 
-v1.1
-
 Google Calendar lets you organize your schedule and share events with co-workers and friends. With Google&#x27;s free online calendar, it&#x27;s easy to keep track of your daily schedule.
 
 ## Creating a connection

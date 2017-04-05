@@ -2,8 +2,6 @@
 
 # Medium (Preview)
 
-v1.0.0
-
 Medium is a vibrant network of thinkers who care about the world and making it better. Connect to your Medium account to track new publications, write stories and more.
 
 ## Creating a connection

@@ -2,8 +2,6 @@
 
 # Blogger (Preview)
 
-v1.1
-
 Blogger is a blog publishing service. It allows you to create websites and post to them on an ongoing basis.
 
 

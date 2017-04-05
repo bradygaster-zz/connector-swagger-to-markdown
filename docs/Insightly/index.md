@@ -2,8 +2,6 @@
 
 # Insightly (Preview)
 
-v1.0
-
 Insightly is the easiest customer relationship management solution (CRM) to use for managing deep customer relationships. Customers use Insightly&#x27;s tightly integrated CRM &amp; project management features to close new business, track post sale customer interactions &amp; drive repeat purchases.
 
 ## Creating a connection

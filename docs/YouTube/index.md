@@ -2,8 +2,6 @@
 
 # YouTube (Preview)
 
-v1.2
-
 YouTube allows billions of people to discover, watch and share originally-created videos. YouTube provides a forum for people to connect, inform, and inspire others across the globe and acts as a distribution platform for original content creators and advertisers large and small.
 
 

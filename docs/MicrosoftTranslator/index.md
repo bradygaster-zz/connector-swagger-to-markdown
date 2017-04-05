@@ -2,8 +2,6 @@
 
 # Microsoft Translator (Preview)
 
-v1.0
-
 Microsoft Translator lets you translate text
 
 

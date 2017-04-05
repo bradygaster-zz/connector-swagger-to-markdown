@@ -2,8 +2,6 @@
 
 # Bitbucket (Preview)
 
-v1.0.0
-
 Bitbucket is a web based hosting service for projects that use GIT revision control.
 
 

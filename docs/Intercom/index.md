@@ -2,8 +2,6 @@
 
 # Intercom (Preview)
 
-v1.0.0
-
 Intercom makes messaging apps for businesses that help them understand and talk to consumers.
 
 

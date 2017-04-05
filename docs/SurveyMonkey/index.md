@@ -2,8 +2,6 @@
 
 # SurveyMonkey (Preview)
 
-v1.0
-
 SurveyMonkey is the world&#x27;s leading provider of web-based survey solutions. These solutions are used by companies, organizations, and individuals to gather the insights they need to make more informed decisions.
 
 

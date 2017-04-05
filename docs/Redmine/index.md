@@ -2,8 +2,6 @@
 
 # Redmine (Preview)
 
-v1.0.0
-
 Redmine is a web based tool for software project management.
 
 ## Creating a connection

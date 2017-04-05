@@ -2,8 +2,6 @@
 
 # Infusionsoft (Preview)
 
-v1.0.0
-
 Infusionsoft is sales and marketing automation software built exclusively for small business success.
 
 

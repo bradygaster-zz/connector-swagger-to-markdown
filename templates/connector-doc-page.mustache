@@ -2,10 +2,6 @@
 
 # {{swaggerDoc.title}}{{#if_cond swaggerDoc.status '===' 'Preview'}} ({{swaggerDoc.status}}){{/if_cond}}
 
-{{#if swaggerDoc.version}}
-v{{swaggerDoc.version}}
-
-{{/if}}
 {{swaggerDoc.description}}
 
 {{#if_cond connectionParameters '||' customSection}}

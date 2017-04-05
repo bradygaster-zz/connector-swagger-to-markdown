@@ -2,8 +2,6 @@
 
 # Smartsheet (Preview)
 
-v1.0
-
 Smartsheet is a powerful work management and collaboration tool that lets you easily track and manage your work so you  and your team can be more productive than ever.  Use it to collaborate with others, track progress on any project, automate processes, and better structure your work.
 
 

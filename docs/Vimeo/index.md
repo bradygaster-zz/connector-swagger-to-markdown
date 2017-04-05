@@ -2,8 +2,6 @@
 
 # Vimeo (Preview)
 
-v1.0.0
-
 Vimeo is a powerful tool for video management, marketing, and analytics all in one place.
 
 

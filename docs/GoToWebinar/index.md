@@ -2,8 +2,6 @@
 
 # GoToWebinar (Preview)
 
-v1.0.0
-
 Citrix GoToWebinar enables you to manage a stable and high-performance online webinar environment.
 
 

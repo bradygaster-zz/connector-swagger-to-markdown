@@ -2,8 +2,6 @@
 
 # Stripe (Preview)
 
-v1.0.0
-
 Stripe allows private individuals and businesses to accept payments over the internet. You can track customers, orders, invoices and more.
 
 ## Creating a connection

@@ -2,8 +2,6 @@
 
 # GoToMeeting (Preview)
 
-v1.0.0
-
 GoToMeeting is an online meeting tool. You can schedule your own meetings or watch for the ones you are invited to.
 
 

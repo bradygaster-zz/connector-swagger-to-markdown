@@ -2,8 +2,6 @@
 
 # Visual Studio Team Services (Preview)
 
-v1.3
-
 Visual Studio Team Services provides services for teams to share code, track work, and ship software - for any language, all in a single package. It&#x27;s the perfect complement to your IDE.
 
 

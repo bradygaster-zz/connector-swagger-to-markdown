@@ -2,8 +2,6 @@
 
 # LeanKit (Preview)
 
-v1.0.0
-
 Helping teams work together to deliver customer value, faster.
 
 ## Creating a connection

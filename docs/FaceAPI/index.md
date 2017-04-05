@@ -2,8 +2,6 @@
 
 # Face API (Preview)
 
-v1.0.0
-
 Microsoft Cognitive Services Face API allows you to detect, identify, analyze, organize and tag faces in photos.
 
 ## Creating a connection

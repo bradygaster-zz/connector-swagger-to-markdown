@@ -2,8 +2,6 @@
 
 # Text Analytics (Preview)
 
-vv2.0
-
 Microsoft Cognitive Services Text Analytics detects language, sentiment and more of the text you provide.
 
 ## Creating a connection

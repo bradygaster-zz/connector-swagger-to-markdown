@@ -2,8 +2,6 @@
 
 # SparkPost (Preview)
 
-v1.0
-
 SparkPost API allows you to manage email recipient lists and send emails.
 
 ## Creating a connection

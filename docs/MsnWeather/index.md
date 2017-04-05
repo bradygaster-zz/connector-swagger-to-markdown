@@ -2,8 +2,6 @@
 
 # MSN Weather (Preview)
 
-v1.0.0
-
 MSN Weather gets you the very latest weather forecast, including temperature, humidity, precipitation for your location.
 
 

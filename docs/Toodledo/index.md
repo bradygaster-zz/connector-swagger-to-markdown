@@ -2,8 +2,6 @@
 
 # Toodledo (Preview)
 
-v1.0.0
-
 Toodledo is a powerful online productivity tool. Manage your to-do list by creating and updating tasks.
 
 

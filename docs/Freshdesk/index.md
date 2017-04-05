@@ -2,8 +2,6 @@
 
 # Freshdesk (Preview)
 
-v1.0.0
-
 Freshdesk is a cloud-based customer support solution that will help you streamline your customer service and make sure your customers receive the support they deserve! The Freshdesk connector is intended for Freshdesk agents to manage tickets and contacts.
 
 ## Creating a connection

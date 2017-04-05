@@ -2,8 +2,6 @@
 
 # LUIS (Preview)
 
-v1.0.0
-
 Azure cognitive services language understanding intelligent service (LUIS) lets you understand language contextually, so your apps communicate with people in the way they speak.
 
 ## Creating a connection

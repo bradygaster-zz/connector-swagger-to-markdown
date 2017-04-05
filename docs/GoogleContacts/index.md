@@ -2,8 +2,6 @@
 
 # Google Contacts (Preview)
 
-v1.0.0
-
 Google Contacts is an online address book, integrated across your Google products and more.
 
 ## Creating a connection

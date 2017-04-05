@@ -2,8 +2,6 @@
 
 # Azure Automation (Preview)
 
-v1.0.0
-
 Azure Automation provides tools to manage your cloud and on-premises infrastructure seamlessly.
 
 

@@ -2,8 +2,6 @@
 
 # Easy Redmine (Preview)
 
-v1.0.0
-
 Easy Redmine is a web based tool for software project management.
 
 ## Creating a connection

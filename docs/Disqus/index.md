@@ -2,8 +2,6 @@
 
 # Disqus (Preview)
 
-v1.0.0
-
 Disqus is a service for web comments and discussions. Disqus makes commenting easier and more interactive, helping publishers power online discussions.
 
 

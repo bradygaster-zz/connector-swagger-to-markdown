@@ -2,8 +2,6 @@
 
 # Azure Queues (Preview)
 
-v1.0.0
-
 Azure Queue storage provides cloud messaging between application components. Queue storage also supports managing asynchronous tasks and building process work flows.
 
 ## Creating a connection

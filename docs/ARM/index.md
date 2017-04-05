@@ -2,8 +2,6 @@
 
 # Azure Resource Manager (Preview)
 
-v2016-06-01
-
 Azure Resource Manager exposes the APIs to manage all of your Azure resources.
 
 

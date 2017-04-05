@@ -2,8 +2,6 @@
 
 # Pipedrive (Preview)
 
-v1.0.0
-
 Pipedrive is a CRM &amp; pipeline management tool that helps you focus on actions that matter.
 
 ## Creating a connection

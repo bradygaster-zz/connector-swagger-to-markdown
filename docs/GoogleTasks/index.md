@@ -2,8 +2,6 @@
 
 # Google Tasks (Preview)
 
-v1.0
-
 Google Tasks is a very simple task list. Works inside Gmail, Android, and Calendar seamlessly.
 
 

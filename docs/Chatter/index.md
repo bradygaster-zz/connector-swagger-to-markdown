@@ -2,8 +2,6 @@
 
 # Chatter (Preview)
 
-v1.0.0
-
 Chatter is an enterprise social network for your company that allows employees to connect and collaborate in real time.
 
 ## Creating a connection

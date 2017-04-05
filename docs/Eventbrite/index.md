@@ -2,8 +2,6 @@
 
 # Eventbrite (Preview)
 
-v1.0.0
-
 Eventbrite is a self-service ticketing platform used to create and discover local events.
 
 

@@ -2,8 +2,6 @@
 
 # WebMerge (Preview)
 
-v1.0.0
-
 Automatically populate templates with data from your favorite cloud apps.  Never copy &amp; paste again!
 
 ## Creating a connection

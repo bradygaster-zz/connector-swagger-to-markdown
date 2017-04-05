@@ -2,8 +2,6 @@
 
 # Bitly (Preview)
 
-v1.0
-
 Bitly is a link management tool. You can shorten links, reroute existing ones and associate them with campaigns across channels and devices.
 
 

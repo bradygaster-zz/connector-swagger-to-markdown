@@ -2,8 +2,6 @@
 
 # FreshBooks (Preview)
 
-v1.0.0
-
 FreshBooks is a cloud based small business accounting software. Send invoices, track time, manage receipts and expenses.
 
 

@@ -2,8 +2,6 @@
 
 # Harvest (Preview)
 
-v1.0.0
-
 Harvest is a simple tool to help track the time spent by your team on each project and task.
 
 

@@ -2,8 +2,6 @@
 
 # GoToTraining (Preview)
 
-v1.0.0
-
 Citrix GoToTraining enables you to manage a stable and high-performance online training environment.
 
 ## Creating a connection

@@ -2,8 +2,6 @@
 
 # Azure Data Lake (Preview)
 
-v1.0.0
-
 Azure Data Lake Store connector allows you to read and add data to an Azure Data Lake account.
 
 

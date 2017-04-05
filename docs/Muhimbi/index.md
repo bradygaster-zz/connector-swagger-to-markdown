@@ -2,8 +2,6 @@
 
 # Muhimbi PDF (Preview)
 
-v9.9
-
 Convert, Merge, Watermark, Secure and OCR files.
 
 

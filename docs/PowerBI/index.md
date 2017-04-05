@@ -2,8 +2,6 @@
 
 # Power BI (Preview)
 
-vv1
-
 Power BI is a suite of business analytics tools to analyze data and share insights. Connect to get easy access to the data in your Power BI dashboards, reports and datasets.
 
 

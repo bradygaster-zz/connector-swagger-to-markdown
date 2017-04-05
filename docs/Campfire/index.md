@@ -2,8 +2,6 @@
 
 # Campfire (Preview)
 
-v1.0
-
 Campfire is an instant messaging tool used for communication and file sharing within teams.
 
 

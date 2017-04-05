@@ -2,8 +2,6 @@
 
 # DocuSign (Preview)
 
-v1.0
-
 DocuSign is the easiest and most secure way to sign and get documents signed. With over 50 million users worldwide, DocuSign is the most widely used eSignature and Digital Transaction Management platform in the world.
 
 

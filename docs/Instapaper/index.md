@@ -2,8 +2,6 @@
 
 # Instapaper (Preview)
 
-v1.0
-
 Instapaper is a tool for saving web pages to read later. You can create reading lists by organizing pages into folders which can then be accessed from any mobile or web client.
 
 ## Creating a connection

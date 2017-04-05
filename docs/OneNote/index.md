@@ -2,8 +2,6 @@
 
 # OneNote (Business) (Preview)
 
-v1.0
-
 OneNote is a note taking app from Microsoft that makes it easy to sync your ideas, sketches and notes across all your devices! Connect to your Office 365 account with OneDrive for Business enabled to track new sections, create notes and more.
 
 

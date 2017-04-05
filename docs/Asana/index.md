@@ -2,8 +2,6 @@
 
 # Asana (Preview)
 
-v1.0
-
 Asana enables teams to manage their projects and tasks in one place.
 
 

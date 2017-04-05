@@ -2,8 +2,6 @@
 
 # Typeform (Preview)
 
-v1.0.0
-
 Build beautiful, engaging, and conversational online forms, surveys, quizzes, landing pages, and much more with Typeform. 
 
 ## Creating a connection
