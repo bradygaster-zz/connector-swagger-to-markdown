@@ -75,7 +75,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-|  | Array of [Entry](#entry) |  | feed.entry |
+| entry | Array of [Entry](#entry) |  | feed.entry |
 
 ___
 

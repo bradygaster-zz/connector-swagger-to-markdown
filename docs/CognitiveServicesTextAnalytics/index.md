@@ -123,7 +123,7 @@ ___
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
 | Id | string | Unique document identifier. | id |
-|  | Array of [DetectedLanguageV2](#detectedlanguagev2) | A list of extracted languages. | detectedLanguages |
+| detectedLanguages | Array of [DetectedLanguageV2](#detectedlanguagev2) | A list of extracted languages. | detectedLanguages |
 
 ### DetectedLanguageV2
 

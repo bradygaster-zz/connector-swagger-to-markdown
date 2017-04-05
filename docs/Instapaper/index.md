@@ -399,7 +399,7 @@ The response model for bookmark searches
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-|  | Array of [Bookmark](#bookmark) | A list of bookmarks returned by the action | Bookmarks |
+| Bookmarks | Array of [Bookmark](#bookmark) | A list of bookmarks returned by the action | Bookmarks |
 
 ### Bookmark
 A user
@@ -427,7 +427,7 @@ The resposne model for folder searches
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-|  | Array of [Folder](#folder) | A list of folders returned by the action | Folders |
+| Folders | Array of [Folder](#folder) | A list of folders returned by the action | Folders |
 
 ### Folder
 A user
@@ -445,7 +445,7 @@ The response model for highlights actions
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-|  | Array of [Highlight](#highlight) | The highlights | Highlights |
+| Highlights | Array of [Highlight](#highlight) | The highlights | Highlights |
 
 ### Highlight
 A user

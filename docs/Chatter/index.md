@@ -235,14 +235,14 @@ ___
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-|  | Array of [UserUserResponse](#useruserresponse) |  | users |
+| users | Array of [UserUserResponse](#useruserresponse) |  | users |
 
 ### ListGroupMembersResponse
 
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-|  | Array of [GroupMemberResponse](#groupmemberresponse) |  | members |
+| members | Array of [GroupMemberResponse](#groupmemberresponse) |  | members |
 | Total member count | int32 | Number of members in the group. | totalMemberCount |
 
 ### GetPostResponse

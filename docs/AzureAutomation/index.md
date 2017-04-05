@@ -85,7 +85,7 @@ Subscription list operation response.
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-|  | Array of [Subscription](#subscription) | The subscriptions. | value |
+| value | Array of [Subscription](#subscription) | The subscriptions. | value |
 | Next Link | string | The URL to get the next set of results. | nextLink |
 
 ### Subscription
@@ -105,7 +105,7 @@ List of resource groups.
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-|  | Array of [ResourceGroup](#resourcegroup) | The list of resource groups. | value |
+| value | Array of [ResourceGroup](#resourcegroup) | The list of resource groups. | value |
 | Next Link | string | The URL to get the next set of results. | nextLink |
 
 ### ResourceGroup

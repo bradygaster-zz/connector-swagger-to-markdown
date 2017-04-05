@@ -319,7 +319,7 @@ var flattenDefinitionSchema = function(swagger, schema, schemaKey, jsonPath, doc
         if (schema.items.$ref) {
             var resolvedSchema = utils.resolveReference(swagger, schema.items.$ref);
             var property = new SchemaProperty();
-            property.summary = schema['x-ms-summary'];
+            property.summary = schema['x-ms-summary'] ? schema['x-ms-summary'] : schemaKey;
             property.type = 'Array of ' + utils.refToLink(schema.items.$ref);
             property.description = schema['description'];
             property.path = jsonPath;
