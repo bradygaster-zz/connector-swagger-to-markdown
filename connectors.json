@@ -64,14 +64,5 @@
         "Todoist"
     ],
     "aaptSaas": [
-        "GitHub",
-        "SendMail",
-        "MailChimp",
-        "Mandrill",
-        "ProjectOnline",
-        "SendGrid",
-        "Slack",
-        "Trello",
-        "Wunderlist"
     ]
 }

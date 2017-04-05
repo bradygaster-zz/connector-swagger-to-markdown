@@ -1,4 +1,5 @@
 var fs = require('fs');
+var connectors = require('./connectors.json');
 
 var resolveReference = function(document, $ref) {
     if ($ref) {
@@ -76,7 +77,23 @@ var refToLink = function(str) {
     return '[' + headerText + ']' + '(#' + headerLink + ')';
 };
 
+var getFileExpression = function(array) {
+    if (array) {
+        if (array.length === 1) {
+            return array[0];
+        } else if (array.length > 1) {
+            return '{' + array.join(',') + '}';
+        }
+    }
+    return 'DUMMY_EXPRESSION';
+};
 
+var getConnectorConfig = function() {
+    connectors.gncpalaExpr = getFileExpression(connectors.gncpala);
+    connectors.aaptCodelessExpr = getFileExpression(connectors.aaptCodeless);
+    connectors.aaptSaasExpr = getFileExpression(connectors.aaptSaas);
+    return connectors;
+};
 
 module.exports = {
     firstOrNull: function(array, predicate) {
@@ -97,5 +114,8 @@ module.exports = {
     },
     refToLink: function(str) {
         return refToLink(str);
+    },
+    getConnectorConfig: function() {
+        return getConnectorConfig();
     }
 };

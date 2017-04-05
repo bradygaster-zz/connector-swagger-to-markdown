@@ -40,8 +40,6 @@
 
 ## [Freshdesk](Freshdesk/index.md)
 
-## [GitHub](GitHub/index.md)
-
 ## [Google Calendar](GoogleCalendar/index.md)
 
 ## [Google Contacts](GoogleContacts/index.md)
@@ -74,12 +72,6 @@
 
 ## [LUIS](LUIS/index.md)
 
-## [Mail](SendMail/index.md)
-
-## [MailChimp](MailChimp/index.md)
-
-## [Mandrill](Mandrill/index.md)
-
 ## [Medium](Medium/index.md)
 
 ## [Microsoft Translator](MicrosoftTranslator/index.md)
@@ -100,13 +92,7 @@
 
 ## [Power BI](PowerBI/index.md)
 
-## [ProjectOnline](ProjectOnline/index.md)
-
 ## [Redmine](Redmine/index.md)
-
-## [SendGrid](SendGrid/index.md)
-
-## [Slack](Slack/index.md)
 
 ## [Smartsheet](Smartsheet/index.md)
 
@@ -122,8 +108,6 @@
 
 ## [Toodledo](Toodledo/index.md)
 
-## [Trello](Trello/index.md)
-
 ## [Typeform](Typeform/index.md)
 
 ## [Vimeo](Vimeo/index.md)
@@ -133,7 +117,5 @@
 ## [WebMerge](WebMerge/index.md)
 
 ## [WordPress](WordPress/index.md)
-
-## [Wunderlist](Wunderlist/index.md)
 
 ## [YouTube](YouTube/index.md)
