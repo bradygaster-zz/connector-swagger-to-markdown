@@ -160,7 +160,7 @@ Triggers when a new issue is added to the given repository.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-|  | string |  |
+| [WebhookIssueCreatedResponse](#webhookissuecreatedresponse) | object |  |
 
 ___
 
@@ -179,7 +179,7 @@ Triggers when an issue is updated in the given repository.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-|  | string |  |
+| [WebhookIssueUpdatedResponse](#webhookissueupdatedresponse) | object |  |
 
 ___
 
@@ -198,7 +198,7 @@ Triggers when a pullreqest is approved in the specified repository.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-|  | string |  |
+| [WebhookPullRequestApprovedResponse](#webhookpullrequestapprovedresponse) | object |  |
 
 ___
 
@@ -217,7 +217,7 @@ Triggers when a new pullreqest is created in the given repository.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-|  | string |  |
+| [WebhookPullRequestCreatedResponse](#webhookpullrequestcreatedresponse) | object |  |
 
 ___
 
@@ -236,7 +236,7 @@ Triggers when an existing pullreqest is declined in the given repository.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-|  | string |  |
+| [WebhookPullRequestDeclinedResponse](#webhookpullrequestdeclinedresponse) | object |  |
 
 ___
 
@@ -255,7 +255,7 @@ Triggers when an existing pullreqest is merged in the given repository.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-|  | string |  |
+| [WebhookPullRequestMergedResponse](#webhookpullrequestmergedresponse) | object |  |
 
 ___
 
@@ -274,7 +274,7 @@ Triggers when a new commit is pushed to the given repository.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-|  | string |  |
+| [WebhookRepositoryPushResponse](#webhookrepositorypushresponse) | object |  |
 
 ___
 

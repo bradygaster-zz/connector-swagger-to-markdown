@@ -90,7 +90,7 @@ var generateActions = function(swagger) {
             var operation = path[operationKey];
             if (operationKey !== 'x-ms-notification-content' && // This is used for adding webhook details
                 !operation['x-ms-trigger'] && operation['x-ms-visibility'] !== 'internal') {
-                var docOperation = generateOperation(swagger, operation);
+                var docOperation = generateOperation(swagger, pathKey, operation);
                 actions.push(docOperation);
             }
         });
@@ -108,7 +108,7 @@ var generateTriggers = function(swagger) {
             var operation = path[operationKey];
             if (operationKey !== 'x-ms-notification-content' && // This is used for adding webhook details
                 operation['x-ms-trigger'] && operation['x-ms-visibility'] !== 'internal') {
-                var docOperation = generateOperation(swagger, operation);
+                var docOperation = generateOperation(swagger, pathKey, operation);
                 triggers.push(docOperation);
             }
         });
@@ -117,7 +117,7 @@ var generateTriggers = function(swagger) {
     return triggers;
 };
 
-var generateOperation = function(swagger, operation) {
+var generateOperation = function(swagger, pathKey, operation) {
     var docOperation = new Operation();
     docOperation.summary = operation.summary;
     docOperation.description = operation.description;
@@ -162,7 +162,8 @@ var generateOperation = function(swagger, operation) {
     var responseKeys = Object.keys(operation.responses);
     if (responseKeys.length > 0) {
         var firstResponse = operation.responses[responseKeys[0]];
-        var schema = firstResponse.schema;
+        var webhookResponse = swagger.paths[pathKey]['x-ms-notification-content'];
+        var schema = webhookResponse ? webhookResponse.schema : firstResponse.schema;
         if (schema) {
             if (isDynamicSchema(swagger, schema)) {
                 docResponse = new Response();
