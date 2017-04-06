@@ -218,6 +218,5 @@ A message
 ## Limits
 | Name | Calls | Renewal Period |
 |------|-------|----------------|
-| API calls per connection |  |  seconds |
 | Frequency of trigger polls | 1 | 15 seconds |
 

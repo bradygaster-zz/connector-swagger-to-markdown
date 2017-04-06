@@ -135,6 +135,10 @@ function getConnectionParameters(artifacts) {
 }
 
 function getLimits(artifacts) {
+    var limits = {
+        'connections': null,
+        'calls': []
+    };
     var retryAfterValue = null;
     var rateLimit = null;
     if (artifacts.policy) {
@@ -174,11 +178,23 @@ function getLimits(artifacts) {
         }
     }
 
-    var limits = {
-        'rate-limit-by-key': rateLimit,
-        'retry-after': retryAfterValue,
-        'connections': connectionLimit
-    };
+    limits.connections = connectionLimit;
+    if (rateLimit) {
+        var limit = {
+            'name': 'API calls per connection',
+            'calls': rateLimit.calls,
+            'renewal-period': rateLimit['renewal-period']
+        };
+        limits.calls.push(limit);
+    }
+    if (retryAfterValue) {
+        var limit = {
+            'name': 'Frequency of trigger polls',
+            'calls': 1,
+            'renewal-period': retryAfterValue
+        };
+        limits.calls.push(limit);
+    }
     return limits;
 }
 

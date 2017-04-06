@@ -865,4 +865,3 @@ Parameters for TextWatermark operation
 |------|-------|----------------|
 | API calls per connection | 100 | 60 seconds |
 
-

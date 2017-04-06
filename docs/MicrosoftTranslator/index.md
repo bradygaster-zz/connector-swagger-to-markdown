@@ -113,4 +113,3 @@ Connections per account: **1**
 |------|-------|----------------|
 | API calls per connection | 100 | 60 seconds |
 
-

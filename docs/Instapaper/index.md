@@ -482,4 +482,3 @@ The resposne model for folder searches
 |------|-------|----------------|
 | API calls per connection | 30 | 60 seconds |
 
-

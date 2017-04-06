@@ -1043,4 +1043,3 @@ List of deployment operations.
 |------|-------|----------------|
 | API calls per connection | 1200 | 60 seconds |
 
-

@@ -305,4 +305,3 @@ ___
 |------|-------|----------------|
 | API calls per connection | 3000 | 60 seconds |
 
-

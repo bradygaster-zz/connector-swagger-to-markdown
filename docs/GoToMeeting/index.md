@@ -225,6 +225,5 @@ Model used to update a meeting
 ## Limits
 | Name | Calls | Renewal Period |
 |------|-------|----------------|
-| API calls per connection |  |  seconds |
 | Frequency of trigger polls | 1 | 120 seconds |
 
