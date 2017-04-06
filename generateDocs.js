@@ -9,11 +9,13 @@ var templateFile = fs.readFileSync('./templates/connector-doc-page.mustache').to
 var operationTemplate = fs.readFileSync('./templates/operation-partial.mustache').toString();
 var connectionParametersTemplate = fs.readFileSync('./templates/connection-parameters.mustache').toString();
 var throttlingTemplate = fs.readFileSync('./templates/throttling-partial.mustache').toString();
+var definitionsTemplate = fs.readFileSync('./templates/definitions-partial.mustache').toString();
 
 utils.registerHelpers(handlebars);
 handlebars.registerPartial('operation', operationTemplate);
 handlebars.registerPartial('connectionParameters', connectionParametersTemplate);
 handlebars.registerPartial('throttling', throttlingTemplate);
+handlebars.registerPartial('definitions', definitionsTemplate);
 
 var baseTOC = fs.readFileSync('./docs/baseTOC.md').toString();
 fs.writeFileSync('docs/TOC.md', baseTOC);
