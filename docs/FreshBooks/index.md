@@ -131,7 +131,7 @@ Triggers when a new expense is created or an existing one is updated.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [ExpenseList](#expenselist) | array | Array of expenses. |
+| [Expense](#expense) | object |  |
 
 ___
 

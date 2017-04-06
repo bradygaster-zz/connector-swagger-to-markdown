@@ -107,7 +107,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [Webinars](#webinars) | array |  |
+| [WebinarSummary](#webinarsummary) | object |  |
 
 ___
 
@@ -124,7 +124,7 @@ Triggers when a new registrant is added to a webinar.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [Registrants](#registrants) | array |  |
+| [RegistrantSummary](#registrantsummary) | object |  |
 
 ___
 

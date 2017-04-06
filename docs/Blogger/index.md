@@ -168,7 +168,7 @@ Triggers a flow when a new post is created
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-|  | Array of [Post](#post) |  |
+| [Post](#post) | object | A Blogger post object |
 
 ___
 

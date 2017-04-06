@@ -18,7 +18,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-|  | Array of [Video](#video) |  |
+| [Video](#video) | object | A Vimeo video |
 
 ___
 
@@ -35,7 +35,7 @@ Triggers a new flow when a video is added to a channel
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-|  | Array of [VideoWithChannelId](#videowithchannelid) |  |
+| [VideoWithChannelId](#videowithchannelid) | object | A Vimeo video |
 
 ___
 

@@ -134,7 +134,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [TrigNewActivityResponse](#trignewactivityresponse) | array | data |
+| [ActivityResponse](#activityresponse) | object | data |
 
 ___
 
@@ -149,7 +149,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [TrigNewDealResponse](#trignewdealresponse) | array | data |
+| [DealResponse](#dealresponse) | object | data |
 
 ___
 

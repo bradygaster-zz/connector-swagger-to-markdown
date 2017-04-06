@@ -22,16 +22,15 @@ glob("Connectors/*/apiDefinition.swagger.json", function (er, files) {
     var tocEntries = [];
     for (var i = 0; i < files.length; i++) {
         var file = files[i];
-        try {
+        // try {
             generateDocumentation(file, tocEntries);
-        } catch (ex) {
-            console.log('error in ' + file + ': ' + ex);
-        }
+        // } catch (ex) {
+            // console.log('error in ' + file + ': ' + ex);
+        // }
     }
 
     tocEntries.sort(function(a, b) {
         return a.title.localeCompare(b.title);
-        //return (a.title > b.title) - (a.title < b.title);
     });
 
     var tocContents = '';

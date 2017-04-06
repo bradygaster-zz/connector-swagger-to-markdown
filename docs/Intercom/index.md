@@ -110,7 +110,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [TrigListLeads_Response](#triglistleadsresponse) | array |  |
+| [TrigLead_Response](#trigleadresponse) | object |  |
 
 ___
 
@@ -125,7 +125,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [TrigListUsers_Response](#triglistusersresponse) | array |  |
+| [TrigUser_Response](#triguserresponse) | object |  |
 
 ___
 
@@ -140,7 +140,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [TrigListUsers_Response](#triglistusersresponse) | array |  |
+| [TrigUser_Response](#triguserresponse) | object |  |
 
 ___
 
@@ -155,7 +155,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [TrigListConversations_Response](#triglistconversationsresponse) | array |  |
+| [TrigConversation_Response](#trigconversationresponse) | object |  |
 
 ___
 

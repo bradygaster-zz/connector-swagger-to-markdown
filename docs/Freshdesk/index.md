@@ -116,7 +116,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [GetTickets200Response](#gettickets200response) | array |  |
+| [CreateTicket200Response](#createticket200response) | object |  |
 
 ___
 
@@ -133,7 +133,7 @@ When any ticket assigned to the selected agent is updated.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [GetTickets200Response](#gettickets200response) | array |  |
+| [CreateTicket200Response](#createticket200response) | object |  |
 
 ___
 
@@ -150,7 +150,7 @@ When a ticket is updated.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [GetTickets200Response](#gettickets200response) | array |  |
+| [CreateTicket200Response](#createticket200response) | object |  |
 
 ___
 

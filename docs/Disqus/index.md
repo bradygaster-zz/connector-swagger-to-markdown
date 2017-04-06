@@ -176,7 +176,7 @@ Triggers a flow when a comment is created on a specified discussion.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [PostsList](#postslist) | array |  |
+| [Post](#post) | object |  |
 
 ___
 
@@ -193,7 +193,7 @@ Triggers a flow when a discussion is created on a specified forum.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [ThreadsList](#threadslist) | array |  |
+| [Thread](#thread) | object |  |
 
 ___
 

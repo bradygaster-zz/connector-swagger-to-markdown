@@ -117,7 +117,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-|  | Array of [Task](#task) |  |
+| [Task](#task) | object |  |
 
 ___
 

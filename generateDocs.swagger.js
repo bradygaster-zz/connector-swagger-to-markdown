@@ -173,6 +173,16 @@ var generateOperation = function(swagger, pathKey, operation) {
                 if ($ref) {
                     schema = utils.resolveReference(swagger, $ref);
                 }
+
+                // Handle batch trigger response
+                if (operation['x-ms-trigger'] === 'batch' && schema.type === 'array' && schema.items && schema.items.$ref) {
+                    schema = schema.items;
+                    $ref = schema.$ref;
+                    if ($ref) {
+                        schema = utils.resolveReference(swagger, $ref);
+                    }
+                }
+
                 if ((schema.type === 'object' && Object.keys(schema.properties).length === 0) ||
                     (schema.type === 'string' && !schema.description && !schema['x-ms-summary'])) {
                     // This is usually used to mean an empty response

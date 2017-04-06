@@ -252,7 +252,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [ListAllUsers_Response](#listallusersresponse) | array |  |
+| [GetUserByID_Response](#getuserbyidresponse) | object |  |
 
 ___
 

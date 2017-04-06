@@ -63,7 +63,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [OnNewTask_Response](#onnewtaskresponse) | array |  |
+| [Task_Response](#taskresponse) | object |  |
 
 ___
 

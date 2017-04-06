@@ -167,7 +167,7 @@ Triggers when a new card is added to the given board and lane.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [TrigCardsResponse](#trigcardsresponse) | array |  |
+| [CardResponse](#cardresponse) | object |  |
 
 ___
 
@@ -185,7 +185,7 @@ Triggers when the details of an existing card are updated.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [TrigCardsResponse](#trigcardsresponse) | array |  |
+| [CardResponse](#cardresponse) | object |  |
 
 ___
 

@@ -5,12 +5,14 @@ var resolveReference = function(document, $ref) {
     if ($ref) {
         var reference = document,
             paths = $ref.split('/');
+        var nextSectionIndex = 1;
         if (!paths || paths.length <= 1 || paths[0] !== '#') {
             // For now assume that the reference lives in #/definitions
-            document = document.definitions;
+            reference = document.definitions;
+            nextSectionIndex = 0;
         }
 
-        paths.slice(1).forEach(path => {
+        paths.slice(nextSectionIndex).forEach(path => {
             if (Array.isArray(reference)) {
                 reference = reference.filter(element => element.name === path)[0];
             } else {

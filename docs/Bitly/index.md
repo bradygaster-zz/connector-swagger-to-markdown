@@ -37,7 +37,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [BitlinkArray](#bitlinkarray) | array |  |
+| [Bitlink](#bitlink) | object | A Bitlink including both shortened and original URL |
 
 ___
 
@@ -57,7 +57,7 @@ A Bitlink including both shortened and original URL
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-| [Bitlink](#bitlink) |  |  |  |
+| [Bitlink](#bitlink) | object | A Bitlink including both shortened and original URL |  |
 
 ## Limits
 | Name | Calls | Renewal Period |

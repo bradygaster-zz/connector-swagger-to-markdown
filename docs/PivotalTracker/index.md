@@ -130,7 +130,7 @@ Triggers when a new story is added to the given project.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [Liststories_Response](#liststoriesresponse) | array |  |
+| [Story_Response](#storyresponse) | object |  |
 
 ___
 
@@ -147,7 +147,7 @@ Triggers when an existing story is completed in the given project.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [Liststories_Response](#liststoriesresponse) | array |  |
+| [Story_Response](#storyresponse) | object |  |
 
 ___
 
@@ -164,7 +164,7 @@ Triggers when a story is created or the details of an existing story are updated
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [Liststories_Response](#liststoriesresponse) | array |  |
+| [Story_Response](#storyresponse) | object |  |
 
 ___
 
