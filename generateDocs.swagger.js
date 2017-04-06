@@ -289,20 +289,17 @@ var generateDefinitions = function(swagger) {
             flattenDefinitionSchema(swagger, definition, '', '', docProperties);
         } else if (definition.type === 'array') {
             flattenDefinitionSchema(swagger, definition.items, '', '', docProperties);
-        // } else if (definition.type === 'string' && !definition.description && !definition['x-ms-summary']) {
-        //     // Usually used to mean an empty definition
         } else {
             flattenDefinitionSchema(swagger, definition, '', '', docProperties);
             singleSchema = docProperties[0];
             docProperties = [];
         }
 
-        // if (singleSchema || docProperties.length > 0) {
-            docDefinition.description = definition.description;
-            if (docProperties.length > 0) docDefinition.properties = docProperties;
-            if (singleSchema) docDefinition.singleSchema = singleSchema;
-            docDefinitions[definitionKey] = docDefinition;
-        // }
+        docDefinition.description = definition.description;
+        if (docProperties.length > 0) docDefinition.properties = docProperties;
+        if (singleSchema) docDefinition.singleSchema = singleSchema;
+        var newDefinitionKey = utils.getMarkdownTitle(definitionKey);
+        docDefinitions[newDefinitionKey] = docDefinition;
     });
     return Object.keys(docDefinitions).length > 0 ? docDefinitions : null;
 };

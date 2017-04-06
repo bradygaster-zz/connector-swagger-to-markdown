@@ -73,10 +73,21 @@ var refToLink = function(str) {
     if (!str) {
         return str;
     }
+    str = str.replace('#/definitions/', '');
 
-    var headerText = str.replace('#/definitions/', '');
-    var headerLink = headerText.replace(/_/g, '').toLowerCase();
-    return '[' + headerText + ']' + '(#' + headerLink + ')';
+    var linkTitle = getMarkdownTitle(str);
+    var linkHref = getMarkdownHref(str);
+    return '[' + linkTitle + ']' + '(#' + linkHref + ')';
+};
+
+var getMarkdownTitle = function(title) {
+    title = title.replace('[', '\\[').replace(']', '\\]');
+    return title;
+};
+
+var getMarkdownHref = function(title) {
+    title = title.replace(/[^0-9a-zA-Z]+/g, '').toLowerCase();
+    return title;
 };
 
 var getFileExpression = function(array) {
@@ -119,5 +130,8 @@ module.exports = {
     },
     getConnectorConfig: function() {
         return getConnectorConfig();
+    },
+    getMarkdownTitle: function(title) {
+        return getMarkdownTitle(title);
     }
 };

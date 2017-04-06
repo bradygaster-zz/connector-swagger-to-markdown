@@ -20,7 +20,7 @@ Get a list of sheets
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [SmartsheetCollection[Sheet]](#smartsheetcollection[sheet]) | object | A common pattern for requesting collections from smartsheet |
+| [SmartsheetCollection\[Sheet\]](#smartsheetcollectionsheet) | object | A common pattern for requesting collections from smartsheet |
 
 ___
 
@@ -55,7 +55,7 @@ Get the columns of a sheet
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [SmartsheetCollection[Column]](#smartsheetcollection[column]) | object | A common pattern for requesting collections from smartsheet |
+| [SmartsheetCollection\[Column\]](#smartsheetcollectioncolumn) | object | A common pattern for requesting collections from smartsheet |
 
 ___
 
@@ -105,7 +105,7 @@ Get subfolders of a folder
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [SmartsheetCollection[Folder]](#smartsheetcollection[folder]) | object | A common pattern for requesting collections from smartsheet |
+| [SmartsheetCollection\[Folder\]](#smartsheetcollectionfolder) | object | A common pattern for requesting collections from smartsheet |
 
 ___
 
@@ -122,7 +122,7 @@ Get discussions for a sheet
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [SmartsheetCollection[GetDiscussionResponse]](#smartsheetcollection[getdiscussionresponse]) | object | A common pattern for requesting collections from smartsheet |
+| [SmartsheetCollection\[GetDiscussionResponse\]](#smartsheetcollectiongetdiscussionresponse) | object | A common pattern for requesting collections from smartsheet |
 
 ___
 
@@ -217,7 +217,7 @@ When a new sheet is created
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [SmartsheetCollection[Sheet]](#smartsheetcollection[sheet]) | object | A common pattern for requesting collections from smartsheet |
+| [SmartsheetCollection\[Sheet\]](#smartsheetcollectionsheet) | object | A common pattern for requesting collections from smartsheet |
 
 ___
 
@@ -234,7 +234,7 @@ When any sheet is updated
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [SmartsheetCollection[Sheet]](#smartsheetcollection[sheet]) | object | A common pattern for requesting collections from smartsheet |
+| [SmartsheetCollection\[Sheet\]](#smartsheetcollectionsheet) | object | A common pattern for requesting collections from smartsheet |
 
 ___
 
@@ -251,7 +251,7 @@ When a comment is added to a sheet
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [SmartsheetCollection[DiscussionComment]](#smartsheetcollection[discussioncomment]) | object | A common pattern for requesting collections from smartsheet |
+| [SmartsheetCollection\[DiscussionComment\]](#smartsheetcollectiondiscussioncomment) | object | A common pattern for requesting collections from smartsheet |
 
 ___
 
@@ -269,7 +269,7 @@ When a specific sheet is updated
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [SmartsheetCollection[SheetWithRows]](#smartsheetcollection[sheetwithrows]) | object | A common pattern for requesting collections from smartsheet |
+| [SmartsheetCollection\[SheetWithRows\]](#smartsheetcollectionsheetwithrows) | object | A common pattern for requesting collections from smartsheet |
 
 ___
 
@@ -322,14 +322,14 @@ When a discussion is added to a sheet
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [SmartsheetCollection[GetDiscussionResponse]](#smartsheetcollection[getdiscussionresponse]) | object | A common pattern for requesting collections from smartsheet |
+| [SmartsheetCollection\[GetDiscussionResponse\]](#smartsheetcollectiongetdiscussionresponse) | object | A common pattern for requesting collections from smartsheet |
 
 ___
 
 
 ## Objects
 
-### SmartsheetCollection[Sheet]
+### SmartsheetCollection\[Sheet\]
 A common pattern for requesting collections from smartsheet
 
 | Summary | Type | Description | Path |
@@ -348,7 +348,7 @@ A Smartsheet sheet
 | Created At | date-time | When the sheet was created | createdAt |
 | Modified At | date-time | When the sheet was modified | modifiedAt |
 
-### SmartsheetCollection[DiscussionComment]
+### SmartsheetCollection\[DiscussionComment\]
 A common pattern for requesting collections from smartsheet
 
 | Summary | Type | Description | Path |
@@ -387,7 +387,7 @@ A Smartsheet with rows
 | Created At | date-time | When the sheet was created | createdAt |
 | Modified At | date-time | When the sheet was modified | modifiedAt |
 
-### SmartsheetCollection[Column]
+### SmartsheetCollection\[Column\]
 A common pattern for requesting collections from smartsheet
 
 | Summary | Type | Description | Path |
@@ -423,7 +423,7 @@ Result of inserted row
 | Created at | date-time | When the sheet was created | createdAt |
 | Modified at | date-time | When the sheet was modified | modifiedAt |
 
-### SmartsheetCollection[SheetWithRows]
+### SmartsheetCollection\[SheetWithRows\]
 A common pattern for requesting collections from smartsheet
 
 | Summary | Type | Description | Path |
@@ -437,7 +437,7 @@ Metadata for Smartsheet Blobs
 |---------|------|-------------|------|
 | Id | string | The unique identifier for the file or folder | Id |
 
-### SmartsheetCollection[Folder]
+### SmartsheetCollection\[Folder\]
 A common pattern for requesting collections from smartsheet
 
 | Summary | Type | Description | Path |
@@ -493,7 +493,7 @@ User who created this discussion
 | Discussion created by name | string | Name of the user who created this discussion | name |
 | Discussion created by email | string | Email of the user who created this discussion | email |
 
-### SmartsheetCollection[GetDiscussionResponse]
+### SmartsheetCollection\[GetDiscussionResponse\]
 A common pattern for requesting collections from smartsheet
 
 | Summary | Type | Description | Path |
