@@ -240,7 +240,8 @@ var flattenParameterSchema = function(swagger, schema, schemaKey, isRequired, do
         schema = utils.resolveReference(swagger, schema.$ref);
     }
     if (schema.type === 'array') {
-        flattenParameterSchema(swagger, schema.items, '', false, docParameters);
+        var arraySummary = schema['x-ms-summary'] ? schema['x-ms-summary'] : schemaKey;
+        flattenParameterSchema(swagger, schema.items, arraySummary, false, docParameters);
     } else if (schema.type === 'object') {
         if (!schema.properties) {
             // Ignore objects with no properties for parameter purposes
@@ -251,15 +252,13 @@ var flattenParameterSchema = function(swagger, schema, schemaKey, isRequired, do
                 flattenParameterSchema(swagger, property, propKey, isPropRequired, docParameters);
             });
         }
-    } else {
-        if (schema['x-ms-visibility'] !== 'internal') {
-            var docParameter = new Parameter();
-            docParameter.summary = schema['x-ms-summary'] ? schema['x-ms-summary'] : schemaKey;
-            docParameter.type = schema.format ? schema.format : schema.type,
-            docParameter.description = schema.description,
-            docParameter.required = isRequired ? true : false;
-            docParameters.push(docParameter);
-        }
+    } else if (schema['x-ms-visibility'] !== 'internal') {
+        var docParameter = new Parameter();
+        docParameter.summary = schema['x-ms-summary'] ? schema['x-ms-summary'] : schemaKey;
+        docParameter.type = schema.format ? schema.format : schema.type,
+        docParameter.description = schema.description,
+        docParameter.required = isRequired ? true : false;
+        docParameters.push(docParameter);
     }
 };
 

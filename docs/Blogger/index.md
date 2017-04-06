@@ -51,7 +51,7 @@ Create post
 | Blog Id | string | Blog | true |
 | Title | string | The title of the post | true |
 | Content | string | The content of the post | true |
-|  | string |  | false |
+| Labels | string |  | false |
 | Draft | boolean | Indicate if this post should be saved as a draft | false |
 
 #### Returns
@@ -91,7 +91,7 @@ Edit a post
 | Post Id | string | Post | true |
 | Title | string | The title of the post | false |
 | Content | string | The content of the post | false |
-|  | string |  | false |
+| Labels | string |  | false |
 
 #### Returns
 | Summary | Type | Description |

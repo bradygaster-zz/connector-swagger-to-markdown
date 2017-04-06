@@ -26,7 +26,7 @@ Write a new story.
 |---------|------|-------------|----------|
 | Title | string |  | true |
 | Content (as html) | string |  | true |
-|  | string |  | false |
+| Tags | string |  | false |
 | Publish Status | string |  | false |
 
 #### Returns
@@ -56,7 +56,7 @@ Write a story under a publication.
 | Publication | string |  | true |
 | Title | string |  | true |
 | Content (as html) | string |  | true |
-|  | string |  | false |
+| Tags | string |  | false |
 | Publish Status | string |  | false |
 
 #### Returns

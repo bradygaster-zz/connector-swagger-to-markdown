@@ -155,7 +155,7 @@ Triggers when a new issue is added to the given repository.
 |---------|------|-------------|----------|
 | Account Name | string | Atlassian account or team name | true |
 | Repository Id | string | Bitbucket repository | true |
-|  | string |  | false |
+| events | string |  | false |
 
 #### Returns
 | Summary | Type | Description |
@@ -174,7 +174,7 @@ Triggers when an issue is updated in the given repository.
 |---------|------|-------------|----------|
 | Account Name | string | Atlassian account or team name | true |
 | Repository Id | string | Bitbucket repository | true |
-|  | string |  | false |
+| events | string |  | false |
 
 #### Returns
 | Summary | Type | Description |
@@ -193,7 +193,7 @@ Triggers when a pullreqest is approved in the specified repository.
 |---------|------|-------------|----------|
 | Account Name | string | Atlassian account or team name | true |
 | Repository Id | string | Bitbucket repository | true |
-|  | string |  | false |
+| events | string |  | false |
 
 #### Returns
 | Summary | Type | Description |
@@ -212,7 +212,7 @@ Triggers when a new pullreqest is created in the given repository.
 |---------|------|-------------|----------|
 | Account Name | string | Atlassian account or team name | true |
 | Repository Id | string | Bitbucket repository | true |
-|  | string |  | false |
+| events | string |  | false |
 
 #### Returns
 | Summary | Type | Description |
@@ -231,7 +231,7 @@ Triggers when an existing pullreqest is declined in the given repository.
 |---------|------|-------------|----------|
 | Account Name | string | Atlassian account or team name | true |
 | Repository Id | string | Bitbucket repository | true |
-|  | string |  | false |
+| events | string |  | false |
 
 #### Returns
 | Summary | Type | Description |
@@ -250,7 +250,7 @@ Triggers when an existing pullreqest is merged in the given repository.
 |---------|------|-------------|----------|
 | Account Name | string | Atlassian account or team name | true |
 | Repository Id | string | Bitbucket repository | true |
-|  | string |  | false |
+| events | string |  | false |
 
 #### Returns
 | Summary | Type | Description |
@@ -269,7 +269,7 @@ Triggers when a new commit is pushed to the given repository.
 |---------|------|-------------|----------|
 | Account Name | string | Atlassian account or team name | true |
 | Repository Id | string | Bitbucket repository | true |
-|  | string |  | false |
+| events | string |  | false |
 
 #### Returns
 | Summary | Type | Description |

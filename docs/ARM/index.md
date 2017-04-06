@@ -423,7 +423,7 @@ Exports a deployment template from an existing resource group. This can only be 
 |---------|------|-------------|----------|
 | Subscription | string | The unique identifier for the  Microsoft Azure subscription. The subscription ID forms part of the ID for every Azure resource. | true |
 | Resource Group | string | Resource group name. | true |
-|  | string |  | false |
+| resources | string |  | false |
 | options | string | The export template options. Supported values include &#x27;IncludeParameterDefaultValue&#x27;, &#x27;IncludeComments&#x27; or &#x27;IncludeParameterDefaultValue, IncludeComments | false |
 
 #### Returns

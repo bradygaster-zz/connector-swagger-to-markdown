@@ -58,7 +58,7 @@ This operation is used to create a new card in LeanKit.
 | Block Reason | string |  | false |
 | External Link Label | string |  | false |
 | External Link URL | string |  | false |
-|  | string |  | false |
+| Assignees | string |  | false |
 
 #### Returns
 | Summary | Type | Description |
@@ -107,7 +107,7 @@ This operation is used to update the details of an existing card given its id.
 | Block Reason | string |  | false |
 | External Link Label | string | The label of the external link. | false |
 | External Link URL | string | The URL of the external link. | false |
-|  | string |  | false |
+| Assignees | string |  | false |
 
 #### Returns
 | Summary | Type | Description |
