@@ -1,0 +1,13 @@
+items:
+- uid: NumberList
+  inherits:
+  - System.Collections.Generic.List<System.Int32>
+references:
+- uid: System.Collections.Generic.List`1<System.Int32>
+  link: @"System.Collections.Generic.List`1"<@"System.Int32">
+- uid: System.Collections.Generic.List`1
+  name: List
+  url: system.collections.generic.list`1.yml
+- uid: System.Int32
+  name: int
+  url: system.int32.yml
