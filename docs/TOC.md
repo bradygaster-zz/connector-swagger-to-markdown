@@ -34,6 +34,8 @@
 
 ## [Eventbrite](Eventbrite/index.md)
 
+## [Excel](Excel/index.md)
+
 ## [Face API](FaceAPI/index.md)
 
 ## [FreshBooks](FreshBooks/index.md)
