@@ -256,6 +256,11 @@ ___
 | _udfs | string |  | _udfs |
 | _conflicts | string |  | _conflicts |
 
+### postDocumentsRequest
+
+
+This object has no properties.
+
 ### postDocumentsResponse
 
 
@@ -267,6 +272,11 @@ ___
 | _etag | string |  | _etag |
 | _attachments | string |  | _attachments |
 | id | string |  | id |
+
+### putDocumentRequest
+
+
+This object has no properties.
 
 ### putDocumentResponse
 
@@ -283,6 +293,11 @@ ___
 |---------|------|-------------|------|
 | _rid | string |  | _rid |
 | Documents | array of object |  | Documents |
+
+### getDocumentResponse
+
+
+This object has no properties.
 
 ### queryRequest
 

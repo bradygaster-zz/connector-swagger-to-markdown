@@ -281,6 +281,11 @@ ___
 
 ## Objects
 
+### WebhookRequest
+
+
+This object has no properties.
+
 ### CreateIssueRequest
 
 
@@ -309,6 +314,20 @@ ___
 | Component | string | A component value defined by the administrator. | component.name |
 | Milestone | string | A milestone value defined by the administrator. | milestone.name |
 | Version | string | A version value defined by the administrator. | version.name |
+
+### WebhookCreatedResponse
+
+
+| Summary | Type | Description |
+|---------|------|-------------|
+|  | string |  |
+
+### WebhookPushResponse
+
+
+| Summary | Type | Description |
+|---------|------|-------------|
+|  | string |  |
 
 ### WebhookIssueCreatedResponse
 

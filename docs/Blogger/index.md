@@ -250,6 +250,11 @@ A Blogger post object for new post requests
 | Content | string | The content of the post | content |
 | Labels | array of string | The labels for the post | labels |
 
+### Object
+
+
+This object has no properties.
+
 ## Limits
 | Name | Calls | Renewal Period |
 |------|-------|----------------|

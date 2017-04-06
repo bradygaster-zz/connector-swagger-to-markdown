@@ -172,6 +172,11 @@ ___
 | Status date time | string | The datetime the status was set. | statusDateTime |
 | URI | string | The URI for the envelope in DocuSign. | uri |
 
+### SendDraftEnvelopeResponse
+
+
+This object has no properties.
+
 ### ListRecipientsResponse
 
 

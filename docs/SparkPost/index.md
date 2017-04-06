@@ -129,6 +129,11 @@ Maintains a list of recipients to whom a message can be sent
 | Description | string | Description | description |
 | Email address of first recipient | string | Email address | email |
 
+### Object
+
+
+This object has no properties.
+
 ### ListRecipientListsResponse
 List of this users recipient lists
 

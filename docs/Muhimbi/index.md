@@ -806,6 +806,11 @@ Parameters for SecurePdf operation
 | PDF restrictions | string | Print|HighResolutionPrint|ContentCopy|Annotations|FormFields|ContentAccessibility|DocumentAssembly | security_options |
 | Fail on error | boolean | Fail on error | fail_on_error |
 
+### sharepoint_file
+SharePoint file information for operation
+
+This object has no properties.
+
 ### split_operation_response
 Response data for split operation
 

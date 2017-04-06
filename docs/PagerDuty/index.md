@@ -293,6 +293,11 @@ A new incident
 |---------|------|-------------|------|
 | Key | string | Key | incident_key |
 
+### PendingAction
+An incident action that is pending
+
+This object has no properties.
+
 ### Service
 A service
 
@@ -300,12 +305,57 @@ A service
 |---------|------|-------------|------|
 | Service Id | string | Service Id | id |
 
+### Assignment
+Represents the assignment of an incident
+
+This object has no properties.
+
+### Acknowledgement
+Acknowledgement of incident
+
+This object has no properties.
+
+### LastStatusChangeBy
+Represents the user or service that last changed an incident
+
+This object has no properties.
+
+### FirstTriggerLogEntry
+Log entry for when an incident is triggered
+
+This object has no properties.
+
+### EscalationPolicy
+The policy in place for escalating an incident
+
+This object has no properties.
+
+### Team
+A team
+
+This object has no properties.
+
+### Assignee
+Represents to whom the incident is assigned
+
+This object has no properties.
+
+### Acknowledger
+Represents the acknowledger of an incident
+
+This object has no properties.
+
 ### EscalationPoliciesResponse
 Escalation policies response object
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
 | Escalation policies | Array of [EscalationPolicy](#escalationpolicy) | List of escalation policies | escalation_policies |
+
+### Object
+
+
+This object has no properties.
 
 ### UsersResponse
 Users response object
@@ -330,6 +380,21 @@ A PagerDuty user
 | Teams to which the user belongs | Array of [Object](#object) | Teams to which the user belongs | teams |
 | List of incidents for this user | Array of [Object](#object) | List of incidents for this user | coordinated_incidents |
 | User Id | string | User Id | id |
+
+### ContactMethod
+The method for contact
+
+This object has no properties.
+
+### NotificationRule
+Notification rule
+
+This object has no properties.
+
+### NotesResponse
+Response object for notes
+
+This object has no properties.
 
 ### Note
 A note for an incident

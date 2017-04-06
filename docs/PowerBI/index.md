@@ -94,6 +94,11 @@ ___
 | value | array of object |  | value |
 | Table name | string | The display name of the table. | value.name |
 
+### Columns
+
+
+This object has no properties.
+
 ## Limits
 | Name | Calls | Renewal Period |
 |------|-------|----------------|

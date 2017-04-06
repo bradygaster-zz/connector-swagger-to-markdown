@@ -274,6 +274,11 @@ ___
 |---------|------|-------------|------|
 | [Forum](#forum) | object |  |  |
 
+### EmptyResponse
+
+
+This object has no properties.
+
 ### CreatePostResponse
 
 

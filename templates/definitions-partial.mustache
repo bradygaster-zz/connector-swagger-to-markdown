@@ -11,12 +11,14 @@
 {{#each properties}}
 | {{summary}} | {{type}} | {{description}} | {{path}} |
 {{/each}}
-{{else}}
+{{else if singleSchema}}
 | Summary | Type | Description |
 |---------|------|-------------|
 {{#with singleSchema}}
 | {{summary}} | {{type}} | {{description}} |
 {{/with}}
+{{else}}
+This object has no properties.
 {{/if}}
 {{/each}}
 {{/if}}

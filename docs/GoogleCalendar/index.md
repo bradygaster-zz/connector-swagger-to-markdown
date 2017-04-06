@@ -275,6 +275,11 @@ Event changes to upload to Google Calendar
 | Attendees | string | Enter a comma-separated list of attendee emails | attendees |
 | Status | string | Status of the event. Possible values are &quot;confirmed&quot;, &quot;tentative&quot;, or &quot;cancelled | status |
 
+### Object
+
+
+This object has no properties.
+
 ## Limits
 | Name | Calls | Renewal Period |
 |------|-------|----------------|

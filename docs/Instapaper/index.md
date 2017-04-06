@@ -463,6 +463,11 @@ The response model for bookark actions
 |---------|------|-------------|------|
 | [Bookmark](#bookmark) | object | A user | Bookmark |
 
+### Object
+
+
+This object has no properties.
+
 ### HighlightResponse
 The response model for highlight actions
 
