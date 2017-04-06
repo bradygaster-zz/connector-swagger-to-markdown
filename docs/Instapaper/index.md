@@ -280,10 +280,9 @@ When a bookmark is removed from a folder
 | Folder | string | The folder id, or &quot;unread&quot; for the home folder | true |
 
 #### Returns
-| Summary | Type | Description | Path |
-|---------|------|-------------|------|
-|  | array of int32 |  |  |
-|  | int32 |  |  |
+| Summary | Type | Description |
+|---------|------|-------------|
+|  | int32 |  |
 
 ___
 

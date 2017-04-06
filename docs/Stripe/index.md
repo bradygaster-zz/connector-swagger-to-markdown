@@ -271,7 +271,6 @@ data
 | Created | date-time | the datetime the product was created at. | created |
 | Description | string | The product’s description, meant to be displayable to the customer. | description |
 | Images | array of string | A list of up to 8 URLs of images for this product, meant to be displayable to the customer. | images |
-|  | string |  | images |
 | Name | string | The product’s name, meant to be displayable to the customer. | name |
 | Shippable | boolean | Whether this product is a shipped good. | shippable |
 | Updated | date-time | The datetime the product was updated. | updated |

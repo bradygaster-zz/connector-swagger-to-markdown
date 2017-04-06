@@ -221,7 +221,6 @@ ___
 | External Link Label | string |  | externalLink.label |
 | External Link URL | string |  | externalLink.url |
 | Assignees | array of string | Array of user Ids (numbers). | assignedUserIds |
-|  | string |  | assignedUserIds |
 
 ### UpdateCardRequest
 
@@ -243,7 +242,6 @@ ___
 | External Link Label | string | The label of the external link. | externalLink.label |
 | External Link URL | string | The URL of the external link. | externalLink.url |
 | Assignees | array of string | Array of user Ids (numbers). | assignedUserIds |
-|  | string |  | assignedUserIds |
 
 ### AddCommentRequest
 

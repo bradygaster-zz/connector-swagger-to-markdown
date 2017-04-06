@@ -220,7 +220,6 @@ ___
 | dataType | string |  | DocumentCollections.indexingPolicy.includedPaths.indexes.dataType |
 | precision | int32 |  | DocumentCollections.indexingPolicy.includedPaths.indexes.precision |
 | excludedPaths | array of string |  | DocumentCollections.indexingPolicy.excludedPaths |
-|  | string |  | DocumentCollections.indexingPolicy.excludedPaths |
 | _rid | string |  | DocumentCollections._rid |
 | _ts | int32 |  | DocumentCollections._ts |
 | _self | string |  | DocumentCollections._self |
@@ -247,7 +246,6 @@ ___
 | dataType | string |  | indexingPolicy.includedPaths.indexes.dataType |
 | precision | int32 |  | indexingPolicy.includedPaths.indexes.precision |
 | excludedPaths | array of string |  | indexingPolicy.excludedPaths |
-|  | string |  | indexingPolicy.excludedPaths |
 | _rid | string |  | _rid |
 | _ts | int32 |  | _ts |
 | _self | string |  | _self |

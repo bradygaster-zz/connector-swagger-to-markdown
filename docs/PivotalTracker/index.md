@@ -218,7 +218,6 @@ ___
 | Label Name | string | The name of the label. | labels.name |
 | Title | string | Story name. | name |
 | owner_ids | array of string |  | owner_ids |
-| Owner Id | string | Id of the owner. | owner_ids |
 | Project Id | int32 | The Id of the project. | project_id |
 | Requestor Id | int32 | The id of the person who requested the story. | requested_by_id |
 | Story Type | string | Type of story. | story_type |

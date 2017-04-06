@@ -236,7 +236,6 @@ ___
 | Message Body | string | The plain text body of the email message to be sent to recipients. | body |
 | Subject | string | Subject of the email message to be sent to recipients. | subject |
 | Recipients | array of string | List of recipient ids. | recipients |
-|  | string |  | recipients |
 | States | string | The recipient status. | recipient_status |
 | type | string |  | type |
 

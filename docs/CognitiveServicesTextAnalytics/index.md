@@ -89,7 +89,6 @@ ___
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
 | Key Phrases | array of string | A list of representative words or phrases. The number of key phrases returned is proportional to the number of words in the input document. | keyPhrases |
-|  | string |  | keyPhrases |
 | Id | string | Unique document identifier. | id |
 
 ### ErrorResponse

@@ -199,7 +199,6 @@ A Blogger post object
 | Author URL | string | The url of the author | author.url |
 | Author Image URL | string | The URL of the image of the author | author.image.url |
 | Labels | array of string | The list of this post&#x27;s labels | labels |
-|  | string |  | labels |
 | [Location](#location) | object | A Location blog object | location |
 | Status | string | The status of the post | status |
 
@@ -241,7 +240,6 @@ A Blogger post object for new post requests
 | Title | string | The title of the post | title |
 | Content | string | The content of the post | content |
 | Labels | array of string | The labels for the post | labels |
-|  | string |  | labels |
 
 ### UpdatePostRequest
 A Blogger post object for new post requests
@@ -251,7 +249,6 @@ A Blogger post object for new post requests
 | Title | string | The title of the post | title |
 | Content | string | The content of the post | content |
 | Labels | array of string | The labels for the post | labels |
-|  | string |  | labels |
 
 ## Limits
 | Name | Calls | Renewal Period |

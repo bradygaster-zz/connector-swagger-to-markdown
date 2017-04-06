@@ -175,7 +175,8 @@ var generateOperation = function(swagger, pathKey, operation) {
                 }
 
                 // Handle batch trigger response
-                if (operation['x-ms-trigger'] === 'batch' && schema.type === 'array' && schema.items && schema.items.$ref) {
+                if (operation['x-ms-trigger'] === 'batch' && schema.type === 'array' &&
+                    schema.items && schema.items.type !== 'object') {
                     schema = schema.items;
                     $ref = schema.$ref;
                     if ($ref) {
@@ -344,7 +345,10 @@ var flattenDefinitionSchema = function(swagger, schema, schemaKey, jsonPath, doc
             property.description = schema['description'];
             property.path = jsonPath;
             docProperties.push(property);
-            flattenDefinitionSchema(swagger, schema.items, '', jsonPath, docProperties);
+            // Don't flatten arrays of primitive types
+            if (schema.items.type === 'array' || schema.items.type === 'object') {
+                flattenDefinitionSchema(swagger, schema.items, schemaKey + ' item', jsonPath, docProperties);
+            }
         }
     } else {
         var property = new SchemaProperty();

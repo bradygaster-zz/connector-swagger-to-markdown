@@ -570,7 +570,6 @@ ___
 |---------|------|-------------|------|
 | Id | int32 | Id of the pull request. | id |
 | Reviewers | array of string | List of reviewers on the pull request. | reviewers |
-|  | string |  | reviewers |
 | Closed By | string | Username of person who closes the pull request. | closed_by |
 | Description | string | Description of the pull request. | description |
 | Name | string | The name of the destination branch. | destination.branch.name |

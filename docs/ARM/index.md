@@ -757,7 +757,6 @@ The type of the paths for alias.
 |---------|------|-------------|------|
 | path | string | The path of an alias. | path |
 | apiVersions | array of string | The api versions. | apiVersions |
-|  | string |  | apiVersions |
 
 ### AliasType
 The alias type. 
@@ -774,10 +773,8 @@ Resource type managed by the resource provider.
 |---------|------|-------------|------|
 | resourceType | string | The resource type. | resourceType |
 | locations | array of string | The collection of locations where this resource type can be created in. | locations |
-|  | string |  | locations |
 | aliases | Array of [AliasType](#aliastype) | The aliases that are supported by this resource type. | aliases |
 | apiVersions | array of string | The api version. | apiVersions |
-|  | string |  | apiVersions |
 | properties | object | The properties. | properties |
 
 ### Provider
@@ -949,7 +946,6 @@ Export resource group template request parameters.
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
 | resources | array of string | The ids of the resources. The only supported string currently is &#x27;*&#x27; (all resources). Future api updates will support exporting specific resources. | resources |
-|  | string |  | resources |
 | options | string | The export template options. Supported values include &#x27;IncludeParameterDefaultValue&#x27;, &#x27;IncludeComments&#x27; or &#x27;IncludeParameterDefaultValue, IncludeComments | options |
 
 ### TagCount

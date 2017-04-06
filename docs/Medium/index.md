@@ -41,7 +41,6 @@ Write a new story.
 | License | string | The license associated with the story. | data.license |
 | License Url | string | The license URL associated with the story. | data.licenseUrl |
 | Tags | array of string | An array of tags on the story. | data.tags |
-|  | string |  | data.tags |
 
 ___
 
@@ -71,7 +70,6 @@ Write a story under a publication.
 | License | string | The license associated with the story. | data.license |
 | License Url | string | The license URL associated with the story. | data.licenseUrl |
 | Tags | array of string | An array of tags on the story. | data.tags |
-|  | string |  | data.tags |
 | Publication Id | string |  | data.publicationId |
 
 ___
@@ -133,7 +131,6 @@ ___
 | license | string |  | data.license |
 | licenseUrl | string |  | data.licenseUrl |
 | tags | array of string |  | data.tags |
-|  | string |  | data.tags |
 
 ### 7dc2cb6a-b492-4991-b628-7a7498e33749
 
@@ -149,7 +146,6 @@ ___
 | license | string |  | data.license |
 | licenseUrl | string |  | data.licenseUrl |
 | tags | array of string |  | data.tags |
-|  | string |  | data.tags |
 | publicationId | string |  | data.publicationId |
 
 ## Limits
