@@ -2,8 +2,6 @@
 
 # Azure Resource Manager (Preview)
 
-v2016-06-01
-
 Azure Resource Manager exposes the APIs to manage all of your Azure resources.
 
 
@@ -425,7 +423,7 @@ Exports a deployment template from an existing resource group. This can only be 
 |---------|------|-------------|----------|
 | Subscription | string | The unique identifier for the  Microsoft Azure subscription. The subscription ID forms part of the ID for every Azure resource. | true |
 | Resource Group | string | Resource group name. | true |
-|  | string |  | false |
+| resources | string |  | false |
 | options | string | The export template options. Supported values include &#x27;IncludeParameterDefaultValue&#x27;, &#x27;IncludeComments&#x27; or &#x27;IncludeParameterDefaultValue, IncludeComments | false |
 
 #### Returns
@@ -661,7 +659,7 @@ Location list operation response.
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-|  | Array of [Location](#location) | The locations. | value |
+| value | Array of [Location](#location) | The locations. | value |
 
 ### Subscription
 Subscription information.
@@ -690,7 +688,7 @@ Subscription list operation response.
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-|  | Array of [Subscription](#subscription) | The subscriptions. | value |
+| value | Array of [Subscription](#subscription) | The subscriptions. | value |
 | Next Link | string | The URL to get the next set of results. | nextLink |
 
 ### TemplateLink
@@ -750,7 +748,7 @@ The deployment export result.
 | code | string | The error code returned from the server. | code |
 | message | string | The error message returned from the server. | message |
 | target | string | The target of the error. | target |
-|  | Array of [ResourceManagementErrorWithDetails](#resourcemanagementerrorwithdetails) | Validation error. | details |
+| details | Array of [ResourceManagementErrorWithDetails](#resourcemanagementerrorwithdetails) | Validation error. | details |
 
 ### AliasPathType
 The type of the paths for alias. 
@@ -759,7 +757,6 @@ The type of the paths for alias.
 |---------|------|-------------|------|
 | path | string | The path of an alias. | path |
 | apiVersions | array of string | The api versions. | apiVersions |
-|  | string |  | apiVersions |
 
 ### AliasType
 The alias type. 
@@ -767,7 +764,7 @@ The alias type.
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
 | name | string | The alias name. | name |
-|  | Array of [AliasPathType](#aliaspathtype) | The paths for an alias. | paths |
+| paths | Array of [AliasPathType](#aliaspathtype) | The paths for an alias. | paths |
 
 ### ProviderResourceType
 Resource type managed by the resource provider.
@@ -776,10 +773,8 @@ Resource type managed by the resource provider.
 |---------|------|-------------|------|
 | resourceType | string | The resource type. | resourceType |
 | locations | array of string | The collection of locations where this resource type can be created in. | locations |
-|  | string |  | locations |
-|  | Array of [AliasType](#aliastype) | The aliases that are supported by this resource type. | aliases |
+| aliases | Array of [AliasType](#aliastype) | The aliases that are supported by this resource type. | aliases |
 | apiVersions | array of string | The api version. | apiVersions |
-|  | string |  | apiVersions |
 | properties | object | The properties. | properties |
 
 ### Provider
@@ -806,7 +801,7 @@ Deployment dependency information.
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-|  | Array of [BasicDependency](#basicdependency) | The list of dependencies. | dependsOn |
+| dependsOn | Array of [BasicDependency](#basicdependency) | The list of dependencies. | dependsOn |
 | id | string | The ID of the dependency. | id |
 | resourceType | string | The dependency resource type. | resourceType |
 | resourceName | string | The dependency resource name. | resourceName |
@@ -820,8 +815,8 @@ Deployment properties with additional details.
 | correlationId | string | The correlation ID of the deployment. | correlationId |
 | timestamp | date-time | The timestamp of the template deployment. | timestamp |
 | outputs | object | Key/value pairs that represent deploymentoutput. | outputs |
-|  | Array of [Provider](#provider) | The list of resource providers needed for the deployment. | providers |
-|  | Array of [Dependency](#dependency) | The list of deployment dependencies. | dependencies |
+| providers | Array of [Provider](#provider) | The list of resource providers needed for the deployment. | providers |
+| dependencies | Array of [Dependency](#dependency) | The list of deployment dependencies. | dependencies |
 | template | object | The template content. Use only one of Template or TemplateLink. | template |
 | [TemplateLink](#templatelink) | object | Entity representing the reference to the template. | templateLink |
 | parameters | object | Deployment parameters. Use only one of Parameters or ParametersLink. | parameters |
@@ -851,7 +846,7 @@ List of deployments.
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-|  | Array of [DeploymentExtended](#deploymentextended) | The list of deployments. | value |
+| value | Array of [DeploymentExtended](#deploymentextended) | The list of deployments. | value |
 | Next Link | string | The URL to get the next set of results. | nextLink |
 
 ### ProviderListResult
@@ -859,7 +854,7 @@ List of resource providers.
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-|  | Array of [Provider](#provider) | The list of resource providers. | value |
+| value | Array of [Provider](#provider) | The list of resource providers. | value |
 | nextLink | string | The URL to get the next set of results. | nextLink |
 
 ### GenericResource
@@ -915,7 +910,7 @@ List of resources.
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-|  | Array of [GenericResource](#genericresource) | The list of resources. | value |
+| value | Array of [GenericResource](#genericresource) | The list of resources. | value |
 | Next Link | string | The URL to get the next set of results. | nextLink |
 
 ### ResourceGroup
@@ -942,7 +937,7 @@ List of resource groups.
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-|  | Array of [ResourceGroup](#resourcegroup) | The list of resource groups. | value |
+| value | Array of [ResourceGroup](#resourcegroup) | The list of resource groups. | value |
 | Next Link | string | The URL to get the next set of results. | nextLink |
 
 ### ExportTemplateRequest
@@ -951,7 +946,6 @@ Export resource group template request parameters.
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
 | resources | array of string | The ids of the resources. The only supported string currently is &#x27;*&#x27; (all resources). Future api updates will support exporting specific resources. | resources |
-|  | string |  | resources |
 | options | string | The export template options. Supported values include &#x27;IncludeParameterDefaultValue&#x27;, &#x27;IncludeComments&#x27; or &#x27;IncludeParameterDefaultValue, IncludeComments | options |
 
 ### TagCount
@@ -979,14 +973,14 @@ Tag details.
 | Id | string | The tag ID. | id |
 | Name | string | The tag name. | tagName |
 | [TagCount](#tagcount) | object | Tag count. | count |
-|  | Array of [TagValue](#tagvalue) | The list of tag values. | values |
+| values | Array of [TagValue](#tagvalue) | The list of tag values. | values |
 
 ### TagsListResult
 List of subscription tags.
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-|  | Array of [TagDetails](#tagdetails) | The list of tags. | value |
+| value | Array of [TagDetails](#tagdetails) | The list of tags. | value |
 | nextLink | string | The URL to get the next set of results. | nextLink |
 
 ### TargetResource
@@ -1033,7 +1027,7 @@ List of deployment operations.
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-|  | Array of [DeploymentOperation](#deploymentoperation) | The list of deployments. | value |
+| value | Array of [DeploymentOperation](#deploymentoperation) | The list of deployments. | value |
 | Next Link | string | The URL to get the next set of results. | nextLink |
 
 ### ResourceGroupExportResult
@@ -1048,5 +1042,4 @@ List of deployment operations.
 | Name | Calls | Renewal Period |
 |------|-------|----------------|
 | API calls per connection | 1200 | 60 seconds |
-
 

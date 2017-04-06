@@ -2,8 +2,6 @@
 
 # Google Contacts (Preview)
 
-v1.0.0
-
 Google Contacts is an online address book, integrated across your Google products and more.
 
 ## Creating a connection
@@ -77,7 +75,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-|  | Array of [Entry](#entry) |  | feed.entry |
+| entry | Array of [Entry](#entry) |  | feed.entry |
 
 ___
 

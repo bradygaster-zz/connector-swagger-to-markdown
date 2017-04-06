@@ -1,6 +1,6 @@
 var connectors = require('./connectors.json');
-var whitelistExpression = connectors.length > 1 ? '{' + connectors.join(',') + '}' : connectors[0];
-console.log('Generating docs for: ' + whitelistExpression);
+var utils = require('./utils.js');
+var config = utils.getConnectorConfig();
 
 module.exports = (grunt) => {
 
@@ -12,7 +12,7 @@ module.exports = (grunt) => {
     grunt.registerTask('default', [
         'clean:initClean',
         'copy:connectors',
-        'execute'
+        'execute:generateDocs'
     ]);
 
     grunt.initConfig({
@@ -30,13 +30,13 @@ module.exports = (grunt) => {
                         expand: true,
                         cwd: '../AAPT-connectors/src/codeless/',
                         src: [
-                            whitelistExpression + '/apiDefinition.swagger.json',
-                            whitelistExpression + '/connectionParameters.json',
-                            whitelistExpression + '/resourceTemplate.json',
-                            whitelistExpression + '/policy.xml',
-                            whitelistExpression + '/icon.png',
-                            whitelistExpression + '/intro.md',
-                            whitelistExpression + '/media/*.png'
+                            config.aaptCodelessExpr + '/apiDefinition.swagger.json',
+                            config.aaptCodelessExpr + '/connectionParameters.json',
+                            config.aaptCodelessExpr + '/resourceTemplate.json',
+                            config.aaptCodelessExpr + '/policy.xml',
+                            config.aaptCodelessExpr + '/icon.png',
+                            config.aaptCodelessExpr + '/intro.md',
+                            config.aaptCodelessExpr + '/media/*.png'
                         ],
                         filter: 'isFile',
                         dest: 'Connectors'
@@ -45,8 +45,8 @@ module.exports = (grunt) => {
                         expand: true,
                         cwd: '../AAPT-connectors/src/codeless/',
                         src: [
-                            whitelistExpression + '/icon.png',
-                            whitelistExpression + '/media/*.png'
+                            config.aaptCodelessExpr + '/icon.png',
+                            config.aaptCodelessExpr + '/media/*.png'
                         ],
                         filter: 'isFile',
                         dest: 'docs'
@@ -56,13 +56,13 @@ module.exports = (grunt) => {
                         expand: true,
                         cwd: '../Connectors/src/Connectors/',
                         src: [
-                            whitelistExpression + '/apiDefinition.swagger.json',
-                            whitelistExpression + '/connectionParameters.json',
-                            whitelistExpression + '/resourceTemplate.json',
-                            whitelistExpression + '/policy.xml',
-                            whitelistExpression + '/icon.png',
-                            whitelistExpression + '/intro.md',
-                            whitelistExpression + '/media/*.png'
+                            config.gncpalaExpr + '/apiDefinition.swagger.json',
+                            config.gncpalaExpr  + '/connectionParameters.json',
+                            config.gncpalaExpr  + '/resourceTemplate.json',
+                            config.gncpalaExpr  + '/policy.xml',
+                            config.gncpalaExpr  + '/icon.png',
+                            config.gncpalaExpr  + '/intro.md',
+                            config.gncpalaExpr  + '/media/*.png'
                         ],
                         filter: 'isFile',
                         dest: 'Connectors'
@@ -71,8 +71,34 @@ module.exports = (grunt) => {
                         expand: true,
                         cwd: '../Connectors/src/Connectors/',
                         src: [
-                            whitelistExpression + '/icon.png',
-                            whitelistExpression + '/media/*.png'
+                            config.gncpalaExpr  + '/icon.png',
+                            config.gncpalaExpr  + '/media/*.png'
+                        ],
+                        filter: 'isFile',
+                        dest: 'docs'
+                    },
+                    // AAPT-Connectors (SAAS)
+                    {
+                        expand: true,
+                        cwd: '../AAPT-connectors/src/source/SAAS/',
+                        src: [
+                            config.aaptSaasExpr + '/apiDefinition.swagger.json',
+                            config.aaptSaasExpr + '/resourceTemplate.json',
+                            config.aaptSaasExpr + '/Deployment/policy.xml',
+                            config.aaptSaasExpr + '/Deployment/policies.xml',
+                            config.aaptSaasExpr + '/icon.png',
+                            config.aaptSaasExpr + '/intro.md',
+                            config.aaptSaasExpr + '/media/*.png'
+                        ],
+                        filter: 'isFile',
+                        dest: 'Connectors'
+                    },
+                    {
+                        expand: true,
+                        cwd: '../AAPT-connectors/src/source/SAAS/',
+                        src: [
+                            config.aaptSaasExpr + '/icon.png',
+                            config.aaptSaasExpr + '/media/*.png'
                         ],
                         filter: 'isFile',
                         dest: 'docs'
@@ -81,8 +107,8 @@ module.exports = (grunt) => {
             }
         },
         execute: {
-            target: {
-                src: 'apiDefinition.js'
+            generateDocs: {
+                src: 'generateDocs.js'
             }
         }
     });

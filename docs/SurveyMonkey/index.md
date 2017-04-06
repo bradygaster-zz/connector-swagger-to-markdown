@@ -2,8 +2,6 @@
 
 # SurveyMonkey (Preview)
 
-v1.0
-
 SurveyMonkey is the world&#x27;s leading provider of web-based survey solutions. These solutions are used by companies, organizations, and individuals to gather the insights they need to make more informed decisions.
 
 
@@ -238,7 +236,6 @@ ___
 | Message Body | string | The plain text body of the email message to be sent to recipients. | body |
 | Subject | string | Subject of the email message to be sent to recipients. | subject |
 | Recipients | array of string | List of recipient ids. | recipients |
-|  | string |  | recipients |
 | States | string | The recipient status. | recipient_status |
 | type | string |  | type |
 

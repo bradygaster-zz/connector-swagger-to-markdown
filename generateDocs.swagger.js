@@ -66,7 +66,7 @@ class ConnectorDoc {
     }
 };
 
-var generateDoc = function(swagger) {
+var generateSwaggerDoc = function(swagger) {
     var doc = new ConnectorDoc();
 
     doc.title = swagger.info.title;
@@ -90,7 +90,7 @@ var generateActions = function(swagger) {
             var operation = path[operationKey];
             if (operationKey !== 'x-ms-notification-content' && // This is used for adding webhook details
                 !operation['x-ms-trigger'] && operation['x-ms-visibility'] !== 'internal') {
-                var docOperation = generateOperation(swagger, operation);
+                var docOperation = generateOperation(swagger, pathKey, operation);
                 actions.push(docOperation);
             }
         });
@@ -108,7 +108,7 @@ var generateTriggers = function(swagger) {
             var operation = path[operationKey];
             if (operationKey !== 'x-ms-notification-content' && // This is used for adding webhook details
                 operation['x-ms-trigger'] && operation['x-ms-visibility'] !== 'internal') {
-                var docOperation = generateOperation(swagger, operation);
+                var docOperation = generateOperation(swagger, pathKey, operation);
                 triggers.push(docOperation);
             }
         });
@@ -117,7 +117,7 @@ var generateTriggers = function(swagger) {
     return triggers;
 };
 
-var generateOperation = function(swagger, operation) {
+var generateOperation = function(swagger, pathKey, operation) {
     var docOperation = new Operation();
     docOperation.summary = operation.summary;
     docOperation.description = operation.description;
@@ -162,7 +162,8 @@ var generateOperation = function(swagger, operation) {
     var responseKeys = Object.keys(operation.responses);
     if (responseKeys.length > 0) {
         var firstResponse = operation.responses[responseKeys[0]];
-        var schema = firstResponse.schema;
+        var webhookResponse = swagger.paths[pathKey]['x-ms-notification-content'];
+        var schema = webhookResponse ? webhookResponse.schema : firstResponse.schema;
         if (schema) {
             if (isDynamicSchema(swagger, schema)) {
                 docResponse = new Response();
@@ -172,7 +173,19 @@ var generateOperation = function(swagger, operation) {
                 if ($ref) {
                     schema = utils.resolveReference(swagger, $ref);
                 }
-                if (schema.type === 'object' && Object.keys(schema.properties).length === 0) {
+
+                // Handle batch trigger response
+                if (operation['x-ms-trigger'] === 'batch' && schema.type === 'array' &&
+                    schema.items && schema.items.type !== 'object') {
+                    schema = schema.items;
+                    $ref = schema.$ref;
+                    if ($ref) {
+                        schema = utils.resolveReference(swagger, $ref);
+                    }
+                }
+
+                if ((schema.type === 'object' && Object.keys(schema.properties).length === 0) ||
+                    (schema.type === 'string' && !schema.description && !schema['x-ms-summary'])) {
                     // This is usually used to mean an empty response
                 } else if ($ref) {
                     // $ref at the top level
@@ -185,9 +198,18 @@ var generateOperation = function(swagger, operation) {
                 } else if (schema.type === 'object' || schema.type === 'array') {
                     // Inline object/array
                     var docProperties = [];
-                    flattenDefinitionSchema(swagger, schema, '', '', docProperties);
                     docResponse = new Response();
-                    docResponse.properties = docProperties;
+                    flattenDefinitionSchema(swagger, schema, '', '', docProperties);
+                    if (schema.type === 'array' && schema.items && schema.items.$ref) {
+                        var itemsSchema = new SingleSchema();
+                        var items = docProperties[0];
+                        itemsSchema.summary = items.summary;
+                        itemsSchema.type = items.type;
+                        itemsSchema.description = items.description
+                        docResponse.singleSchema = itemsSchema;
+                    } else {
+                        docResponse.properties = docProperties;
+                    }
                 } else {
                     // Inline schema of primitive type
                     docResponse = new Response();
@@ -229,7 +251,8 @@ var flattenParameterSchema = function(swagger, schema, schemaKey, isRequired, do
         schema = utils.resolveReference(swagger, schema.$ref);
     }
     if (schema.type === 'array') {
-        flattenParameterSchema(swagger, schema.items, '', false, docParameters);
+        var arraySummary = schema['x-ms-summary'] ? schema['x-ms-summary'] : schemaKey;
+        flattenParameterSchema(swagger, schema.items, arraySummary, false, docParameters);
     } else if (schema.type === 'object') {
         if (!schema.properties) {
             // Ignore objects with no properties for parameter purposes
@@ -240,15 +263,13 @@ var flattenParameterSchema = function(swagger, schema, schemaKey, isRequired, do
                 flattenParameterSchema(swagger, property, propKey, isPropRequired, docParameters);
             });
         }
-    } else {
-        if (schema['x-ms-visibility'] !== 'internal') {
-            var docParameter = new Parameter();
-            docParameter.summary = schema['x-ms-summary'] ? schema['x-ms-summary'] : schemaKey;
-            docParameter.type = schema.format ? schema.format : schema.type,
-            docParameter.description = schema.description,
-            docParameter.required = isRequired ? true : false;
-            docParameters.push(docParameter);
-        }
+    } else if (schema['x-ms-visibility'] !== 'internal') {
+        var docParameter = new Parameter();
+        docParameter.summary = schema['x-ms-summary'] ? schema['x-ms-summary'] : schemaKey;
+        docParameter.type = schema.format ? schema.format : schema.type,
+        docParameter.description = schema.description,
+        docParameter.required = isRequired ? true : false;
+        docParameters.push(docParameter);
     }
 };
 
@@ -274,12 +295,11 @@ var generateDefinitions = function(swagger) {
             docProperties = [];
         }
 
-        if (singleSchema || docProperties.length > 0) {
-            docDefinition.description = definition.description;
-            if (docProperties.length > 0) docDefinition.properties = docProperties;
-            if (singleSchema) docDefinition.singleSchema = singleSchema;
-            docDefinitions[definitionKey] = docDefinition;
-        }
+        docDefinition.description = definition.description;
+        if (docProperties.length > 0) docDefinition.properties = docProperties;
+        if (singleSchema) docDefinition.singleSchema = singleSchema;
+        var newDefinitionKey = utils.getMarkdownTitle(definitionKey);
+        docDefinitions[newDefinitionKey] = docDefinition;
     });
     return Object.keys(docDefinitions).length > 0 ? docDefinitions : null;
 };
@@ -310,7 +330,7 @@ var flattenDefinitionSchema = function(swagger, schema, schemaKey, jsonPath, doc
         if (schema.items.$ref) {
             var resolvedSchema = utils.resolveReference(swagger, schema.items.$ref);
             var property = new SchemaProperty();
-            property.summary = schema['x-ms-summary'];
+            property.summary = schema['x-ms-summary'] ? schema['x-ms-summary'] : schemaKey;
             property.type = 'Array of ' + utils.refToLink(schema.items.$ref);
             property.description = schema['description'];
             property.path = jsonPath;
@@ -322,7 +342,10 @@ var flattenDefinitionSchema = function(swagger, schema, schemaKey, jsonPath, doc
             property.description = schema['description'];
             property.path = jsonPath;
             docProperties.push(property);
-            flattenDefinitionSchema(swagger, schema.items, '', jsonPath, docProperties);
+            // Don't flatten arrays of primitive types
+            if (schema.items.type === 'array' || schema.items.type === 'object') {
+                flattenDefinitionSchema(swagger, schema.items, schemaKey + ' item', jsonPath, docProperties);
+            }
         }
     } else {
         var property = new SchemaProperty();
@@ -361,7 +384,7 @@ var isDynamicSchema = function(swagger, schema, visitedRefs) {
 }
 
 module.exports = {
-    generateDoc: function(swagger) {
-        return generateDoc(swagger);
+    generateSwaggerDoc: function(swagger) {
+        return generateSwaggerDoc(swagger);
     }
 };

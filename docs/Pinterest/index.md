@@ -2,8 +2,6 @@
 
 # Pinterest (Preview)
 
-v1.0
-
 Pinterest allows you to create a bulletin of photos called a Board. You can follow boards, add pins to existing ones or collaborate with people to build shared boards.
 
 
@@ -85,9 +83,7 @@ List all pins
 This operation does not require any input.
 
 #### Returns
-| Summary | Type | Description |
-|---------|------|-------------|
-|  | string |  |
+This operation does not return anything.
 
 ___
 
@@ -311,5 +307,4 @@ UserResponsePage
 | Name | Calls | Renewal Period |
 |------|-------|----------------|
 | API calls per connection | 100 | 60 seconds |
-
 

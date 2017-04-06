@@ -2,8 +2,6 @@
 
 # Redmine (Preview)
 
-v1.0.0
-
 Redmine is a web based tool for software project management.
 
 ## Creating a connection
@@ -72,9 +70,7 @@ Update an issue.
 | Description | string | Description. | false |
 
 #### Returns
-| Summary | Type | Description |
-|---------|------|-------------|
-|  | string |  |
+This operation does not return anything.
 
 ___
 

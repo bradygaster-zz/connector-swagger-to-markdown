@@ -2,8 +2,6 @@
 
 # Insightly (Preview)
 
-v1.0
-
 Insightly is the easiest customer relationship management solution (CRM) to use for managing deep customer relationships. Customers use Insightly&#x27;s tightly integrated CRM &amp; project management features to close new business, track post sale customer interactions &amp; drive repeat purchases.
 
 ## Creating a connection
@@ -940,6 +938,11 @@ An Insightly User Object
 | Contact Order | string | Contact order | CONTACT_ORDER |
 | Task Week Start | int32 | Task week start | TASK_WEEK_START |
 | Instance Id | int32 | Instance Id | INSTANCE_ID |
+
+### Object
+
+
+This object has no properties.
 
 ### ListEventsResponse
 A Insightly Event response object

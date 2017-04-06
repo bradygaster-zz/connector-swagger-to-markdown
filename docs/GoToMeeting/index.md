@@ -2,8 +2,6 @@
 
 # GoToMeeting (Preview)
 
-v1.0.0
-
 GoToMeeting is an online meeting tool. You can schedule your own meetings or watch for the ones you are invited to.
 
 
@@ -227,6 +225,5 @@ Model used to update a meeting
 ## Limits
 | Name | Calls | Renewal Period |
 |------|-------|----------------|
-| API calls per connection |  |  seconds |
 | Frequency of trigger polls | 1 | 120 seconds |
 

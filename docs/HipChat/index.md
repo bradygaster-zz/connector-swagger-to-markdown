@@ -2,8 +2,6 @@
 
 # HipChat (Preview)
 
-v1.0.0
-
 HipChat is group chat, video chat and screen sharing tool for teams of all sizes. Built for business, HipChat is persistent, searchable and loaded with goodies your team will love.
 
 ## Creating a connection
@@ -81,9 +79,7 @@ Adds a member to a private room.
 | User Id or Email | string | The id, email or mention name of the user. | true |
 
 #### Returns
-| Summary | Type | Description |
-|---------|------|-------------|
-|  | string |  |
+This operation does not return anything.
 
 ___
 

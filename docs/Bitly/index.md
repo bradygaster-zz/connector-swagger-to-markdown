@@ -2,8 +2,6 @@
 
 # Bitly (Preview)
 
-v1.0
-
 Bitly is a link management tool. You can shorten links, reroute existing ones and associate them with campaigns across channels and devices.
 
 
@@ -39,7 +37,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [BitlinkArray](#bitlinkarray) | array |  |
+| [Bitlink](#bitlink) | object | A Bitlink including both shortened and original URL |
 
 ___
 
@@ -59,7 +57,7 @@ A Bitlink including both shortened and original URL
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-| [Bitlink](#bitlink) |  |  |  |
+| [Bitlink](#bitlink) | object | A Bitlink including both shortened and original URL |  |
 
 ## Limits
 | Name | Calls | Renewal Period |

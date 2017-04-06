@@ -2,8 +2,6 @@
 
 # Buffer (Preview)
 
-v1.0.0
-
 Buffer is a social media management for marketers and agencies. Access your pending and sent updates, social media profiles, and more.
 
 

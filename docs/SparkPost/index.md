@@ -2,8 +2,6 @@
 
 # SparkPost (Preview)
 
-v1.0
-
 SparkPost API allows you to manage email recipient lists and send emails.
 
 ## Creating a connection
@@ -130,6 +128,11 @@ Maintains a list of recipients to whom a message can be sent
 | Name of the recipient list | string | Name | name |
 | Description | string | Description | description |
 | Email address of first recipient | string | Email address | email |
+
+### Object
+
+
+This object has no properties.
 
 ### ListRecipientListsResponse
 List of this users recipient lists

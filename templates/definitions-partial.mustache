@@ -1,0 +1,24 @@
+{{#if definitions}}
+## Objects
+{{#each definitions}}
+
+### {{@key}}
+{{this.description}}
+
+{{#if properties.length}}
+| Summary | Type | Description | Path |
+|---------|------|-------------|------|
+{{#each properties}}
+| {{summary}} | {{type}} | {{description}} | {{path}} |
+{{/each}}
+{{else if singleSchema}}
+| Summary | Type | Description |
+|---------|------|-------------|
+{{#with singleSchema}}
+| {{summary}} | {{type}} | {{description}} |
+{{/with}}
+{{else}}
+This object has no properties.
+{{/if}}
+{{/each}}
+{{/if}}

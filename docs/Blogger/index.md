@@ -2,8 +2,6 @@
 
 # Blogger (Preview)
 
-v1.1
-
 Blogger is a blog publishing service. It allows you to create websites and post to them on an ongoing basis.
 
 
@@ -53,7 +51,7 @@ Create post
 | Blog Id | string | Blog | true |
 | Title | string | The title of the post | true |
 | Content | string | The content of the post | true |
-|  | string |  | false |
+| Labels | string |  | false |
 | Draft | boolean | Indicate if this post should be saved as a draft | false |
 
 #### Returns
@@ -93,7 +91,7 @@ Edit a post
 | Post Id | string | Post | true |
 | Title | string | The title of the post | false |
 | Content | string | The content of the post | false |
-|  | string |  | false |
+| Labels | string |  | false |
 
 #### Returns
 | Summary | Type | Description |
@@ -168,9 +166,9 @@ Triggers a flow when a new post is created
 | Post Status | string | Status of the posts to retrieve | true |
 
 #### Returns
-| Summary | Type | Description | Path |
-|---------|------|-------------|------|
-|  | Array of [Post](#post) |  |  |
+| Summary | Type | Description |
+|---------|------|-------------|
+| [Post](#post) | object | A Blogger post object |
 
 ___
 
@@ -201,7 +199,6 @@ A Blogger post object
 | Author URL | string | The url of the author | author.url |
 | Author Image URL | string | The URL of the image of the author | author.image.url |
 | Labels | array of string | The list of this post&#x27;s labels | labels |
-|  | string |  | labels |
 | [Location](#location) | object | A Location blog object | location |
 | Status | string | The status of the post | status |
 
@@ -243,7 +240,6 @@ A Blogger post object for new post requests
 | Title | string | The title of the post | title |
 | Content | string | The content of the post | content |
 | Labels | array of string | The labels for the post | labels |
-|  | string |  | labels |
 
 ### UpdatePostRequest
 A Blogger post object for new post requests
@@ -253,7 +249,11 @@ A Blogger post object for new post requests
 | Title | string | The title of the post | title |
 | Content | string | The content of the post | content |
 | Labels | array of string | The labels for the post | labels |
-|  | string |  | labels |
+
+### Object
+
+
+This object has no properties.
 
 ## Limits
 | Name | Calls | Renewal Period |

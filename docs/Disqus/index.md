@@ -2,8 +2,6 @@
 
 # Disqus (Preview)
 
-v1.0.0
-
 Disqus is a service for web comments and discussions. Disqus makes commenting easier and more interactive, helping publishers power online discussions.
 
 
@@ -178,7 +176,7 @@ Triggers a flow when a comment is created on a specified discussion.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [PostsList](#postslist) | array |  |
+| [Post](#post) | object |  |
 
 ___
 
@@ -195,7 +193,7 @@ Triggers a flow when a discussion is created on a specified forum.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [ThreadsList](#threadslist) | array |  |
+| [Thread](#thread) | object |  |
 
 ___
 
@@ -212,14 +210,7 @@ ___
 | Likes | int32 | Number of likes. | likes |
 | HTML Message | string | The message text in HTML. | message |
 | Comment Id | string | The id of the comment. | id |
-| Author Id | string | The id of the author. | author.id |
-| Author Join Date | date-time | The date/time the author joined Disqus. | author.joinedAt |
-| Is Verified Author | boolean | Set to true if the author is verified. | author.isVerified |
-| Author Username | string | The username of the author. | author.username |
-| About the Author | string | Details about the author. | author.about |
-| Author Name | string | The name of the author. | author.name |
-| Author Profile URL | string | The URL of the author profile. | author.profileUrl |
-| Is Anonymous Author | boolean | Set to true if the author is anonymous. | author.isAnonymous |
+| [Author](#author) | object |  | author |
 | Is Spam | boolean |  | isSpam |
 | Created At | date-time | The date/time the comment was created at. | createdAt |
 | Parent Comment Id | int32 | The id of the parent discussion. | parent |
@@ -283,6 +274,11 @@ ___
 |---------|------|-------------|------|
 | [Forum](#forum) | object |  |  |
 
+### EmptyResponse
+
+
+This object has no properties.
+
 ### CreatePostResponse
 
 
@@ -310,50 +306,18 @@ ___
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-| Dislikes | int32 | Number of dislikes. | dislikes |
-| Discussion Id | string | The id of the discussion. | thread |
-| Likes | int32 | Number of likes. | likes |
-| HTML Message | string | The message text in HTML. | message |
-| Comment Id | string | The id of the comment. | id |
-| Author Id | string | The id of the author. | author.id |
-| Author Join Date | date-time | The date/time the author joined Disqus. | author.joinedAt |
-| Is Verified Author | boolean | Set to true if the author is verified. | author.isVerified |
-| Author Username | string | The username of the author. | author.username |
-| About the Author | string | Details about the author. | author.about |
-| Author Name | string | The name of the author. | author.name |
-| Author Profile URL | string | The URL of the author profile. | author.profileUrl |
-| Is Anonymous Author | boolean | Set to true if the author is anonymous. | author.isAnonymous |
-| Is Spam | boolean |  | isSpam |
-| Created At | date-time | The date/time the comment was created at. | createdAt |
-| Parent Comment Id | int32 | The id of the parent discussion. | parent |
-| Is Approved | boolean | Set to true if the moderator has approved the comment. | isApproved |
-| Is Flagged | boolean | Set to true if the comment has been flagged. | isFlagged |
-| Message | string | The message text in raw format (not HTML). | raw_message |
-| Is Featured | boolean | Set to true if the comment is featured. | isHighlighted |
-| Channel Id | string | The id of the channel. | forum |
-| Is Edited | boolean | Set to true if the comment is edited. | isEdited |
+| [Post](#post) | object |  |  |
 
 ### ThreadsList
 
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-| RSS Feed | string | The URL of the RSS feed. | feed |
-| Dislikes | int32 | The number of dislikes on the discussion. | dislikes |
-| Likes | int32 | The number of likes on the discussion. | likes |
-| HTML Message | string | The message text in HTML. | message |
-| Discussion Id | string | The id of the discussion. | id |
-| Author Id | string | The id of the author. | author |
-| Created At | date-time | The date/time the discussion was created at. | createdAt |
-| Message | string | The message text in raw format (not HTML). | raw_message |
-| Link | string | The link to the discussion. | link |
-| Channel Id | string | The id of the channel. | forum |
-| Number of comments | int32 | The number of comments on this discussion. | posts |
-| Title | string | The title of the discussion. | title |
+| [Thread](#thread) | object |  |  |
 
 ## Limits
 | Name | Calls | Renewal Period |
 |------|-------|----------------|
 | API calls per connection | 100 | 60 seconds |
-| Frequency of trigger polls | 1 | 120 seconds |
+| Frequency of trigger polls | 1 | 60 seconds |
 

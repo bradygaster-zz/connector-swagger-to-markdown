@@ -1,13 +1,18 @@
+var fs = require('fs');
+var connectors = require('./connectors.json');
+
 var resolveReference = function(document, $ref) {
     if ($ref) {
         var reference = document,
             paths = $ref.split('/');
+        var nextSectionIndex = 1;
         if (!paths || paths.length <= 1 || paths[0] !== '#') {
             // For now assume that the reference lives in #/definitions
-            document = document.definitions;
+            reference = document.definitions;
+            nextSectionIndex = 0;
         }
 
-        paths.slice(1).forEach(path => {
+        paths.slice(nextSectionIndex).forEach(path => {
             if (Array.isArray(reference)) {
                 reference = reference.filter(element => element.name === path)[0];
             } else {
@@ -68,10 +73,39 @@ var refToLink = function(str) {
     if (!str) {
         return str;
     }
+    str = str.replace('#/definitions/', '');
 
-    var headerText = str.replace('#/definitions/', '');
-    var headerLink = headerText.replace(' ', '-').toLowerCase();
-    return '[' + headerText + ']' + '(#' + headerLink + ')';
+    var linkTitle = getMarkdownTitle(str);
+    var linkHref = getMarkdownHref(str);
+    return '[' + linkTitle + ']' + '(#' + linkHref + ')';
+};
+
+var getMarkdownTitle = function(title) {
+    title = title.replace('[', '\\[').replace(']', '\\]');
+    return title;
+};
+
+var getMarkdownHref = function(title) {
+    title = title.replace(/[^0-9a-zA-Z]+/g, '').toLowerCase();
+    return title;
+};
+
+var getFileExpression = function(array) {
+    if (array) {
+        if (array.length === 1) {
+            return array[0];
+        } else if (array.length > 1) {
+            return '{' + array.join(',') + '}';
+        }
+    }
+    return 'DUMMY_EXPRESSION';
+};
+
+var getConnectorConfig = function() {
+    connectors.gncpalaExpr = getFileExpression(connectors.gncpala);
+    connectors.aaptCodelessExpr = getFileExpression(connectors.aaptCodeless);
+    connectors.aaptSaasExpr = getFileExpression(connectors.aaptSaas);
+    return connectors;
 };
 
 module.exports = {
@@ -93,5 +127,11 @@ module.exports = {
     },
     refToLink: function(str) {
         return refToLink(str);
+    },
+    getConnectorConfig: function() {
+        return getConnectorConfig();
+    },
+    getMarkdownTitle: function(title) {
+        return getMarkdownTitle(title);
     }
 };

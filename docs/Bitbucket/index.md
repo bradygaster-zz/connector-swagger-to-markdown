@@ -2,8 +2,6 @@
 
 # Bitbucket (Preview)
 
-v1.0.0
-
 Bitbucket is a web based hosting service for projects that use GIT revision control.
 
 
@@ -143,7 +141,7 @@ Triggers when a new repository is created for the authenticated account.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [List_repositories_Response](#list_repositories_response) | object |  |
+| [List_repositories_Response](#listrepositoriesresponse) | object |  |
 
 ___
 
@@ -157,12 +155,12 @@ Triggers when a new issue is added to the given repository.
 |---------|------|-------------|----------|
 | Account Name | string | Atlassian account or team name | true |
 | Repository Id | string | Bitbucket repository | true |
-|  | string |  | false |
+| events | string |  | false |
 
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-|  | string |  |
+| [WebhookIssueCreatedResponse](#webhookissuecreatedresponse) | object |  |
 
 ___
 
@@ -176,12 +174,12 @@ Triggers when an issue is updated in the given repository.
 |---------|------|-------------|----------|
 | Account Name | string | Atlassian account or team name | true |
 | Repository Id | string | Bitbucket repository | true |
-|  | string |  | false |
+| events | string |  | false |
 
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-|  | string |  |
+| [WebhookIssueUpdatedResponse](#webhookissueupdatedresponse) | object |  |
 
 ___
 
@@ -195,12 +193,12 @@ Triggers when a pullreqest is approved in the specified repository.
 |---------|------|-------------|----------|
 | Account Name | string | Atlassian account or team name | true |
 | Repository Id | string | Bitbucket repository | true |
-|  | string |  | false |
+| events | string |  | false |
 
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-|  | string |  |
+| [WebhookPullRequestApprovedResponse](#webhookpullrequestapprovedresponse) | object |  |
 
 ___
 
@@ -214,12 +212,12 @@ Triggers when a new pullreqest is created in the given repository.
 |---------|------|-------------|----------|
 | Account Name | string | Atlassian account or team name | true |
 | Repository Id | string | Bitbucket repository | true |
-|  | string |  | false |
+| events | string |  | false |
 
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-|  | string |  |
+| [WebhookPullRequestCreatedResponse](#webhookpullrequestcreatedresponse) | object |  |
 
 ___
 
@@ -233,12 +231,12 @@ Triggers when an existing pullreqest is declined in the given repository.
 |---------|------|-------------|----------|
 | Account Name | string | Atlassian account or team name | true |
 | Repository Id | string | Bitbucket repository | true |
-|  | string |  | false |
+| events | string |  | false |
 
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-|  | string |  |
+| [WebhookPullRequestDeclinedResponse](#webhookpullrequestdeclinedresponse) | object |  |
 
 ___
 
@@ -252,12 +250,12 @@ Triggers when an existing pullreqest is merged in the given repository.
 |---------|------|-------------|----------|
 | Account Name | string | Atlassian account or team name | true |
 | Repository Id | string | Bitbucket repository | true |
-|  | string |  | false |
+| events | string |  | false |
 
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-|  | string |  |
+| [WebhookPullRequestMergedResponse](#webhookpullrequestmergedresponse) | object |  |
 
 ___
 
@@ -271,17 +269,22 @@ Triggers when a new commit is pushed to the given repository.
 |---------|------|-------------|----------|
 | Account Name | string | Atlassian account or team name | true |
 | Repository Id | string | Bitbucket repository | true |
-|  | string |  | false |
+| events | string |  | false |
 
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-|  | string |  |
+| [WebhookRepositoryPushResponse](#webhookrepositorypushresponse) | object |  |
 
 ___
 
 
 ## Objects
+
+### WebhookRequest
+
+
+This object has no properties.
 
 ### CreateIssueRequest
 
@@ -586,7 +589,6 @@ ___
 |---------|------|-------------|------|
 | Id | int32 | Id of the pull request. | id |
 | Reviewers | array of string | List of reviewers on the pull request. | reviewers |
-|  | string |  | reviewers |
 | Closed By | string | Username of person who closes the pull request. | closed_by |
 | Description | string | Description of the pull request. | description |
 | Name | string | The name of the destination branch. | destination.branch.name |

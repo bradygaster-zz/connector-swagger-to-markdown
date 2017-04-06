@@ -2,8 +2,6 @@
 
 # Instapaper (Preview)
 
-v1.0
-
 Instapaper is a tool for saving web pages to read later. You can create reading lists by organizing pages into folders which can then be accessed from any mobile or web client.
 
 ## Creating a connection
@@ -282,10 +280,9 @@ When a bookmark is removed from a folder
 | Folder | string | The folder id, or &quot;unread&quot; for the home folder | true |
 
 #### Returns
-| Summary | Type | Description | Path |
-|---------|------|-------------|------|
-|  | array of int32 |  |  |
-|  | int32 |  |  |
+| Summary | Type | Description |
+|---------|------|-------------|
+|  | int32 |  |
 
 ___
 
@@ -401,7 +398,7 @@ The response model for bookmark searches
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-|  | Array of [Bookmark](#bookmark) | A list of bookmarks returned by the action | Bookmarks |
+| Bookmarks | Array of [Bookmark](#bookmark) | A list of bookmarks returned by the action | Bookmarks |
 
 ### Bookmark
 A user
@@ -429,7 +426,7 @@ The resposne model for folder searches
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-|  | Array of [Folder](#folder) | A list of folders returned by the action | Folders |
+| Folders | Array of [Folder](#folder) | A list of folders returned by the action | Folders |
 
 ### Folder
 A user
@@ -447,7 +444,7 @@ The response model for highlights actions
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-|  | Array of [Highlight](#highlight) | The highlights | Highlights |
+| Highlights | Array of [Highlight](#highlight) | The highlights | Highlights |
 
 ### Highlight
 A user
@@ -465,6 +462,11 @@ The response model for bookark actions
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
 | [Bookmark](#bookmark) | object | A user | Bookmark |
+
+### Object
+
+
+This object has no properties.
 
 ### HighlightResponse
 The response model for highlight actions
@@ -484,5 +486,4 @@ The resposne model for folder searches
 | Name | Calls | Renewal Period |
 |------|-------|----------------|
 | API calls per connection | 30 | 60 seconds |
-
 

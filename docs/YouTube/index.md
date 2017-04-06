@@ -2,8 +2,6 @@
 
 # YouTube (Preview)
 
-v1.2
-
 YouTube allows billions of people to discover, watch and share originally-created videos. YouTube provides a forum for people to connect, inform, and inspire others across the globe and acts as a distribution platform for original content creators and advertisers large and small.
 
 
@@ -106,6 +104,5 @@ Model of a concise summary of the video
 ## Limits
 | Name | Calls | Renewal Period |
 |------|-------|----------------|
-| API calls per connection |  |  seconds |
 | Frequency of trigger polls | 1 | 900 seconds |
 

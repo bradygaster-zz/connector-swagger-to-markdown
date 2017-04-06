@@ -2,8 +2,6 @@
 
 # Easy Redmine (Preview)
 
-v1.0.0
-
 Easy Redmine is a web based tool for software project management.
 
 ## Creating a connection
@@ -78,9 +76,7 @@ Update a task
 | Estimated hours | float | Estimated hours | false |
 
 #### Returns
-| Summary | Type | Description |
-|---------|------|-------------|
-|  | string |  |
+This operation does not return anything.
 
 ___
 

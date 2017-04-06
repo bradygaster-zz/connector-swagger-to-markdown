@@ -2,8 +2,6 @@
 
 # Microsoft Translator (Preview)
 
-v1.0
-
 Microsoft Translator lets you translate text
 
 
@@ -18,9 +16,9 @@ Retrieves all languages that Microsoft Translator supports
 This operation does not require any input.
 
 #### Returns
-| Summary | Type | Description | Path |
-|---------|------|-------------|------|
-|  | Array of [Language](#language) |  |  |
+| Summary | Type | Description |
+|---------|------|-------------|
+|  | Array of [Language](#language) |  |
 
 ___
 
@@ -71,9 +69,9 @@ Retrieves the languages available for speech synthesis
 This operation does not require any input.
 
 #### Returns
-| Summary | Type | Description | Path |
-|---------|------|-------------|------|
-|  | Array of [Language](#language) |  |  |
+| Summary | Type | Description |
+|---------|------|-------------|
+|  | Array of [Language](#language) |  |
 
 ___
 
@@ -114,5 +112,4 @@ Connections per account: **1**
 | Name | Calls | Renewal Period |
 |------|-------|----------------|
 | API calls per connection | 100 | 60 seconds |
-
 

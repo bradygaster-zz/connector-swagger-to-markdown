@@ -2,8 +2,6 @@
 
 # WordPress (Preview)
 
-v1.0.20
-
 WordPress is web software you can use to create a beautiful website, blog, or app.
 
 

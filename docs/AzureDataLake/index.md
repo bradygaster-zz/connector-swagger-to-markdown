@@ -2,8 +2,6 @@
 
 # Azure Data Lake (Preview)
 
-v1.0.0
-
 Azure Data Lake Store connector allows you to read and add data to an Azure Data Lake account.
 
 
@@ -45,6 +43,26 @@ Create a folder in a Data Lake Store account.
 
 ___
 
+## Append File (concurrent)
+Concurrent append to a file.
+
+**Operation Id:** AppendFile_Concurrent
+
+#### Parameters
+| Summary | Type | Description | Required |
+|---------|------|-------------|----------|
+| Account name | string | Account name for Azure Data Lake. | true |
+| Append mode | string | Set to auto-create if path doesn&#x27;t exist. | false |
+| File path | string | Path of the file (no leading &#x27;/&#x27;). | true |
+| Content | binary | Content of the file | true |
+
+#### Returns
+| Summary | Type | Description |
+|---------|------|-------------|
+| Operation message | string |  |
+
+___
+
 ## Read File
 Read data from a Data Lake Store account.
 
@@ -74,7 +92,7 @@ Upload data into a Data Lake Store account.
 | Account name | string | Account name for Azure Data Lake. | true |
 | File path | string | Path of the file (no leading &#x27;/&#x27;). | true |
 | Overwrite | boolean | Overwrite if existing file. | false |
-| body | binary | Content of the file | true |
+| Content | binary | Content of the file | true |
 
 #### Returns
 | Summary | Type | Description |
@@ -83,10 +101,10 @@ Upload data into a Data Lake Store account.
 
 ___
 
-## Append File
+## Append File (sequential)
 Append to a file serially.
 
-**Operation Id:** AppendFile
+**Operation Id:** AppendFile_Sequential
 
 #### Parameters
 | Summary | Type | Description | Required |
@@ -129,12 +147,18 @@ ___
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-| FileStatus | array of object | FileStatus | FileStatuses.FileStatus |
-| Path Suffix | string | File or folder path and name. | FileStatuses.FileStatus.pathSuffix |
-| Type | string | Type of item (directory or file). | FileStatuses.FileStatus.type |
-| Block Size | int32 | Block size of folder or file. | FileStatuses.FileStatus.blockSize |
-| Access Time | int32 | Ticks since item last accessed. | FileStatuses.FileStatus.accessTime |
-| Modification Time | int32 | Ticks since item last modified. | FileStatuses.FileStatus.modificationTime |
+| [fileStatusArray](#filestatusarray) | array | FileStatus | FileStatuses.FileStatus |
+
+### fileStatusArray
+FileStatus
+
+| Summary | Type | Description | Path |
+|---------|------|-------------|------|
+| File name | string | File or folder name. | pathSuffix |
+| Type | string | Type of item (directory or file). | type |
+| Block Size | int32 | Block size of folder or file. | blockSize |
+| Access Time | int32 | Ticks since item last accessed. | accessTime |
+| Modification Time | int32 | Ticks since item last modified. | modificationTime |
 
 ### operationPerformed
 
@@ -147,5 +171,5 @@ ___
 | Name | Calls | Renewal Period |
 |------|-------|----------------|
 | API calls per connection | 3600 | 60 seconds |
-
+| Frequency of trigger polls | 1 | 15 seconds |
 

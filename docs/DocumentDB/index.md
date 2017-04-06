@@ -2,8 +2,6 @@
 
 # Azure DocumentDB (Preview)
 
-v1.0.0
-
 Azure DocumentDB is a NoSQL service for highly available, globally distributed app. Sign into your DocumentDB account to create, update, and query documents and more. 
 
 ## Creating a connection
@@ -222,7 +220,6 @@ ___
 | dataType | string |  | DocumentCollections.indexingPolicy.includedPaths.indexes.dataType |
 | precision | int32 |  | DocumentCollections.indexingPolicy.includedPaths.indexes.precision |
 | excludedPaths | array of string |  | DocumentCollections.indexingPolicy.excludedPaths |
-|  | string |  | DocumentCollections.indexingPolicy.excludedPaths |
 | _rid | string |  | DocumentCollections._rid |
 | _ts | int32 |  | DocumentCollections._ts |
 | _self | string |  | DocumentCollections._self |
@@ -249,7 +246,6 @@ ___
 | dataType | string |  | indexingPolicy.includedPaths.indexes.dataType |
 | precision | int32 |  | indexingPolicy.includedPaths.indexes.precision |
 | excludedPaths | array of string |  | indexingPolicy.excludedPaths |
-|  | string |  | indexingPolicy.excludedPaths |
 | _rid | string |  | _rid |
 | _ts | int32 |  | _ts |
 | _self | string |  | _self |
@@ -259,6 +255,11 @@ ___
 | _triggers | string |  | _triggers |
 | _udfs | string |  | _udfs |
 | _conflicts | string |  | _conflicts |
+
+### postDocumentsRequest
+
+
+This object has no properties.
 
 ### postDocumentsResponse
 
@@ -271,6 +272,11 @@ ___
 | _etag | string |  | _etag |
 | _attachments | string |  | _attachments |
 | id | string |  | id |
+
+### putDocumentRequest
+
+
+This object has no properties.
 
 ### putDocumentResponse
 
@@ -287,6 +293,11 @@ ___
 |---------|------|-------------|------|
 | _rid | string |  | _rid |
 | Documents | array of object |  | Documents |
+
+### getDocumentResponse
+
+
+This object has no properties.
 
 ### queryRequest
 
@@ -308,5 +319,4 @@ ___
 | Name | Calls | Renewal Period |
 |------|-------|----------------|
 | API calls per connection | 3000 | 60 seconds |
-
 

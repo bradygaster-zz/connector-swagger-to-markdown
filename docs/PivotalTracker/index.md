@@ -2,8 +2,6 @@
 
 # Pivotal Tracker (Preview)
 
-v1.0.0
-
 Pivotal Tracker is purpose-built to make it easy for you to convert an idea into a set of stories that you can prioritize, assign, and manage through completion.
 
 ## Creating a connection
@@ -38,7 +36,7 @@ This operation is used to create a new story.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [Story_Response](#story_response) | object |  |
+| [Story_Response](#storyresponse) | object |  |
 
 ___
 
@@ -53,7 +51,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [Listprojects_Response](#listprojects_response) | array |  |
+| [Listprojects_Response](#listprojectsresponse) | array |  |
 
 ___
 
@@ -71,7 +69,7 @@ This operation retrieves all information about a story, given its id.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [Story_Response](#story_response) | object |  |
+| [Story_Response](#storyresponse) | object |  |
 
 ___
 
@@ -97,7 +95,7 @@ This operation is used to update the details of a story, given its id.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [Story_Response](#story_response) | object |  |
+| [Story_Response](#storyresponse) | object |  |
 
 ___
 
@@ -113,9 +111,7 @@ Deletes the specified story.
 | Story Id | string |  | true |
 
 #### Returns
-| Summary | Type | Description |
-|---------|------|-------------|
-|  | string |  |
+This operation does not return anything.
 
 ___
 
@@ -134,7 +130,7 @@ Triggers when a new story is added to the given project.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [Liststories_Response](#liststories_response) | array |  |
+| [Story_Response](#storyresponse) | object |  |
 
 ___
 
@@ -151,7 +147,7 @@ Triggers when an existing story is completed in the given project.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [Liststories_Response](#liststories_response) | array |  |
+| [Story_Response](#storyresponse) | object |  |
 
 ___
 
@@ -168,7 +164,7 @@ Triggers when a story is created or the details of an existing story are updated
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [Liststories_Response](#liststories_response) | array |  |
+| [Story_Response](#storyresponse) | object |  |
 
 ___
 
@@ -204,7 +200,7 @@ ___
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-| [Story_Response](#story_response) | object |  |  |
+| [Story_Response](#storyresponse) | object |  |  |
 
 ### Story_Response
 
@@ -222,7 +218,6 @@ ___
 | Label Name | string | The name of the label. | labels.name |
 | Title | string | Story name. | name |
 | owner_ids | array of string |  | owner_ids |
-| Owner Id | string | Id of the owner. | owner_ids |
 | Project Id | int32 | The Id of the project. | project_id |
 | Requestor Id | int32 | The id of the person who requested the story. | requested_by_id |
 | Story Type | string | Type of story. | story_type |

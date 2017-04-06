@@ -2,8 +2,6 @@
 
 # Pipedrive (Preview)
 
-v1.0.0
-
 Pipedrive is a CRM &amp; pipeline management tool that helps you focus on actions that matter.
 
 ## Creating a connection
@@ -136,7 +134,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [TrigNewActivityResponse](#trignewactivityresponse) | array | data |
+| [ActivityResponse](#activityresponse) | object | data |
 
 ___
 
@@ -151,7 +149,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [TrigNewDealResponse](#trignewdealresponse) | array | data |
+| [DealResponse](#dealresponse) | object | data |
 
 ___
 

@@ -2,8 +2,6 @@
 
 # Text Analytics (Preview)
 
-vv2.0
-
 Microsoft Cognitive Services Text Analytics detects language, sentiment and more of the text you provide.
 
 ## Creating a connection
@@ -91,7 +89,6 @@ ___
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
 | Key Phrases | array of string | A list of representative words or phrases. The number of key phrases returned is proportional to the number of words in the input document. | keyPhrases |
-|  | string |  | keyPhrases |
 | Id | string | Unique document identifier. | id |
 
 ### ErrorResponse
@@ -125,7 +122,7 @@ ___
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
 | Id | string | Unique document identifier. | id |
-|  | Array of [DetectedLanguageV2](#detectedlanguagev2) | A list of extracted languages. | detectedLanguages |
+| detectedLanguages | Array of [DetectedLanguageV2](#detectedlanguagev2) | A list of extracted languages. | detectedLanguages |
 
 ### DetectedLanguageV2
 
@@ -143,10 +140,5 @@ ___
 |---------|------|-------------|------|
 | Score | double | A decimal number between 0 and 1 denoting the sentiment of the document.  A score above 0.7 usually refers to a positive document while a score below 0.3 normally has a negative connotation. Mid values refer to neutral text. | score |
 | Request ID | string | Unique document identifier. | id |
-
-## Limits
-| Name | Calls | Renewal Period |
-|------|-------|----------------|
-| API calls per connection |  |  seconds |
 
 

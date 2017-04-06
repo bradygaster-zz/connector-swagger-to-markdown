@@ -2,8 +2,6 @@
 
 # JIRA (Preview)
 
-v1.0.0
-
 JIRA is a software development tool for agile teams to plan, track, and release world-class software. Connecting JIRA issues to the rest of your tools helps break down barriers and unleash the potential of your team.
 
 ## Creating a connection
@@ -80,9 +78,7 @@ Update the issue object.
 | Parent Issue Id | string | Set the parent for a sub-task | false |
 
 #### Returns
-| Summary | Type | Description |
-|---------|------|-------------|
-|  | string |  |
+This operation does not return anything.
 
 ___
 

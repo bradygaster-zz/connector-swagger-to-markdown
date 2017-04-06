@@ -2,8 +2,6 @@
 
 # Campfire (Preview)
 
-v1.0
-
 Campfire is an instant messaging tool used for communication and file sharing within teams.
 
 
@@ -220,6 +218,5 @@ A message
 ## Limits
 | Name | Calls | Renewal Period |
 |------|-------|----------------|
-| API calls per connection |  |  seconds |
 | Frequency of trigger polls | 1 | 15 seconds |
 

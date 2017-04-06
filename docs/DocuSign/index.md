@@ -2,8 +2,6 @@
 
 # DocuSign (Preview)
 
-v1.0
-
 DocuSign is the easiest and most secure way to sign and get documents signed. With over 50 million users worldwide, DocuSign is the most widely used eSignature and Digital Transaction Management platform in the world.
 
 
@@ -173,6 +171,11 @@ ___
 | Status | string | The status of the envelope. | status |
 | Status date time | string | The datetime the status was set. | statusDateTime |
 | URI | string | The URI for the envelope in DocuSign. | uri |
+
+### SendDraftEnvelopeResponse
+
+
+This object has no properties.
 
 ### ListRecipientsResponse
 

@@ -2,8 +2,6 @@
 
 # FreshBooks (Preview)
 
-v1.0.0
-
 FreshBooks is a cloud based small business accounting software. Send invoices, track time, manage receipts and expenses.
 
 
@@ -133,7 +131,7 @@ Triggers when a new expense is created or an existing one is updated.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [ExpenseList](#expenselist) | array | Array of expenses. |
+| [Expense](#expense) | object |  |
 
 ___
 

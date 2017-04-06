@@ -1,8 +1,6 @@
-# [Overview](overview.md)
+# [Overview](index.md)
 
 # Reference
-
-## [Azure Resource Manager](ARM/index.md)
 
 ## [Asana](Asana/index.md)
 
@@ -10,7 +8,11 @@
 
 ## [Azure Data Lake](AzureDataLake/index.md)
 
+## [Azure DocumentDB](DocumentDB/index.md)
+
 ## [Azure Queues](AzureQueues/index.md)
+
+## [Azure Resource Manager](ARM/index.md)
 
 ## [Bitbucket](Bitbucket/index.md)
 
@@ -24,11 +26,7 @@
 
 ## [Chatter](Chatter/index.md)
 
-## [Text Analytics](CognitiveServicesTextAnalytics/index.md)
-
 ## [Disqus](Disqus/index.md)
-
-## [Azure DocumentDB](DocumentDB/index.md)
 
 ## [DocuSign](DocuSign/index.md)
 
@@ -94,8 +92,6 @@
 
 ## [Power BI](PowerBI/index.md)
 
-## [ProjectOnline](ProjectOnline/index.md)
-
 ## [Redmine](Redmine/index.md)
 
 ## [Smartsheet](Smartsheet/index.md)
@@ -105,6 +101,8 @@
 ## [Stripe](Stripe/index.md)
 
 ## [SurveyMonkey](SurveyMonkey/index.md)
+
+## [Text Analytics](CognitiveServicesTextAnalytics/index.md)
 
 ## [Todoist](Todoist/index.md)
 

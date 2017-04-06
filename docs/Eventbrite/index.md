@@ -2,8 +2,6 @@
 
 # Eventbrite (Preview)
 
-v1.0.0
-
 Eventbrite is a self-service ticketing platform used to create and discover local events.
 
 
@@ -40,7 +38,7 @@ Create a new Eventbrite event.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [CreateEvent_Response](#createevent_response) | object |  |
+| [CreateEvent_Response](#createeventresponse) | object |  |
 
 ___
 
@@ -76,7 +74,7 @@ Update an existing event.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [CreateEvent_Response](#createevent_response) | object |  |
+| [CreateEvent_Response](#createeventresponse) | object |  |
 
 ___
 
@@ -95,7 +93,7 @@ Triggers a flow when an organizer has a new event.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [GetEventsForOrganizer_Response](#geteventsfororganizer_response) | array |  |
+| [GetEventsForOrganizer_Response](#geteventsfororganizerresponse) | array |  |
 
 ___
 
@@ -112,7 +110,7 @@ Trigger a flow when an order changes.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [GetOrders_Response](#getorders_response) | array |  |
+| [GetOrders_Response](#getordersresponse) | array |  |
 
 ___
 

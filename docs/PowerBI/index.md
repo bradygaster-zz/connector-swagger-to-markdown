@@ -2,8 +2,6 @@
 
 # Power BI (Preview)
 
-vv1
-
 Power BI is a suite of business analytics tools to analyze data and share insights. Connect to get easy access to the data in your Power BI dashboards, reports and datasets.
 
 
@@ -96,9 +94,13 @@ ___
 | value | array of object |  | value |
 | Table name | string | The display name of the table. | value.name |
 
+### Columns
+
+
+This object has no properties.
+
 ## Limits
 | Name | Calls | Renewal Period |
 |------|-------|----------------|
 | API calls per connection | 100 | 60 seconds |
-
 

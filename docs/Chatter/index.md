@@ -2,8 +2,6 @@
 
 # Chatter (Preview)
 
-v1.0.0
-
 Chatter is an enterprise social network for your company that allows employees to connect and collaborate in real time.
 
 ## Creating a connection
@@ -237,14 +235,14 @@ ___
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-|  | Array of [UserUserResponse](#useruserresponse) |  | users |
+| users | Array of [UserUserResponse](#useruserresponse) |  | users |
 
 ### ListGroupMembersResponse
 
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
-|  | Array of [GroupMemberResponse](#groupmemberresponse) |  | members |
+| members | Array of [GroupMemberResponse](#groupmemberresponse) |  | members |
 | Total member count | int32 | Number of members in the group. | totalMemberCount |
 
 ### GetPostResponse

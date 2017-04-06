@@ -2,8 +2,6 @@
 
 # Google Calendar (Preview)
 
-v1.1
-
 Google Calendar lets you organize your schedule and share events with co-workers and friends. With Google&#x27;s free online calendar, it&#x27;s easy to keep track of your daily schedule.
 
 ## Creating a connection
@@ -276,6 +274,11 @@ Event changes to upload to Google Calendar
 | Location | string | Geographic location of the event as free-form text | location |
 | Attendees | string | Enter a comma-separated list of attendee emails | attendees |
 | Status | string | Status of the event. Possible values are &quot;confirmed&quot;, &quot;tentative&quot;, or &quot;cancelled | status |
+
+### Object
+
+
+This object has no properties.
 
 ## Limits
 | Name | Calls | Renewal Period |

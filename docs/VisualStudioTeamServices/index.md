@@ -2,8 +2,6 @@
 
 # Visual Studio Team Services (Preview)
 
-v1.3
-
 Visual Studio Team Services provides services for teams to share code, track work, and ship software - for any language, all in a single package. It&#x27;s the perfect complement to your IDE.
 
 
@@ -101,7 +99,7 @@ Triggers a flow when code is checked in to a Team Foundation Version Control pro
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [VstsList[TfvcChangeset]](#vstslist[tfvcchangeset]) | object | A list of VSTS models |
+| [VstsList\[TfvcChangeset\]](#vstslisttfvcchangeset) | object | A list of VSTS models |
 
 ___
 
@@ -121,7 +119,7 @@ Triggers a flow when code is pushed to a Git repository.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [VstsList[GitPush]](#vstslist[gitpush]) | object | A list of VSTS models |
+| [VstsList\[GitPush\]](#vstslistgitpush) | object | A list of VSTS models |
 
 ___
 
@@ -141,7 +139,7 @@ Triggers a flow when a build completes
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [VstsList[BuildResult]](#vstslist[buildresult]) | object | A list of VSTS models |
+| [VstsList\[BuildResult\]](#vstslistbuildresult) | object | A list of VSTS models |
 
 ___
 
@@ -167,7 +165,7 @@ Triggers a flow when a work item which matches provided criteria is assigned to 
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [VstsList[WorkItemResponse]](#vstslist[workitemresponse]) | object | A list of VSTS models |
+| [VstsList\[WorkItemResponse\]](#vstslistworkitemresponse) | object | A list of VSTS models |
 
 ___
 
@@ -193,7 +191,7 @@ Triggers a flow when a work item which matches provided criteria is updated
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [VstsList[WorkItemResponse]](#vstslist[workitemresponse]) | object | A list of VSTS models |
+| [VstsList\[WorkItemResponse\]](#vstslistworkitemresponse) | object | A list of VSTS models |
 
 ___
 
@@ -219,14 +217,14 @@ Triggers a flow when a work item which matches provided criteria is created
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [VstsList[WorkItemResponse]](#vstslist[workitemresponse]) | object | A list of VSTS models |
+| [VstsList\[WorkItemResponse\]](#vstslistworkitemresponse) | object | A list of VSTS models |
 
 ___
 
 
 ## Objects
 
-### VstsList[Account]
+### VstsList\[Account\]
 A list of VSTS models
 
 | Summary | Type | Description | Path |
@@ -245,7 +243,7 @@ A list of VSTS models
 | Account type | string | Account type | accountType |
 | Account owner | string | Account owner | accountOwner |
 
-### VstsList[Project]
+### VstsList\[Project\]
 A list of VSTS models
 
 | Summary | Type | Description | Path |
@@ -261,7 +259,7 @@ A VSTS Project
 | Project name | string | The project&#x27;s name | name |
 | Project URL | string | The project&#x27;s API URL. | url |
 
-### VstsList[BuildDefinition]
+### VstsList\[BuildDefinition\]
 A list of VSTS models
 
 | Summary | Type | Description | Path |
@@ -293,7 +291,7 @@ Links to human-readable web pages
 |---------|------|-------------|------|
 | HTML link | string | The web URL of build details | href |
 
-### VstsList[GitRepository]
+### VstsList\[GitRepository\]
 A list of VSTS models
 
 | Summary | Type | Description | Path |
@@ -309,7 +307,7 @@ A Git repository
 | Repository name | string | The name of this repository | name |
 | Repository remote URL | string | The URL via which git can sync with this repository | remoteUrl |
 
-### VstsList[GitRef]
+### VstsList\[GitRef\]
 A list of VSTS models
 
 | Summary | Type | Description | Path |
@@ -324,7 +322,7 @@ A Git repository
 | Ref Id | string | Repository unique Id | objectId |
 | Ref name | string | The name of this repository | name |
 
-### VstsList[Team]
+### VstsList\[Team\]
 A list of VSTS models
 
 | Summary | Type | Description | Path |
@@ -342,7 +340,7 @@ A project team
 | Team description | string | Team description | description |
 | Team URI | string | Identities URI | identityUrl |
 
-### VstsList[TeamMember]
+### VstsList\[TeamMember\]
 A list of VSTS models
 
 | Summary | Type | Description | Path |
@@ -464,7 +462,7 @@ Fields of the work item
 | Value area | string | Value Area | Microsoft_VSTS_Common_ValueArea |
 | Description | string | Description | System_Description |
 
-### VstsList[TfvcChangeset]
+### VstsList\[TfvcChangeset\]
 A list of VSTS models
 
 | Summary | Type | Description | Path |
@@ -498,7 +496,7 @@ Info regarding who created the push
 | Checked in by name | string | The name of the user who created the push | displayName |
 | Checked in by unique name | string | The unique name of the user who created the push | uniqueName |
 
-### VstsList[GitPush]
+### VstsList\[GitPush\]
 A list of VSTS models
 
 | Summary | Type | Description | Path |
@@ -524,14 +522,14 @@ Info regarding who created the push
 | Pusher name | string | The name of the user who created the push | displayName |
 | Pusher unique name | string | The unique name of the user who created the push | uniqueName |
 
-### VstsList[BuildResult]
+### VstsList\[BuildResult\]
 A list of VSTS models
 
 | Summary | Type | Description | Path |
 |---------|------|-------------|------|
 | Value | Array of [BuildResult](#buildresult) | The VSTS Models | value |
 
-### VstsList[WorkItemResponse]
+### VstsList\[WorkItemResponse\]
 A list of VSTS models
 
 | Summary | Type | Description | Path |

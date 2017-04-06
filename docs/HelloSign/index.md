@@ -2,8 +2,6 @@
 
 # HelloSign (Preview)
 
-v1.0.0
-
 HelloSign enables secure electronic signatures that are business-caliber, easy-to-use and legally binding.
 
 ## Creating a connection
@@ -85,7 +83,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [RequestResponseArray](#requestresponsearray) | array |  |
+| [RequestResponse](#requestresponse) | object |  |
 
 ___
 
@@ -100,7 +98,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [RequestResponseArray](#requestresponsearray) | array |  |
+| [RequestResponse](#requestresponse) | object |  |
 
 ___
 
@@ -115,7 +113,7 @@ This operation does not require any input.
 #### Returns
 | Summary | Type | Description |
 |---------|------|-------------|
-| [RequestResponseArray](#requestresponsearray) | array |  |
+| [RequestResponse](#requestresponse) | object |  |
 
 ___
 

@@ -2,8 +2,6 @@
 
 # Face API (Preview)
 
-v1.0.0
-
 Microsoft Cognitive Services Face API allows you to detect, identify, analyze, organize and tag faces in photos.
 
 ## Creating a connection
@@ -228,7 +226,6 @@ ___
 |---------|------|-------------|------|
 | personId | string |  | personId |
 | persistedFaceIds | array of string |  | persistedFaceIds |
-|  | string |  | persistedFaceIds |
 | name | string |  | name |
 | userData | string |  | userData |
 
@@ -375,7 +372,6 @@ ___
 |---------|------|-------------|------|
 | Person Id | string |  | personId |
 | Persisted Face Ids | array of string |  | persistedFaceIds |
-|  | string |  | persistedFaceIds |
 | Name | string |  | name |
 | User Data | string |  | userData |
 
@@ -401,5 +397,4 @@ ___
 | Name | Calls | Renewal Period |
 |------|-------|----------------|
 | API calls per connection | 100 | 60 seconds |
-
 

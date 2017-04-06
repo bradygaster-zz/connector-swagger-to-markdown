@@ -2,8 +2,6 @@
 
 # WebMerge (Preview)
 
-v1.0.0
-
 Automatically populate templates with data from your favorite cloud apps.  Never copy &amp; paste again!
 
 ## Creating a connection
@@ -136,5 +134,4 @@ ___
 | Name | Calls | Renewal Period |
 |------|-------|----------------|
 | API calls per connection | 100 | 60 seconds |
-
 

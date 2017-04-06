@@ -1,12 +1,8 @@
 <img src="icon.png" alt="Icon" data-linktype="relative-path" height="100" width="100">
 
-# {{doc.title}}{{#if_cond doc.status '===' 'Preview'}} ({{doc.status}}){{/if_cond}}
+# {{swaggerDoc.title}}{{#if_cond swaggerDoc.status '===' 'Preview'}} ({{swaggerDoc.status}}){{/if_cond}}
 
-{{#if doc.version}}
-v{{doc.version}}
-
-{{/if}}
-{{doc.description}}
+{{swaggerDoc.description}}
 
 {{#if_cond connectionParameters '||' customSection}}
 ## Creating a connection
@@ -21,20 +17,20 @@ v{{doc.version}}
 
 {{/if}}
 
-{{#if doc.actions.length}}
+{{#if swaggerDoc.actions.length}}
 # Actions
 
-{{#each doc.actions}}
+{{#each swaggerDoc.actions}}
 {{> operation this}}
 
 ___
 
 {{/each}}
 {{/if}}
-{{#if doc.triggers.length}}
+{{#if swaggerDoc.triggers.length}}
 # Triggers
 
-{{#each doc.triggers}}
+{{#each swaggerDoc.triggers}}
 {{> operation this}}
 
 ___
@@ -42,35 +38,13 @@ ___
 {{/each}}
 {{/if}}
 
-{{#if doc.definitions}}
-## Objects
-{{#each doc.definitions}}
+{{> definitions swaggerDoc}}
 
-### {{@key}}
-{{this.description}}
+{{> throttling limits}}
 
-{{#if properties.length}}
-| Summary | Type | Description | Path |
-|---------|------|-------------|------|
-{{#each properties}}
-| {{summary}} | {{type}} | {{description}} | {{path}} |
-{{/each}}
-{{else}}
-| Summary | Type | Description |
-|---------|------|-------------|
-{{#with singleSchema}}
-| {{summary}} | {{type}} | {{description}} |
-{{/with}}
-{{/if}}
-{{/each}}
-{{/if}}
-
-## Limits
-{{> throttling policy}}
-
-{{#if doc.customLinks.length}}
+{{#if swaggerDoc.customLinks.length}}
 ## Using this integration
-{{#each doc.customLinks}}
+{{#each swaggerDoc.customLinks}}
 - [{{description}}]({{url}})
 {{/each}}
 {{/if}}
